@@ -3,7 +3,7 @@
 file(GLOB_RECURSE HEADER_LIST "${PROJECT_SOURCE_DIR}/include/*.hpp")
 file(GLOB SOURCE_LIST ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-set (self ph_debug)
+set (self ph)
 
 add_library (${self}
 	${SOURCE_LIST}  ${HEADER_LIST} 
@@ -15,7 +15,7 @@ add_library (${self}
 
 ph_precompile (TARGET ${self} PUBLIC PCH ${std_pch} ${boost_pch})
 
-add_library (ph::debug ALIAS ${self})
+add_library (ph::ph ALIAS ${self})
 target_link_libraries (${self} PRIVATE ${Boost_LIBRARIES})
 target_include_directories (${self} PUBLIC ${PROJECT_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
 
