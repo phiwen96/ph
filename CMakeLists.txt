@@ -54,3 +54,5 @@ add_subdirectory (src)
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING) AND BUILD_TESTING)
 	add_subdirectory (tests)
 endif()
+
+# cmake -Drun=libtest -Dwith_args="" -S . -B build && cmake --build build --config Debug -j 9 
