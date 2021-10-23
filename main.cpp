@@ -1,15 +1,9 @@
-import <iostream>;
-import <vector>;
-
-
-
 import concepts;
 // import concepts.Number;
 
 int main()
 {
 	Number auto a = 10;
-    std::cout << "Hello, World!\n";
 	Signed auto b = 2;
 	// fitta ();
 	// com ();

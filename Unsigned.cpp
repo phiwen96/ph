@@ -1,6 +1,6 @@
 export module concepts.Number.Unsigned;
 
-import <type_traits>;
+export import <type_traits>;
 
 export template <typename T>
 concept Unsigned = std::is_same_v <T, unsigned short>

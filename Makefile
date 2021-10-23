@@ -1,8 +1,8 @@
 BUILD=build
 SRC=src
 
-main: main.o concepts.pcm String.pcm Char.pcm Pointer.pcm Size.pcm Number.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o concepts.pcm String.pcm Char.pcm Pointer.pcm Size.pcm Number.pcm -o main
+main: main.o concepts.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o concepts.pcm -o main
 
 main.o: main.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. -c main.cpp -o main.o
