@@ -1,4 +1,4 @@
-export module electrical.systems.communication;
+export module concepts.char;
 
 
 import <iostream>;

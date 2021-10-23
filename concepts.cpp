@@ -1,7 +1,8 @@
 export module concepts;
 
-export import concepts.systems;
-export import concepts.circuit;
+export import concepts.char;
+export import concepts.string;
+export import concepts.pointer;
 
 
 

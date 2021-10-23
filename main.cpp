@@ -3,14 +3,14 @@ import <vector>;
 
 
 
-import concepts;
+// import concepts;
 
 int main()
 {
     std::cout << "Hello, World!\n";
-	fitta ();
-	com ();
-	circ ();
+	// fitta ();
+	// com ();
+	// circ ();
 
 	return 0;
 }

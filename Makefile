@@ -8,8 +8,8 @@ main.o: main.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. -c main.cpp -o main.o
 
 
-concepts.pcm: concepts.cpp String.pcm Pointer.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -c concepts.cpp -Xclang -emit-module-interface -o concepts.pcm
+concepts.pcm: concepts.cpp String.pcm Pointer.pcm Char.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -c concepts.cpp -Xclang -emit-module-interface -o concepts.pcm
 
 
 
