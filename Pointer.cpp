@@ -1,8 +1,4 @@
 export module concepts.Pointer;
-
-import <iostream>;
-
-export void circ ()
-{
-	std::cout << "hgej" << std::endl;
-}
+import <type_traits>;
+template <typename T>
+concept Pointer = std::is_pointer_v <T>;
