@@ -1,6 +1,6 @@
-export module electrical.systems;
+export module concepts.string;
 
-export import electrical.systems.communication;
+export import concepts.systems.communication;
 /*
 communication
 computer

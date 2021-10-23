@@ -3,7 +3,7 @@ import <vector>;
 
 
 
-import electrical;
+import concepts;
 
 int main()
 {

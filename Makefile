@@ -1,28 +1,28 @@
 BUILD=build
 SRC=src
 
-main: main.o electrical.pcm systems.pcm communication.pcm circuit.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o electrical.pcm systems.pcm communication.pcm circuit.pcm -o main
+main: main.o concepts.pcm String.pcm Char.pcm Pointer.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o concepts.pcm String.pcm Char.pcm Pointer.pcm -o main
 
 main.o: main.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. -c main.cpp -o main.o
 
 
-electrical.pcm: electrical.cpp systems.pcm circuit.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=systems.pcm -fmodule-file=circuit.pcm -c electrical.cpp -Xclang -emit-module-interface -o electrical.pcm
+concepts.pcm: concepts.cpp String.pcm Pointer.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -c concepts.cpp -Xclang -emit-module-interface -o concepts.pcm
 
 
 
-circuit.pcm: circuit.cpp
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c circuit.cpp -Xclang -emit-module-interface -o circuit.pcm
+Pointer.pcm: Pointer.cpp
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Pointer.cpp -Xclang -emit-module-interface -o Pointer.pcm
 
 
 
-systems.pcm: communication.pcm systems.cpp 
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=communication.pcm -c systems.cpp -Xclang -emit-module-interface -o systems.pcm
+String.pcm: Char.pcm String.cpp 
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=Char.pcm -c String.cpp -Xclang -emit-module-interface -o String.pcm
 
-communication.pcm: communication.cpp 
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c communication.cpp -Xclang -emit-module-interface -o communication.pcm
+Char.pcm: Char.cpp 
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Char.cpp -Xclang -emit-module-interface -o Char.pcm
 
 buildfiles: $(*.o, *.pcm, main)
 

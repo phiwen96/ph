@@ -1,4 +1,4 @@
-export module electrical.circuit;
+export module concepts.pointer;
 
 import <iostream>;
 
