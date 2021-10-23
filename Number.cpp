@@ -1,4 +1,9 @@
-export module concepts.Numbers;
+export module concepts.Number;
 
-export import concepts.Numbers.Signed;
-export import concepts.Numbers.Unsigned;
+export import concepts.Number.Signed;
+export import concepts.Number.Unsigned;
+
+export {
+template <typename T>
+concept Number = Signed <T> or Unsigned <T>;
+}
