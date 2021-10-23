@@ -5,6 +5,7 @@ int main()
 {
 	Number auto a = 10;
 	Signed auto b = 2;
+	// Function auto c = [](){};
 	// fitta ();
 	// com ();
 	// circ ();
