@@ -1,16 +1,7 @@
 export module concepts.String;
 
-// export import electrical.systems.communication;
-/*
-communication
-computer
-control
-power
-signal-processing
-*/
-
 import <iostream>;
-
+import concepts.Char;
 
 
 export void fitta () {std::cout << "hej" << std::endl;}
