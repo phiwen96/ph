@@ -3,12 +3,14 @@ import <vector>;
 
 
 
-import concepts.Number;
+import concepts;
 // import concepts.Number;
+
 int main()
 {
-	// Number auto a = 10;
+	Number auto a = 10;
     std::cout << "Hello, World!\n";
+	Signed auto b = 2;
 	// fitta ();
 	// com ();
 	// circ ();
