@@ -1,4 +1,4 @@
-export module concepts.string;
+export module concepts.String;
 
 // export import electrical.systems.communication;
 /*

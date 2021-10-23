@@ -1,8 +1,8 @@
 export module concepts;
 
-export import concepts.char;
-export import concepts.string;
-export import concepts.pointer;
+export import concepts.Char;
+export import concepts.String;
+export import concepts.Pointer;
 
 
 

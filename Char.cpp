@@ -1,9 +1,12 @@
-export module concepts.char;
+export module concepts.Char;
 
+import <type_traits>;
 
-import <iostream>;
-
-export void com ()
-{
-	std::cout << "com" << std::endl;
-}
+template <typename T>
+concept Char =
+    std::is_same_v <T, char>
+    or std::is_same_v <T, signed char>
+    or std::is_same_v <T, unsigned char>
+    or std::is_same_v <T, char16_t>
+    or std::is_same_v <T, char32_t>
+    or std::is_same_v <T, wchar_t>;
