@@ -1,12 +1,8 @@
 export module Concepts.Iterators;
 
-import <type_traits>;
+import Concepts.Core;
 
-template <typename T>
-concept Const = std::is_const_v <T>;
 
-template <typename T>
-concept Ref = std::is_reference_v <T>;
 
 
 

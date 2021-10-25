@@ -1,5 +1,6 @@
 export module Concepts;
 
+export import Concepts.Core;
 export import Concepts.Char;
 export import Concepts.String;
 export import Concepts.Pointer;
