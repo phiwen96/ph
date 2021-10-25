@@ -1,19 +1,21 @@
 BUILD=build
 SRC=src
 
-main: main.o concepts.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o concepts.pcm -o main
+main: main.o Concepts.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. main.o Concepts.pcm -o main
 
 main.o: main.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. -c main.cpp -o main.o
 
 
-concepts.pcm: concepts.cpp String.pcm Pointer.pcm Char.pcm Size.pcm Number.pcm Function.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Number.pcm  -fmodule-file=Function.pcm -c concepts.cpp -Xclang -emit-module-interface -o concepts.pcm
+Concepts.pcm: Concepts.cpp String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -c Concepts.cpp -Xclang -emit-module-interface -o Concepts.pcm
 
-Number.pcm: Signed.pcm Unsigned.pcm Number.cpp
+Numbers.pcm: Signed.pcm Unsigned.pcm Number.pcm Numbers.cpp
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=Number.pcm -c Numbers.cpp -Xclang -emit-module-interface -o Numbers.pcm
+
+Number.pcm: Number.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=Signed.pcm -fmodule-file=Unsigned.pcm -c Number.cpp -Xclang -emit-module-interface -o Number.pcm
-
 
 Signed.pcm: Signed.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Signed.cpp -Xclang -emit-module-interface -o Signed.pcm

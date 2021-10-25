@@ -1,4 +1,4 @@
-export module concepts.Pointer;
+export module Concepts.Pointer;
 
 import <type_traits>;
 

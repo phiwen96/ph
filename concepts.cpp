@@ -1,11 +1,11 @@
-export module concepts;
+export module Concepts;
 
-export import concepts.Char;
-export import concepts.String;
-export import concepts.Pointer;
-export import concepts.Size;
-export import concepts.Number;
-export import concepts.Function;
+export import Concepts.Char;
+export import Concepts.String;
+export import Concepts.Pointer;
+export import Concepts.Size;
+export import Concepts.Numbers;
+export import Concepts.Function;
 
 
 

@@ -1,4 +1,4 @@
-export module concepts.Number.Signed;
+export module Concepts.Numbers.Signed;
 
 export import <type_traits>;
 

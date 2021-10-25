@@ -1,4 +1,4 @@
-export module concepts.Size;
+export module Concepts.Size;
 
 import <type_traits>;
 

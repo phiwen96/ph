@@ -1,7 +1,7 @@
-export module concepts.String;
+export module Concepts.String;
 
 import <iostream>;
-import concepts.Char;
+import Concepts.Char;
 
 
 export void fitta () {std::cout << "hej" << std::endl;}

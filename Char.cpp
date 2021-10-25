@@ -1,4 +1,4 @@
-export module concepts.Char;
+export module Concepts.Char;
 
 import <type_traits>;
 

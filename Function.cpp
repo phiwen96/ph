@@ -1,4 +1,4 @@
-export module concepts.Function;
+export module Concepts.Function;
 
 export import <type_traits>;
 
