@@ -1,8 +1,13 @@
 export module Concepts.Sequence;
 
-export template <typename T>
-concept Sequence = true;
-// requires (T& t)
-// {
+import Concepts.Core;
 
-// }
+
+
+template <typename T>
+concept Sequence = requires (T& t)
+{
+	begin (t);
+	end (t);
+};
+
