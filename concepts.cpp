@@ -6,6 +6,8 @@ export import Concepts.Pointer;
 export import Concepts.Size;
 export import Concepts.Numbers;
 export import Concepts.Function;
+export import Concepts.Sequence;
+export import Concepts.Iterators;
 
 
 

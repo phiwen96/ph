@@ -7,9 +7,14 @@ main: main.o Concepts.pcm
 main.o: main.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=. -c main.cpp -o main.o
 
+Concepts.pcm: Concepts.cpp String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c Concepts.cpp -Xclang -emit-module-interface -o Concepts.pcm
 
-Concepts.pcm: Concepts.cpp String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm
-	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -c Concepts.cpp -Xclang -emit-module-interface -o Concepts.pcm
+Iterators.pcm: Iterators.cpp
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Iterators.cpp -Xclang -emit-module-interface -o Iterators.pcm
+
+Sequence.pcm: Sequence.cpp
+	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Sequence.cpp -Xclang -emit-module-interface -o Sequence.pcm
 
 Numbers.pcm: Signed.pcm Unsigned.pcm Number.pcm Numbers.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=Number.pcm -c Numbers.cpp -Xclang -emit-module-interface -o Numbers.pcm
@@ -28,8 +33,6 @@ Function.pcm: Function.cpp
 
 Pointer.pcm: Pointer.cpp
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -c Pointer.cpp -Xclang -emit-module-interface -o Pointer.pcm
-
-
 
 String.pcm: Char.pcm String.cpp 
 	clang++ -std=c++2a -stdlib=libc++ -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fmodule-file=Char.pcm -c String.cpp -Xclang -emit-module-interface -o String.pcm
