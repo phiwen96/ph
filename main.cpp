@@ -8,7 +8,8 @@ auto main(int, char**) -> int
 	// Const auto a = 10;
 	Number auto a = 10;
 	Signed auto b = 2;
-	std::cout << to_string ("hej") << std::endl;
+	
+	std::cout << c_string ("hej") << std::endl;
 	// auto d = std::vector <int> {};
   
 	// auto e = d.begin ();
