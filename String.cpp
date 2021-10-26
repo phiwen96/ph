@@ -1,6 +1,7 @@
 export module Ph.Concepts.String;
 
 // import <iostream>;
+import <string>;
 import Ph.Concepts.Core;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
@@ -31,5 +32,25 @@ export
 		return s.size ();
 	}
 
-	
+	auto length (char const* s) -> Size auto 
+	{
+		return strlen (s);
+	}
+
+
 }
+
+export 
+{
+	template <typename T>
+	concept String = requires (T t)
+	{
+		c_string (t);
+		length (t);
+	};
+}
+
+
+
+module :private;
+
