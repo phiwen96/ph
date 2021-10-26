@@ -5,6 +5,7 @@ export import Ph.Concepts;
 
 
 
+
 export 
 {
 	constexpr auto c_string (auto&& s) noexcept -> char const*
@@ -21,7 +22,14 @@ export
 		return s;
 	}
 
-	// constexpr auto length ()
+	constexpr auto length (auto&& s) -> Size auto 
+	requires requires () 
+	{
+		{s.size ()} -> Size;
+	}
+	{
+		return s.size ();
+	}
 
 	
 }

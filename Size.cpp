@@ -1,7 +1,12 @@
 export module Ph.Concepts.Size;
 
-import <type_traits>;
+import Ph.Concepts.Core;
+import <cstddef>;
 
-template <typename T>
-concept Size = std::is_same_v <T, std::size_t>;
+export 
+{
+	template <typename T>
+	concept Size = Convertible_to <T, std::size_t>;
+}
+
     
