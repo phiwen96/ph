@@ -53,4 +53,5 @@ export
 
 
 module :private;
-kuk;
+
+static_assert (String <std::string>);
