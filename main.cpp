@@ -3,6 +3,7 @@ import <vector>;
 
 int main()
 {
+	
 	// Number auto a = 10;
 	// Signed auto b = 2;
 	// Sequence auto c = 3;
