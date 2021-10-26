@@ -61,8 +61,8 @@ Function.pcm: Function.cpp ConceptsCore.pcm
 Pointer.pcm: Pointer.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-String.pcm: String.cpp  Char.pcm ConceptsCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+String.pcm: String.cpp  Char.pcm Size.pcm ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Char.pcm: Char.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
