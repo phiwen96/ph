@@ -4,10 +4,10 @@ SRC=src
 CC=clang++
 FLAGS= -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 
-main: main.o Concepts.pcm
-	$(CC) $(FLAGS) Concepts.pcm $^ -o $@
+main: main.o Ph.pcm
+	$(CC) $(FLAGS) Ph.pcm $^ -o $@
 
-main.o: main.cpp Concepts.pcm
+main.o: main.cpp Ph.pcm
 	$(CC) $(FLAGS) -c $< -o $@
 
 # 0: 1 2 3
@@ -19,6 +19,12 @@ main.o: main.cpp Concepts.pcm
 # 1
 # $(CURDIR)
 
+Ph.pcm: Ph.cpp Concepts.pcm Network.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -c $< -Xclang -emit-module-interface -o $@
+
+
+Network.pcm: Network.cpp Concepts.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Concepts.pcm: Concepts.cpp Core.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
 	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@

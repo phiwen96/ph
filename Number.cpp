@@ -1,7 +1,7 @@
-export module Concepts.Numbers.Number;
+export module Ph.Concepts.Numbers.Number;
 
-export import Concepts.Numbers.Signed;
-export import Concepts.Numbers.Unsigned;
+export import Ph.Concepts.Numbers.Signed;
+export import Ph.Concepts.Numbers.Unsigned;
 
 export 
 {
