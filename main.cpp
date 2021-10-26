@@ -4,7 +4,7 @@
 
 auto main(int, char**) -> int
 { 
-
+	// Const auto a = 10;
 	// Number auto a = 10;
 	// Signed auto b = 2;
 	// Sequence auto c = 3;
