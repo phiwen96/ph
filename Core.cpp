@@ -2,6 +2,11 @@ export module Ph.Core;
 
 import <type_traits>;
 
+export import Ph.Dereferencable;
+export import Ph.Same_as;
+export import Ph.Convertible_to;
+
+
 
 export 
 {
@@ -21,12 +26,15 @@ export
 
 module :private;
 
+static_assert (not Const <int>);
 static_assert (Const <int const>);
 static_assert (Const <int const&>);
 
+static_assert (not Ref <int>);
 static_assert (Ref <int const&>);
 static_assert (Ref <int&>);
 static_assert (Ref <int&&>);
 
+static_assert (not Ptr <int>);
 static_assert (Ptr <int*>);
 static_assert (Ptr <int**>);

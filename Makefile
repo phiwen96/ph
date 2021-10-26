@@ -62,8 +62,21 @@ Char.pcm: Char.cpp Core.pcm
 Size.pcm: Size.cpp Core.pcm
 	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Core.pcm: Core.cpp
+
+
+Core.pcm: Core.cpp Dereferencable.pcm Same_as.pcm Convertible_to.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Dereferencable.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Same_as.pcm: Same_as.cpp 
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+Convertible_to.pcm: Convertible_to.cpp 
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+Dereferencable.pcm: Dereferencable.cpp 
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+
 
 
 buildfiles: $(*.o, *.pcm, main)
