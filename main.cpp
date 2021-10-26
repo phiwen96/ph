@@ -1,7 +1,8 @@
 // import Concepts;
-import <vector>;
+// import <std>;
+// import <vector>;
 
-int main()
+auto main(int, char**) -> int
 { 
 
 	// Number auto a = 10;

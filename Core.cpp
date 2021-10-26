@@ -1,18 +1,18 @@
 export module Concepts.Core;
 
-import <type_traits>;
+// import <type_traits>;
 
 
 export 
 {
 	template <typename T>
-	concept Const = std::is_const_v <std::remove_reference_t <T>>;
+	concept Const = true;//std::is_const_v <std::remove_reference_t <T>>;
 
 	template <typename T>
-	concept Ref = std::is_reference_v <T>;
+	concept Ref = true;//std::is_reference_v <T>;
 	
 	template <typename T>
-	concept Ptr = std::is_pointer_v <T>;
+	concept Ptr = true;//std::is_pointer_v <T>;
 }
 
 
