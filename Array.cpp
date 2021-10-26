@@ -43,11 +43,6 @@ export
 		return array <decltype (s)>::len ();
 	}
 
-	inline auto len (char const* s) -> Size auto 
-	{
-		return strlen (s);
-	}
-
 	template <typename T>
 	concept Array = requires (T t)
 	{

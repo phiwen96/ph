@@ -23,7 +23,7 @@ export
 		return s;
 	}
 
-	constexpr auto length (auto&& s) -> Size auto 
+	constexpr auto len (auto&& s) -> Size auto 
 	requires requires () 
 	{
 		{s.size ()} -> Size;
@@ -32,7 +32,7 @@ export
 		return s.size ();
 	}
 
-	auto length (char const* s) -> Size auto 
+	auto len (char const* s) -> Size auto 
 	{
 		return strlen (s);
 	}
@@ -46,7 +46,7 @@ export
 	concept String = requires (T t)
 	{
 		c_string (t);
-		length (t);
+		len (t);
 	};
 }
 
