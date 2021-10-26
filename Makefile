@@ -19,55 +19,60 @@ main.o: main.cpp Ph.pcm
 # 1
 # $(CURDIR)
 
-Ph.pcm: Ph.cpp Concepts.pcm Network.pcm Dependencies.pcm
-	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
+Ph.pcm: Ph.cpp PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
+	$(CC) $(FLAGS) -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Dependencies.pcm: Dependencies.cpp Concepts.pcm
+Dependencies.pcm: Dependencies.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+
+
+Network.pcm: Network.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+PhCore.pcm: PhCore.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
 
-Network.pcm: Network.cpp Concepts.pcm
-	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
+Concepts.pcm: Concepts.cpp ConceptsCore.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Concepts.pcm: Concepts.cpp Core.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
+Sequence.pcm: Sequence.cpp Iterators.pcm ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Iterators.pcm -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Sequence.pcm: Sequence.cpp Iterators.pcm Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=Iterators.pcm -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Iterators.pcm: Iterators.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Iterators.pcm: Iterators.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Numbers.pcm: Numbers.cpp Signed.pcm Unsigned.pcm Number.pcm ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Number.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Numbers.pcm: Numbers.cpp Signed.pcm Unsigned.pcm Number.pcm Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=Number.pcm -c $< -Xclang -emit-module-interface -o $@
+Number.pcm: Number.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Signed.pcm -fmodule-file=Unsigned.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Number.pcm: Number.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=Signed.pcm -fmodule-file=Unsigned.pcm -c $< -Xclang -emit-module-interface -o $@
+Signed.pcm: Signed.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Signed.pcm: Signed.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Unsigned.pcm: Unsigned.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Unsigned.pcm: Unsigned.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Function.pcm: Function.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Function.pcm: Function.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Pointer.pcm: Pointer.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Pointer.pcm: Pointer.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+String.pcm: String.cpp  Char.pcm ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
 
-String.pcm: String.cpp  Char.pcm Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+Char.pcm: Char.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Char.pcm: Char.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
-
-Size.pcm: Size.cpp Core.pcm
-	$(CC) $(FLAGS) -fmodule-file=Core.pcm -c $< -Xclang -emit-module-interface -o $@
+Size.pcm: Size.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
 
 
-Core.pcm: Core.cpp Dereferencable.pcm Same_as.pcm Convertible_to.pcm
+ConceptsCore.pcm: ConceptsCore.cpp Dereferencable.pcm Same_as.pcm Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Dereferencable.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Same_as.pcm: Same_as.cpp 

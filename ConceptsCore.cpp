@@ -1,4 +1,4 @@
-export module Ph.Core;
+export module Ph.Concepts.Core;
 
 import <type_traits>;
 

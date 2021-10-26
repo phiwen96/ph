@@ -1,6 +1,6 @@
 export module Ph.Concepts;
 
-export import Ph.Core;
+export import Ph.Concepts.Core;
 export import Ph.Concepts.Char;
 export import Ph.Concepts.String;
 export import Ph.Concepts.Pointer;

@@ -1,6 +1,6 @@
 export module Ph.Concepts.Sequence;
 
-import Ph.Core;
+import Ph.Concepts.Core;
 // import Ph.
 
 
