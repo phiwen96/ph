@@ -2,8 +2,7 @@ export module Ph.Core;
 
 import <type_traits>;
 
-export import Ph.Dereferencable;
-export import Ph.Same_as;
+
 export import Ph.Convertible_to;
 
 
@@ -19,6 +18,9 @@ export
 	template <typename T>
 	concept Ptr = std::is_pointer_v <T>;
 }
+
+export import Ph.Dereferencable;
+export import Ph.Same_as;
 
 
 

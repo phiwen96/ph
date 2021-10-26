@@ -19,8 +19,11 @@ main.o: main.cpp Ph.pcm
 # 1
 # $(CURDIR)
 
-Ph.pcm: Ph.cpp Concepts.pcm Network.pcm
-	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -c $< -Xclang -emit-module-interface -o $@
+Ph.pcm: Ph.cpp Concepts.pcm Network.pcm Dependencies.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Dependencies.pcm: Dependencies.cpp Concepts.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
 
 Network.pcm: Network.cpp Concepts.pcm
