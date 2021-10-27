@@ -13,11 +13,11 @@ export
 
 module :private;
 
-consteval auto test ()
+consteval auto Byte_test ()
 {
 	Byte <4> auto hej = "tjo";
 	
 	return true;
 }
 
-static_assert (test ());
+static_assert (Byte_test ());
