@@ -1,6 +1,19 @@
 export module Ph.Concepts.Pointer;
 
-import <type_traits>;
 
 template <typename T>
-concept Pointer = std::is_pointer_v <T>;
+struct pointer;
+
+template <typename T>
+struct pointer <T*> 
+{
+	static constexpr bool value = true;
+};
+
+
+
+export 
+{
+	template <typename T>
+	concept Pointer = pointer <T>::value;
+}
