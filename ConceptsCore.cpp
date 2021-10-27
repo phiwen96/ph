@@ -1,16 +1,31 @@
 export module Ph.Concepts.Core;
 
-import <type_traits>;
+// import <type_traits>;
 
 
 export import Ph.Convertible_to;
+import std;
 
 
 
 export 
 {
+	struct yes
+	{
+		constexpr static bool value = true;
+	};
+
+	struct no 
+	{
+		constexpr static bool value = false;
+	};
+
+
 	template <typename T>
-	concept Const = std::is_const_v <std::remove_reference_t <T>>;
+	concept Const = not requires (T t0, T t1)
+	{
+		t0 = t1;
+	};
 
 	template <typename T>
 	concept Ref = std::is_reference_v <T>;

@@ -1,7 +1,5 @@
 export module Ph.Concepts.Array;
 
-import <type_traits>;
-import <string>;
 
 import Ph.Concepts.Size;
 
