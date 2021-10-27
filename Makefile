@@ -28,10 +28,13 @@ Dependencies.pcm: Dependencies.cpp Concepts.pcm PhCore.pcm
 
 
 
-Network.pcm: Network.cpp Server.pcm Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm
-	$(CC) $(FLAGS) -fmodule-file=Server.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
+Network.pcm: Network.cpp Client.pcm Server.pcm Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm
+	$(CC) $(FLAGS) -fmodule-file=Client.pcm -fmodule-file=Server.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Server.pcm: Server.cpp Concepts.pcm Port.pcm IPv4.pcm IPv6.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Client.pcm: Client.cpp Concepts.pcm Port.pcm IPv4.pcm IPv6.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Port.pcm: Port.cpp Concepts.pcm
