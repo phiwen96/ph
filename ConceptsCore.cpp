@@ -27,7 +27,7 @@ export import Ph.Same_as;
 
 
 
-module :private;
+// module :private;
 
 static_assert (not Const <int>);
 static_assert (Const <int const>);

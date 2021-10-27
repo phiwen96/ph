@@ -8,7 +8,7 @@ export
 	concept Port = Number <T> and Byte <T, 2>;
 }
 
-module :private;
+// module :private;
 
 consteval auto Port_test ()
 {

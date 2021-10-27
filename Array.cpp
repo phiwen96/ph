@@ -61,7 +61,7 @@ export
 	};
 }
 
-module :private;
+// module :private;
 
 import <array>;
 

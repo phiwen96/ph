@@ -19,7 +19,7 @@ export
 	}
 }
 
-module :private;
+// module :private;
 
 consteval auto IPv6_test ()
 {
