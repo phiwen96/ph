@@ -3,6 +3,7 @@ export module Ph.Network;
 import Ph.Concepts;
 import Ph.Core;
 
+export import Ph.Network.Port;
 export import Ph.Network.IPv4;
 export import Ph.Network.IPv6;
 
