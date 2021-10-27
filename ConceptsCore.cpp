@@ -28,6 +28,13 @@ struct pointer_to_member <T U::*> : yes {};
 export template <typename... T>
 concept Pointer_to_member = pointer_to_member <T...>::value;
 
+struct Fun {
+	auto fun () {}
+};
+static_assert (Pointer_to_member <decltype (&Fun::fun)>);
+
+
+
 export template <typename T>
 concept Const = not requires (T t0, T t1)
 {
