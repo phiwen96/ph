@@ -71,8 +71,11 @@ String.pcm: String.cpp  Char.pcm Size.pcm ConceptsCore.pcm
 Char.pcm: Char.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Byte.pcm: Byte.cpp Size.pcm ConceptsCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=Size.pcm -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
+Byte.pcm: Byte.cpp Bit.pcm
+	$(CC) $(FLAGS) -fmodule-file=Bit.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Bit.pcm: Bit.cpp
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 Size.pcm: Size.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
