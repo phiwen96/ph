@@ -36,8 +36,6 @@ export
 	{
 		return strlen (s);
 	}
-
-
 }
 
 export 

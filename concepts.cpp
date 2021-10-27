@@ -1,6 +1,7 @@
 export module Ph.Concepts;
 
 export import Ph.Concepts.Size;
+export import Ph.Concepts.Byte;
 export import Ph.Concepts.Core;
 export import Ph.Concepts.Char;
 export import Ph.Concepts.String;

@@ -17,5 +17,9 @@ auto main(int, char**) -> int
 
 	// static_assert (not Input_iterator <decltype (e)>);
 
+	char kiss [32];
+	static_assert (sizeof (kiss) == 32);
+	auto k2 = std::string {"hej"};
+
 	return 0;
 }
