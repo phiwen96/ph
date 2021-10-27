@@ -3,7 +3,7 @@ export module Ph.Concepts.Function;
 import Ph.Concepts.Core;
 
 template<class>
-struct is_function : no { };
+struct is_function : no {};
  
 template<class Ret, class... Args>
 struct is_function<Ret(Args...)> : yes {};
