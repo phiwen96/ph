@@ -7,10 +7,10 @@ import Ph.Core;
 export 
 {
 	template <typename T>
-	concept IPv4 = Byte <T, 32>;
+	concept IPv4 = Byte <T, 4>;
 
 	template <typename T>
-	concept IPv6 = String <T>;
+	concept IPv6 = Byte <T, 16>;
 }
 
 
