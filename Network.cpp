@@ -120,6 +120,13 @@ export
 
 			printf ("server: got connection from %s \n", client_ipaddress);
 
+			if (send (client_sock, "Hello, world!", 13, 0) == -1)
+			{
+				perror ("send");
+			}
+			
+			close (client_sock);
+
 		}
 
 
