@@ -11,7 +11,12 @@ export
 
 	template <typename T>
 	concept IPv6 = Byte <T, 16> and String <T>;
+}
 
+
+
+export 
+{
 	constexpr auto loop_back_IPv4 () noexcept -> IPv4 auto
 	{
 		return "127.0.0.1";
@@ -22,7 +27,6 @@ export
 		return "::1";
 	}
 }
-
 
 module :private;
 
