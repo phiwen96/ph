@@ -1,6 +1,6 @@
 export module Ph.Convertible_to;
 
-import <type_traits>;
+import std;
 
 export template <typename T, typename U>
 concept Convertible_to = std::is_convertible_v <T, U> and (sizeof (U) >= sizeof (T));
