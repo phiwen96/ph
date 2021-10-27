@@ -5,10 +5,14 @@ import Ph;
 // import <iostream>;
 // import <string>;
 
-// using std::cout, std::endl;
+import std;
+
+using std::cout, std::endl;
 
 int main (int, char**)
 { 
+	cout << red << "----------" << yellow << endl;
+	cout << "mlkm" << endl;
 	// Port auto port = 443;
 	// server ("443");
 	// kiss ();
