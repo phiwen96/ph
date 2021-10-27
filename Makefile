@@ -5,7 +5,7 @@ CC=clang++
 FLAGS= -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 
 main: main.o Ph.pcm
-	$(CC) $(FLAGS) Ph.pcm $^ -o $@
+	$(CC) $(FLAGS) $^ -o $@
 
 main.o: main.cpp Ph.pcm
 	$(CC) $(FLAGS) -c $< -o $@
@@ -28,8 +28,8 @@ Dependencies.pcm: Dependencies.cpp Concepts.pcm PhCore.pcm
 
 
 
-Network.pcm: Network.cpp Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm PhCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+Network.pcm: Network.cpp Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm
+	$(CC) $(FLAGS) -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Port.pcm: Port.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@

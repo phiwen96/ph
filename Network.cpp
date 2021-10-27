@@ -1,47 +1,58 @@
-module;
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-#include <sys/wait.h>
-#include <signal.h>
-
 export module Ph.Network;
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <unistd.h>
+// #include <errno.h>
+// #include <string.h>
+// #include <sys/types.h>
+// #include <sys/socket.h>
+// #include <netinet/in.h>
+// #include <netdb.h>
+// #include <arpa/inet.h>
+// #include <sys/wait.h>
+// #include <signal.h>
 
 
-import Ph.Concepts;
-import Ph.Core;
-
-export import Ph.Network.Port;
-export import Ph.Network.IPv4;
-export import Ph.Network.IPv6;
-
-auto get_in_addr (sockaddr* sa) -> void*
-{
-	if (sa->sa_family == AF_INET)
+export auto kiss ()
 	{
-		return &(((struct sockaddr_in*) sa) -> sin_addr);
+		return 4;
 	}
 
-	else 
-	{
- 		return &(((struct sockaddr_in6*) sa) -> sin6_addr);
-	}
-}
+import Darwin;
+
+// import <string>;
+// import <netdb>;
+// import Ph.Concepts;
+// import Ph.Core;
+
+// export import Ph.Network.Port;
+// export import Ph.Network.IPv4;
+// export import Ph.Network.IPv6;
+
+
 
 
 export 
 {
-	auto server (Port auto port, auto backlog = 10)
+	
+	auto server (char const* port)
 	{
+		auto get_in_addr = [] (sockaddr* sa) -> void*
+		{
+			if (sa->sa_family == AF_INET)
+			{
+				return &(((struct sockaddr_in*) sa) -> sin_addr);
+			}
+
+			else 
+			{
+				return &(((struct sockaddr_in6*) sa) -> sin6_addr);
+			}
+		};
+
+		auto backlog = 10;
+
 		static char client_ipaddress [INET6_ADDRSTRLEN];
 		static int yes;
 
@@ -51,7 +62,7 @@ export
 
 		addrinfo * servinfo, * p;
 
-		auto client_addr = sockaddr_storage {};
+		struct sockaddr_storage client_addr {};
 		auto sin_size = socklen_t {};
 
 		auto hints = addrinfo
@@ -60,6 +71,8 @@ export
 			.ai_socktype = SOCK_STREAM, 
 			.ai_flags = AI_PASSIVE
 		};
+
+		
 
 		if  ((error = getaddrinfo (NULL, port, &hints, &servinfo)) != 0) 
 		{
@@ -124,7 +137,7 @@ export
 			{
 				perror ("send");
 			}
-			
+
 			close (client_sock);
 
 		}
@@ -135,9 +148,11 @@ export
 
 
 
-consteval auto Network_test ()
-{
-	return true;
-}
+// consteval auto Network_test ()
+// {
+// 	return true;
+// }
 
-static_assert (Network_test ());
+// static_assert (Network_test ());
+
+module :private;

@@ -1,25 +1,15 @@
 import Ph;
-// import <std>;
-// import <vector>;
-import <iostream>;
-import <string>;
+
+
+// import <iostream>;
+// import <string>;
+
+// using std::cout, std::endl;
 
 auto main(int, char**) -> int
 { 
-	// Const auto a = 10;
-	Number auto a = 10;
-	Signed auto b = 2;
-
-	std::cout << c_string ("hej") << std::endl;
-	// auto d = std::vector <int> {};
-  
-	// auto e = d.begin ();
-
-	// static_assert (not Input_iterator <decltype (e)>);
-
-	char kiss [32];
-	static_assert (sizeof (kiss) == 32);
-	auto k2 = std::string {"hej"};
-
+	// Port auto port = 443;
+	// server ("443");
+	kiss ();
 	return 0;
 }
