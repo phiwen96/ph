@@ -52,8 +52,8 @@ IPv4.pcm: IPv4.cpp Concepts.pcm
 PhCore.pcm: PhCore.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Concepts.pcm: Concepts.cpp ConceptsCore.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
-	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
+Concepts.pcm: Concepts.cpp ConceptsCore.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Array.pcm: Array.cpp Size.pcm Char.pcm ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=Size.pcm -fmodule-file=Char.pcm -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -97,6 +97,11 @@ Bit.pcm: Bit.cpp
 Size.pcm: Size.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
+Class.pcm: Class.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Enum.pcm: Enum.cpp ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
 
 ConceptsCore.pcm: ConceptsCore.cpp Dereferencable.pcm Same_as.pcm Convertible_to.pcm
