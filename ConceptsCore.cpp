@@ -1,38 +1,76 @@
 export module Ph.Concepts.Core;
 
-// import <type_traits>;
-
-
 export import Ph.Convertible_to;
-import std;
 
 
 
-export 
+
+export struct yes
 {
-	struct yes
-	{
-		constexpr static bool value = true;
-	};
+	constexpr static bool value = true;
+};
 
-	struct no 
-	{
-		constexpr static bool value = false;
-	};
+export struct no 
+{
+	constexpr static bool value = false;
+};
 
 
-	template <typename T>
-	concept Const = not requires (T t0, T t1)
-	{
-		t0 = t1;
-	};
 
-	template <typename T>
-	concept Ref = std::is_reference_v <T>;
+
+
+template <typename T>
+struct pointer_to_member : no {};
+
+template <typename T, typename U>
+struct pointer_to_member <T U::*> : yes {};
+
+export template <typename... T>
+concept Pointer_to_member = pointer_to_member <T...>::value;
+
+export template <typename T>
+concept Const = not requires (T t0, T t1)
+{
+	t0 = t1;
+};
+
+
+
+
+
+template <typename>
+struct ref : no {};
+
+template <typename T>
+struct ref <T&> : yes {};
+
+template <typename T>
+struct ref <T&&> : yes {};
+
+export template <typename T>
+concept Ref = ref <T>::value;
+
+
+
+
+
+
+
+
 	
-	template <typename T>
-	concept Ptr = std::is_pointer_v <T>;
-}
+template <typename>
+struct ptr : no {};
+
+template <typename T>
+struct ptr <T*> : yes {};
+
+template <typename T>
+struct ptr <T**> : yes {};
+
+export template <typename T>
+concept Ptr = ptr <T>::value;
+
+
 
 export import Ph.Dereferencable;
 export import Ph.Same_as;

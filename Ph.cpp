@@ -1,12 +1,18 @@
 export module Ph;
 
+#define X(lib) \
+	export import Ph.lib;
+
+#define LIBS \
+	X (Core)
+	X (Concepts)
+	X (Network)
+	X (Dependencies)
+	X (Color)
 
 
-// import <string>;
+LIBS
 
 
-export import Ph.Core;
-export import Ph.Concepts;
-export import Ph.Network;
-export import Ph.Dependencies;
-export import Ph.Color;
+
+

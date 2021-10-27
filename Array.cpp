@@ -61,7 +61,7 @@ export
 
 // module :private;
 
-import <array>;
+import std;
 
 consteval auto test ()
 {

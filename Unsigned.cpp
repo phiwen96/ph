@@ -1,13 +1,13 @@
 export module Ph.Concepts.Numbers.Unsigned;
 
-export import <type_traits>;
+import Ph.Concepts.Core;
 
 export template <typename T>
-concept Unsigned = std::is_same_v <T, unsigned short>
-    or std::is_same_v <T, unsigned short int>
-    or std::is_same_v <T, unsigned>
-    or std::is_same_v <T, unsigned int>
-    or std::is_same_v <T, unsigned long>
-    or std::is_same_v <T, unsigned long int>
-    or std::is_same_v <T, unsigned long long>
-    or std::is_same_v <T, unsigned long long int>;
+concept Unsigned = Convertible_to <T, unsigned short>
+    or Convertible_to <T, unsigned short int>
+    or Convertible_to <T, unsigned>
+    or Convertible_to <T, unsigned int>
+    or Convertible_to <T, unsigned long>
+    or Convertible_to <T, unsigned long int>
+    or Convertible_to <T, unsigned long long>
+    or Convertible_to <T, unsigned long long int>;

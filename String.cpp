@@ -1,10 +1,12 @@
 export module Ph.Concepts.String;
 
 // import <iostream>;
-import <string>;
+// import <string>;
 import Ph.Concepts.Core;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
+
+import std;
 
 
 export 
@@ -52,4 +54,4 @@ export
 
 // module :private;
 
-static_assert (String <std::string>);
+// static_assert (String <std::string>);
