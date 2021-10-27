@@ -4,11 +4,11 @@ SRC=src
 CC=clang++
 FLAGS= -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 
-main: main.o Ph.pcm
-	$(CC) $(FLAGS) $^ -o $@
+main: main.o
+	$(CC) $(FLAGS) $< -o $@
 
 main.o: main.cpp Ph.pcm
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -fmodule-file=Ph.pcm -c $< -o $@
 
 # 0: 1 2 3
 # $^
@@ -28,8 +28,11 @@ Dependencies.pcm: Dependencies.cpp Concepts.pcm PhCore.pcm
 
 
 
-Network.pcm: Network.cpp Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm
-	$(CC) $(FLAGS) -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
+Network.pcm: Network.cpp Server.pcm Port.pcm IPv4.pcm IPv6.pcm Concepts.pcm
+	$(CC) $(FLAGS) -fmodule-file=Server.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Server.pcm: Server.cpp Concepts.pcm Port.pcm IPv4.pcm IPv6.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=Port.pcm -fmodule-file=IPv4.pcm -fmodule-file=IPv6.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Port.pcm: Port.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
