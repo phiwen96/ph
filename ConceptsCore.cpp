@@ -1,6 +1,6 @@
 export module Ph.Concepts.Core;
 
-export import Ph.Convertible_to;
+
 
 
 
@@ -80,8 +80,11 @@ concept Ptr = ptr <T>::value;
 
 
 export import Ph.Dereferencable;
-export import Ph.Same_as;
-
+export import Ph.Concepts.Same_as;
+export import Ph.Concepts.Not;
+export import Ph.Concepts.Convertible_to;
+export import Ph.Concepts.Bool;
+export import Ph.Concepts.Void;
 
 
 

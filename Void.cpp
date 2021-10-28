@@ -1,8 +1,6 @@
-//
-//  Void.cpp
-//  
-//
-//  Created by Philip Wenkel on 2021-10-28.
-//
+export module Ph.Concepts.Void;
 
-#include <stdio.h>
+import Ph.Concepts.Same_as;
+
+export template <typename T>
+concept Void = Same_as <T, void>;

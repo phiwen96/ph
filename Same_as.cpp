@@ -1,4 +1,4 @@
-export module Ph.Same_as;
+export module Ph.Concepts.Same_as;
 
 // import <type_traits>;
 

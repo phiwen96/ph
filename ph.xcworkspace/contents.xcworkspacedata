@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Not.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Array.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Bit.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Byte.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Char.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Class.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Client.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Color.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Concepts.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:ConceptsCore.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Convertible_to.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Dependencies.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Dereferencable.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Enum.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Fork.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Process.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/philipwenkel/Github/ph/Bool.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Return_value.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Void.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Function.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:IPv4.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:IPv6.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Iterators.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:main.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Makefile">
+   </FileRef>
+   <FileRef
+      location = "group:Network.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Number.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Numbers.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Ph.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:PhCore.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Pointer.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Port.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:Same_as.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Sequence.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Server.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Signed.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Size.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:String.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Unsigned.cpp">
+   </FileRef>
+</Workspace>

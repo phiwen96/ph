@@ -1,7 +1,7 @@
-export module Ph.Concepts.Boolean;
+export module Ph.Concepts.Bool;
 
 import Ph.Concepts.Convertible_to;
 
 
 export template <typename T>
-concept Boolean = Convertible_to <T, bool>;
+concept Bool = Convertible_to <T, bool>;
