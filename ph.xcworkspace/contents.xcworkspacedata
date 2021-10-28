@@ -74,6 +74,9 @@
       location = "group:main.cpp">
    </FileRef>
    <FileRef
+      location = "group:Signal.cpp">
+   </FileRef>
+   <FileRef
       location = "group:Makefile">
    </FileRef>
    <FileRef

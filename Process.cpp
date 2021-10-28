@@ -1,9 +1,13 @@
-export module Ph.Concepts.Process;
+export module Ph.Process;
 
 import Ph.Concepts.Core;
 import Ph.Concepts.Return_value;
 import Darwin;
 import std;
+
+
+
+export import Ph.Process.Signal;
 
 export
 {
@@ -13,6 +17,14 @@ export
         {t.has_child ()} noexcept -> Bool;
         {t.has_parent ()} noexcept -> Bool;
     };
+    
+    
+    auto send (Signal auto&& s, Process auto&& destination) -> Void auto
+    {
+        
+    }
+    
+    
     
     
     template <auto spawn_and_wait = false>
@@ -105,12 +117,14 @@ export
     }
     {
         Process auto r = process <spawn_and_wait> {};
+        
         if (r.has_parent ())
         {
             lambda ();
         }
         
         r.set_done ();
+        
         return r;
     }
 }
