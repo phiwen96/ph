@@ -62,7 +62,7 @@ export
 			}
 		}
 
-        struct sigaction _sa;
+        struct ::sigaction _sa;
     };
     
     

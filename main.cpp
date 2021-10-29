@@ -23,7 +23,7 @@ int main (int, char**)
 
 	Signal auto s = sig <SIGUSR1> 
 	{
-		[] (int) {};
+		[] (int) {}
 	};
 
     
