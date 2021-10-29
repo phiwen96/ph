@@ -1,7 +1,6 @@
 export module Ph.Process;
 
-import Ph.Concepts.Core;
-import Ph.Concepts.Return_value;
+import Ph.Concepts;
 import Darwin;
 import std;
 
@@ -12,7 +11,7 @@ export import Ph.Process.Signal;
 export
 {
     template <typename T>
-    concept Process = Return_value <T> and requires (T const t)
+    concept Process = Error <T> and requires (T const t)
     {
         {t.has_child ()} noexcept -> Bool;
         {t.has_parent ()} noexcept -> Bool;
@@ -55,7 +54,6 @@ export
             
             else if (value == 0) // child
             {
-                std::cout << "child ()" << std::endl;
                 _id = getpid ();
                 _parent_id = getppid ();
                 //return_value::set_done (true);

@@ -14,13 +14,14 @@ export
     template <typename S>
     concept Signal = requires (S s)
     {
-        {s.set_continue_after (false)} noexcept -> Void;
+		true;
+        // {s.set_continue_after (false)} noexcept -> Void;
         //S {[](int)->void{}};
     };
     
     
-    template <bool continue_after = true>
-    struct sig
+    template <bool continue_after = true, bool dont_block_other_signals = true>
+    struct sig : return_value <bool>
     {
         sig (auto&& lambda) noexcept : _sa {.sa_handler = lambda}
         {
@@ -33,23 +34,17 @@ export
                 _sa.sa_flags = 0;
             }
             
-            sigemptyset (&_sa.sa_mask);
+			if constexpr (dont_block_other_signals)
+			{
+				sigemptyset (&_sa.sa_mask);
+			}
+
+			if (sigaction(SIGUSR1, &_sa, NULL) == -1) 
+			{
+				return_value::set_error (true);
+			}
+     
         }
-        
-        auto set_continue_after (Bool auto cont) noexcept
-        {
-            if (cont)
-            {
-                _sa.sa_flags = SA_RESTART;
-            }
-            
-            else
-            {
-                _sa.sa_flags = 0;
-            }
-        }
-        
-        
         
     private:
         using SS = __sigaction;

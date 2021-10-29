@@ -11,7 +11,7 @@ int main (int, char**)
 { 
 	cout << red << "----------" << yellow << endl;
 
-    auto lambda = [] (Process auto& p)
+    auto work = [] (Process auto& p)
 	{
 		cout << "hello world" << endl; 
 		p.set_done (true);
@@ -19,7 +19,9 @@ int main (int, char**)
 		return 0;
 	};
 
-	Process auto process = spawn (lambda);
-    cout << process.done () << endl;
+	Process auto process = spawn (work);
+
+
+    
 	return 0;
 }

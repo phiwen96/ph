@@ -85,6 +85,8 @@ export import Ph.Concepts.Not;
 export import Ph.Concepts.Convertible_to;
 export import Ph.Concepts.Bool;
 export import Ph.Concepts.Void;
+export import Ph.Concepts.Error;
+
 
 
 
