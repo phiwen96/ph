@@ -12,7 +12,7 @@ export
 #define Value std::remove_cvref_t <decltype (t.value ())>
         
         {T {}} noexcept;
-        //{T {std::remove_cvref_t <decltype (t.value ())> {}}} noexcept;
+        {T {(Value&&) Value {}}} noexcept;
         {T {(T&&) t}} noexcept;
         {T {(T const&) t}} noexcept;
         
@@ -40,10 +40,10 @@ export
     {
         using Value = _Value;
         
-        // return_value (Value value) noexcept : _value {value}, _done {false}, _error {false}
-        // {
+        return_value (Value&& value) noexcept : _value {(Value&&) value}, _done {false}, _error {false}
+        {
             
-        // }
+        }
         
         return_value () noexcept : _value {}, _done {false}, _error {false}
         {
