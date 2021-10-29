@@ -17,6 +17,8 @@ export
         {t.has_child ()} noexcept -> Bool;
         {t.has_parent ()} noexcept -> Bool;
     };
+
+	
     
     
     auto send (Signal auto&& s, Process auto&& destination) -> Void auto
@@ -34,8 +36,6 @@ export
         using Child_id = std::optional <Value>;
         using Parent_id = Child_id;
 		using return_value::return_value;
-        
-
         
         process () noexcept
         {
@@ -58,7 +58,7 @@ export
                 std::cout << "child ()" << std::endl;
                 _id = getpid ();
                 _parent_id = getppid ();
-                return_value::set_done (true);
+                //return_value::set_done (true);
             }
             
             else // parent
@@ -74,22 +74,20 @@ export
                     
                     if (rv == -1)
                     {
-                        return_value::set_done (true);
+                        //return_value::set_done (true);
                     }
                     
                     else
                     {
-                        return_value::set_done (true);
+                        //return_value::set_done (true);
                     }
                     
                 } else
                 {
-                    return_value::set_done (true);
+                    //return_value::set_done (true);
                 }
             }
         }
-        
-        
         
         process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, return_value {(return_value&&) other}
         {
@@ -111,50 +109,19 @@ export
             return _parent_id.has_value ();
         }
         
-        // bool done () const noexcept
-        // {
-        //     return _done;
-        // }
-        
-        // bool error () const noexcept
-        // {
-        //     return _error;
-        // }
-        
-        // Value& value () noexcept
-        // {
-        //     return _value;
-        // }
-        
-        // void set_done (bool done) noexcept
-        // {
-        //     std::cout << "setting done " << std::endl;
-        //     _done = done;
-        // }
-        
-        // void set_error (bool error) noexcept
-        // {
-        //     _error = error;
-        // }
-        
-        // void set_value (Value&& value) noexcept
-        // {
-        //     _value = value;
-        // }
-        
-        
     private:
-        // Value _value;
-        // bool _done, _error;
         pid_t _id;
         Child_id _child_id;
         Parent_id _parent_id;
     };
     
-    template <bool spawn_and_wait = false>
+
+	template <bool spawn_and_wait = false>
     auto spawn () -> Process auto
     {
-        return process <spawn_and_wait> {};
+        Process auto p = process <spawn_and_wait> {};
+		p.set_done (true);
+		return p;
     }
     
     template <bool spawn_and_wait = false>
@@ -171,10 +138,11 @@ export
             lambda ();
         }
         
-        //r.set_done ();
+        r.set_done (true);
         
         return r;
     }
+    
 }
 
 
