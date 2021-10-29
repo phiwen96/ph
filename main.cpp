@@ -19,8 +19,12 @@ int main (int, char**)
 		return 0;
 	};
 
-	Process auto process = spawn (work);
+	Process auto process = spawn_and_work (work);
 
+	Signal auto s = sig <SIGUSR1> 
+	{
+		[] (int) {};
+	};
 
     
 	return 0;

@@ -106,6 +106,11 @@ export
         {
             return _parent_id.has_value ();
         }
+
+		auto raise (Signal auto&& s, Process auto&& destination)
+		{
+			
+		}
         
     private:
 		Value _id;
@@ -123,18 +128,18 @@ export
     }
     
     template <bool spawn_and_wait = false>
-    auto spawn (auto&& lambda) -> Process auto
-    // requires requires (process <false> & p)
-    // {
-    //     lambda (p);
-    // }
+    auto spawn_and_work (auto&& work) -> Process auto
+    requires requires (process <false> & p)
+    {
+        work (p);
+    }
     {
         Process auto p = process <spawn_and_wait> {};
         
 
         if (p.has_parent ())
         {
-            lambda (p); // lambda has to set the process to done manually
+            work (p); // lambda has to set the process to done manually
 
         } else 
 		{
