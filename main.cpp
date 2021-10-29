@@ -10,7 +10,15 @@ auto fun (int) {}
 int main (int, char**)
 { 
 	cout << red << "----------" << yellow << endl;
-    auto lambda = []{cout << "hello world" << endl; return 0;};
+
+    auto lambda = [] (Process auto& p)
+	{
+		cout << "hello world" << endl; 
+		p.set_done (true);
+		
+		return 0;
+	};
+
 	Process auto process = spawn (lambda);
     cout << process.done () << endl;
 	return 0;

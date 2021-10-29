@@ -126,21 +126,24 @@ export
     
     template <bool spawn_and_wait = false>
     auto spawn (auto&& lambda) -> Process auto
-    requires requires ()
+    requires requires (process <false> & p)
     {
-        lambda ();
+        lambda (p);
     }
     {
-        Process auto r = process <spawn_and_wait> {};
+        Process auto p = process <spawn_and_wait> {};
         
-        if (r.has_parent ())
+
+        if (p.has_parent ())
         {
-            lambda ();
-        }
+            lambda (p); // lambda has to set the process to done manually
+
+        } else 
+		{
+			p.set_done (true); // parent process should automatically be set to done;
+		}
         
-        r.set_done (true);
-        
-        return r;
+        return p;
     }
     
 }
