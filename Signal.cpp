@@ -1,5 +1,3 @@
-#include <signal.h>
-
 export module Ph.Process.Signal;
 
 import Ph.Concepts;
@@ -11,7 +9,7 @@ import std;
 export
 {
     template <typename S>
-    concept Signal = requires (S s)
+    concept Signal = Error <S> and requires (S s)
     {
 		true;
         // {s.set_continue_after (false)} noexcept -> Void;
