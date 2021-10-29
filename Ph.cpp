@@ -11,6 +11,7 @@ export module Ph;
 	X (Color)
 	X (Fork)
     X (Process)
+	X (Message_queue)
 
 
 LIBS
