@@ -19,11 +19,8 @@ main.o: main.cpp Ph.pcm
 # 1
 # $(CURDIR)
 
-Ph.pcm: Ph.cpp Message_queue.pcm Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
-	$(CC) $(FLAGS) -fmodule-file=Message_queue.pcm -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
-
-Message_queue.pcm: Message_queue.cpp Concepts.pcm PhCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+Ph.pcm: Ph.cpp Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
+	$(CC) $(FLAGS) -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Fork.pcm: Fork.cpp Concepts.pcm PhCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -52,8 +49,23 @@ IPv6.pcm: IPv6.cpp Concepts.pcm
 IPv4.pcm: IPv4.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Process.pcm: Process.cpp Signal.pcm Concepts.pcm PhCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=Signal.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Return_value.pcm -c $< -Xclang -emit-module-interface -o $@
+Process.pcm: Process.cpp Unix_socket.pcm Mapped_file.pcm Shared_memory.pcm Semaphore.pcm Message_queue.pcm Signal.pcm Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Unix_socket.pcm -fmodule-file=Mapped_file.pcm -fmodule-file=Shared_memory.pcm -fmodule-file=Semaphore.pcm -fmodule-file=Message_queue.pcm -fmodule-file=Signal.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Return_value.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Mapped_file.pcm: Mapped_file.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+	
+Unix_socket.pcm: Unix_socket.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Shared_memory.pcm: Shared_memory.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Semaphore.pcm: Semaphore.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Message_queue.pcm: Message_queue.cpp Concepts.pcm PhCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Signal.pcm: Signal.cpp Concepts.pcm PhCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Return_value.pcm -c $< -Xclang -emit-module-interface -o $@

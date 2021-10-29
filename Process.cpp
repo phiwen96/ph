@@ -7,6 +7,10 @@ import std;
 
 
 export import Ph.Process.Signal;
+export import Ph.Process.Message_queue;
+export import Ph.Process.Semaphore;
+export import Ph.Process.Shared_memory;
+export import Ph.Process.Unix_socket;
 
 export
 {
@@ -109,7 +113,7 @@ export
 
 		auto raise (Signal auto&& s, Process auto&& destination)
 		{
-			
+
 		}
         
     private:

@@ -32,8 +32,8 @@ int main (int, char**)
 	};
 
 	Process auto p = spawn_and_work (work);
-
 	
+
 
 	assert (p.get_error () == false);
 

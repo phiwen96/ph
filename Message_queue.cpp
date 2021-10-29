@@ -1,4 +1,9 @@
-export module Ph.Message_queue;
+export module Ph.Process.Message_queue;
+
+import Ph.Concepts;
+
+import Darwin;
+import std;
 
 export 
 {
@@ -7,6 +12,8 @@ export
 	{
 		true;
 	};
+
+	// auto connect ()
 
 	struct message_queue 
 	{
