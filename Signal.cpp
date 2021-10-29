@@ -12,7 +12,7 @@ import std;
 export
 {
     template <typename S>
-    concept Signal = requires (S s)
+    concept Signal = Error <S> and requires (S s)
     {
 		true;
         // {s.set_continue_after (false)} noexcept -> Void;
@@ -21,7 +21,7 @@ export
     
     
     template <bool continue_after = true, bool dont_block_other_signals = true>
-    struct sig : return_value <bool>
+    struct sig : error
     {
         sig (auto&& lambda) noexcept : _sa {.sa_handler = lambda}
         {
@@ -39,9 +39,9 @@ export
 				sigemptyset (&_sa.sa_mask);
 			}
 
-			if (sigaction(SIGUSR1, &_sa, NULL) == -1) 
+			if (sigaction (SIGUSR1, &_sa, NULL) == -1) 
 			{
-				return_value::set_error (true);
+				error::set_error (true);
 			}
      
         }

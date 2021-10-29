@@ -11,7 +11,7 @@ export import Ph.Process.Signal;
 export
 {
     template <typename T>
-    concept Process = Error <T> and requires (T const t)
+    concept Process =  Error <T> and Done <T> and requires (T const t)
     {
         {t.has_child ()} noexcept -> Bool;
         {t.has_parent ()} noexcept -> Bool;
@@ -29,27 +29,27 @@ export
     
     
     template <auto spawn_and_wait = false>
-    struct process : return_value <pid_t>
+    struct process : error, done
     {
         using Value = pid_t;
         using Child_id = std::optional <Value>;
         using Parent_id = Child_id;
-		using return_value::return_value;
+	
         
-        process () noexcept
+        process () noexcept : error {}, done {}
         {
             if constexpr (not spawn_and_wait)
             {
                 signal (SIGCHLD, SIG_IGN); // don't wait !
             }
             
-            auto& value = return_value::value ();
+            Value value;
             
             value = fork ();
             
             if (value == -1) [[unlikely]] // error
             {
-                return_value::set_error (true);
+                error::set_error (true);
             }
             
             else if (value == 0) // child
@@ -87,12 +87,12 @@ export
             }
         }
         
-        process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, return_value {(return_value&&) other}
+        process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, error {(error&&) other}, done {(done&&) other}
         {
             
         }
         
-        process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, _parent_id {(Parent_id const&) other._parent_id}, return_value {(return_value const&) other}
+        process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, error {(error const&) other}, done {(done const&) other}
         {
             
         }
@@ -108,7 +108,7 @@ export
         }
         
     private:
-        pid_t _id;
+		Value _id;
         Child_id _child_id;
         Parent_id _parent_id;
     };
@@ -124,10 +124,10 @@ export
     
     template <bool spawn_and_wait = false>
     auto spawn (auto&& lambda) -> Process auto
-    requires requires (process <false> & p)
-    {
-        lambda (p);
-    }
+    // requires requires (process <false> & p)
+    // {
+    //     lambda (p);
+    // }
     {
         Process auto p = process <spawn_and_wait> {};
         
