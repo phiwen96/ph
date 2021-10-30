@@ -38,7 +38,12 @@ concept String = requires (S s)
 
 # Notes
 
-	At the moment, the project is very dependent on Make. This is because this is still very young.
+	At the moment, the project is very dependent on Make (for compiling C++ files into different things and then finally everything into an executable).
+
+	Also pandoc (for documentations). 
+	
+	Reasons for this? 
+		It's still very young.
 
 	Please help me develop this project! At the moment there are just one developer.
 
