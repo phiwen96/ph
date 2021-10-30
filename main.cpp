@@ -11,7 +11,7 @@ auto main (int, char**) -> int
 	cout << ph::red << "----------" << ph::yellow << endl;
 
     
-	return 0;
+	// return 0;
 
 	ph::Process auto process = ph::spawn ();
 
