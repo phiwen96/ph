@@ -172,7 +172,7 @@ Pointer.pcm: Pointer.cpp
 
 # DOCS
 README.pdf: README.yml README.md 
-	pandoc -o $^ 
+	pandoc -o $@ $^ 
 
 
 
