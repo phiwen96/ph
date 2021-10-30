@@ -19,12 +19,6 @@ concept String = requires (S s)
 
 
 
-```mermaid
-graph LR
-    fa:fa-check-->fa:fa-coffee
-```
-
-
 
 # Goals with this project
 
