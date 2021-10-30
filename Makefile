@@ -106,12 +106,8 @@ Unsigned.pcm: Unsigned.cpp ConceptsCore.pcm
 Function.pcm: Function.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Pointer.pcm: Pointer.cpp ConceptsCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
-
-
-Array.pcm: Array.cpp Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
+Array.pcm: Array.cpp Pointer.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
 ConceptsCore.pcm: ConceptsCore.cpp Floating.pcm Array.pcm Integer.pcm Done.pcm Error.pcm Void.pcm Bool.pcm Not.pcm Dereferencable.pcm Same_as.pcm Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Floating.pcm -fmodule-file=Array.pcm -fmodule-file=Integer.pcm -fmodule-file=Done.pcm -fmodule-file=Error.pcm -fmodule-file=Void.pcm -fmodule-file=Bool.pcm -fmodule-file=Not.pcm -fmodule-file=Same_as.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Dereferencable.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -165,6 +161,8 @@ Convertible_to.pcm: Convertible_to.cpp
 Dereferencable.pcm: Dereferencable.cpp 
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
+Pointer.pcm: Pointer.cpp
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 
 

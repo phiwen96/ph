@@ -33,3 +33,13 @@ export
         or Convertible_to <T, unsigned long long int>;
 }
 }
+
+
+consteval bool test () 
+{
+	static_assert (ph::Integer <int>);
+	static_assert (ph::Integer <int&>);
+	return true;
+}
+
+static_assert (test ());

@@ -3,6 +3,7 @@ export module Ph.Network.Server;
 
 import Ph.Concepts;
 import Darwin;
+import std;
 
 
 namespace ph 
@@ -11,7 +12,7 @@ namespace ph
 export 
 {
 	
-	inline auto server (Integer auto port)
+	inline auto server (Integer auto port, String auto&& msg)
 	{
 		auto get_in_addr = [] (sockaddr* sa) -> void*
 		{
@@ -47,9 +48,10 @@ export
 			.ai_flags = AI_PASSIVE
 		};
 
-		
+		String auto p2 = ph::to_string (port);
+		std::cout << ":" << p2 << std::endl;
 
-		if  ((error = getaddrinfo (nullptr, to_string (port), &hints, &servinfo)) != 0) 
+		if  ((error = getaddrinfo (nullptr, p2, &hints, &servinfo)) != 0) 
 		{
 			printf ("error on line %i\n", __LINE__);
 			fprintf (stderr, "getaddrinfo: %s\n", gai_strerror (error)); return 1;
@@ -116,7 +118,7 @@ export
 
 			printf ("server: got connection from %s \n", client_ipaddress);
 
-			if (send (client_sock, "Hello, world!", 13, 0) == -1)
+			if (send (client_sock, c_string (msg), len (msg), 0) == -1)
 			{
 				printf ("error on line %i\n", __LINE__);
 				perror ("send");
