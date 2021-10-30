@@ -1,10 +1,12 @@
 export module Ph.Concepts.File;
 
+#include <fstream>
+
 import Ph.Concepts.String;
 import Ph.Concepts.Error;
 import Ph.Concepts.Pointer;
 import Ph.Concepts.Array;
-
+import Darwin;
 
 import std;
 
@@ -27,8 +29,8 @@ export
 	{
 		F {"/usr/bin/hello", "a"};
 		std::cout << f;
-		{ph::data (f)} -> Pointer;
-		// f << "hello" << std::endl;
+		
+		f << "hello";
 	};
 
 
@@ -49,13 +51,10 @@ export
 			return os;
 		}
 
-		
-
-		friend std::istream & operator >> (std::istream & is, File auto& s)
+		// file {} << "hello"
+		friend auto& operator << (file& f, String auto const& s)
 		{
-			char aa[233];
-			is.get_line (aa, ph::len (s._data));
-			return is;
+			return f;
 		}
 
 		constexpr auto data () noexcept -> Pointer auto
