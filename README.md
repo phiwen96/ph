@@ -17,15 +17,26 @@ concept String = requires (S s)
 }
 ```
 
+
+
+```mermaid
+graph LR
+    fa:fa-check-->fa:fa-coffee
+```
+
+
+
 # Goals with this project
 
-* Just c++, even for building.
+- [X] Motivation
+
+- [ ] Just c++, even for building.
 
 	All software are built around a set of programming languages, often one for front-end and one for back-end. The reason for this, unknown. One can only guess.
 
 	I can not stress this enough, but writing software in one language has huge upside effects, and it's much cheaper. Your teams can speek the same language, thus making it much easier for further intrigues.  
 
-* C++ interpreter
+- [ ] C++ interpreter
   
 	Similar to python interpreter.
 
@@ -36,3 +47,29 @@ concept String = requires (S s)
 	At the moment, the project is very dependent on Make. This is because this is still very young.
 
 	Please help me develop this project! At the moment there are just one developer.
+
+
+
+# Details
+
+Library architecture:
+
+```graphviz
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+
+    node [shape = doublecircle]; 
+    node [shape = point ]; 
+
+    node [shape = circle];
+    Ph  -> Network [ label = "" ];
+	Ph -> Graphics [ label = ""];
+	Ph -> Game [ label = ""];
+    Ph  -> Concepts  [ label = "" ];
+	Game -> Concepts
+	Network -> Concepts
+	Graphics -> Concepts
+   
+}
+```
