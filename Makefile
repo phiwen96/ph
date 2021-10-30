@@ -88,8 +88,8 @@ Sequence.pcm: Sequence.cpp Iterators.pcm ConceptsCore.pcm
 Iterators.pcm: Iterators.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
 
-String.pcm: String.cpp Numbers.pcm Array.pcm Char.pcm Size.pcm ConceptsCore.pcm
-	$(CC) $(FLAGS) -fmodule-file=Numbers.pcm -fmodule-file=Array.pcm -fmodule-file=ConceptsCore.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+String.pcm: String.cpp Convertible_to.pcm Integer.pcm Floating.pcm Numbers.pcm Array.pcm Char.pcm Size.pcm ConceptsCore.pcm
+	$(CC) $(FLAGS) -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Floating.pcm -fmodule-file=Numbers.pcm -fmodule-file=Array.pcm -fmodule-file=ConceptsCore.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Numbers.pcm: Numbers.cpp Signed.pcm Unsigned.pcm Number.pcm ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Number.pcm -c $< -Xclang -emit-module-interface -o $@

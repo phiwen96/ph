@@ -1,8 +1,8 @@
 export module Ph.Concepts.String;
 
-// import <iostream>;
-// import <string>;
-import Ph.Concepts.Core;
+import Ph.Concepts.Convertible_to;
+import Ph.Concepts.Integer;
+import Ph.Concepts.Floating;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
 import Ph.Concepts.Array;
