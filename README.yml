@@ -1,0 +1,42 @@
+---
+  title:
+    "cv"
+  subtitle:
+    kuk hora
+  author: 
+    - Philip Wenkel
+  year: 
+    2021
+  pandoc-latex-color:
+    - classes: [important]
+  color: yellow
+  bgcolor: blue
+
+  header-includes:
+  - \usepackage{hyperref}   
+  - \hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    linkbordercolor=red,
+    urlbordercolor=cyan,
+    filebordercolor=magenta,
+    citebordercolor=green}
+
+  - \usepackage{pagecolor}
+  - \pagecolor{black}
+
+  - \usepackage{xcolor}
+  - \color{white}
+
+  # - \usepackage{tcolorbox}
+  # - \newtcolorbox{myquote}{colback=blue!5!white, colframe=red!75!black}
+  # - \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+
+  # - \usepackage{fvextra}
+  # - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+  # - \definecolor{bgcolor}{HTML}{E0E0E0}
+  # - \let\oldtexttt\texttt
+  # - \newcommand{\code}[1]{\begingroup\setlength{\fboxsep}{1pt}\colorbox{bgcolor}{\oldtexttt{\hspace*{2pt}\vphantom{A}#1\hspace*{2pt}}}\endgroup}
+  # - \renewcommand{\texttt}[1]{\code{\oldtexttt{#1}}}
+---

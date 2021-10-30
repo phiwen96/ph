@@ -17,6 +17,7 @@ export import Ph.Concepts.Class;
 export import Ph.Concepts.Enum;
 export import Ph.Concepts.Function;
 export import Ph.Concepts.Return_value;
+export import Ph.Concepts.Any_of;
 
 
 namespace ph 

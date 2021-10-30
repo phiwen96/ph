@@ -76,8 +76,8 @@ Signal.pcm: Signal.cpp ProcessCore.pcm Concepts.pcm PhCore.pcm
 PhCore.pcm: PhCore.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Concepts.pcm: Concepts.cpp ConceptsCore.pcm Return_value.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
-	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Return_value.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
+Concepts.pcm: Concepts.cpp ConceptsCore.pcm Any_of.pcm Return_value.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
+	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Any_of.pcm -fmodule-file=Return_value.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Return_value.pcm: Return_value.cpp ConceptsCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -152,6 +152,9 @@ Bool.pcm: Bool.cpp Convertible_to.pcm
 Not.pcm: Not.cpp Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
+Any_of.pcm: Any_of.cpp Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
+
 Same_as.pcm: Same_as.cpp 
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
@@ -163,6 +166,13 @@ Dereferencable.pcm: Dereferencable.cpp
 
 Pointer.pcm: Pointer.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+
+
+
+# DOCS
+README.pdf: README.yml README.md 
+	pandoc -o $^ 
 
 
 

@@ -38,7 +38,7 @@ export
         using Parent_id = Child_id;
 	
         
-        process () noexcept : error {}, done {}
+        constexpr process () noexcept : error {}, done {}
         {
             if constexpr (not spawn_and_wait)
             {
@@ -89,27 +89,27 @@ export
             }
         }
         
-        process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, error {(error&&) other}, done {(done&&) other}
+        constexpr process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, error {(error&&) other}, done {(done&&) other}
         {
             
         }
         
-        process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, error {(error const&) other}, done {(done const&) other}
+        constexpr process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, error {(error const&) other}, done {(done const&) other}
         {
             
         }
         
-        bool has_child () const noexcept
+        constexpr bool has_child () const noexcept
         {
             return _child_id.has_value ();
         }
         
-        bool has_parent () const noexcept
+        constexpr bool has_parent () const noexcept
         {
             return _parent_id.has_value ();
         }
 
-		auto raise (Signal auto&& s, Process auto&& destination)
+		constexpr auto raise (Signal auto&& s, Process auto&& destination)
 		{
 
 		}
@@ -122,15 +122,20 @@ export
     
 
 	template <bool spawn_and_wait = false>
-    auto spawn () -> Process auto
+    constexpr auto spawn () -> Process auto
     {
         Process auto p = process <spawn_and_wait> {};
 		p.set_done (true);
 		return p;
     }
+
+    constexpr auto spawn_and_wait () -> Process auto
+    {
+        return spawn <true> ();
+    }
     
     template <bool spawn_and_wait = false>
-    auto spawn_and_work (auto&& work) -> Process auto
+    constexpr auto spawn_and_work (auto&& work) -> Process auto
     requires requires (process <false> & p)
     {
         work (p);
