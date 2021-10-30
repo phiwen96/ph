@@ -2,6 +2,8 @@ export module Ph.Network.IPv6;
 
 import Ph.Concepts;
 
+namespace ph 
+{
 
 export 
 {
@@ -29,3 +31,5 @@ consteval auto IPv6_test ()
 }
 
 static_assert (IPv6_test ());
+
+}

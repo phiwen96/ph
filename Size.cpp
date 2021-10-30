@@ -3,6 +3,9 @@ export module Ph.Concepts.Size;
 import Ph.Concepts.Convertible_to;
 import std;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename T>
@@ -10,3 +13,4 @@ export
 }
 
     
+}

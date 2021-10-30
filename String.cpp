@@ -10,6 +10,9 @@ import Ph.Concepts.Numbers;
 
 import std;
 
+namespace ph 
+{
+
 
 
 export 
@@ -104,3 +107,5 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 	{
 		return atol (c_string (s));;
 	}
+
+}

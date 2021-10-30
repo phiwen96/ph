@@ -1,8 +1,19 @@
 export module Ph.Concepts.Core;
 
 
+export import Ph.Dereferencable;
+export import Ph.Concepts.Same_as;
+export import Ph.Concepts.Not;
+export import Ph.Concepts.Convertible_to;
+export import Ph.Concepts.Bool;
+export import Ph.Concepts.Void;
+export import Ph.Concepts.Error;
+export import Ph.Concepts.Done;
+export import Ph.Concepts.Integer;
+export import Ph.Concepts.Floating;
 
-
+namespace ph 
+{
 
 
 export struct yes
@@ -79,16 +90,6 @@ concept Ptr = ptr <T>::value;
 
 
 
-export import Ph.Dereferencable;
-export import Ph.Concepts.Same_as;
-export import Ph.Concepts.Not;
-export import Ph.Concepts.Convertible_to;
-export import Ph.Concepts.Bool;
-export import Ph.Concepts.Void;
-export import Ph.Concepts.Error;
-export import Ph.Concepts.Done;
-export import Ph.Concepts.Integer;
-export import Ph.Concepts.Floating;
 
 
 
@@ -109,3 +110,4 @@ static_assert (Ref <int&&>);
 static_assert (not Ptr <int>);
 static_assert (Ptr <int*>);
 static_assert (Ptr <int**>);
+}

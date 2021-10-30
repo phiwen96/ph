@@ -1,5 +1,8 @@
 export module Ph.Color;
 
+namespace ph 
+{
+
 export 
 {
 	constexpr auto yellow = "\033[93m";
@@ -10,4 +13,6 @@ export
     constexpr auto magenta = "\033[95m";
     constexpr auto cyan = "\033[96m";
     constexpr auto white = "\033[97m";
+}
+
 }

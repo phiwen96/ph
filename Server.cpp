@@ -4,6 +4,10 @@ export module Ph.Network.Server;
 import Ph.Concepts;
 import Darwin;
 
+
+namespace ph 
+{
+
 export 
 {
 	
@@ -124,4 +128,6 @@ export
 
 
 	}
+}
+
 }

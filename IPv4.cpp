@@ -2,6 +2,8 @@ export module Ph.Network.IPv4;
 
 import Ph.Concepts;
 
+namespace ph 
+{
 
 export 
 {
@@ -29,3 +31,4 @@ consteval auto IPv4_test ()
 }
 
 static_assert (IPv4_test ());
+}

@@ -3,6 +3,9 @@ export module Ph.Concepts.Error;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename E>
@@ -52,3 +55,4 @@ export
 }
 
 static_assert (Error <error>);
+}

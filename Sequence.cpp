@@ -1,7 +1,10 @@
 export module Ph.Concepts.Sequence;
 
 import Ph.Concepts.Core;
-// import Ph.
+
+
+namespace ph 
+{
 
 
 template <typename T>
@@ -11,3 +14,5 @@ concept Sequence = requires (T& t)
 	{end (t)} -> Dereferencable;
 };
 
+
+}

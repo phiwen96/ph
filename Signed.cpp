@@ -2,6 +2,9 @@ export module Ph.Concepts.Numbers.Signed;
 
 import Ph.Concepts.Core;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename T>
@@ -20,4 +23,6 @@ export
 		or Convertible_to <T, long long int>
 		or Convertible_to <T, signed long long>
 		or Convertible_to <T, signed long long int>;
+}
+
 }

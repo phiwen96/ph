@@ -12,6 +12,9 @@ export import Ph.Process.Semaphore;
 export import Ph.Process.Shared_memory;
 export import Ph.Process.Unix_socket;
 
+namespace ph 
+{
+
 export
 {
     
@@ -152,3 +155,6 @@ export
 
 
 static_assert (Process <process <true>>);
+
+
+}

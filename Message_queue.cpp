@@ -5,6 +5,9 @@ import Ph.Process.Core;
 import Darwin;
 import std;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename M>
@@ -47,3 +50,5 @@ export
 }
 
 static_assert (Message_queue <message_queue>);
+
+}

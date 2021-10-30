@@ -7,6 +7,9 @@ import Darwin;
 import std;
 
 
+namespace ph 
+{
+
 export
 {
     template <typename S>
@@ -68,3 +71,5 @@ export
 }
 
 static_assert (Signal <sig </*signal_to_catch = */SIGINT, /*continue = */true, /*dont_block_other_signals = */true>>);
+
+}

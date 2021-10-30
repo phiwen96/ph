@@ -2,6 +2,9 @@ export module Ph.Network.Port;
 
 import Ph.Concepts;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename T>
@@ -18,3 +21,6 @@ consteval auto Port_test ()
 }
 
 static_assert (Port_test ());
+
+
+}

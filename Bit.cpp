@@ -1,6 +1,7 @@
 export module Ph.Concepts.Bit;
 
-
+namespace ph 
+{
 
 export 
 {
@@ -20,3 +21,5 @@ consteval auto test ()
 }
 
 static_assert (test ());
+
+}

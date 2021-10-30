@@ -2,6 +2,9 @@ export module Ph.Concepts.Function;
 
 import Ph.Concepts.Core;
 
+namespace ph 
+{
+
 template<class>
 struct is_function : no {};
  
@@ -100,3 +103,5 @@ static_assert (Function <decltype (fun_0)>);
 static_assert (Function <decltype (fun_1)>);
 static_assert (Function <decltype (fun_2)>);
 // static_assert (Function <decltype (Fun_3 {}.fun_3)>);
+
+}

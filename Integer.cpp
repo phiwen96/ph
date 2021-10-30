@@ -2,7 +2,8 @@ export module Ph.Concepts.Integer;
 
 import Ph.Concepts.Convertible_to;
 
-
+namespace ph 
+{
 
 export 
 {
@@ -30,4 +31,5 @@ export
         or Convertible_to <T, unsigned long int>
         or Convertible_to <T, unsigned long long>
         or Convertible_to <T, unsigned long long int>;
+}
 }

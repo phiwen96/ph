@@ -16,6 +16,10 @@ export module Ph;
 
 LIBS
 
+namespace ph 
+{
+
+}
 
 
 

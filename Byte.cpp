@@ -2,6 +2,8 @@ export module Ph.Concepts.Byte;
 
 import Ph.Concepts.Bit;
 
+namespace ph 
+{
 
 export 
 {
@@ -21,3 +23,4 @@ consteval auto Byte_test ()
 }
 
 static_assert (Byte_test ());
+}

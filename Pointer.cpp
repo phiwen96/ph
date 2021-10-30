@@ -1,6 +1,9 @@
 export module Ph.Concepts.Pointer;
 
 
+namespace ph 
+{
+
 template <typename T>
 struct pointer;
 
@@ -16,4 +19,7 @@ export
 {
 	template <typename T>
 	concept Pointer = pointer <T>::value;
+}
+
+
 }

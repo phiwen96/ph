@@ -3,6 +3,9 @@ export module Ph.Concepts.Done;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 
+namespace ph 
+{
+
 export
 {
 	template <typename D>
@@ -51,4 +54,5 @@ export
 	private:
 		bool _done;
 	};
+}
 }

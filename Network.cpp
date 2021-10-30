@@ -6,4 +6,7 @@ export import Ph.Network.IPv6;
 export import Ph.Network.Server;
 export import Ph.Network.Client;
 
-// module :private;
+namespace ph 
+{
+
+}

@@ -4,6 +4,9 @@ import Ph.Concepts;
 import Darwin;
 import std;
 
+namespace ph 
+{
+
 export 
 {
 	template <typename T>
@@ -12,4 +15,6 @@ export
         {t.has_child ()} noexcept -> Bool;
         {t.has_parent ()} noexcept -> Bool;
     };
+}
+
 }

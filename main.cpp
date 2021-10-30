@@ -10,7 +10,7 @@ auto fun (int) {}
 
 int main (int, char**)
 { 
-	cout << red << "----------" << yellow << endl;
+	cout << ph::red << "----------" << ph::yellow << endl;
 
     
 

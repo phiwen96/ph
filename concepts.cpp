@@ -19,6 +19,10 @@ export import Ph.Concepts.Function;
 export import Ph.Concepts.Return_value;
 
 
+namespace ph 
+{
+
+}
 
 
 

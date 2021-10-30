@@ -3,7 +3,8 @@ export module Ph.Concepts.Iterators;
 import Ph.Concepts.Core;
 
 
-
+namespace ph 
+{
 
 
 export 
@@ -57,3 +58,5 @@ export
 }
 
 // module :private;
+
+}

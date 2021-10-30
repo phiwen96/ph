@@ -1,6 +1,7 @@
 export module Ph.Concepts.Same_as;
 
-// import <type_traits>;
+namespace ph 
+{
 
 template <typename T, typename U>
 struct same 
@@ -25,3 +26,5 @@ concept Same_as = same <T, U>::value;//std::is_same_v <T, U>;
 
 static_assert (Same_as <int, int>);
 static_assert (not Same_as <char, int>);
+
+}
