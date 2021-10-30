@@ -88,6 +88,7 @@ export import Ph.Concepts.Void;
 export import Ph.Concepts.Error;
 export import Ph.Concepts.Done;
 export import Ph.Concepts.Integer;
+export import Ph.Concepts.Floating;
 
 
 
