@@ -11,6 +11,7 @@ import Ph.Concepts.Numbers;
 import std;
 
 
+
 export 
 {
 	constexpr auto c_string (auto&& s) noexcept -> char const* requires requires () {
