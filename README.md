@@ -28,3 +28,9 @@ concept String = requires (S s)
 * C++ interpreter
   
 	Similar to python interpreter.
+
+
+
+# Notes
+
+	At the moment, the project is very dependent on Make. This is because this is still very young.
