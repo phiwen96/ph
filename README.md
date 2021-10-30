@@ -21,6 +21,10 @@ concept String = requires (S s)
 
 * Everything from c++, even building.
 
-	all software are built around a set of programming languages, often one for front-end and one for back-end. The reason for this, unknown. One can only guess.
+	All software are built around a set of programming languages, often one for front-end and one for back-end. The reason for this, unknown. One can only guess.
 
 	I can not stress this enough, but writing software in one language has huge upside effects. Your teams can speek the same language, thus making it much easier for further intrigues.  
+
+* C++ interpreter
+  
+	Similar to python interpreter.
