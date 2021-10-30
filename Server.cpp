@@ -1,16 +1,13 @@
 export module Ph.Network.Server;
 
-// export inline int kiss ()
-// {
-// 	return 0;
-// }
 
+import Ph.Concepts;
 import Darwin;
 
 export 
 {
 	
-	inline auto server (char const* port)
+	inline auto server (Integer auto port)
 	{
 		auto get_in_addr = [] (sockaddr* sa) -> void*
 		{
@@ -48,7 +45,7 @@ export
 
 		
 
-		if  ((error = getaddrinfo (nullptr, port, &hints, &servinfo)) != 0) 
+		if  ((error = getaddrinfo (nullptr, to_string (port), &hints, &servinfo)) != 0) 
 		{
 			printf ("error on line %i\n", __LINE__);
 			fprintf (stderr, "getaddrinfo: %s\n", gai_strerror (error)); return 1;

@@ -37,15 +37,7 @@ export
 	}
 
 	
-
-	// template <typename T>
-	// constexpr auto to () noexcept -> Integer auto;
-
-
-	constexpr auto to (Array auto&& a) noexcept -> Integer auto 
-	{
-		return 2;
-	}
+	
 
 }
 
@@ -57,6 +49,20 @@ export
 		c_string (t);
 		len (t);
 	};
+
+	constexpr auto to_string (Integer auto&& i) noexcept -> String auto 
+	{
+		char s [33];
+
+		itoa (i, s, 10);
+
+		return s;
+	}
+
+	constexpr auto to_integer (String auto&& s) noexcept -> Integer auto 
+	{
+		return atoi (c_string (s));;
+	}
 }
 
 
