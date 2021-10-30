@@ -53,7 +53,8 @@ export
 
 		friend std::istream & operator >> (std::istream & is, File auto& s)
 		{
-			is.get_line (ph::data (s._data), ph::len (s._data));
+			char aa[233];
+			is.get_line (aa, ph::len (s._data));
 			return is;
 		}
 
