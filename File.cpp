@@ -1,5 +1,11 @@
 export module Ph.Concepts.File;
 
+/*
+TODO
+
+create new foo.cpp or foo2.cpp if already exists if calling open () without args
+*/
+
 #include <fstream>
 
 import Ph.Concepts.String;
@@ -29,7 +35,6 @@ export
 	{
 		F {"/usr/bin/hello", "a"};
 		std::cout << f;
-		
 		f << "hello";
 	};
 
