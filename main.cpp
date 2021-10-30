@@ -1,14 +1,12 @@
 import Ph;
-
-
 import std;
 import Darwin;
 
 using std::cout, std::endl;
 
-auto fun (int) {}
 
-int main (int, char**)
+
+auto main (int, char**) -> int
 { 
 	cout << ph::red << "----------" << ph::yellow << endl;
 
