@@ -2,11 +2,28 @@ export module Ph.Concepts.Array;
 
 
 import Ph.Concepts.Size;
+import std;
 
 template <typename T>
 struct array 
 {
+	inline static constexpr auto len (T const& t) noexcept -> Size auto
+	requires requires (T t) 
+	{
+		{t.size ()} -> Size;
+	}
+	{
+		return t.size ();
+	}
+};
 
+template <typename T, Size auto N>
+struct array <std::array <T, N>>
+{
+	inline static constexpr auto len () noexcept -> Size auto
+	{
+		return N;
+	}
 };
 
 template <typename T, Size auto N>
@@ -41,21 +58,20 @@ export
 	{
 		return array <decltype (s)>::len ();
 	}
-
-	inline constexpr auto len (auto&& s) noexcept (s.size ()) -> Size auto 
+	
+	inline constexpr auto len (auto&& s) noexcept -> Size auto 
 	requires requires ()
 	{
-		{s.size ()} -> Size;
+		{array <decltype (s)>::len (s)} -> Size;
 	}
 	{
-		return s.size ();
+		return array <decltype (s)>::len (s);
 	}
-	
 
 	template <typename T>
 	concept Array = requires (T t)
 	{
-		{size (t)} -> Size;
+		{len (t)} -> Size;
 	};
 }
 

@@ -1,6 +1,6 @@
 export module Ph.Concepts.Size;
 
-import Ph.Concepts.Core;
+import Ph.Concepts.Convertible_to;
 import std;
 
 export 

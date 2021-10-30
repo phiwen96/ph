@@ -5,7 +5,7 @@ import Darwin;
 import std;
 
 
-
+export import Ph.Process.Core;
 export import Ph.Process.Signal;
 export import Ph.Process.Message_queue;
 export import Ph.Process.Semaphore;
@@ -14,12 +14,7 @@ export import Ph.Process.Unix_socket;
 
 export
 {
-    template <typename T>
-    concept Process =  Error <T> and Done <T> and requires (T const t)
-    {
-        {t.has_child ()} noexcept -> Bool;
-        {t.has_parent ()} noexcept -> Bool;
-    };
+    
 
 	
     

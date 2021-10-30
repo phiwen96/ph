@@ -1,6 +1,7 @@
 export module Ph.Process.Signal;
 
 import Ph.Concepts;
+import Ph.Process.Core;
 
 import Darwin;
 import std;

@@ -5,6 +5,7 @@ export module Ph.Concepts.String;
 import Ph.Concepts.Core;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
+import Ph.Concepts.Array;
 
 import std;
 
@@ -25,19 +26,27 @@ export
 		return s;
 	}
 
+
 	constexpr auto len (auto&& s) -> Size auto 
 	requires requires () 
 	{
-		{s.size ()} -> Size;
+		{strlen (s)} -> Size;
 	}
-	{
-		return s.size ();
-	}
-
-	auto len (char const* s) -> Size auto 
 	{
 		return strlen (s);
 	}
+
+	
+
+	// template <typename T>
+	// constexpr auto to () noexcept -> Integer auto;
+
+
+	constexpr auto to (Array auto&& a) noexcept -> Integer auto 
+	{
+		return 2;
+	}
+
 }
 
 export 
@@ -54,4 +63,4 @@ export
 
 // module :private;
 
-// static_assert (String <std::string>);
+static_assert (String <std::string>);
