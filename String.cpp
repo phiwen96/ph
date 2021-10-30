@@ -13,9 +13,7 @@ import std;
 
 export 
 {
-	constexpr auto c_string (auto&& s) noexcept -> char const*
-	requires requires () 
-	{
+	constexpr auto c_string (auto&& s) noexcept -> char const* requires requires () {
 		{s.c_str ()} -> Convertible_to <char const*>;
 	}
 	{
@@ -27,23 +25,12 @@ export
 		return s;
 	}
 
-
-	constexpr auto len (auto&& s) -> Size auto 
-	requires requires () 
-	{
-		{strlen (s)} -> Size;
-	}
+	constexpr auto len (auto&& s) -> Size auto requires requires () {
+		{strlen (s)} -> Size;}
 	{
 		return strlen (s);
 	}
 
-	
-	
-
-}
-
-export 
-{
 	template <typename T>
 	concept String = requires (T t)
 	{
@@ -56,10 +43,6 @@ export
 	constexpr auto to_integer (String auto&& s) noexcept -> Integer auto;
 	constexpr auto to_double (String auto&& s) noexcept -> Floating auto;
 	constexpr auto to_long_integer (String auto&& s) noexcept -> Integer auto;
-
-	
-
-	
 }
 
 
