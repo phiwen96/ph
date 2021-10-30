@@ -4,8 +4,20 @@ SRC=src
 CC=clang++
 FLAGS= -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 
-main: main.o
+main: main.o README.pdf
 	$(CC) $(FLAGS) $< -o $@
+
+
+README.pdf: README.md
+	pandoc --epub-cover-image=README.jpg -o README.pdf README.yml README.md
+
+
+
+# README.jpg: README.jpg 
+
+# README.yml: README.yml
+
+# README.yml: RddEADME.yml
 
 main.o: main.cpp Ph.pcm
 	$(CC) $(FLAGS) -fmodule-file=Ph.pcm -c $< -o $@
@@ -15,7 +27,7 @@ main.o: main.cpp Ph.pcm
 # 1 2 3
 # $@
 # 0 
-# $<
+# $< 
 # 1
 # $(CURDIR)
 
@@ -168,11 +180,6 @@ Pointer.pcm: Pointer.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 
-
-
-# DOCS
-README.pdf: README.yml README.md 
-	pandoc -o $@ $^ 
 
 
 

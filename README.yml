@@ -1,10 +1,10 @@
 ---
   title:
-    "cv"
+    "ph"
   subtitle:
-    kuk hora
+    -------------------
   author: 
-    - Philip Wenkel
+    - c++ library
   year: 
     2021
   pandoc-latex-color:
