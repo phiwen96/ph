@@ -117,7 +117,7 @@ export
 		{len (t)} -> Size;
 	};
 
-	auto data (Array auto&& a) -> Pointer auto
+	inline auto data (Array auto&& a) -> Pointer auto
 	{
 		return array <decltype (a)>::data (a);
 	}

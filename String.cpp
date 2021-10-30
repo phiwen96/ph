@@ -1,4 +1,19 @@
+
+
+
+/**
+ * 
+ * TODO
+ * 
+ * implement a static string
+ */
+
+
+
 export module Ph.Concepts.String;
+
+
+
 
 import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Integer;
@@ -8,10 +23,11 @@ import Ph.Concepts.Size;
 import Ph.Concepts.Array;
 import Ph.Concepts.Numbers;
 
-import std;
+export import std;
 
 namespace ph
 {
+
 
 
 static_assert (not Convertible_to <char const (&) [17], char const*>);
@@ -19,6 +35,8 @@ static_assert (not Convertible_to <char const (&) [17], char const*>);
 
 export 
 {
+	using string = std::string;
+	
 	constexpr auto c_string (char const* a) noexcept -> char const*
 	{
 		return a;

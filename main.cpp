@@ -4,27 +4,30 @@ import Darwin;
 
 using std::cout, std::endl;
 
+using namespace ph;
 
 
 auto main (int, char**) -> int
 { 
-	cout << ph::red << "----------" << ph::yellow << endl;
+	cout << red << "----------" << yellow << endl;
 
     
 	// return 0;
 
-	ph::Process auto process = ph::spawn ();
+	Process auto process = spawn ();
 
 	if (process.has_child ())
 	{
-		ph::server (443, "SERVER_ID=048532");
+		server (443, "SERVER_ID=048532");
 
 	} else 
 	{
 		// ph::client (443, "CLIENT_ID=057532");
 	}
 
-	
+	File auto f = ph::file {"/Users/philipwenkel/Github/ph/haha.cpp", "a"};
     
+
+
 	return 0;
 }
