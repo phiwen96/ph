@@ -69,7 +69,6 @@ export
 		std::string s = std::to_string (i);
 		char* r = (char*) std::malloc (sizeof (char) * len (s));
 		std::strcpy (r, s.data ());
-		std::cout << i << ":" << r << std::endl;
 		return static_cast <char const*> (r);
 	}
 

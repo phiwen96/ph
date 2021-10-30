@@ -49,7 +49,6 @@ export
 		};
 
 		String auto p2 = ph::to_string (port);
-		std::cout << ":" << p2 << std::endl;
 
 		if  ((error = getaddrinfo (nullptr, p2, &hints, &servinfo)) != 0) 
 		{
