@@ -176,7 +176,7 @@ README.pdf: README.yml README.md
 
 
 
-buildfiles: $(*.o, *.pcm, main)
+buildfiles: $(*.o, *.pcm, main *.pdf)
 
 clean: 
 	rm -f *.o *.pcm main
