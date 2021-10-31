@@ -95,11 +95,11 @@ export
 
 		friend std::ostream& operator<< (std::ostream& os, _error const& e)
 		{
-			os << "error (" << e.__error << ") ";
+			os << yellow << "error " << white << "(" << blue << e.__error << white << ") ";
 
 			if (e._file != nullptr) 
 			{
-				os << (char const*) e._file << ":" << e._line;
+				os << red << (char const*) e._file << ":" << e._line << white;
 			}
 
 			
