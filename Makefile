@@ -94,8 +94,8 @@ PhCore.pcm: PhCore.cpp Concepts.pcm
 Concepts.pcm: Concepts.cpp ConceptsCore.pcm File.pcm Any_of.pcm Return_value.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=File.pcm -fmodule-file=Any_of.pcm -fmodule-file=Return_value.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
 
-File.pcm: File.cpp Array.pcm Pointer.pcm String.pcm Error.pcm
-	$(CC) $(FLAGS) -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -c $< -Xclang -emit-module-interface -o $@
+File.pcm: File.cpp Same_as.pcm Bool.pcm Array.pcm Pointer.pcm String.pcm Error.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -c $< -Xclang -emit-module-interface -o $@
 
 
 Return_value.pcm: Return_value.cpp ConceptsCore.pcm

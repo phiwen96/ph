@@ -14,20 +14,22 @@ auto main (int, char**) -> int
     
 	// return 0;
 
-	Process auto process = spawn ();
+	// Process auto process = spawn ();
 
-	if (process.has_child ())
-	{
-		server (443, "SERVER_ID=048532");
+	// if (process.has_child ())
+	// {
+	// 	server (443, "SERVER_ID=048532");
 
-	} else 
-	{
-		// ph::client (443, "CLIENT_ID=057532");
-	}
+	// } else 
+	// {
+	// 	// ph::client (443, "CLIENT_ID=057532");
+	// }
 
-	File auto f = ph::file {"/Users/philipwenkel/Github/ph/haha.cpp", "a"};
+	Bool auto ex = ph::exists ("/Users/philipwenkel/Github/ph/haha.cpp");
+
+	File auto f = ph::file {"/Users/philipwenkel/Github/ph/haha.cpp"};
     
-
+	// assert (not f.get_error ());
 
 	return 0;
 }
