@@ -1,66 +1,66 @@
 export module Ph.Concepts.Function;
 
-import Ph.Concepts.Core;
-
+import Ph.Concepts.Convertible_to;
+import std;
 namespace ph 
 {
 
 template<class>
-struct is_function : no {};
+struct is_function : std::false_type {};
  
 template<class Ret, class... Args>
-struct is_function<Ret(Args...)> : yes {};
+struct is_function<Ret(Args...)> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile> : yes {};
+struct is_function<Ret(Args...) const volatile> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const> : yes {};
+struct is_function<Ret(Args...) const> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile> : yes {};
+struct is_function<Ret(Args...) volatile> : std::true_type {};
 
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) &> : yes {};
+struct is_function<Ret(Args...) &> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const &> : yes {};
+struct is_function<Ret(Args...) const &> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile &> : yes {};
+struct is_function<Ret(Args...) volatile &> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile &> : yes {};
+struct is_function<Ret(Args...) const volatile &> : std::true_type {};
 
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) &&> : yes {};
+struct is_function<Ret(Args...) &&> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const &&> : yes {};
+struct is_function<Ret(Args...) const &&> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile &&> : yes {};
+struct is_function<Ret(Args...) volatile &&> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile &&> : yes {};
+struct is_function<Ret(Args...) const volatile &&> : std::true_type {};
 
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) noexcept> : yes {};
+struct is_function<Ret(Args...) noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const noexcept> : yes {};
+struct is_function<Ret(Args...) const noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile noexcept> : yes {};
+struct is_function<Ret(Args...) volatile noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile noexcept> : yes {};
+struct is_function<Ret(Args...) const volatile noexcept> : std::true_type {};
 
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) & noexcept> : yes {};
+struct is_function<Ret(Args...) & noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const & noexcept> : yes {};
+struct is_function<Ret(Args...) const & noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile & noexcept> : yes {};
+struct is_function<Ret(Args...) volatile & noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile & noexcept> : yes {};
+struct is_function<Ret(Args...) const volatile & noexcept> : std::true_type {};
 
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) && noexcept> : yes {};
+struct is_function<Ret(Args...) && noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const && noexcept> : yes {};
+struct is_function<Ret(Args...) const && noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) volatile && noexcept> : yes {};
+struct is_function<Ret(Args...) volatile && noexcept> : std::true_type {};
 template<class Ret, class... Args>
-struct is_function<Ret(Args...) const volatile && noexcept> : yes {};
+struct is_function<Ret(Args...) const volatile && noexcept> : std::true_type {};
 
 
 

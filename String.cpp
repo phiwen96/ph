@@ -35,7 +35,7 @@ inline namespace string
 
 export 
 {
-	using string = std::string;
+	// using string = std::string;
 	
 	constexpr auto c_string (char const* a) noexcept -> char const*
 	{
@@ -58,12 +58,21 @@ export
 
 	
 
-	// constexpr auto len (Array auto&& a) noexcept -> Size auto
+	constexpr auto len (Array auto&& a) noexcept -> Size auto
+	{
+		return ph::array::len (a);
+	}
+
+	// constexpr auto len (auto const& s) noexcept -> Size auto 
+	// requires requires () 
 	// {
-	// 	return len (a);
+	// 	{s.size ()} noexcept -> Size;
+	// }
+	// {
+	// 	return s.size ();
 	// }
 
-	constexpr auto len (auto&& s) noexcept -> Size auto requires requires () {
+	constexpr auto len (auto const& s) noexcept -> Size auto requires requires () {
 		{strlen (s)} -> Size;
 		requires (not Array <decltype (s)>);
 	}

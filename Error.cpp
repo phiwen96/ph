@@ -97,7 +97,7 @@ export
 		constexpr friend _error& operator << (_error& e, String auto const& s)
 		{
 			ph::string::append (e._file, s);
-			return *this;
+			return e;
 		}
 
 		friend std::ostream& operator<< (std::ostream& os, _error const& e)
@@ -120,7 +120,7 @@ export
 		int _line;
 	};
 
-	constexpr auto error (_error const& e, char const* _file = __builtin_FILE (), auto _line = __builtin_LINE ()) noexcept -> Error auto
+	constexpr auto error (_error const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
 	{
 		return e;
 	}

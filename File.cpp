@@ -172,7 +172,7 @@ namespace ph
 			// file {} << "hello"
 			friend auto& operator << (file& f, String auto const& s)
 			{
-				fwrite (ph::c_string (s), sizeof (char), ph::len (s), f._file);
+				fwrite (ph::c_string (s), sizeof (char), ph::string::len (s), f._file);
 				f._data += ph::c_string (s);
 				return f;
 			}

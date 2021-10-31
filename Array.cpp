@@ -9,6 +9,9 @@ import std;
 namespace ph 
 {
 
+	inline namespace array 
+	{
+
 template <typename T>
 struct array 
 {
@@ -122,7 +125,7 @@ export
 		return array <decltype (a)>::data (a);
 	}
 }
-
+}
 }
 
 import std;
@@ -136,6 +139,7 @@ consteval auto test ()
 
 	return true;
 }
+
 
 static_assert (test ());
 
