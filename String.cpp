@@ -30,7 +30,7 @@ namespace ph
 
 
 
-static_assert (not Convertible_to <char const (&) [17], char const*>);
+// static_assert (not Convertible_to <char const (&) [17], char const*>);
 
 
 export 
