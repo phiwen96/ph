@@ -9,50 +9,63 @@ namespace ph
 export 
 {
 	template <typename E>
-	concept Error = requires (E const e)
+	concept Error = Bool <E> or requires (E e)
 	{
 		{e.get_error ()} noexcept -> Bool;
-
-	} and requires (E e)
-	{
 		{e.set_error (true)} noexcept -> Void;
 	};
 
-
-
-	struct error 
+	auto error (Error auto&& e) noexcept -> Error auto 
+	requires requires ()
 	{
-		constexpr error () noexcept : _error {false}
+		{e.get_error ()} noexcept -> Bool;
+	}
+	{
+		return e.get_error ();
+	}
+
+	auto error (Bool auto&& b) noexcept -> Error auto 
+	{
+		return b;
+	}
+
+
+
+	struct _error 
+	{
+		constexpr _error () noexcept : __error {false}
 		{
 
 		}
 
-		constexpr error (error&& other) noexcept : _error {other._error}
+		constexpr _error (_error&& other) noexcept : __error {other.__error}
 		{
 
 		}
 
-		constexpr error (error const& other) noexcept : _error {other._error}
+		constexpr _error (_error const& other) noexcept : __error {other.__error}
 		{
 
 		}
 
 		auto get_error () const noexcept -> Bool auto
 		{
-			return _error;
+			return __error;
 		}
 
 		auto set_error (Bool auto&& b) noexcept -> Void auto
 		{
-			_error = b;
+			__error = b;
 		}
 
 		private:
-		bool _error;
+		bool __error;
 	};
+
+
 
 
 }
 
-static_assert (Error <error>);
+static_assert (Error <_error>);
 }

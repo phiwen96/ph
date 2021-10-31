@@ -55,31 +55,95 @@ namespace ph
 		}
 
 
-		struct file : error
+		struct file : _error
 		{
+		private:
+			FILE* _file;
+			std::string _data;
+			std::string _path;
+
+			auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
+			{
+				return fopen (c_string (path), c_string (permissions));
+			}
+
+			auto rename (String auto&& new_name) noexcept -> Error auto 
+			{
+				if (rename (_path, ph::c_string (new_name)))
+				{
+					return true;
+
+				} else 
+				{
+					_path = c_string (new_name);
+					return false;
+				}
+			}
+
+			auto read () noexcept -> String auto 
+			{
+				char c;
+				String auto s = std::string {};
+				while ((c = getc (_file)) != EOF)
+				{
+					std::cout << c;
+					s += c;
+				}
+
+				return s;
+			}
+
+			public:
+
+			auto end_of_file () const noexcept -> Bool auto 
+			{
+				if (feof (_file))
+				{
+					return true;
+
+				} else 
+				{
+					return false;
+				}
+			}
+
+			auto size () const noexcept -> auto 
+			{
+				auto prev = ftell (_file);
+				fseek (_file, 0L, SEEK_END);
+				auto sz = ftell (_file);
+				fseek (_file, prev, SEEK_SET);
+				return sz;
+			}
 			
 			file (String auto&& path, String auto&& mode) : _file {file::open (path, mode)}, _data {}
 			{
 				if (_file == nullptr)
 				{
 					std::cout << "error";
-					error::set_error (true);
+					_error::set_error (true);
+				} else 
+				{
+					file::read ();
 				}
 			}
 
-			file (String auto&& path) : _file {file::open (path, "a")}, _data {}
+			file (String auto&& path) : _file {file::open (path, "rwa")}, _data {}
 			{
 				if (_file == nullptr)
 				{
 					std::cout << "error";
-					error::set_error (true);
+					_error::set_error (true);
+				} else 
+				{
+					file::read ();
 				}
 			}
 
-			file (FILE*&& file) : _file {(FILE*&&) file}, _data {}
-			{
+			// file (FILE*&& file) : _file {(FILE*&&) file}, _data {}
+			// {
 
-			}
+			// }
 
 			file (file&& other) : _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
 			{
@@ -100,13 +164,14 @@ namespace ph
 			// cout << file {} << endl;
 			friend std::ostream & operator << (std::ostream& os, file const& f)
 			{
-
+				os << f._data;
 				return os;
 			}
 
 			// file {} << "hello"
 			friend auto& operator << (file& f, String auto const& s)
 			{
+				fwrite (ph::c_string (s), sizeof (char), ph::len (s), f._file);
 				f._data += ph::c_string (s);
 				return f;
 			}
@@ -115,15 +180,6 @@ namespace ph
 			{
 				return _data.data ();
 			}
-
-		private:
-			auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
-			{
-				return fopen (c_string (path), c_string (permissions));
-			}
-
-			FILE* _file;
-			std::string _data;
 		};
 
 		[[nodiscard]] auto open (String auto&& path) -> File auto 

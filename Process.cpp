@@ -31,14 +31,14 @@ export
     
     
     template <auto spawn_and_wait = false>
-    struct process : error, done
+    struct process : _error, done
     {
         using Value = pid_t;
         using Child_id = std::optional <Value>;
         using Parent_id = Child_id;
 	
         
-        constexpr process () noexcept : error {}, done {}
+        constexpr process () noexcept : _error {}, done {}
         {
             if constexpr (not spawn_and_wait)
             {
@@ -49,9 +49,9 @@ export
             
             value = fork ();
             
-            if (value == -1) [[unlikely]] // error
+            if (value == -1) [[unlikely]] // _error
             {
-                error::set_error (true);
+                _error::set_error (true);
             }
             
             else if (value == 0) // child
@@ -89,12 +89,12 @@ export
             }
         }
         
-        constexpr process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, error {(error&&) other}, done {(done&&) other}
+        constexpr process (process&& other) noexcept : _child_id {(Child_id&&) other._child_id}, _parent_id {(Parent_id&&) other._parent_id}, _error {(_error&&) other}, done {(done&&) other}
         {
             
         }
         
-        constexpr process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, error {(error const&) other}, done {(done const&) other}
+        constexpr process (process const& other) noexcept : _child_id {(Child_id const&) other._child_id}, _error {(_error const&) other}, done {(done const&) other}
         {
             
         }

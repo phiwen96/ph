@@ -27,8 +27,9 @@ auto main (int, char**) -> int
 
 
 	File auto f = ph::open ("/Users/philipwenkel/Github/ph/haha.cpp");
-
 	f << "hej";
+	cout << f;
+	
     
 
 	// assert (not f.get_error ());
