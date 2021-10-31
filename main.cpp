@@ -29,9 +29,9 @@ auto main (int, char**) -> int
 	File auto f = ph::open ("/Users/philipwenkel/Github/ph/haha.cpp");
 	cout << ph::error (f) << endl;
 	// f << "hej";
-	cout << f;
-	cout << "hi" << endl;
-    
+	// cout << f;
+	
+    cout << append ("hej ", "då", " :)") << endl;
 
 	// assert (not f.get_error ());
 

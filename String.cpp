@@ -159,19 +159,24 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 
 
 
-	auto append (String auto&& s0, String auto&& s1, String auto&&... sR) noexcept -> String auto
+	constexpr auto append (String auto&& s0, String auto&& s1, String auto&&... sR) noexcept -> String auto
 	{
 		Number auto length = len (s0, s1, sR...);
 
-		String auto c_s1 = (char*) ph::string::c_string (s1);
+		
 
-		c_s1 = (char*) realloc (c_s1, sizeof (char) * length);
+		String auto c_s1 = (char*) malloc (sizeof (char) * length);
 
-		strcat (c_s1, ph::string::c_string (s0));
+		strcpy (c_s1, ph::string::c_string (s0));
+		strcat (c_s1, ph::string::c_string (s1));
+		// memcpy (c_s1, ph::string::c_string (s0), sizeof (char) * ph::string::len (s0));
+		// memcpy (c_s1 + ph::string::len (s0), ph::string::c_string (s1), sizeof (char) * ph::string::len (s1));
+	
+
 
 		if constexpr (sizeof... (sR) > 0)
 		{
-			return ph::string::append (s1, sR...);
+			return ph::string::append (c_s1, sR...);
 
 		} else 
 		{
@@ -182,12 +187,23 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 }
 
 
-}
+// bool test ()
+// {
+// 	ph::String auto s1 = "hello";
+// 	ph::String auto s2 = " there.";
+
+// 	ph::String auto s3 = ph::string::append (s1, s2);
+// 	return true;
+// }
 
 }
 
 
 
+}
+
+
+// assert (ph::string::test ());
 static_assert (ph::String <char const (&)[17]>);
 static_assert (ph::String <char const*>);
 static_assert (ph::String <std::string>);
