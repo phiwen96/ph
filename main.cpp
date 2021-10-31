@@ -25,10 +25,12 @@ auto main (int, char**) -> int
 	// 	// ph::client (443, "CLIENT_ID=057532");
 	// }
 
-	Bool auto ex = ph::exists ("/Users/philipwenkel/Github/ph/haha.cpp");
 
-	File auto f = ph::file {"/Users/philipwenkel/Github/ph/haha.cpp"};
+	File auto f = ph::open ("/Users/philipwenkel/Github/ph/haha.cpp");
+
+	f << "hej";
     
+
 	// assert (not f.get_error ());
 
 	return 0;

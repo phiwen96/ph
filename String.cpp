@@ -44,16 +44,16 @@ export
 
 	constexpr auto c_string (Array auto && a) noexcept -> char const*
 	{
-		return a;
+		return ph::data (a);
 	}
 
-	constexpr auto c_string (auto&& s) noexcept -> char const* requires requires () {
-		{s.c_str ()} -> Convertible_to <char const*>;
-		requires (not Array <decltype (s)>);
-	}
-	{
-		return s.c_str ();
-	}
+	// constexpr auto c_string (auto&& s) noexcept -> char const* requires requires () {
+	// 	{s.c_str ()} -> Convertible_to <char const*>;
+	// 	// requires (not Array <decltype (s)>);
+	// }
+	// {
+	// 	return s.c_str ();
+	// }
 
 
 	

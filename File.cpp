@@ -27,57 +27,37 @@ namespace ph
 		
 
 		template <typename F>
-		concept File = Same_as <F, FILE*> or Error <F> and requires (F f)
+		concept File = Error <F> and requires (F f)
 		{
 			F {"/usr/bin/hello", "a"};
 			std::cout << f;
 			f << "hello";
 		};
 
+		[[nodiscard]] auto curr_dir () noexcept -> String auto 
+		{
+			return std::filesystem::current_path ().c_str ();
+		}
+
+		[[nodiscard]] auto exists (String auto&& path) noexcept -> Bool auto
+		{
+			return std::filesystem::exists (c_string (path));
+		}
+
+		auto exists (File auto const& file) noexcept -> Bool auto
+		requires requires ()
+		{
+			{file.exists ()} -> Bool;
+		}
+		{	
+			return file.exists ();
+		}
+
+
 		struct file : error
 		{
 			
-			file (String auto&& path, String auto&& mode);
-
-			file (String auto&& path);
-
-			file (FILE*&& file);
-
-			file (file&& other);
-
-			file (file const& other);
-
-			~file ();
-
-			// cout << file {} << endl;
-			friend std::ostream & operator << (std::ostream& os, file const& f);
-
-			// file {} << "hello"
-			friend auto& operator << (file& f, String auto const& s);
-
-			constexpr auto data () noexcept -> Pointer auto;
-
-		private:
-			FILE * _file;
-			std::string _data;
-		};
-
-		auto exists (String auto&& path) noexcept -> Bool auto;
-
-		auto open (String auto&& path, String auto&& mode) -> File auto;
-
-		auto open (String auto&& path) -> File auto;
-
-
-		
-
-	}
-}
-
-namespace ph 
-{
-			
-			ph::file (ph::String auto&& path, ph::String auto&& mode) : _file {open (path, mode)}
+			file (String auto&& path, String auto&& mode) : _file {file::open (path, mode)}
 			{
 				if (_file == nullptr)
 				{
@@ -86,7 +66,7 @@ namespace ph
 				}
 			}
 
-			ph::file (ph::String auto&& path) : _file {open (path)}
+			file (String auto&& path) : _file {file::open (path, "a")}
 			{
 				if (_file == nullptr)
 				{
@@ -95,78 +75,72 @@ namespace ph
 				}
 			}
 
-			ph::file (FILE*&& file) : _file {(FILE*&&) file}
+			file (FILE*&& file) : _file {(FILE*&&) file}
 			{
 
 			}
 
-			ph::file (ph::file&& other) : _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
+			file (file&& other) : _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
 			{
 
 			}
 
-			ph::file (ph::file const& other) : _file {other._file}, _data {other._data}
+			file (file const& other) : _file {other._file}, _data {other._data}
 			{
 				
 			}
 
-			ph::~file ()
+			~file ()
 			{
 				fclose (_file);
 			}
 
 			// cout << file {} << endl;
-			std::ostream & operator << (std::ostream& os, ph::file const& f)
+			friend std::ostream & operator << (std::ostream& os, file const& f)
 			{
 
 				return os;
 			}
 
 			// file {} << "hello"
-			auto& operator << (file& f, ph::String auto const& s)
+			friend auto& operator << (file& f, String auto const& s)
 			{
 				return f;
 			}
 
-			constexpr auto ph::data () noexcept -> ph::Pointer auto
+			constexpr auto data () noexcept -> Pointer auto
 			{
 				return _data.data ();
 			}
 
-
-auto ph::exists (ph::String auto&& path) noexcept -> ph::Bool auto
-		{
-			return std::filesystem::exists (c_string (path));
-		}
-
-		auto ph::open (ph::String auto&& path, ph::String auto&& mode) -> ph::File auto
-		{
-			FILE* f;
-
-			if ((f = fopen (ph::c_string (path), ph::c_string (mode))) == nullptr)
+		private:
+			auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
 			{
-				std::cout << "error";
-				f = nullptr;
-			}
-			return ph::file {(FILE*&&) f};
-			// return file;
-		}
-
-		auto ph::open (ph::String auto&& path) -> ph::File auto
-		{
-			FILE* file;
-
-			if ((file = fopen (ph::c_string (path), "rwa")) == nullptr)
-			{
-				std::cout << "error";
-				file = nullptr;
+				return fopen (c_string (path), c_string (permissions));
 			}
 
-			return file;
+			FILE* _file;
+			std::string _data;
+		};
+
+		[[nodiscard]] auto open (String auto&& path) -> File auto 
+		{
+			return ph::file {path};
 		}
+
+		[[nodiscard]] auto open (String auto&& path, String auto&& permissions) -> File auto 
+		{
+			return ph::file {path, permissions};
+		}
+
 		
 
 
-static_assert (File <file>);
-
+	}
 }
+
+
+
+
+static_assert (ph::File <ph::file>);
+
