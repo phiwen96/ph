@@ -2,6 +2,7 @@ export module Ph.Concepts.Vector;
 
 import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Reference;
+import Ph.Concepts.Size;
 
 namespace ph 
 {
@@ -14,7 +15,7 @@ namespace ph
 		{v1 + v2} -> Convertible_to <V>;
 		
 		{v1 [0]} -> Reference;
-		
+
 		{v1 += e1} -> Reference; 
 		{v1 += e1} -> Convertible_to <V>;
 	};
@@ -23,6 +24,30 @@ namespace ph
 	{
 		struct vector 
 		{
+			using self = vector;
+			using element = self;
+
+			constexpr auto operator [] (Size auto&& s) -> element&
+			{
+				return *this;
+			}
+
+			friend constexpr self& operator += (self& s, element const& o)
+			{
+				return s;
+			}
+
+			friend constexpr self& operator += (self& s, self&& o)
+			{
+				return s;
+			}
+
+			friend constexpr self operator + (self s, self const& o)
+			{
+				return s;
+			}
+
+			private:
 			
 		};
 	}
@@ -32,7 +57,8 @@ namespace ph
 consteval bool test ()
 {
 	using namespace ph;
-
+	static_assert (Vector <vector>);
+	constexpr Vector auto v1 = vector {};
 	return true;
 }
 
