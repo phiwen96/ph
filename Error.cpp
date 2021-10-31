@@ -114,6 +114,8 @@ export
 			return os;
 		}
 
+		friend constexpr auto error (_error const&, char const*, int) noexcept -> Error auto;
+
 		private:
 		bool __error;
 		char* _file;
@@ -122,6 +124,7 @@ export
 
 	constexpr auto error (_error const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
 	{
+		ph::string::append (e._file, _file, ph::string::to_string (_line));
 		return e;
 	}
 
