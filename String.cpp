@@ -72,12 +72,26 @@ export
 	// 	return s.size ();
 	// }
 
-	constexpr auto len (auto const& s) noexcept -> Size auto requires requires () {
+	constexpr auto len (auto const& s) noexcept -> Size auto 
+	requires requires () 
+	{
 		{strlen (s)} -> Size;
 		requires (not Array <decltype (s)>);
 	}
 	{
 		return strlen (s);
+	}
+
+	template <typename A, typename B, typename... C>
+	constexpr auto len (A const& a, B const& b, C const&... c)
+	requires requires ()
+	{
+		{ph::string::len (a)} -> Size;
+		{ph::string::len (b)} -> Size;
+		// {ph::string::len (c)} -> Size;
+	}
+	{
+		return (ph::string::len (a) + ph::string::len (a));
 	}
 
 	template <typename T>
@@ -143,9 +157,26 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 	}
 
 
-	constexpr auto append (String auto&& s0, String auto&& s1, String auto&& s2) noexcept -> Void auto 
-	{
 
+
+	auto append (String auto&& s0, String auto&& s1, String auto&&... sR) noexcept -> String auto
+	{
+		Number auto length = len (s0, s1, sR...);
+
+		String auto c_s1 = (char*) ph::string::c_string (s1);
+
+		c_s1 = (char*) realloc (c_s1, sizeof (char) * length);
+
+		strcat (c_s1, ph::string::c_string (s0));
+
+		if constexpr (sizeof... (sR) > 0)
+		{
+			return ph::string::append (s1, sR...);
+
+		} else 
+		{
+			return c_s1;
+		}
 	}
 
 }
@@ -154,11 +185,6 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 }
 
 }
-
-
-
-
-
 
 
 
