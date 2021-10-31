@@ -4,6 +4,7 @@ import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Reference;
 import Ph.Concepts.Size;
 import Ph.Concepts.Common;
+import Ph.Concepts.Error;
 
 import std;
 
@@ -33,7 +34,7 @@ namespace ph
 	export 
 	{
 		template <typename T, Size auto S, Size auto M>
-		struct vector 
+		struct vector : ph::_error
 		{
 			using self = vector;
 			using element = T;
