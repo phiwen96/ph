@@ -5,7 +5,7 @@ import Ph.Concepts.Reference;
 import Ph.Concepts.Size;
 import Ph.Concepts.Common;
 
-
+import std;
 
 
 namespace ph 
@@ -32,18 +32,19 @@ namespace ph
 
 	export 
 	{
-		template <typename T>
+		template <typename T, Size auto S>
 		struct vector 
 		{
 			using self = vector;
 			using element = T;
 
-			constexpr vector () noexcept 
+			constexpr vector () noexcept : _data {}, _size {0}
 			{
 				
 			}
 
-			constexpr vector (T const&...) noexcept 
+			template <typename... U>
+			constexpr vector (T &&t, U&&... u) noexcept : _data {t}, _size {sizeof... (u) + 1}
 			{
 
 			}
@@ -56,7 +57,7 @@ namespace ph
 
 			constexpr element& operator [] (Size auto&& s) noexcept
 			{
-				return *this;
+				return *(_data + s);
 			}
 
 			friend constexpr self& operator += (self& s, element const& o) noexcept
@@ -83,11 +84,19 @@ namespace ph
 			{
 				return *this;
 			}
+
+			private:
+			element _data [S];
+			std::size_t _size;
 		};
 
 		// template <typename T, typename... U>
 		// vector (T, U...) -> vector <ph::common <T, U...>>;
 		
+		constexpr auto at (auto& a, Size auto&& s) noexcept 
+		{
+			return a [s];
+		}
 	}
 	
 }
@@ -97,8 +106,9 @@ namespace ph
 consteval bool test ()
 {
 	using namespace ph;
-	Vector auto v1 = ph::vector <int> {1, 2, 3};
-	return true;
+	Vector auto v1 = ph::vector <int, 3> {1, 2, 3};
+	Vector auto v2 = v1; 
+	return at (v2, 0) == 1;
 }
 
 static_assert (test ());
