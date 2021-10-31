@@ -62,7 +62,7 @@ namespace ph
 			std::string _data;
 			std::string _path;
 
-			auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
+			static auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
 			{
 				return fopen (c_string (path), c_string (permissions));
 			}
@@ -116,11 +116,11 @@ namespace ph
 				return sz;
 			}
 			
-			file (String auto&& path, String auto&& mode) : _file {file::open (path, mode)}, _data {}
+			file (String auto&& path, String auto&& permissions) : _error {}, _file {file::open (ph::c_string (path), ph::c_string (permissions))}, _data {}
 			{
 				if (_file == nullptr)
 				{
-					std::cout << "error";
+					std::cout << "error " << __LINE__ << std::endl;
 					_error::set_error (true);
 				} else 
 				{
@@ -128,11 +128,11 @@ namespace ph
 				}
 			}
 
-			file (String auto&& path) : _file {file::open (path, "rwa")}, _data {}
+			file (String auto&& path) : _error {}, _file {file::open (ph::c_string (path), "rw")}, _data {}
 			{
 				if (_file == nullptr)
 				{
-					std::cout << "error";
+					std::cout << "error " << __LINE__ << std::endl;
 					_error::set_error (true);
 				} else 
 				{
@@ -145,12 +145,12 @@ namespace ph
 
 			// }
 
-			file (file&& other) : _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
+			file (file&& other) : _error {(_error&&) other}, _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
 			{
 
 			}
 
-			file (file const& other) : _file {other._file}, _data {other._data}
+			file (file const& other) : _error {(_error const&) other}, _file {other._file}, _data {other._data}
 			{
 				
 			}

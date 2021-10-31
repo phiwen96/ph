@@ -27,8 +27,11 @@ auto main (int, char**) -> int
 
 
 	File auto f = ph::open ("/Users/philipwenkel/Github/ph/haha.cpp");
-	f << "hej";
-	cout << f;
+	Error auto e = f;
+	// assert (not e);
+	std::cout << (bool) e << std::endl;
+	// f << "hej";
+	// cout << f;
 	
     
 
