@@ -30,13 +30,14 @@ namespace ph
 		concept File = Error <F> and requires (F f)
 		{
 			F {"/usr/bin/hello", "a"};
+			F {"/usr/bin/hello"};
 			std::cout << f;
 			f << "hello";
 		};
 
 		[[nodiscard]] auto curr_dir () noexcept -> String auto 
 		{
-			return std::filesystem::current_path ().c_str ();
+			return std::string {std::filesystem::current_path ().c_str ()};
 		}
 
 		[[nodiscard]] auto exists (String auto&& path) noexcept -> Bool auto
@@ -57,7 +58,7 @@ namespace ph
 		struct file : error
 		{
 			
-			file (String auto&& path, String auto&& mode) : _file {file::open (path, mode)}
+			file (String auto&& path, String auto&& mode) : _file {file::open (path, mode)}, _data {}
 			{
 				if (_file == nullptr)
 				{
@@ -66,7 +67,7 @@ namespace ph
 				}
 			}
 
-			file (String auto&& path) : _file {file::open (path, "a")}
+			file (String auto&& path) : _file {file::open (path, "a")}, _data {}
 			{
 				if (_file == nullptr)
 				{
@@ -75,7 +76,7 @@ namespace ph
 				}
 			}
 
-			file (FILE*&& file) : _file {(FILE*&&) file}
+			file (FILE*&& file) : _file {(FILE*&&) file}, _data {}
 			{
 
 			}
@@ -92,6 +93,7 @@ namespace ph
 
 			~file ()
 			{
+
 				fclose (_file);
 			}
 
@@ -105,6 +107,7 @@ namespace ph
 			// file {} << "hello"
 			friend auto& operator << (file& f, String auto const& s)
 			{
+				f._data += ph::c_string (s);
 				return f;
 			}
 
