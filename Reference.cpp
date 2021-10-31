@@ -1,5 +1,7 @@
 export module Ph.Concepts.Reference;
 
+import Ph.Concepts.Same_as;
+
 namespace ph 
 {
 	template <typename T>
@@ -31,3 +33,5 @@ namespace ph
 		using remove_reference = typename reference <T>::remove;
 	}
 }
+
+static_assert (ph::Same_as <ph::remove_reference <int&>, int>);

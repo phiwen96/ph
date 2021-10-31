@@ -92,8 +92,8 @@ PhCore.pcm: PhCore.cpp Concepts.pcm
 Concepts.pcm: Concepts.cpp ConceptsCore.pcm Reference.pcm Vector.pcm File.pcm Any_of.pcm Return_value.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Numbers.pcm Function.pcm Sequence.pcm Iterators.pcm
 	$(CC) $(FLAGS) -fmodule-file=ConceptsCore.pcm -fmodule-file=Reference.pcm -fmodule-file=Vector.pcm -fmodule-file=File.pcm -fmodule-file=Any_of.pcm -fmodule-file=Return_value.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Numbers.pcm  -fmodule-file=Function.pcm -fmodule-file=Sequence.pcm -fmodule-file=Iterators.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Vector.pcm: Vector.cpp Reference.pcm Convertible_to.pcm Same_as.pcm Bool.pcm Array.pcm Pointer.pcm String.pcm Error.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Reference.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
+Vector.pcm: Vector.cpp Common.pcm Reference.pcm Convertible_to.pcm Same_as.pcm Bool.pcm Array.pcm Pointer.pcm String.pcm Error.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Common.pcm -fmodule-file=Reference.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
 File.pcm: File.cpp Convertible_to.pcm Same_as.pcm Bool.pcm Array.pcm Pointer.pcm String.pcm Error.pcm
 	$(CC) $(FLAGS) -fmodule-file=Convertible_to.pcm -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -178,6 +178,9 @@ Not.pcm: Not.cpp Same_as.pcm
 Any_of.pcm: Any_of.cpp Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
+Reference.pcm: Reference.cpp Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
+
 Same_as.pcm: Same_as.cpp 
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
@@ -193,7 +196,8 @@ Pointer.pcm: Pointer.cpp
 Color.pcm: Color.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
-Reference.pcm: Reference.cpp
+
+Common.pcm: Common.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 
