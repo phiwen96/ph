@@ -103,39 +103,15 @@ export
 
 	constexpr auto to_string (Integer auto&& i) noexcept -> String auto
 	{
-		if (i / 10 == 0)
-		{
-			if (i == 10)
-			{
-				String auto r = (char*) malloc (sizeof (char) + 2);
-				r [2] = '\0';
-				r [0] = '1';
-				r [1] = '0';
-
-				return r;
-
-			} else 
-			{
-				String auto r = (char*) malloc (sizeof (char) + 1);
-				r [1] = '\0';
-				r [0] = (char) i;
-				return r;
-			}
-		} else 
-		{
-			// Size auto sz = int {0};
-			Size auto sz = (int)((ceil(log10(i))+1)*sizeof(char));
+		Size auto sz = (int)((ceil(log10(i))+1)*sizeof(char));
 			
-			std::cout << sz << std::endl;
-			String auto r = (char*) malloc (sizeof (char) * sz);
-
-			return r;
-		}
-		// String auto r = (char*) malloc (sizeof (char) * sizeof (int));
-		// std::string s = std::to_string (i);
-		// char* r = (char*) std::malloc (sizeof (char) * len (s));
-		// std::strcpy (r, s.data ());
-		// return itoa (r, sizeof (char) * sizeof (int), 10);
+		std::cout << sz << std::endl;
+		String auto r = (char*) malloc (sizeof (char) * sz);
+		std::to_chars (r, r + sz, i);
+		// sprintf (r, "%d", i); 
+		// itoa (i, r, 10);
+		std::cout << "hej" << std::endl;
+		return r;
 	}
 
 
@@ -184,7 +160,7 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 
 
 
-	constexpr auto append (String auto&& s0, String auto&& s1, String auto&&... sR) noexcept -> String auto
+	auto append (String auto&& s0, String auto&& s1, String auto&&... sR) noexcept -> String auto
 	{
 		Number auto length = len (s0, s1, sR...);
 
