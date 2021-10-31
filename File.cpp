@@ -62,12 +62,12 @@ namespace ph
 			std::string _data;
 			std::string _path;
 
-			static auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
+			constexpr static auto open (String auto&& path, String auto&& permissions) noexcept -> Pointer auto
 			{
 				return fopen (c_string (path), c_string (permissions));
 			}
 
-			auto rename (String auto&& new_name) noexcept -> Error auto 
+			constexpr auto rename (String auto&& new_name) noexcept -> Error auto 
 			{
 				if (rename (_path, ph::c_string (new_name)))
 				{
@@ -80,22 +80,23 @@ namespace ph
 				}
 			}
 
-			auto read () noexcept -> String auto 
+			constexpr auto read () noexcept -> void
 			{
-				char c;
-				String auto s = std::string {};
-				while ((c = getc (_file)) != EOF)
-				{
-					std::cout << c;
-					s += c;
-				}
+				fseek (_file , 0L , SEEK_END);
+				auto lSize = ftell (_file);
+				rewind (_file);
 
-				return s;
+				/* allocate memory for entire content */
+				Pointer auto buffer = calloc( 1, lSize+1 );
+				if (!buffer) _error::set_error (true);
+
+				/* copy the file into the buffer */	
+				if (fread (buffer , lSize, 1 , _file) != 1) _error::set_error (true);
 			}
 
 			public:
 
-			auto end_of_file () const noexcept -> Bool auto 
+			constexpr auto end_of_file () const noexcept -> Bool auto 
 			{
 				if (feof (_file))
 				{
@@ -182,15 +183,17 @@ namespace ph
 			}
 		};
 
-		[[nodiscard]] auto open (String auto&& path) -> File auto 
+		[[nodiscard]] constexpr auto open (String auto&& path) noexcept -> File auto 
 		{
 			return ph::file {path};
 		}
 
-		[[nodiscard]] auto open (String auto&& path, String auto&& permissions) -> File auto 
+		[[nodiscard]] constexpr auto open (String auto&& path, String auto&& permissions) noexcept -> File auto 
 		{
 			return ph::file {path, permissions};
 		}
+
+
 
 		
 

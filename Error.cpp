@@ -5,6 +5,7 @@ import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 import std;
 import Ph.Color;
+import Ph.Concepts.String;
 namespace ph 
 {
 
@@ -93,6 +94,12 @@ export
 			return __error;
 		}
 
+		constexpr friend _error& operator << (_error& e, String auto const& s)
+		{
+			ph::string::append (e._file, s);
+			return *this;
+		}
+
 		friend std::ostream& operator<< (std::ostream& os, _error const& e)
 		{
 			os << yellow << "error " << white << "(" << blue << e.__error << white << ") ";
@@ -113,11 +120,19 @@ export
 		int _line;
 	};
 
-	constexpr auto error (_error const& e) noexcept -> Error auto
+	constexpr auto error (_error const& e, char const* _file = __builtin_FILE (), auto _line = __builtin_LINE ()) noexcept -> Error auto
 	{
 		return e;
 	}
 
+	constexpr auto exit_if_error (_error const& e) noexcept -> void 
+	{
+		if (e)
+		{
+			std::cout << e << std::endl;
+			exit (-1);
+		}
+	}
 
 
 

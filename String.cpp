@@ -14,7 +14,7 @@ export module Ph.Concepts.String;
 
 
 
-
+import Ph.Concepts.Void;
 import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Integer;
 import Ph.Concepts.Floating;
@@ -28,10 +28,10 @@ export import std;
 namespace ph
 {
 
-
+inline namespace string 
+{
 
 // static_assert (not Convertible_to <char const (&) [17], char const*>);
-
 
 export 
 {
@@ -133,14 +133,18 @@ constexpr auto to_integer (String auto&& s) noexcept -> Integer auto
 		return atol (c_string (s));;
 	}
 
+
+	constexpr auto append (String auto&& s0, String auto&& s1, String auto&& s2) noexcept -> Void auto 
+	{
+
+	}
+
 }
 
 
 }
 
-
-
-
+}
 
 
 
