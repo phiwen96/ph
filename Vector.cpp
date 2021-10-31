@@ -32,7 +32,7 @@ namespace ph
 
 	export 
 	{
-		template <typename T, Size auto S>
+		template <typename T, Size auto S, Size auto M>
 		struct vector 
 		{
 			using self = vector;
@@ -44,7 +44,7 @@ namespace ph
 			}
 
 			template <typename... U>
-			constexpr vector (T &&t, U&&... u) noexcept : _data {t}, _size {sizeof... (u) + 1}
+			constexpr vector (T &&t, U&&... u) noexcept : _data {t, u...}, _size {sizeof... (u) + 1}
 			{
 
 			}
@@ -86,7 +86,7 @@ namespace ph
 			}
 
 			private:
-			element _data [S];
+			element _data [M];
 			std::size_t _size;
 		};
 
@@ -106,9 +106,11 @@ namespace ph
 consteval bool test ()
 {
 	using namespace ph;
-	Vector auto v1 = ph::vector <int, 3> {1, 2, 3};
-	Vector auto v2 = v1; 
-	return at (v2, 0) == 1;
+	Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
+	Vector auto v2 = v1;
+	v2 += 3;
+
+	return v2 [0] == 0 and v2 [1] == 1 and v2 [2] == 2 and v2 [3] == 3;
 }
 
 static_assert (test ());
