@@ -17,21 +17,21 @@ namespace ph
 {
 
 	
+	
+	// template <typename T>
+	// requires requires ()
+	// {
+	// 	typename T::interator;
+	// }
+	// struct iterator_t
+	// {
+	// 	using element = element <E>;
+	// 	using iterator = typename E::iterator;
+	// };
 
+	
 
-	template <Element E>
-	struct iterator_t
-	{
-		using element = element <E>;
-		using iterator = element *;
-	};
-
-	template <typename T>
-	requires requires () 
-	{
-		typename iterator_t <T>::iterator;
-	}
-	using iterator = typename iterator_t <T>::iterator;
+	
 
 	export 
 	{
@@ -92,6 +92,30 @@ namespace ph
 			return a.end ();
 		}
 
+		template <typename T>
+		struct iterator_t
+		{
+			// using element = element <E>;
+			// using iterator = std::iterator <>;
+		};
+
+		template <typename T>
+		requires requires ()
+		{
+			requires Iterator <typename T::iterator>;
+		}
+		struct iterator_t <T>
+		{
+			using iterator = typename T::iterator;
+		};
+
+		template <typename T>
+		requires requires () 
+		{
+			typename iterator_t <T>::iterator;
+		}
+
+		using iterator = typename iterator_t <T>::iterator;
 
 	
 

@@ -147,19 +147,25 @@ export
 
 import std;
 
-consteval auto test ()
+
+namespace ph 
 {
-	ph::Array auto a = {1, 2, 3};
+	static_assert (Array <std::array <int, 3>>);
+	static_assert (len (std::array {1, 2, 3}) == 3);
+	
+	consteval auto test ()
+	{
+		ph::Array auto a = {1, 2, 3};
 
-	static_assert (ph::Array <std::array <int, 3>>);
-	static_assert (ph::len (std::array {1, 2, 3}) == 3);
+		
 
-	return true;
+		return true;
+	}
+
+
+	static_assert (test ());
+
 }
-
-
-static_assert (test ());
-
 
 
 

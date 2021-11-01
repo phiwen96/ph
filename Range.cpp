@@ -3,7 +3,13 @@ export module Ph.Concepts.Range;
 import Ph.Concepts.Reference;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Iterator;
+import Ph.Concepts.Constant;
+import Ph.Concepts.Size;
+import Ph.Concepts.Element;
+
 import std;
+
+
 
 namespace ph 
 {
@@ -39,4 +45,19 @@ namespace ph
 			return false;
 		}
 	}
+
+
+	static_assert (Range <std::vector <int>>);
+	static_assert (Range <std::array <int, 10>>);
+
+
+	consteval auto test () noexcept -> Bool auto 
+	{
+		Bool auto b = true;
+		 
+
+		return b;
+	}
+
+	static_assert (test ());
 }
