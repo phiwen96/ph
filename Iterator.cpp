@@ -93,9 +93,32 @@ namespace ph
 
 			}
 
+			constexpr auto operator* () noexcept -> Reference auto
+			{
+				return *_ptr;
+			}
+
 			constexpr auto operator++ () noexcept -> self& 
 			{
 				++_ptr;
+				return *this;
+			}
+
+			constexpr auto operator++ (int) noexcept -> self& 
+			{
+				++_ptr;
+				return *this;
+			}
+
+			constexpr auto operator-- () noexcept -> self& 
+			{
+				--_ptr;
+				return *this;
+			}
+
+			constexpr auto operator-- (int) noexcept -> self& 
+			{
+				--_ptr;
 				return *this;
 			}
 
@@ -130,6 +153,11 @@ namespace ph
 		{
 			return a.end ();
 		}
+
+		
+
+		template <Iterator I>
+		using iterator = iterator_t <I>; 
 
 		// template <typename T>
 		// struct iterator_t
