@@ -2,7 +2,8 @@ export module Ph.Concepts.Iterator;
 
 import Ph.Concepts.Constant;
 import Ph.Concepts.Reference;
-
+import Ph.Concepts.Size;
+import std;
 
 /*
 At its core, an iterator is an object that represents a position in a sequence.
@@ -16,6 +17,64 @@ namespace ph
 
 export 
 {
+	
+	template <typename T>
+	struct element_t 
+	{
+
+	};
+
+
+	template <typename T>
+	requires requires ()
+	{
+		typename T::value_type;
+	}
+	struct element_t <T>
+	{
+		using type = typename T::value_type;
+	};	
+
+
+	template <typename T>
+	requires requires ()
+	{
+		typename T::element;
+	}
+	struct element_t <T>
+	{
+		using type = typename T::element;
+	};	
+
+	template <typename T, Size auto S>
+	struct element_t <T [S]>
+	{
+		using Element = T;
+	};
+
+	template <typename T>
+	struct element_t <T []>
+	{
+		using Element = T;
+	};
+
+	template <typename T>
+	struct element_t <T*>
+	{
+		using Element = T;
+		
+	};
+
+
+	template <typename T>
+	requires requires ()
+	{
+		typename element_t <T>::type;
+	}
+	using element = typename element_t <T>::type;
+
+
+
 	template <typename T>
 	concept Input_iterator = requires (T& t)
 	{
@@ -82,10 +141,11 @@ export
 
 }
 
-	consteval bool test ()
+	consteval auto test () noexcept -> Bool auto
 	{
+		Bool auto b = 
 
-		return true;
+		return b;
 	}
 
 	static_assert (test ());
