@@ -21,6 +21,7 @@ export import Ph.Concepts.File;
 export import Ph.Concepts.Vector;
 export import Ph.Concepts.Common;
 export import Ph.Concepts.Constant;
+export import Ph.Concepts.Range;
 
 
 namespace ph 

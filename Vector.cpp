@@ -78,6 +78,16 @@ namespace ph
 				return (&_data) + size ();
 			}
 
+			constexpr auto begin () const noexcept -> Iterator auto 
+			{
+				return &_data;
+			}
+
+			constexpr auto end () const noexcept -> Iterator auto 
+			{
+				return (&_data) + size ();
+			}
+
 			
 
 			constexpr auto size () const noexcept -> Size auto 

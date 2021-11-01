@@ -3,6 +3,7 @@ export module Ph.Concepts.Iterator;
 import Ph.Concepts.Constant;
 import Ph.Concepts.Reference;
 
+
 /*
 At its core, an iterator is an object that represents a position in a sequence.
 */
@@ -54,7 +55,7 @@ export
 
 
 
-	inline constexpr auto begin (auto&& a) -> Iterator auto
+	inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
 	requires requires ()
 	{
 		{a.begin ()} -> Iterator;
@@ -63,7 +64,7 @@ export
 		return a.begin ();
 	}
 
-	inline constexpr auto end (auto&& a) -> Iterator auto
+	inline constexpr auto end (auto&& a) noexcept -> Iterator auto
 	requires requires ()
 	{
 		{a.end ()} -> Iterator;
