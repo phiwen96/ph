@@ -27,14 +27,14 @@ namespace ph
 			{ph::end (r)} noexcept -> Iterator;
 		};
 
-		template <typename Element>
-		constexpr auto contains (Element const& e) noexcept -> auto
+		template <typename E>
+		constexpr auto contains (E const& e) noexcept -> auto
 		{
-			return contains_proxy <Element> {e};
+			return contains_proxy <E> {e};
 		}
 
-		template <typename Element>
-		constexpr auto operator | (Range auto const& r, contains_proxy <Element> const& proxy) noexcept -> Bool auto
+		template <typename E>
+		constexpr auto operator | (Range auto const& r, contains_proxy <E> const& proxy) noexcept -> Bool auto
 		{
 			auto const& v = proxy._value;
 			for (auto const& e : r)

@@ -5,6 +5,7 @@ import Ph.Concepts.Reference;
 import Ph.Concepts.Size;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Element;
+import Ph.Concepts.Pointer;
 import std;
 
 /*
@@ -72,7 +73,45 @@ namespace ph
 		template <typename T>
 		concept Iterator = Input_iterator <T> or Output_iterator <T> or Forward_iterator <T> or Bidirectional_iterator <T> or Random_access_iterator <T>;
 
+		template <typename T>
+		concept Raw_iterator = Pointer <T>;
 
+
+		template <typename T>
+		struct iterator_t 
+		{
+
+		};
+
+		template <typename T>
+		struct iterator_t <T*>
+		{
+			using self = iterator_t;
+
+			constexpr iterator_t (T* ptr) noexcept : _ptr {ptr}
+			{
+
+			}
+
+			constexpr auto operator++ () noexcept -> self& 
+			{
+				++_ptr;
+				return *this;
+			}
+
+		private:
+			T* _ptr;
+		};
+
+
+
+
+
+
+		inline constexpr auto begin (Raw_iterator auto&& r) noexcept -> Iterator auto 
+		{
+
+		}
 
 		inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
 		requires requires ()
@@ -92,30 +131,30 @@ namespace ph
 			return a.end ();
 		}
 
-		template <typename T>
-		struct iterator_t
-		{
-			// using element = element <E>;
-			// using iterator = std::iterator <>;
-		};
+		// template <typename T>
+		// struct iterator_t
+		// {
+		// 	// using element = element <E>;
+		// 	// using iterator = std::iterator <>;
+		// };
 
-		template <typename T>
-		requires requires ()
-		{
-			requires Iterator <typename T::iterator>;
-		}
-		struct iterator_t <T>
-		{
-			using iterator = typename T::iterator;
-		};
+		// template <typename T>
+		// requires requires ()
+		// {
+		// 	requires Iterator <typename T::iterator>;
+		// }
+		// struct iterator_t <T>
+		// {
+		// 	using iterator = typename T::iterator;
+		// };
 
-		template <typename T>
-		requires requires () 
-		{
-			typename iterator_t <T>::iterator;
-		}
+		// template <typename T>
+		// requires requires () 
+		// {
+		// 	typename iterator_t <T>::iterator;
+		// }
 
-		using iterator = typename iterator_t <T>::iterator;
+		// using iterator = typename iterator_t <T>::iterator;
 
 	
 
@@ -125,8 +164,7 @@ namespace ph
 	consteval auto test () noexcept -> Bool auto
 	{
 		Bool auto b = true;
-		iterator <std::vector <int>> i0;
-		iterator <std::array <int, 1>> i1;
+
 
 		return b;
 	}

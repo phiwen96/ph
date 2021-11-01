@@ -148,11 +148,14 @@ export
 import std;
 
 
+
 namespace ph 
 {
 	static_assert (Array <std::array <int, 3>>);
-	static_assert (len (std::array {1, 2, 3}) == 3);
 	
+
+	static_assert (len (std::array {1, 2, 3}) == 3);
+
 	consteval auto test ()
 	{
 		ph::Array auto a = {1, 2, 3};
