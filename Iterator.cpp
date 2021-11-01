@@ -1,6 +1,8 @@
-export module Ph.Concepts.Iterators;
+export module Ph.Concepts.Iterator;
 
-import Ph.Concepts.Core;
+import Ph.Concepts.Constant;
+import Ph.Concepts.Reference;
+
 
 
 namespace ph 
@@ -13,7 +15,7 @@ export
 	concept Input_iterator = requires (T& t)
 	{
 		// read only
-		{*t} -> Const;
+		{*t} -> Constant;
 		t++;
 		++t;
 	};
@@ -22,7 +24,7 @@ export
 	concept Output_iterator = requires (T& t)
 	{
 		// write only
-		{*t} -> Ref;
+		{*t} -> Reference;
 		t++;
 		++t;
 	};
@@ -47,11 +49,19 @@ export
 	concept Iterator = Input_iterator <T> or Output_iterator <T> or Forward_iterator <T> or Bidirectional_iterator <T> or Random_access_iterator <T>;
 
 	inline constexpr auto begin (auto&& a) -> Iterator auto
+	requires requires ()
+	{
+		{a.begin ()} -> Iterator;
+	}
 	{
 		return a.begin ();
 	}
 
 	inline constexpr auto end (auto&& a) -> Iterator auto
+	requires requires ()
+	{
+		{a.end ()} -> Iterator;
+	}
 	{
 		return a.end ();
 	}

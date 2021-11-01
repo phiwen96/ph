@@ -3,6 +3,7 @@ export module Ph.Concepts.Array;
 
 import Ph.Concepts.Size;
 import Ph.Concepts.Pointer;
+import Ph.Concepts.Bool;
 
 import std;
 
@@ -124,6 +125,22 @@ export
 	{
 		return array <decltype (a)>::data (a);
 	}
+
+	auto operator == (Array auto const& l, Array auto const& r) -> Bool auto
+	{
+		if (len (l) != len (r))
+		{
+			return false;
+		}
+
+		for (auto i = 1; i <= len (l); ++i)
+		{
+			if (l [i] != r [i]) return false;
+		}
+
+		return true;
+	}
+
 }
 }
 }

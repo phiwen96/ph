@@ -46,28 +46,6 @@ static_assert (Pointer_to_member <decltype (&Fun::fun)>);
 
 
 
-export template <typename T>
-concept Const = not requires (T t0, T t1)
-{
-	t0 = t1;
-};
-
-
-
-
-
-template <typename>
-struct ref : no {};
-
-template <typename T>
-struct ref <T&> : yes {};
-
-template <typename T>
-struct ref <T&&> : yes {};
-
-export template <typename T>
-concept Ref = ref <T>::value;
-
 
 
 
@@ -76,19 +54,6 @@ concept Ref = ref <T>::value;
 
 
 	
-template <typename>
-struct ptr : no {};
-
-template <typename T>
-struct ptr <T*> : yes {};
-
-template <typename T>
-struct ptr <T**> : yes {};
-
-export template <typename T>
-concept Ptr = ptr <T>::value;
-
-
 
 
 
@@ -98,16 +63,6 @@ concept Ptr = ptr <T>::value;
 
 // module :private;
 
-static_assert (not Const <int>);
-static_assert (Const <int const>);
-static_assert (Const <int const&>);
 
-static_assert (not Ref <int>);
-static_assert (Ref <int const&>);
-static_assert (Ref <int&>);
-static_assert (Ref <int&&>);
 
-static_assert (not Ptr <int>);
-static_assert (Ptr <int*>);
-static_assert (Ptr <int**>);
 }
