@@ -79,12 +79,14 @@ digraph finite_state_machine {
 digraph finite_state_machine {
     
 
-    Contiguous  -> Random_access [ label = "" ];
-	Random_access -> Bidirectional [ label = ""];
-	Bidirectional -> Forward [ label = ""];
-    Forward  -> Input  [ label = "" ];
-	Forward  -> Output  [ label = "" ];
+    Contiguous  -> Random_access [ label = " is" ];
+	Random_access -> Bidirectional [ label = " is"];
+	Bidirectional -> Forward [ label = " is"];
+    Forward  -> Input  [ label = " is and" ];
+	Forward  -> Output  [ label = " is" ];
 
    
 }
 ```
+
+
