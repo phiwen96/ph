@@ -5,6 +5,7 @@ import Ph.Concepts.Reference;
 import Ph.Concepts.Size;
 import Ph.Concepts.Common;
 import Ph.Concepts.Error;
+import Ph.Concepts.Bool;
 
 import std;
 
@@ -45,20 +46,23 @@ namespace ph
 			}
 
 			template <typename... U>
-			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _data {t, u...}, _max {sizeof... (u) + 1}, _last {sizeof... (u)}
+			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _data {t, u...}, _max {M}, _last {sizeof... (u)}
 			{
 
 
 			}
 
-			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _data {o._data}, _max {o._max}, _last {o.last}
+			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _data {o._data}, _max {M}, _last {o._last}
 			{
 				
 			}
 
-			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _data {o._data}, _max {o._max}, _last {o.last}
+			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _data {}, _max {M}, _last {o._last}
 			{
-				
+				for (auto i = 0; i < size (); ++i)
+				{
+					_data [i] = o._data [i];
+				}
 			}
 
 			constexpr auto size () const noexcept -> Size auto 
@@ -96,7 +100,7 @@ namespace ph
 				}
 
 				_max = o._max;
-				_max = o._max;
+				_last = o._last;
 				static_cast <_error&> (*this) = static_cast <_error&> (o);
 
 				return *this;
@@ -123,6 +127,21 @@ namespace ph
 				return *this;
 			}
 
+			constexpr auto operator == (element const& o) const noexcept  -> Bool auto
+			{
+				if (size () != o.size ())
+				{
+					return false;
+				}
+
+				for (auto i = 1; i <= _last; ++i)
+				{
+					if (_data [i] != o._data [i]) return false;
+				}
+
+				return true;
+			}
+
 		private:
 			element _data [M];
 			std::size_t _max;
@@ -146,12 +165,28 @@ namespace ph
 consteval bool test ()
 {
 	using namespace ph;
+
+	Bool auto value = true;
+
 	Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
-	
-	// Vector auto v2 = v1;
+
+	value = v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and v1.size () == 3;
+
+	Vector auto v2 = ph::vector <int, 2, 100> {0, 3};
+
+	value = value and (v2 [0] == 0 and v2 [1] == 3 and v2.size () == 2);
+
+
+
+	Vector auto v3 = v1;
+
+	// value = value and (v2 [0] == 0 and v2 [1] == 1 and v2 [2] == 2 and v2.size () == 3);
+
+
+
 	v1 += 3;
 
-	return v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and v1 [3] == 3 and v1.size () == 4;
+	return value;
 }
 
 static_assert (test ());
