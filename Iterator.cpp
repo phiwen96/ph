@@ -3,6 +3,10 @@ export module Ph.Concepts.Iterator;
 import Ph.Concepts.Constant;
 import Ph.Concepts.Reference;
 
+/*
+At its core, an iterator is an object that represents a position in a sequence.
+*/
+
 
 
 namespace ph 
@@ -48,6 +52,8 @@ export
 	template <typename T>
 	concept Iterator = Input_iterator <T> or Output_iterator <T> or Forward_iterator <T> or Bidirectional_iterator <T> or Random_access_iterator <T>;
 
+
+
 	inline constexpr auto begin (auto&& a) -> Iterator auto
 	requires requires ()
 	{
@@ -65,8 +71,22 @@ export
 	{
 		return a.end ();
 	}
+
+
+	struct iterator 
+	{
+
+	};
+
+
 }
 
-// module :private;
+	consteval bool test ()
+	{
+
+		return true;
+	}
+
+	static_assert (test ());
 
 }

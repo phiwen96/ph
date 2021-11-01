@@ -51,7 +51,7 @@ concept String = requires (S s)
 
 # Details
 
-Library architecture:
+## Library architecture
 
 ```graphviz
 digraph finite_state_machine {
@@ -69,6 +69,22 @@ digraph finite_state_machine {
 	Game -> Concepts
 	Network -> Concepts
 	Graphics -> Concepts
+   
+}
+```
+
+## Iterator-relations
+
+```graphviz
+digraph finite_state_machine {
+    
+
+    Contiguous  -> Random_access [ label = "" ];
+	Random_access -> Bidirectional [ label = ""];
+	Bidirectional -> Forward [ label = ""];
+    Forward  -> Input  [ label = "" ];
+	Forward  -> Output  [ label = "" ];
+
    
 }
 ```

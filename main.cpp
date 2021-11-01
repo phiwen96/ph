@@ -11,7 +11,8 @@ auto main (int, char**) -> int
 { 
 	cout << red << "----------" << yellow << endl;
 
-  
+	auto vec = std::vector{1, 1, 0, 1, 1, 0, 0, 1};
+	std::cout << std::ranges::count(vec, 0); // Prints 3
 	
     Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
 
