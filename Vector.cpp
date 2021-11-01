@@ -39,16 +39,26 @@ namespace ph
 			using self = vector;
 			using element = T;
 
-			constexpr vector () noexcept : _error {}, _size {0}, _data {}, _last {0}
+			constexpr vector () noexcept : _error {}, _max {M}, _data {}, _last {0}
 			{
 				
 			}
 
 			template <typename... U>
-			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _data {t, u...}, _size {sizeof... (u) + 1}, _last {sizeof... (u)}
+			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _data {t, u...}, _max {sizeof... (u) + 1}, _last {sizeof... (u)}
 			{
 
 
+			}
+
+			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _data {o._data}, _max {o._max}, _last {o.last}
+			{
+				
+			}
+
+			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _data {o._data}, _max {o._max}, _last {o.last}
+			{
+				
 			}
 
 			constexpr auto size () const noexcept -> Size auto 
@@ -78,8 +88,27 @@ namespace ph
 				return s;
 			}
 
+			constexpr self& operator = (self&& o) noexcept 
+			{
+				for (auto i = 0; i < o.size (); ++i)
+				{
+					_data [i] = (element&&) o._data [i];
+				}
+
+				_max = o._max;
+				_max = o._max;
+				static_cast <_error&> (*this) = static_cast <_error&> (o);
+
+				return *this;
+			}
+
 			constexpr self& operator = (self const& o) noexcept 
 			{
+				for (auto i = 0; i < o.size (); ++i)
+				{
+					_data [i] = o._data [i];
+				}
+
 				return *this;
 			}
 
@@ -96,7 +125,7 @@ namespace ph
 
 		private:
 			element _data [M];
-			std::size_t _size;
+			std::size_t _max;
 			std::size_t _last;
 
 		};
