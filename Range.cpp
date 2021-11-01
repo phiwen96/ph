@@ -33,7 +33,7 @@ namespace ph
 			auto const& v = proxy._value;
 			for (auto const& e : r)
 			{
-
+				if (e == proxy._value) return true;
 			}
 
 			return false;

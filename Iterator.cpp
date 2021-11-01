@@ -58,7 +58,7 @@ export
 	inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
 	requires requires ()
 	{
-		{a.begin ()} -> Iterator;
+		{a.begin ()} noexcept -> Iterator;
 	}
 	{
 		return a.begin ();
@@ -67,7 +67,7 @@ export
 	inline constexpr auto end (auto&& a) noexcept -> Iterator auto
 	requires requires ()
 	{
-		{a.end ()} -> Iterator;
+		{a.end ()} noexcept -> Iterator;
 	}
 	{
 		return a.end ();
