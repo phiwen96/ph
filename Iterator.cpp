@@ -3,6 +3,7 @@ export module Ph.Concepts.Iterator;
 import Ph.Concepts.Constant;
 import Ph.Concepts.Reference;
 import Ph.Concepts.Size;
+import Ph.Concepts.Bool;
 import std;
 
 /*
@@ -143,7 +144,7 @@ export
 
 	consteval auto test () noexcept -> Bool auto
 	{
-		Bool auto b = 
+		Bool auto b = true;
 
 		return b;
 	}
