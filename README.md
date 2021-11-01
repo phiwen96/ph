@@ -5,7 +5,7 @@
 "ph" is the fastest and safest c++ library in the world.
 
 It introduces c++ concepts and modules, by which the former it is built around, thus, making it lucrative for industrial applications where the need for precision is critical, and where most of the bugs can be catched before the c++ files are even compiled, thus simply just generating syntax errors for developers. 
-This feature is huge for industrial-strength generic components, aka good code.
+This feature is huge for industrial-strength generic components, AKA good software.
 This is what we want! We dont want python's "throw in whatever type u desire", and not java's somewhat pragmatic "please specify the type". 
 We want to be able to say "hey, other coders out there using this function im about to type, just throw in a String". 
 String is just a concept that we specify. It could be everything from "std::string" to old plain c string "char const *". We say "hey, String can be either a "std::string" or a "char const*". OR it could be anything that we could do the following with:
