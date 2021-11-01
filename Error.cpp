@@ -36,12 +36,12 @@ export
 
 	struct _error 
 	{
-		constexpr _error (Bool auto&& b) noexcept : __error {b}, _file {nullptr}
+		constexpr _error (Bool auto&& b) noexcept : __error {b}, _file {nullptr}, _line {0}
 		{
 			// std::cout << __error << std::endl;
 		}
 
-		constexpr _error () noexcept : __error {false}, _file {nullptr}
+		constexpr _error () noexcept : __error {false}, _file {nullptr}, _line {0}
 		{
 			// std::cout << __error << std::endl;
 		}
