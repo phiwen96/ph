@@ -7,23 +7,38 @@ It aims to cut loose from other languages in the build steps, instead integratin
 
 
 
+
+
 ```{#kuk .cpp .numberLines}
 import Ph.Build;
+import Ph.Concepts.Integer;
 
 auto main (int i, char** s) -> int 
 {
 
 	Arguments auto args = parse_args (i, s);
 
-	Error auto err = args;
+	Error auto err = len (args) > 0 ? true : false; 
 
 	if (err)
 	{
-
+		
 	}
 
 	return err;
 }
+```
+
+```graphviz
+digraph G 
+{
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+
+	main -> "Ph.Build"
+}
+
 ```
 
 "ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
@@ -140,6 +155,8 @@ digraph finite_state_machine {
 
 ## Library architecture
 
+
+
 ```graphviz
 digraph finite_state_machine {
 	graph [bgcolor=black]
@@ -196,5 +213,24 @@ digraph finite_state_machine {
 	Forward  -> Output  [ label = " is" ];
 
    
+}
+```
+
+```graphviz
+  digraph structs {
+	  	graph [bgcolor=black]
+		node [fillcolor=black style=filled color=white fontcolor=white]
+		edge [color=white fontcolor=white]
+  		node [shape=record];
+
+      	struct1 [shape=record,label="<f0> left|<f1> middle|<f2> right"];
+
+    	struct2 [shape=record,label="<f0> one|<f1> two"];
+		
+      	struct3 [shape=record,label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
+
+      	struct1:f1 -> struct2:f0;
+
+      	struct1:f2 -> struct3:here;
 }
 ```
