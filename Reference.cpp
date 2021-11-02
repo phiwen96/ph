@@ -42,8 +42,8 @@ namespace ph
 		template <typename T>
 		concept Reference = reference <T>::value;
 
-		template <typename T>
-		using remove_reference = typename reference <T>::remove;
+		template <Reference R>
+		using remove_reference = typename reference <R>::remove;
 
 		
 		template <typename T>

@@ -69,6 +69,10 @@ namespace ph
 			return contains_proxy <E> {e};
 		}
 
+
+
+
+
 		template <typename E>
 		constexpr auto operator | (Range auto const& r, contains_proxy <E> const& proxy) noexcept -> Bool auto
 		{
@@ -80,6 +84,12 @@ namespace ph
 
 			return false;
 		}
+
+
+
+
+
+
 
 		template <typename T>
 		struct range_t
@@ -97,9 +107,34 @@ namespace ph
 
 			}
 
-			constexpr auto operator [] (Size auto const& s) noexcept -> Reference auto
+			constexpr auto begin () const noexcept -> Iterator auto 
+			{
+				return iterator_t <element> {_begin};
+			}
+
+			constexpr auto end () const noexcept -> Iterator auto 
+			{
+				return iterator_t <element> {_end};
+			}
+
+			constexpr auto max () const noexcept -> Size auto 
+			{
+				return ptrdiff_t {_max - _begin};
+			}
+
+			constexpr auto operator [] (Size auto const& s) noexcept -> element&
 			{
 				return _begin [s];
+			}
+
+			constexpr auto contains (Pointer auto const& p) noexcept -> Bool auto 
+			{
+ 				return std::uintptr_t (p) >= std::uintptr_t (_begin) and std::uintptr_t (p) < std::uintptr_t (_begin) + max ();
+			}
+
+			constexpr auto len () const noexcept -> Size auto 
+			{
+				return ptrdiff_t {_end - _begin};
 			}
 
 		private:
@@ -107,8 +142,36 @@ namespace ph
 			pointer _end;
 			pointer _max;
 		};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 using namespace ph;
 
