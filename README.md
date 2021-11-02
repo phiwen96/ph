@@ -86,7 +86,7 @@ digraph finite_state_machine {
 	graph [bgcolor=black]
 	node [fillcolor=black style=filled color=white fontcolor=white]
 	edge [color=white fontcolor=white]
-	
+
 	Memory -> Allocator [ label = " exports"];
 	Memory -> Arena [ label = " exports"];
 	Allocator -> Arena [ label = " uses"];
@@ -122,9 +122,21 @@ digraph finite_state_machine {
 	graph [bgcolor=black]
 	node [fillcolor=black style=filled color=white fontcolor=white]
 	edge [color=white fontcolor=white]
-	ph -> Cplusplus [ label = " source code"];
-	ph -> Markdown [ label = " documentation"];
-	ph -> pandoc [ label = " building documentation"];
+
+	"ph" -> "source code" [ label = "  contains"];
+
+	"ph" -> "documentation" [ label = "  and contains"];
+	
+	"source code" -> "C++" [ label = "  written in"];
+
+	"C++" -> "Software" [ label = "  compiled to"];
+	
+	"documentation" -> "Markdown" [ label = "  written in"];
+	
+	"documentation" -> "dot" [ label = "  and written in"];
+
+	"dot" -> "graphs like this" [ label = "  for generating"];
+
 }
 ```
 
@@ -140,6 +152,7 @@ digraph finite_state_machine {
 	ph -> Cplusplus [ label = " open"]
 	ph -> Markdown [ label = " open"]
 	ph -> pandoc [ label = " open"]
+	ph -> dot [ label = " open"]
 }
 ```
 
