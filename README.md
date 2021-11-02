@@ -2,7 +2,7 @@
 
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
-This project aims to be the facto software for building the best C++ software on the planet.
+This project aims to be the facto software for building the best C++ software.
 It aims to cut loose from other languages in the build steps, instead integrating them directly in the source code such as this:
 
 
@@ -19,7 +19,7 @@ auto main (int i, char** s) -> int
 
 	if (err)
 	{
-		
+
 	}
 
 	return err;
