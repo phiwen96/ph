@@ -101,33 +101,8 @@ concept String = requires (S s)
 
 
 
-Notes
-===============
 
-	At the moment, the project is very dependent on Make (for compiling C++ files into different things and then finally everything into an executable).
 
-	Also pandoc (for documentations). 
-	
-	Reasons for this? 
-		It's still very young.
-
-	Please help me develop this project! At the moment there are just one developer.
-
-```uml
-object Object01
-object Object02
-object Object03
-object Object04
-object Object05
-object Object06
-object Object07
-object Object08
-
-Object01 <|-- Object02
-Object03 *-- Object04
-Object05 o-- "4" Object06
-Object07 .. Object08 : some labels
-```
 
 Details
 ===============
@@ -151,26 +126,7 @@ digraph file_dependencies
 
 
 
-```
 
-
-```plantuml   
-@startuml
-object Object01
-object Object02
-object Object03
-object Object04
-object Object05
-object Object06
-object Object07
-object Object08
-
-Object01 <|-- Object02
-Object03 *-- Object04
-Object05 o-- "4" Object06
-Object07 .. Object08 : some labels
-@enduml
-```
 
 Project dependencies
 ---------------
@@ -233,8 +189,8 @@ About
 
 Documentation
 ===============
+The documentation for [Ph] is dependent on the the following languages:
 
-The documentation for [Ph] is dependent on the 
 [Markdown]: https://www.markdownguide.org/basic-syntax/
 [dot]: https://graphviz.org/doc/info/lang.html
 [UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
@@ -254,9 +210,22 @@ and built with
 * [pandoc-plot]
 
 
+Contribute
+===============
+At the moment, the project is very dependent on Make (for compiling C++ files into different things and then finally everything into an executable).
+
+Also pandoc (for documentations). 
+	
+Reasons for this? 
+It's still very young.
+
+Please help me develop this project! At the moment there are just one developer.
+
+
 Licensing
 ===============
 
+[MIT](LICENSE) © 2021 Ph
 
 Can be either open or proprietary.
 
@@ -277,7 +246,6 @@ digraph finite_state_machine {
 
 
 
-## Library architecture
 
 
 
