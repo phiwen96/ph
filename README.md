@@ -54,6 +54,66 @@ concept String = requires (S s)
 
 # Details
 
+
+## Project dependencies
+
+The following graph describes that basically "ph" is a set of files which will either be transformed into a documentation file or into the executable software. 
+
+```graphviz
+digraph finite_state_machine {
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+
+	"ph" -> "source code" [ label = "  contains"];
+
+	"ph" -> "documentation" [ label = "  and contains"];
+	
+	"source code" -> "C++" [ label = "  written in"];
+
+	"C++" -> "Software" [ label = "  compiled to"];
+	
+	"documentation" -> "Markdown" [ label = "  written in"];
+	
+	"documentation" -> "dot" [ label = "  and written in"];
+
+	"dot" -> "graphs like this" [ label = "  for generating"];
+
+	"dot" -> "pandoc" [ label = "  built with"];
+
+	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
+}
+```
+
+### Dependency list with links:
+* [pandoc-plot](https://github.com/LaurentRDC/pandoc-plot)
+* [C++](https://www.cplusplus.com)
+* [Make](https://www.gnu.org/software/make/)
+* [Markdown](https://www.markdownguide.org/basic-syntax/)
+* [dot](https://graphviz.org/doc/info/lang.html)
+* [pandoc](https://pandoc.org)
+
+## Source code licensing
+
+Can be either open or proprietary.
+
+```graphviz
+digraph finite_state_machine {
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+	ph -> Cplusplus [ label = " open"]
+	ph -> Markdown [ label = " open"]
+	ph -> pandoc [ label = " open"]
+	ph -> dot [ label = " open"]
+}
+```
+
+ <!-- proprietary -->
+
+
+
+
 ## Library architecture
 
 ```graphviz
@@ -114,58 +174,3 @@ digraph finite_state_machine {
    
 }
 ```
-
-## project dependencies
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-
-	"ph" -> "source code" [ label = "  contains"];
-
-	"ph" -> "documentation" [ label = "  and contains"];
-	
-	"source code" -> "C++" [ label = "  written in"];
-
-	"C++" -> "Software" [ label = "  compiled to"];
-	
-	"documentation" -> "Markdown" [ label = "  written in"];
-	
-	"documentation" -> "dot" [ label = "  and written in"];
-
-	"dot" -> "graphs like this" [ label = "  for generating"];
-
-	"dot" -> "pandoc" [ label = "  built with"];
-
-	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
-}
-```
-
-### Dependency list:
-* [pandoc-plot](https://github.com/LaurentRDC/pandoc-plot)
-* C++
-* Markdown
-* dot
-* pandoc
-
-## Source code licensing
-
-Can be either open or proprietary.
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-	ph -> Cplusplus [ label = " open"]
-	ph -> Markdown [ label = " open"]
-	ph -> pandoc [ label = " open"]
-	ph -> dot [ label = " open"]
-}
-```
-
- <!-- proprietary -->
-
-
