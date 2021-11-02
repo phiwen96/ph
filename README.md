@@ -2,6 +2,22 @@
 
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
+This project aims to be the facto software for building the best C++ software on the planet.
+It aims to cut loose from other languages in the build steps, instead integrating them directly in the source code such as this:
+
+
+
+```{#kuk .cpp .numberLines}
+import Ph.Build;
+
+auto main (int, char**) -> int 
+{
+
+	
+	return 0;
+}
+```
+
 "ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
 
 
