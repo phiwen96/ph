@@ -13,7 +13,7 @@ import Ph.Build;
 auto main (int i, char** s) -> int 
 {
 
-	Arguments auto args = get_args (i, s);
+	Arguments auto args = parse_args (i, s);
 	Executable auto app;
 	Error auto err = app.accept_args (app);
 
