@@ -1,0 +1,27 @@
+digraph G 
+{
+	compound=true;
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+
+	main [ label = "  main"];
+
+	PhBuild [ label = "  Ph.Build"];
+
+	<!-- PhConcepts [ label = " Ph.Concepts"]; -->
+
+	PhConceptsInteger [ label = "  Ph.Concepts.Integer"];
+
+	main -> "Ph.Build"
+
+	main -> "Ph.Concepts.Integer"
+
+	subgraph kmkm 
+	{ 
+
+		"Ph.Concepts.Integer"; 
+		"Ph.Concepts.Number";
+	}
+
+}

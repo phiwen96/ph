@@ -4,18 +4,16 @@ SRC=src
 CC=clang++
 FLAGS= -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 
-main: main.o README.pdf project_dependencies.ps
+main: main.o README.pdf
 	$(CC) $(FLAGS) $< -o $@
 
 
-README.pdf: README.md project_dependencies.jpg
+README.pdf: README.md
 	pandoc --filter pandoc-plot -o README.pdf README.yml README.md
 
-project_dependencies.jpg: project_dependencies.ps
-	sips -s format jpeg $@ --out $<
 
-project_dependencies.ps: project_dependencies.gv
-	dot -Tps $< -o $@
+
+
 
 # --epub-cover-image=README.jpg 
 
@@ -224,7 +222,7 @@ Constant.pcm: Constant.cpp
 
 
 
-buildfiles: $(*.o, *.pcm, main *.pdf)
+buildfiles: $(*.o, *.pcm  main, *.pdf, *.ps, *.jpg)
 
 clean: 
-	rm -f *.o *.pcm main
+	rm -f *.o *.pcm *.pdf main

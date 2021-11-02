@@ -22,7 +22,7 @@ auto main (int i, char** s) -> int
 
 	if (err)
 	{
-		
+
 	}
 
 	return err;
@@ -32,11 +32,29 @@ auto main (int i, char** s) -> int
 ```graphviz
 digraph G 
 {
+	compound=true;
 	graph [bgcolor=black]
 	node [fillcolor=black style=filled color=white fontcolor=white]
 	edge [color=white fontcolor=white]
 
+	main [ label = "  main"];
+
+	PhBuild [ label = "  Ph.Build"];
+
+	<!-- PhConcepts [ label = " Ph.Concepts"]; -->
+
+	PhConceptsInteger [ label = "  Ph.Concepts.Integer"];
+
 	main -> "Ph.Build"
+
+	main -> "Ph.Concepts.Integer"
+
+		subgraph kmkm 
+	{ 
+
+		"Ph.Concepts.Integer"; 
+		"Ph.Concepts.Number";
+	}
 }
 
 ```
@@ -89,10 +107,63 @@ concept String = requires (S s)
 
 	Please help me develop this project! At the moment there are just one developer.
 
+```uml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
 
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels
+```
 
 # Details
 
+file dependency
+```graphviz
+digraph file_dependencies 
+{
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+
+	"main" -> "main.o"
+
+	"main.o" -> "main.cpp"
+	"main.o" -> "Ph.pcm"
+	
+	
+	
+}
+
+
+
+```
+
+
+```plantuml   
+@startuml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels
+@enduml
+```
 
 ## Project dependencies
 
@@ -113,6 +184,12 @@ digraph finite_state_machine {
 	"C++" -> "Software" [ label = "  compiled to"];
 	
 	"documentation" -> "Markdown" [ label = "  written in"];
+
+	"Markdown" -> "plantuml" [ label = "  mixed with"];
+
+	"plantuml" -> "uml" [ label = "  mixed with"];
+
+	"Markdown" -> "graphviz" [ label = "  mixed with"];
 	
 	"documentation" -> "dot" [ label = "  and written in"];
 
@@ -124,13 +201,41 @@ digraph finite_state_machine {
 }
 ```
 
-### Dependency list with links:
-* [pandoc-plot](https://github.com/LaurentRDC/pandoc-plot)
-* [C++](https://www.cplusplus.com)
-* [Make](https://www.gnu.org/software/make/)
-* [Markdown](https://www.markdownguide.org/basic-syntax/)
-* [dot](https://graphviz.org/doc/info/lang.html)
-* [pandoc](https://pandoc.org)
+
+### Source code programming languages:
+
+[C++]: https://www.cplusplus.com
+
+* [C++]
+
+
+
+## Source code build dependencies
+
+[Make]: https://www.gnu.org/software/make/
+
+* [Make]
+
+
+
+
+### Documentation programming languages:
+[Markdown]: https://www.markdownguide.org/basic-syntax/
+[dot]: (https://graphviz.org/doc/info/lang.html)
+[UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
+
+* [Markdown]
+* [dot]
+* [UML]
+
+### Documentation build dependencies:
+[pandoc]: https://pandoc.org
+[pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
+
+* [pandoc]
+* [pandoc-plot]
+
+
 
 ## Source code licensing
 
