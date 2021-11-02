@@ -97,7 +97,7 @@ namespace ph
 
 			}
 
-			constexpr element& operator [] (Size auto&& s) noexcept
+			constexpr auto operator [] (Size auto const& s) noexcept -> Reference auto
 			{
 				return _begin [s];
 			}

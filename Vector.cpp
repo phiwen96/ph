@@ -39,103 +39,26 @@ namespace ph
 		};
 
 		template <typename T, Size auto S, Size auto M>
-		struct vector : ph::_error, ph::range_t <T>
+		struct vector : range_t <T>
 		{
 			using self = vector;
 			using element = T;
+			// using range_t <T>::range_t;
 
-			constexpr vector () noexcept : _error {}, _max {M}, _begin {}, _end {0}
+			constexpr vector () noexcept : _data {}, range_t <element> {_data, _data + S, _data + M}
 			{
-				
+				return range_t <T> {};
 			}
 
 			template <typename... U>
-			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _begin {t, u...}, _max {M}, _end {sizeof... (u)}, range_t {_begin, _end, _max}
+			requires requires () {requires Convertible_to <common <U...>, element>;}
+			constexpr vector (U&&... u) noexcept : _data {(element&&) u...}, range_t <element> {_data, _data + S, _data + M}
 			{
 
-
 			}
-
-			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _begin {o._begin}, _max {M}, _end {o._end}, range_t {_begin, _end, _max}
-			{
-				
-			}
-
-			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _begin {}, _max {M}, _end {o._end}, range_t {_begin, _end, _max}
-			{
-				for (auto i = 0; i < size (); ++i)
-				{
-					_begin [i] = o._begin [i];
-				}
-			}
-
-
-			friend constexpr self& operator += (self& s, element const& o) noexcept
-			{
-				s._begin [s._end + 1] = o;
-				++s._end;
-				return s;
-			}
-
-			friend constexpr self& operator += (self& s, self const& o) noexcept
-			{ 
-				Size auto const n = s.size ();
-
-				for (auto i = 0; i < o.size (); ++i)
-				{
-					s [n + i] = o [i];
-				}
-
-				s._end += o.size () - 1;
-
-				return s;
-			}
-
-			friend constexpr self operator + (self s, self const& o) noexcept 
-			{
-				return s;
-			}
-
-			// constexpr self& operator = (self&& o) noexcept 
-			// {
-			// 	for (auto i = 0; i < o.size (); ++i)
-			// 	{
-			// 		_begin [i] = (element&&) o._begin [i];
-			// 	}
-
-			// 	_max = o._max;
-			// 	_end = o._end;
-			// 	static_cast <_error&> (*this) = static_cast <_error&> (o);
-
-			// 	return *this;
-			// }
-
-			constexpr self& operator = (self const& o) noexcept 
-			{
-				for (auto i = 0; i < o.size (); ++i)
-				{
-					_begin [i] = o._begin [i];
-				}
-
-				return *this;
-			}
-
-			constexpr self& operator = (element const& o) noexcept 
-			{ 
-				// _begin [0]
-				for (auto i = 0; i <= _end; ++i)
-				{
-					_begin [i].~element ();
-				}
-
-				return *this;
-			}
-
+			
 		private:
-			element _begin [M];
-			std::size_t _max;
-			std::size_t _end;
-
+			element _data [M];
 		};
 	}
 	
