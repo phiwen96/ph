@@ -8,7 +8,8 @@ import Ph.Concepts.Error;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Array;
 import Ph.Concepts.Pointer;
-import Ph.Concepts.Iterator;
+// import Ph.Concepts.Iterator;
+import Ph.Concepts.Range;
 
 import std;
 
@@ -68,32 +69,37 @@ namespace ph
 				}
 			}
 
-			constexpr auto begin () noexcept -> Iterator auto 
+			constexpr operator Range auto () noexcept
 			{
-				return &_data;
+				return range_t {_data, _data + _last};
 			}
 
-			constexpr auto end () noexcept -> Iterator auto 
-			{
-				return (&_data) + size ();
-			}
+			// constexpr auto begin () noexcept -> Iterator auto 
+			// {
+			// 	return &_data;
+			// }
 
-			constexpr auto begin () const noexcept -> Iterator auto 
-			{
-				return &_data;
-			}
+			// constexpr auto end () noexcept -> Iterator auto 
+			// {
+			// 	return (&_data) + size ();
+			// }
 
-			constexpr auto end () const noexcept -> Iterator auto 
-			{
-				return (&_data) + size ();
-			}
+			// constexpr auto begin () const noexcept -> Iterator auto 
+			// {
+			// 	return iterator_t {_da ta;
+			// }
+
+			// constexpr auto end () const noexcept -> Iterator auto 
+			// {
+			// 	return (&_data) + size ();
+			// }
 
 			
 
-			constexpr auto size () const noexcept -> Size auto 
-			{
-				return _last + 1;
-			}
+			// constexpr auto size () const noexcept -> Size auto 
+			// {
+			// 	return _last + 1;
+			// }
 
 			constexpr element& operator [] (Size auto&& s) noexcept
 			{

@@ -2,10 +2,10 @@ export module Ph.Concepts.Range;
 
 import Ph.Concepts.Reference;
 import Ph.Concepts.Bool;
-import Ph.Concepts.Iterator;
 import Ph.Concepts.Constant;
 import Ph.Concepts.Size;
 import Ph.Concepts.Element;
+import Ph.Concepts.Pointer;
 
 import std;
 
@@ -16,15 +16,25 @@ namespace ph
 	template <typename T>
 	struct contains_proxy { T const& _value; };
 
-
+	consteval auto rangeable (auto&& r) -> Bool auto 
+	{
+		return true;
+	}
 
 	export 
 	{
+
+
+
 		template <typename R>
 		concept Range = requires (R r)
 		{
-			{ph::begin (r)} noexcept -> Iterator;
-			{ph::end (r)} noexcept -> Iterator;
+			// if (true) {};
+			true;
+			// requires (rangeable (r) == true);
+
+			// {ph::begin (r)} noexcept -> Iterator;
+			// {ph::end (r)} noexcept -> Iterator;
 		};
 
 		template <typename E>
@@ -44,6 +54,18 @@ namespace ph
 
 			return false;
 		}
+
+		template <Pointer P>
+		struct range_t 
+		{
+			constexpr range_t (P b, P e) noexcept : _begin {b}, _end {e}
+			{
+
+			}
+		private:
+			P _begin;
+			P _end;
+		};
 	}
 
 

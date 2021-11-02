@@ -1,6 +1,7 @@
 # Introduction
 
 
+"ph" is a lightning fast C++ library and also a build tool for turning C++ source code into something useful. 
 
 "ph" is the fastest and safest c++ library in the world.
 

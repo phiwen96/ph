@@ -83,47 +83,59 @@ namespace ph
 
 		};
 
-		template <typename T>
-		struct iterator_t <T*>
+		template <Pointer P>
+		struct iterator_t <P>
 		{
 			using self = iterator_t;
 
-			constexpr iterator_t (T* ptr) noexcept : _ptr {ptr}
+			constexpr iterator_t (P b, P e) noexcept : _curr {b}, _begin {b}, _end {e}
 			{
 
+			}
+
+			constexpr iterator_t (iterator_t&& o) : _curr {(P&&) o._curr}, _begin {(P&&) o._begin}, _end {(P&&) o._end}
+			{
+
+			}
+
+			constexpr iterator_t (iterator_t const& o) : _curr {o._curr}, _begin {o._begin}, _end {o._end}
+			{
+				
 			}
 
 			constexpr auto operator* () noexcept -> Reference auto
 			{
-				return *_ptr;
+				return *_curr;
 			}
 
 			constexpr auto operator++ () noexcept -> self& 
 			{
-				++_ptr;
+				++_curr;
 				return *this;
 			}
 
 			constexpr auto operator++ (int) noexcept -> self& 
 			{
-				++_ptr;
+				++_curr;
 				return *this;
 			}
 
 			constexpr auto operator-- () noexcept -> self& 
 			{
-				--_ptr;
+				--_curr;
 				return *this;
 			}
 
 			constexpr auto operator-- (int) noexcept -> self& 
 			{
-				--_ptr;
+				--_curr;
 				return *this;
 			}
 
 		private:
-			T* _ptr;
+			P _begin;
+			P _end;
+			P _curr;
 		};
 
 
@@ -131,9 +143,9 @@ namespace ph
 
 
 
-		inline constexpr auto begin (Raw_iterator auto&& r) noexcept -> Iterator auto 
+		inline constexpr auto begin (Raw_iterator auto&& r1, Raw_iterator auto&& r2) noexcept -> Iterator auto 
 		{
-
+			return iterator_t {r1, r2};
 		}
 
 		inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
@@ -154,7 +166,7 @@ namespace ph
 			return a.end ();
 		}
 
-		
+
 
 		template <Iterator I>
 		using iterator = iterator_t <I>; 
