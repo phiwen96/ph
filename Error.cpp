@@ -1,6 +1,7 @@
 export module Ph.Concepts.Error;
 
 import Ph.Concepts.Convertible_to;
+import Ph.Concepts.Same_as;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 import std;
@@ -32,9 +33,85 @@ export
 	// 	return b;
 	// }
 
+	template <typename... T>
+	struct error_t;
+
+	template <typename T>
+	struct error_t <T>
+	{
+		constexpr error_t (T& ref) noexcept : _ref {ref}
+		{
+			
+		}
+
+		constexpr error_t (error_t&& o) noexcept : _ref {o._ref}
+		{
+			
+		}
+
+		constexpr auto get_error () const noexcept -> Bool auto
+		{
+			return __error;
+		}
+
+		constexpr error_t& operator= (Bool auto&& e) noexcept
+		{
+			__error = e;
+
+			return *this;
+		}
+
+		constexpr auto operator and (Bool auto&& b) noexcept -> error_t&
+		{
+			__error = __error and b;
+			return *this;
+		}
+
+		constexpr auto operator or (Bool auto&& b) noexcept -> error_t&
+		{
+			__error = __error or b;
+			return *this;
+		}
+
+		constexpr auto value () noexcept -> T& 
+		{
+			return _ref;
+		}
+
+		constexpr auto value () const noexcept -> T const& 
+		{
+			return _ref;
+		}
+
+		// constexpr operator T&& () noexcept 
+		// {
+		// 	return (T&&) _ref;
+		// }
+
+		// constexpr operator T& () noexcept 
+		// {
+		// 	return _ref;
+		// }
+
+		// constexpr operator T const& () noexcept 
+		// {
+		// 	return _ref;
+		// }
 
 
-	struct error_t 
+		constexpr operator Bool auto () const noexcept 
+		// requires (not Same_as <T, bool>)
+		{
+			return __error;
+		}
+
+	private:
+		T& _ref;
+		bool __error;
+	};
+
+	template <>
+	struct error_t <>
 	{
 		constexpr error_t (Bool auto&& b) noexcept : __error {b}, _file {nullptr}, _line {0}
 		{
@@ -59,6 +136,25 @@ export
 		constexpr auto get_error () const noexcept -> Bool auto
 		{
 			return __error;
+		}
+
+		constexpr error_t& operator= (Bool auto&& e) noexcept
+		{
+			__error = e;
+
+			return *this;
+		}
+
+		constexpr auto operator and (Bool auto&& b) noexcept -> error_t&
+		{
+			__error = __error and b;
+			return *this;
+		}
+
+		constexpr auto operator or (Bool auto&& b) noexcept -> error_t&
+		{
+			__error = __error or b;
+			return *this;
 		}
 
 		constexpr error_t& operator= (error_t const& rhs) noexcept
@@ -87,7 +183,7 @@ export
 			__error = b;
 		}
 
-		constexpr operator Error auto () const noexcept 
+		constexpr operator Bool auto () const noexcept 
 		{
 			// std::cout << __error << std::endl;
 
@@ -122,13 +218,15 @@ export
 		int _line;
 	};
 
-	constexpr auto error (error_t const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
+	template <typename... T>
+	constexpr auto error (error_t <T...> const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
 	{
 		ph::string::append (e._file, _file, ph::string::to_string (_line));
 		return e;
 	}
 
-	constexpr auto exit_if_error (error_t const& e) noexcept -> void 
+	template <typename... T>
+	constexpr auto exit_if_error (error_t <T...> const& e) noexcept -> void 
 	{
 		if (e)
 		{
@@ -141,5 +239,5 @@ export
 
 }
 
-static_assert (Error <error_t>);
+static_assert (Error <error_t <>>);
 }

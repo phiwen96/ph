@@ -1,5 +1,6 @@
 # Introduction
 
+An inline ![image](README.jpg){#id .class width=30 height=20px}
 
 "ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
 
@@ -102,6 +103,30 @@ digraph finite_state_machine {
 	Forward  -> Output  [ label = " is" ];
 
    
+}
+```
+
+## project dependencies
+
+```graphviz
+digraph finite_state_machine {
+
+	ph -> Cplusplus [ label = " source code"];
+	ph -> Markdown [ label = " documentation"];
+	ph -> pandoc [ label = " building documentation"];
+}
+```
+
+## Source code licensing
+
+```graphviz
+digraph finite_state_machine {
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white]
+	ph -> Cplusplus [ label = " open" fontcolor=white]
+	ph -> Markdown [ label = " open"]
+	ph -> pandoc [ label = " open"]
 }
 ```
 

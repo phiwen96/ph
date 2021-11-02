@@ -28,13 +28,18 @@ namespace ph
 	{
 		constexpr auto is_aligned (void* ptr, std::size_t alignment) -> Error auto
 		{
-			assert(ptr != nullptr);
-			assert(std::has_single_bit(alignment)); // Power of 2
+			Bool auto result = true;
+
+			Error auto err = error_t <bool> {result};
+
+			err and ptr != nullptr and std::has_single_bit (alignment); 
 
 			auto s = std::numeric_limits<std::size_t>::max();
 			auto aligned_ptr = ptr;
 			std::align(alignment, 1, aligned_ptr, s);
-			return ptr == aligned_ptr;
+			result = result and ptr == aligned_ptr;
+ 
+			return (error_t <bool>&&) result;
 		}
 	}
 }
