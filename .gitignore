@@ -3,10 +3,16 @@
 .DS_Store
 *.sh
 *.pcm
+
 *.pdf
 
 # Prerequisites
 *.d
+
+*.ps 
+*.html
+*.png
+
 
 
 # Compiled Object files

@@ -1,6 +1,6 @@
 # Introduction
 
-An inline ![image](README.jpg){#id .class width=30 height=20px}
+<!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
 "ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
 
@@ -136,6 +136,10 @@ digraph finite_state_machine {
 	"documentation" -> "dot" [ label = "  and written in"];
 
 	"dot" -> "graphs like this" [ label = "  for generating"];
+
+	"dot" -> "pandoc" [ label = "  built with"];
+
+	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
 
 }
 ```
