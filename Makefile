@@ -9,7 +9,7 @@ main: main.o README.pdf
 
 
 README.pdf: README.md
-	pandoc --filter pandoc-plot -o README.pdf README.yml README.md
+	pandoc --filter pandoc-plot --filter pandoc-plantuml -o README.pdf README.yml README.md
 
 
 

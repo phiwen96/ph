@@ -7,7 +7,7 @@ Introduction
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
 [Ph] is a software project that aims to be the facto software for both building and testing the best C++ software.
-It aims to cut loose from other languages in the build steps, instead integrating them directly in the source code such as this:
+It aims to cut loose from other languages in the build process, instead integrating them directly in the source code such as this:
 
 
 
@@ -123,11 +123,28 @@ digraph file_dependencies
 	
 	
 }
+```
 
+```graphviz
+digraph G {
+  graph [class="cats"];
+
+  subgraph cluster_big {
+    graph [class="big_cats"];
+
+    "Lion" [class="yellow social"];
+    "Snow Leopard" [class="white solitary"];
+  }
+}
+```
 
 ```plantuml
 @startuml
-kuk --|> fitta
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
 @enduml
 ```
 
