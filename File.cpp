@@ -56,7 +56,7 @@ namespace ph
 		}
 
 
-		struct file : _error
+		struct file : error_t
 		{
 		private:
 			FILE* _file;
@@ -89,10 +89,10 @@ namespace ph
 
 				/* allocate memory for entire content */
 				Pointer auto buffer = calloc( 1, lSize+1 );
-				if (!buffer) _error::set_error (true);
+				if (!buffer) error_t::set_error (true);
 
 				/* copy the file into the buffer */	
-				if (fread (buffer , lSize, 1 , _file) != 1) _error::set_error (true);
+				if (fread (buffer , lSize, 1 , _file) != 1) error_t::set_error (true);
 			}
 
 			public:
@@ -118,24 +118,24 @@ namespace ph
 				return sz;
 			}
 			
-			file (String auto&& path, String auto&& permissions) : _error {}, _file {file::open (ph::c_string (path), ph::c_string (permissions))}, _data {}
+			file (String auto&& path, String auto&& permissions) : error_t {}, _file {file::open (ph::c_string (path), ph::c_string (permissions))}, _data {}
 			{
 				if (_file == nullptr)
 				{
 					std::cout << "error " << __LINE__ << std::endl;
-					_error::set_error (true);
+					error_t::set_error (true);
 				} else 
 				{
 					file::read ();
 				}
 			}
 
-			file (String auto&& path) : _error {}, _file {file::open (ph::c_string (path), "rw")}, _data {}
+			file (String auto&& path) : error_t {}, _file {file::open (ph::c_string (path), "rw")}, _data {}
 			{
 				if (_file == nullptr)
 				{
 					std::cout << "error " << __LINE__ << std::endl;
-					_error::set_error (true);
+					error_t::set_error (true);
 				} else 
 				{
 					file::read ();
@@ -147,12 +147,12 @@ namespace ph
 
 			// }
 
-			file (file&& other) : _error {(_error&&) other}, _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
+			file (file&& other) : error_t {(error_t&&) other}, _file {(FILE*&&) other._file}, _data {(std::string&&) other._data}
 			{
 
 			}
 
-			file (file const& other) : _error {(_error const&) other}, _file {other._file}, _data {other._data}
+			file (file const& other) : error_t {(error_t const&) other}, _file {other._file}, _data {other._data}
 			{
 				
 			}

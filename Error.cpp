@@ -34,24 +34,24 @@ export
 
 
 
-	struct _error 
+	struct error_t 
 	{
-		constexpr _error (Bool auto&& b) noexcept : __error {b}, _file {nullptr}, _line {0}
+		constexpr error_t (Bool auto&& b) noexcept : __error {b}, _file {nullptr}, _line {0}
 		{
 			// std::cout << __error << std::endl;
 		}
 
-		constexpr _error () noexcept : __error {false}, _file {nullptr}, _line {0}
+		constexpr error_t () noexcept : __error {false}, _file {nullptr}, _line {0}
 		{
 			// std::cout << __error << std::endl;
 		}
 
-		constexpr _error (_error&& other) noexcept : __error {(bool&&) other.__error}, _file (other._file), _line (other._line)
+		constexpr error_t (error_t&& other) noexcept : __error {(bool&&) other.__error}, _file (other._file), _line (other._line)
 		{
 			// std::cout << __error << std::endl;
 		}
 
-		constexpr _error (_error const& other) noexcept : __error {(bool const&) other.__error}, _file (other._file), _line (other._line)
+		constexpr error_t (error_t const& other) noexcept : __error {(bool const&) other.__error}, _file (other._file), _line (other._line)
 		{
 			// std::cout << __error << std::endl;
 		}
@@ -61,7 +61,7 @@ export
 			return __error;
 		}
 
-		constexpr _error& operator= (_error const& rhs) noexcept
+		constexpr error_t& operator= (error_t const& rhs) noexcept
 		{
 			__error = rhs.__error;
 			_line = rhs._line;
@@ -94,13 +94,13 @@ export
 			return __error;
 		}
 
-		constexpr friend _error& operator << (_error& e, String auto const& s)
+		constexpr friend error_t& operator << (error_t& e, String auto const& s)
 		{
 			ph::string::append (e._file, s);
 			return e;
 		}
 
-		friend std::ostream& operator<< (std::ostream& os, _error const& e)
+		friend std::ostream& operator<< (std::ostream& os, error_t const& e)
 		{
 			os << yellow << "error " << white << "(" << blue << e.__error << white << ") ";
 
@@ -114,7 +114,7 @@ export
 			return os;
 		}
 
-		friend constexpr auto error (_error const&, char const*, int) noexcept -> Error auto;
+		friend constexpr auto error (error_t const&, char const*, int) noexcept -> Error auto;
 
 		private:
 		bool __error;
@@ -122,13 +122,13 @@ export
 		int _line;
 	};
 
-	constexpr auto error (_error const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
+	constexpr auto error (error_t const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
 	{
 		ph::string::append (e._file, _file, ph::string::to_string (_line));
 		return e;
 	}
 
-	constexpr auto exit_if_error (_error const& e) noexcept -> void 
+	constexpr auto exit_if_error (error_t const& e) noexcept -> void 
 	{
 		if (e)
 		{
@@ -141,5 +141,5 @@ export
 
 }
 
-static_assert (Error <_error>);
+static_assert (Error <error_t>);
 }

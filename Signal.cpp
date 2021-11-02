@@ -24,19 +24,19 @@ export
     template <int signal_to_catch, 
 			  bool continue_after = true, 
 			  bool dont_block_other_signals = true>
-    struct sig : _error
+    struct sig : error_t
     {
-        sig (auto&& lambda) noexcept : _sa {.sa_handler = lambda}, _error {}
+        sig (auto&& lambda) noexcept : _sa {.sa_handler = lambda}, error_t {}
         {
             init ();
         }
 
-		sig (sig&& other) noexcept : _sa {(struct sigaction&&) other._sa}, _error {(_error&&) other}
+		sig (sig&& other) noexcept : _sa {(struct sigaction&&) other._sa}, error_t {(error_t&&) other}
 		{
 			init ();
 		}
 
-		sig (sig const& other) noexcept : _sa {(struct sigaction const&) other._sa}, _error {(_error const&) other}
+		sig (sig const& other) noexcept : _sa {(struct sigaction const&) other._sa}, error_t {(error_t const&) other}
 		{
 			init ();
 		}
@@ -60,7 +60,7 @@ export
 
 			if (sigaction (signal_to_catch, &_sa, nullptr) == -1) 
 			{
-				_error::set_error (true);
+				error_t::set_error (true);
 			}
 		}
 
