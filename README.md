@@ -1,8 +1,12 @@
-# Introduction
+[Ph]: https://github.com/phiwen96/ph
+
+
+Introduction
+===============
 
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
-This project aims to be the facto software for building the best C++ software.
+[Ph] is a software project that aims to be the facto software for both building and testing the best C++ software.
 It aims to cut loose from other languages in the build steps, instead integrating them directly in the source code such as this:
 
 
@@ -59,7 +63,7 @@ digraph G
 
 ```
 
-"ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
+"Ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
 
 
 It introduces c++ concepts and modules, by which the former it is built around, thus, making it lucrative for industrial applications where the need for precision is critical, and where most of the bugs can be catched before the c++ files are even compiled, thus simply just generating syntax errors for developers. 
@@ -80,7 +84,8 @@ concept String = requires (S s)
 
 
 
-# Goals with this project
+ Goals with this project
+ ===============
 
 - [X] Motivation
 
@@ -96,7 +101,8 @@ concept String = requires (S s)
 
 
 
-# Notes
+Notes
+===============
 
 	At the moment, the project is very dependent on Make (for compiling C++ files into different things and then finally everything into an executable).
 
@@ -123,7 +129,8 @@ Object05 o-- "4" Object06
 Object07 .. Object08 : some labels
 ```
 
-# Details
+Details
+===============
 
 file dependency
 ```graphviz
@@ -165,7 +172,8 @@ Object07 .. Object08 : some labels
 @enduml
 ```
 
-## Project dependencies
+Project dependencies
+---------------
 
 The following graph describes that basically "ph" is a set of files which will either be transformed into a documentation file or into the executable software. 
 
@@ -201,34 +209,44 @@ digraph finite_state_machine {
 }
 ```
 
+---------------
 
-### Source code programming languages:
+
+### Source code written in
 
 [C++]: https://www.cplusplus.com
 
 * [C++]
 
-
-
-## Source code build dependencies
+#### and built with 
 
 [Make]: https://www.gnu.org/software/make/
 
 * [Make]
 
 
+About
+===============
 
 
-### Documentation programming languages:
+
+
+Documentation
+===============
+
+The documentation for [Ph] is dependent on the 
 [Markdown]: https://www.markdownguide.org/basic-syntax/
-[dot]: (https://graphviz.org/doc/info/lang.html)
+[dot]: https://graphviz.org/doc/info/lang.html
 [UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
+[English]: https://en.wikipedia.org/wiki/English_language
 
 * [Markdown]
 * [dot]
 * [UML]
+* [English]
 
-### Documentation build dependencies:
+and built with
+---------------
 [pandoc]: https://pandoc.org
 [pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
 
@@ -236,8 +254,9 @@ digraph finite_state_machine {
 * [pandoc-plot]
 
 
+Licensing
+===============
 
-## Source code licensing
 
 Can be either open or proprietary.
 
