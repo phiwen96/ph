@@ -17,12 +17,7 @@ auto main (int i, char** s) -> int
 	Executable auto app;
 	Error auto err = app.accept_args (app);
 
-	if (err)
-	{
-		
-	}
-
-	return 0;
+	return err;
 }
 ```
 
