@@ -14,8 +14,13 @@ auto main (int i, char** s) -> int
 {
 
 	Arguments auto args = parse_args (i, s);
-	Executable auto app;
-	Error auto err = app.accept_args (app);
+
+	Error auto err = args;
+
+	if (err)
+	{
+		
+	}
 
 	return err;
 }
