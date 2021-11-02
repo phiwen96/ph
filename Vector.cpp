@@ -39,78 +39,41 @@ namespace ph
 		};
 
 		template <typename T, Size auto S, Size auto M>
-		struct vector : ph::_error
+		struct vector : ph::_error, ph::range_t <T>
 		{
 			using self = vector;
 			using element = T;
 
-			constexpr vector () noexcept : _error {}, _max {M}, _data {}, _last {0}
+			constexpr vector () noexcept : _error {}, _max {M}, _begin {}, _end {0}
 			{
 				
 			}
 
 			template <typename... U>
-			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _data {t, u...}, _max {M}, _last {sizeof... (u)}
+			constexpr vector (T &&t, U&&... u) noexcept : _error {}, _begin {t, u...}, _max {M}, _end {sizeof... (u)}, range_t {_begin, _end, _max}
 			{
 
 
 			}
 
-			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _data {o._data}, _max {M}, _last {o._last}
+			constexpr vector (vector&& o) noexcept : _error {(_error&&) o}, _begin {o._begin}, _max {M}, _end {o._end}, range_t {_begin, _end, _max}
 			{
 				
 			}
 
-			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _data {}, _max {M}, _last {o._last}
+			constexpr vector (vector const& o) noexcept : _error {(_error const&) o}, _begin {}, _max {M}, _end {o._end}, range_t {_begin, _end, _max}
 			{
 				for (auto i = 0; i < size (); ++i)
 				{
-					_data [i] = o._data [i];
+					_begin [i] = o._begin [i];
 				}
-			}
-
-			constexpr operator Range auto () noexcept
-			{
-				return range_t {_data, _data + _last};
-			}
-
-			// constexpr auto begin () noexcept -> Iterator auto 
-			// {
-			// 	return &_data;
-			// }
-
-			// constexpr auto end () noexcept -> Iterator auto 
-			// {
-			// 	return (&_data) + size ();
-			// }
-
-			// constexpr auto begin () const noexcept -> Iterator auto 
-			// {
-			// 	return iterator_t {_da ta;
-			// }
-
-			// constexpr auto end () const noexcept -> Iterator auto 
-			// {
-			// 	return (&_data) + size ();
-			// }
-
-			
-
-			// constexpr auto size () const noexcept -> Size auto 
-			// {
-			// 	return _last + 1;
-			// }
-
-			constexpr element& operator [] (Size auto&& s) noexcept
-			{
-				return _data [s];
 			}
 
 
 			friend constexpr self& operator += (self& s, element const& o) noexcept
 			{
-				s._data [s._last + 1] = o;
-				++s._last;
+				s._begin [s._end + 1] = o;
+				++s._end;
 				return s;
 			}
 
@@ -123,7 +86,7 @@ namespace ph
 					s [n + i] = o [i];
 				}
 
-				s._last += o.size () - 1;
+				s._end += o.size () - 1;
 
 				return s;
 			}
@@ -137,11 +100,11 @@ namespace ph
 			// {
 			// 	for (auto i = 0; i < o.size (); ++i)
 			// 	{
-			// 		_data [i] = (element&&) o._data [i];
+			// 		_begin [i] = (element&&) o._begin [i];
 			// 	}
 
 			// 	_max = o._max;
-			// 	_last = o._last;
+			// 	_end = o._end;
 			// 	static_cast <_error&> (*this) = static_cast <_error&> (o);
 
 			// 	return *this;
@@ -151,7 +114,7 @@ namespace ph
 			{
 				for (auto i = 0; i < o.size (); ++i)
 				{
-					_data [i] = o._data [i];
+					_begin [i] = o._begin [i];
 				}
 
 				return *this;
@@ -159,19 +122,19 @@ namespace ph
 
 			constexpr self& operator = (element const& o) noexcept 
 			{ 
-				// _data [0]
-				for (auto i = 0; i <= _last; ++i)
+				// _begin [0]
+				for (auto i = 0; i <= _end; ++i)
 				{
-					_data [i].~element ();
+					_begin [i].~element ();
 				}
 
 				return *this;
 			}
 
 		private:
-			element _data [M];
+			element _begin [M];
 			std::size_t _max;
-			std::size_t _last;
+			std::size_t _end;
 
 		};
 	}
@@ -188,13 +151,13 @@ consteval bool test ()
 
 	Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
 
-	value = v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and v1.size () == 3;
+	value = v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and len (v1) == 3;
 
 	// value = value and (v1 == v1);
 
 	Vector auto v2 = ph::vector <int, 2, 100> {0, 3};
 
-	value = value and (v2 [0] == 0 and v2 [1] == 3 and v2.size () == 2);
+	value = value and (v2 [0] == 0 and v2 [1] == 3 and len (v2) == 2);
 
 	v2 += v1;
 

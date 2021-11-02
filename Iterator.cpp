@@ -78,64 +78,58 @@ namespace ph
 
 
 		template <typename T>
-		struct iterator_t 
-		{
-
-		};
-
-		template <Pointer P>
-		struct iterator_t <P>
+		struct iterator_t
 		{
 			using self = iterator_t;
+			using element = T;
+			using pointer = element*;
 
-			constexpr iterator_t (P b, P e) noexcept : _curr {b}, _begin {b}, _end {e}
+			constexpr iterator_t (pointer c) noexcept : _current {c}
 			{
 
 			}
 
-			constexpr iterator_t (iterator_t&& o) : _curr {(P&&) o._curr}, _begin {(P&&) o._begin}, _end {(P&&) o._end}
+			constexpr iterator_t (iterator_t&& o) : _current {(pointer&&) o.current}
 			{
 
 			}
 
-			constexpr iterator_t (iterator_t const& o) : _curr {o._curr}, _begin {o._begin}, _end {o._end}
+			constexpr iterator_t (iterator_t const& o) : _current {o._current}
 			{
 				
 			}
 
 			constexpr auto operator* () noexcept -> Reference auto
 			{
-				return *_curr;
+				return *_current;
 			}
 
-			constexpr auto operator++ () noexcept -> self& 
+			constexpr auto operator++ () noexcept -> Reference auto
 			{
-				++_curr;
+				++_current;
 				return *this;
 			}
 
-			constexpr auto operator++ (int) noexcept -> self& 
+			constexpr auto operator++ (int) noexcept -> Reference auto 
 			{
-				++_curr;
+				++_current;
 				return *this;
 			}
 
-			constexpr auto operator-- () noexcept -> self& 
+			constexpr auto operator-- () noexcept -> Reference auto 
 			{
-				--_curr;
+				--_current;
 				return *this;
 			}
 
-			constexpr auto operator-- (int) noexcept -> self& 
+			constexpr auto operator-- (int) noexcept -> Reference auto
 			{
-				--_curr;
+				--_current;
 				return *this;
 			}
 
 		private:
-			P _begin;
-			P _end;
-			P _curr;
+			pointer _current;
 		};
 
 
@@ -143,10 +137,10 @@ namespace ph
 
 
 
-		inline constexpr auto begin (Raw_iterator auto&& r1, Raw_iterator auto&& r2) noexcept -> Iterator auto 
-		{
-			return iterator_t {r1, r2};
-		}
+		// inline constexpr auto begin (Raw_iterator auto&& r1, Raw_iterator auto&& r2) noexcept -> Iterator auto 
+		// {
+		// 	return iterator_t {r1, r2};
+		// }
 
 		inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
 		requires requires ()
@@ -201,7 +195,13 @@ namespace ph
 
 	}
 
-	consteval auto test () noexcept -> Bool auto
+	
+
+}
+
+using namespace ph;
+
+consteval auto test () noexcept -> Bool auto
 	{
 		Bool auto b = true;
 
@@ -210,5 +210,3 @@ namespace ph
 	}
 
 	static_assert (test ());
-
-}
