@@ -107,6 +107,16 @@ namespace ph
 
 			}
 
+			constexpr auto begin () noexcept -> Iterator auto 
+			{
+				return iterator_t <element> {_begin};
+			}
+
+			constexpr auto end () noexcept -> Iterator auto 
+			{
+				return iterator_t <element> {_end};
+			}
+
 			constexpr auto begin () const noexcept -> Iterator auto 
 			{
 				return iterator_t <element> {_begin};
