@@ -58,6 +58,9 @@ concept String = requires (S s)
 
 ```graphviz
 digraph finite_state_machine {
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
     rankdir=LR;
     size="8,5"
 
@@ -80,6 +83,10 @@ digraph finite_state_machine {
 
 ```graphviz
 digraph finite_state_machine {
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
+	
 	Memory -> Allocator [ label = " exports"];
 	Memory -> Arena [ label = " exports"];
 	Allocator -> Arena [ label = " uses"];
@@ -94,7 +101,9 @@ digraph finite_state_machine {
 
 ```graphviz
 digraph finite_state_machine {
-    
+    graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
 
     Contiguous  -> Random_access [ label = " is" ];
 	Random_access -> Bidirectional [ label = " is"];
@@ -110,7 +119,9 @@ digraph finite_state_machine {
 
 ```graphviz
 digraph finite_state_machine {
-
+	graph [bgcolor=black]
+	node [fillcolor=black style=filled color=white fontcolor=white]
+	edge [color=white fontcolor=white]
 	ph -> Cplusplus [ label = " source code"];
 	ph -> Markdown [ label = " documentation"];
 	ph -> pandoc [ label = " building documentation"];
@@ -119,15 +130,19 @@ digraph finite_state_machine {
 
 ## Source code licensing
 
+Can be either open or proprietary.
+
 ```graphviz
 digraph finite_state_machine {
 	graph [bgcolor=black]
 	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white]
-	ph -> Cplusplus [ label = " open" fontcolor=white]
+	edge [color=white fontcolor=white]
+	ph -> Cplusplus [ label = " open"]
 	ph -> Markdown [ label = " open"]
 	ph -> pandoc [ label = " open"]
 }
 ```
+
+ <!-- proprietary -->
 
 

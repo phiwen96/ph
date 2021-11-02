@@ -9,16 +9,14 @@ main: main.o README.pdf
 
 
 README.pdf: README.md
-	pandoc --epub-cover-image=README.jpg -o README.pdf README.yml README.md 
-	
-	
-# --lua-filter=diagram_generator.lua
+	pandoc -o README.pdf README.yml README.md --lua-filter=README.lua
 
+# --epub-cover-image=README.jpg 
 
 
 # README.jpg: README.jpg 
 
-# README.yml: README.yml
+# README.yml: README.yml 
 
 # README.yml: RddEADME.yml
 
