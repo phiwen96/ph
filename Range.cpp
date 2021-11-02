@@ -137,7 +137,12 @@ namespace ph
 				return _begin [s];
 			}
 
-			constexpr auto contains (Pointer auto const& p) noexcept -> Bool auto 
+			constexpr auto operator [] (Size auto const& s) noexcept -> element const&
+			{
+				return _begin [s];
+			}
+
+			constexpr auto contains (Pointer auto const& p) const noexcept -> Bool auto 
 			{
  				return std::uintptr_t (p) >= std::uintptr_t (_begin) and std::uintptr_t (p) < std::uintptr_t (_begin) + max ();
 			}

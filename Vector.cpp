@@ -43,7 +43,6 @@ namespace ph
 		{
 			using self = vector;
 			using element = T;
-			// using range_t <T>::range_t;
 
 			constexpr vector () noexcept : _data {}, range_t <element> {_data, _data + S, _data + M}
 			{
