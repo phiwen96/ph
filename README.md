@@ -140,9 +140,15 @@ digraph finite_state_machine {
 	"dot" -> "pandoc" [ label = "  built with"];
 
 	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
-
 }
 ```
+
+### Dependency list:
+* [pandoc-plot](https://github.com/LaurentRDC/pandoc-plot)
+* C++
+* Markdown
+* dot
+* pandoc
 
 ## Source code licensing
 
