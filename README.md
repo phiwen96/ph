@@ -125,7 +125,11 @@ digraph file_dependencies
 }
 
 
-
+```plantuml
+@startuml
+kuk --|> fitta
+@enduml
+```
 
 
 Project dependencies
@@ -205,9 +209,11 @@ and built with
 ---------------
 [pandoc]: https://pandoc.org
 [pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
+[pandoc-plantuml-filter]: https://github.com/timofurrer/pandoc-plantuml-filter
 
 * [pandoc]
 * [pandoc-plot]
+* [pandoc-plantuml-filter]
 
 
 Contribute
