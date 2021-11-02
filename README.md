@@ -10,10 +10,18 @@ It aims to cut loose from other languages in the build steps, instead integratin
 ```{#kuk .cpp .numberLines}
 import Ph.Build;
 
-auto main (int, char**) -> int 
+auto main (int i, char** s) -> int 
 {
 
-	
+	Arguments auto args = get_args (i, s);
+	Executable auto app;
+	Error auto err = app.accept_args (app);
+
+	if (err)
+	{
+		
+	}
+
 	return 0;
 }
 ```
