@@ -194,7 +194,7 @@ static_assert (Range <std::vector <int>>);
 	static_assert (Range <std::array <int, 10>>);
 
 
-	consteval auto test () noexcept -> Bool auto 
+	consteval auto Range_test () noexcept -> Bool auto 
 	{
 		Bool auto b = true;
 		 
@@ -202,4 +202,4 @@ static_assert (Range <std::vector <int>>);
 		return b;
 	}
 
-	static_assert (test ());
+	static_assert (Range_test ());

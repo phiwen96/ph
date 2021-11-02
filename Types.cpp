@@ -32,7 +32,7 @@ namespace ph
 
 using namespace ph;
 
-consteval auto test () noexcept -> Bool auto
+consteval auto Types_test () noexcept -> Bool auto
 {
 	Bool auto b = true;
 
@@ -40,7 +40,7 @@ consteval auto test () noexcept -> Bool auto
 }
 
 
-static_assert (test ()); 
+static_assert (Types_test ()); 
 
 
 

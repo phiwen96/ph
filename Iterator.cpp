@@ -201,7 +201,7 @@ namespace ph
 
 using namespace ph;
 
-consteval auto test () noexcept -> Bool auto
+consteval auto Iterator_test () noexcept -> Bool auto
 	{
 		Bool auto b = true;
 
@@ -209,4 +209,4 @@ consteval auto test () noexcept -> Bool auto
 		return b;
 	}
 
-	static_assert (test ());
+	static_assert (Iterator_test ());
