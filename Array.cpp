@@ -4,6 +4,7 @@ export module Ph.Concepts.Array;
 import Ph.Concepts.Size;
 import Ph.Concepts.Pointer;
 import Ph.Concepts.Bool;
+import Ph.Concepts.Types;
 
 import std;
 
@@ -97,6 +98,9 @@ struct array <T const (&) [N]>
 
 export 
 {
+	template <template <typename...> typename T = types_t>
+	using common_array_types = T <std::array <int, 10>, int const (&) [10]>;
+
 	inline constexpr auto len (auto&& s) noexcept -> Size auto 
 	requires requires ()
 	{
