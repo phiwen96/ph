@@ -22,6 +22,7 @@ import Ph.Concepts.Char;
 import Ph.Concepts.Size;
 import Ph.Concepts.Array;
 import Ph.Concepts.Numbers;
+import Ph.Concepts.Types;
 
 export import std;
 
@@ -31,11 +32,13 @@ namespace ph
 inline namespace string 
 {
 
-// static_assert (not Convertible_to <char const (&) [17], char const*>);
-
 export 
 {
-	// using string = std::string;
+
+	template <template <typename...> typename T = types_t>
+	using common_string_types = T <char const (&)[17], char const*, std::string>;
+
+
 	
 	constexpr auto c_string (char const* a) noexcept -> char const*
 	{
@@ -47,13 +50,6 @@ export
 		return ph::data (a);
 	}
 
-	// constexpr auto c_string (auto&& s) noexcept -> char const* requires requires () {
-	// 	{s.c_str ()} -> Convertible_to <char const*>;
-	// 	// requires (not Array <decltype (s)>);
-	// }
-	// {
-	// 	return s.c_str ();
-	// }
 
 
 	
@@ -63,14 +59,6 @@ export
 		return ph::array::len (a);
 	}
 
-	// constexpr auto len (auto const& s) noexcept -> Size auto 
-	// requires requires () 
-	// {
-	// 	{s.size ()} noexcept -> Size;
-	// }
-	// {
-	// 	return s.size ();
-	// }
 
 	constexpr auto len (auto const& s) noexcept -> Size auto 
 	requires requires () 
@@ -108,9 +96,6 @@ export
 		std::cout << sz << std::endl;
 		String auto r = (char*) malloc (sizeof (char) * sz);
 		std::to_chars (r, r + sz, i);
-		// sprintf (r, "%d", i); 
-		// itoa (i, r, 10);
-		std::cout << "hej" << std::endl;
 		return r;
 	}
 
@@ -142,7 +127,7 @@ export
 		return to_long_integer (s);
 	}
 
-constexpr auto to_integer (String auto&& s) noexcept -> Integer auto 
+	constexpr auto to_integer (String auto&& s) noexcept -> Integer auto 
 	{
 		return atoi (c_string (s));;
 	}

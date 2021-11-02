@@ -75,6 +75,20 @@ digraph finite_state_machine {
 }
 ```
 
+## Concepts architecture
+
+```graphviz
+digraph finite_state_machine {
+	Memory -> Allocator [ label = " exports"];
+	Memory -> Arena [ label = " exports"];
+	Allocator -> Arena [ label = " uses"];
+	Allocator -> Vector [ label = " uses"];
+	Bidirectional -> Forward [ label = " is"];
+    Forward  -> Input  [ label = " is and" ];
+	Forward  -> Output  [ label = " is" ];
+}
+```
+
 ## Iterator-relations
 
 ```graphviz

@@ -55,6 +55,11 @@ namespace ph
 			{
 
 			}
+
+			constexpr friend auto operator + (self lhs, self const& rhs)
+			{
+			
+			}
 			
 		private:
 			element _data [M];
