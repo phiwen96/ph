@@ -72,34 +72,27 @@ consteval bool test ()
 
 	Bool auto value = true;
 
-	Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
+	// Vector auto v1 = ph::vector <int, 3, 100> {0, 1, 2};
 
-	value = v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and len (v1) == 3;
-
-	// value = value and (v1 == v1);
-
-	Vector auto v2 = ph::vector <int, 2, 100> {0, 3};
-
-	value = value and (v2 [0] == 0 and v2 [1] == 3 and len (v2) == 2);
-
-	v2 += v1;
-
-	value = value and (v2 [0] == 0 and v2 [1] == 3) and v2 [2] == 0;
-
-	// value = value and (v2 [3] == 1);
+	// value = v1 [0] == 0 and v1 [1] == 1 and v1 [2] == 2 and len (v1) == 3;
 
 
-	// value = value and (v1 != v2);
+	// Vector auto v2 = ph::vector <int, 2, 100> {0, 3};
+
+	// value = value and (v2 [0] == 0 and v2 [1] == 3 and len (v2) == 2);
+
+	// v2 += v1;
+
+	// value = value and (v2 [0] == 0 and v2 [1] == 3) and v2 [2] == 0;
 
 
 
-	Vector auto v3 = v1;
-
-	// value = value and (v2 [0] == 0 and v2 [1] == 1 and v2 [2] == 2 and v2.size () == 3);
+	// Vector auto v3 = v1;
 
 
 
-	v1 += 3;
+
+	// v1 += 3;
 
 	return value;
 }
