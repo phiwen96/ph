@@ -6,12 +6,23 @@ namespace ph
 {
 	export
 	{
-		
+		template <typename... T>
+		struct types_t 
+		{
+			template <template <typename...> typename U>
+			using types = U <T...>;
+		};
+
+		template <>
+		struct types_t <>
+		{
+
+		};
 
 		template <typename T>
 		concept Types = requires (T t)
 		{
-			true;
+			typename T::template types <types_t>;
 		};
 	}
 }
