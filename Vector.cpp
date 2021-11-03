@@ -7,7 +7,7 @@ import Ph.Concepts.Common;
 import Ph.Concepts.Error;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Array;
-import Ph.Concepts.Pointer;
+import Ph.Concepts.Memory.Pointer;
 // import Ph.Concepts.Iterator;
 import Ph.Concepts.Range;
 import Ph.Concepts.Memory.Allocator;

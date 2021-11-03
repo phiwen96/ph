@@ -11,7 +11,7 @@ create new foo.cpp or foo2.cpp if already exists if calling open () without args
 import Ph.Concepts.Same_as;
 import Ph.Concepts.String;
 import Ph.Concepts.Error;
-import Ph.Concepts.Pointer;
+import Ph.Concepts.Memory.Pointer;
 import Ph.Concepts.Array;
 import Ph.Concepts.Bool;
 import Darwin;

@@ -9,7 +9,7 @@ export import Ph.Concepts.Core;
 export import Ph.Concepts.Char;
 export import Ph.Concepts.String;
 export import Ph.Concepts.Strings;
-export import Ph.Concepts.Pointer;
+
 export import Ph.Concepts.Number;
 export import Ph.Concepts.Error;
 export import Ph.Concepts.Void;

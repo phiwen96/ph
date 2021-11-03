@@ -5,7 +5,7 @@ import Ph.Concepts.Reference;
 import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Element;
-import Ph.Concepts.Pointer;
+import Ph.Concepts.Memory.Pointer;
 import std;
 
 /*

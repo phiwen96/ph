@@ -33,137 +33,11 @@ auto main (int i, char** s) -> int
 	return err;
 }
 ```
-
 ```graphviz
-digraph G
+digraph F
 {
-	center=true;
-	compound=true;
-	graph [bgcolor=black fontcolor=white color=white];
-	node [fillcolor=black style=filled color=white fontcolor=white];
-	edge [color=white fontcolor=white];
-			nodesep=.05;
-			rankdir=LR;
-			node [shape=record,width=.1,height=.1];
+struct1 [shape=record,label="<f0> left|<main> main|<f2> right"];
 
-	subgraph cluster0
-	{
-
-		label = "Ph   (ph::)"
-		URL = "https://github.com/phiwen96/ph/blob/0.0.0/Ph.cpp"
-
-		subgraph cluster00 
-		{
-			label = "Concepts"
-			URL = "https://github.com/phiwen96/ph/blob/0.0.0/Concepts.cpp"
-			
-
-			"Convertible to" [URL = "https://github.com/phiwen96/ph/blob/0.0.0/Convertible_to.cpp"]
-			"Bool" -> "Convertible to" [URL = "https://github.com/phiwen96/ph/blob/0.0.0/Bool.cpp"]
-			"Void"
-			"Size"
-			
-			"Server" 
-			
-			"Same as"
-			
-			"Range"
-			
-
-
-			"String";
-			"Strings" -> "Vector" [label="  exports"];
-			"Strings" -> "String" [label="  exports"];
-			"Strings" -> "Range" [label="  imports"];
-
-			"File";
-			"Error";
-			"Tuple";
-			
-			"Debug";
-
-			
-
-			subgraph cluster000
-			{
-				label = "Memory"
-				"Arena"
-				"Allocator" -> "Arena" [label = "exports"]
-				
-			}
-
-			"Vector" -> "Allocator" [label = "  imports"]
-			"Vector" -> "Arena" [label = "  imports"]
-
-			"String" -> "Vector" [label = "  imports"]
-
-			subgraph cluster001 
-			{
-				label = "Number"
-				"Signed"
-				"Unsigned"
-			}
-
-			subgraph cluster002
-			{
-				label = "Process"
-
-				"Semaphore"
-				"Signal"
-				"Shared memory"
-				"Message queue"
-				"Mapped file"
-			}
-
-			subgraph cluster003
-			{
-				label = "Network"
-
-				"Server"
-				"Client"
-				"Port"
-				"IPv4"
-				"IPv6"
-			}
-
-			subgraph cluster004
-			{
-				label = "Types   (types::)"
-
-				"Transform"
-
-				subgraph cluster0040
-				{
-					label = "List"
-
-					"Front"
-					"Back"
-					"Transform"
-				}
-				
-			}
-		}
-
-
-		subgraph cluster01
-		{
-		
-			label = "Build"
-			Arguments [shape=record, label = "<f0> Arguments 
-				|{<f1> + parse_args (Strings) - Arguments }
-			"];
-
-			Arguments -> "Strings"
-
-			
-			
-		}
-
-		"Color"
-	}
-
-	"main.cpp" -> "Arguments" [label = "imports"]
-	"main.cpp" -> "Error" [label = "imports"]
 
 
 	
@@ -215,6 +89,28 @@ concept String = requires (S s)
 
 Details
 ===============
+
+```graphviz
+digraph structs 
+{
+	compound=true;
+	graph [bgcolor=black fontcolor=white color=white];
+	node [fillcolor=black style=filled color=white fontcolor=white];
+	edge [color=white fontcolor=white];
+
+	"Ph"
+
+	"Ph" -> "Range" [label = "  exports"]
+	"Strings" -> "String" [label = "  imports"]
+	"String" -> "Char" [label = "  exports"]
+	"String" -> "Vector" [label = "  imports"]
+	"Strings" -> "Vector" [label = "  imports"]
+	"Ph" -> "Vector" [label = "  exports"]
+	"Ph" -> "Strings" [label = "  exports"]
+	"Ph" -> "String" [label = "  exports"]
+	"Ph" -> "Types" [label = "  exports"]
+}
+```
 
 file dependency
 ```graphviz

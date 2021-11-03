@@ -1,4 +1,4 @@
-export module Ph.Concepts.Pointer;
+export module Ph.Concepts.Memory.Pointer;
 
 
 namespace ph 

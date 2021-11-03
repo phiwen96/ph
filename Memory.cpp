@@ -1,12 +1,17 @@
+import std;
+
+
 export module Ph.Concepts.Memory;
 
 export import Ph.Concepts.Memory.Allocator;
 export import Ph.Concepts.Memory.Arena;
 export import Ph.Concepts.Memory.Size;
+export import Ph.Concepts.Memory.Pointer;
 
 import Ph.Concepts.Bool;
 import Ph.Concepts.Error;
-import std;
+
+
 
 // auto allocated = size_t{0};
 // 		// Overload operator new and delete to track allocations

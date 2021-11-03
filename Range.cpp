@@ -5,7 +5,7 @@ import Ph.Concepts.Bool;
 import Ph.Concepts.Constant;
 import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Element;
-import Ph.Concepts.Pointer;
+import Ph.Concepts.Memory.Pointer;
 import Ph.Concepts.Iterator;
 
 import std;
@@ -152,7 +152,7 @@ namespace ph
 				return ptrdiff_t {_end - _begin};
 			}
 
-		private:
+		protected:
 			pointer _begin;
 			pointer _end;
 			pointer _max;
