@@ -41,8 +41,7 @@ namespace ph
 		{
 
 			template <template <typename...> typename T>
-			requires true
-			using common_string_types = int;//T <char const (&)[17], char const*, std::string>;
+			using common_string_types = T <char const (&)[17], char const*, std::string>;
 
 
 			
@@ -191,7 +190,7 @@ consteval auto Strings_test () -> bool
 
 	String auto s1 = "hej";
 
-	auto i = common_string_types <tuple_t> {};
+	auto i = common_string_types <types_t> {};
 	
 	return true;
 }

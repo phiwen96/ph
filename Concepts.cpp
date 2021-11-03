@@ -29,6 +29,7 @@ export import Ph.Concepts.Constant;
 export import Ph.Concepts.Range;
 export import Ph.Concepts.Element;
 export import Ph.Concepts.Types;
+export import Ph.Concepts.Transform;
 
 
 namespace ph 
