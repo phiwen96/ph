@@ -42,7 +42,6 @@ Ph.pcm: Ph.cpp Debug.pcm Build.pcm Get.pcm Process.pcm Fork.pcm Color.pcm Byte.p
 Debug.pcm: Debug.cpp String.pcm Error.pcm Color.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Error.pcm -fmodule-file=Color.pcm -c $< -Xclang -emit-module-interface -o $@
 
-
 Build.pcm: Build.cpp Arguments.pcm 
 	$(CC) $(FLAGS) -fmodule-file=Arguments.pcm -c $< -Xclang -emit-module-interface -o $@
 
@@ -54,7 +53,6 @@ Get.pcm: Get.cpp
 
 Fork.pcm: Fork.cpp Concepts.pcm PhCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
-
 
 Dependencies.pcm: Dependencies.cpp Concepts.pcm PhCore.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -fmodule-file=PhCore.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -179,7 +177,6 @@ Integer.pcm: Integer.cpp Convertible_to.pcm
 Done.pcm: Done.cpp Void.pcm Bool.pcm
 	$(CC) $(FLAGS) -fmodule-file=Void.pcm -fmodule-file=Bool.pcm -c $< -Xclang -emit-module-interface -o $@
 
-
 Void.pcm: Void.cpp Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
@@ -207,7 +204,6 @@ Enum.pcm: Enum.cpp ConceptsCore.pcm
 Bool.pcm: Bool.cpp Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Convertible_to.pcm -c $< -Xclang -emit-module-interface -o $@
 
-
 Not.pcm: Not.cpp Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
@@ -231,7 +227,6 @@ Pointer.pcm: Pointer.cpp
 
 Color.pcm: Color.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
-
 
 Common.pcm: Common.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
