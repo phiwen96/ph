@@ -1,6 +1,6 @@
 export module Ph.Concepts.Types.List.Front;
 
-namespace ph
+namespace ph::type
 {
 	export 
 	{

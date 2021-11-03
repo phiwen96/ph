@@ -6,7 +6,7 @@ export import Ph.Concepts.Types.List.Front;
 export import Ph.Concepts.Types.List.Back;
 export import Ph.Concepts.Types.List.Transform;
 
-namespace ph
+namespace ph::type
 {
 	// template <typename...>
 	// struct back_type_t;
@@ -25,7 +25,7 @@ namespace ph
 	export 
 	{
 		template <typename...>
-		struct typelist_t
+		struct list_t
 		{
 
 		};
@@ -51,11 +51,11 @@ namespace ph
 	}
 }
 
-using namespace ph;
+using namespace ph::type;
 
 consteval bool Typelist_test ()
 {
-	static_assert (Typelist <typelist_t <int, char>>);
+	static_assert (Typelist <list_t <int, char>>);
 	// static_assert (Same_as <typename front_t <typelist_t <int, char>>::type, int>);
 	// static_assert (Typelist <Typelist_t <int>>);
 	// static_assert (Typelist <Typelist_t <>>);

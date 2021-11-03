@@ -1,6 +1,6 @@
 export module Ph.Concepts.Types.List.Back;
 
-namespace ph
+namespace ph::type
 {
 	export 
 	{
