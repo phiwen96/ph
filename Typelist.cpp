@@ -4,34 +4,52 @@ import Ph.Concepts.Same_as;
 
 namespace ph
 {
-	template <typename...>
-	struct back_type_t;
+	// template <typename...>
+	// struct back_type_t;
 
-	template <typename T, typename... U>
-	struct back_type_t <T, U...>
+	// template <template <typename...> typename T, typename U, typename... V>
+	// struct back_type_t <T <U, V...>>
+	// {
+	// 	using type = typename back_type_t <U...>::type;
+	// };
+
+	// template <typename T>
+	// struct back_type_t <T>
+	// {
+	// 	using type = T;
+	// };
+	export 
 	{
-		using type = typename back_type_t <U...>::type;
+		template <typename...>
+		struct typelist_t
+		{
+
+		};
+	}
+
+
+
+	template <typename>
+	struct front_t;
+
+	template <template <typename...> typename T, typename U, typename... V>
+	struct front_t <T <U, V...>>
+	{
+		using type = U;
 	};
 
-	template <typename T>
-	struct back_type_t <T>
+
+
+	template <typename>
+	struct pop_front_t;
+
+		template <template <typename...> typename T, typename U, typename... V>
+	struct pop_front_t <T <U, V...>>
 	{
-		using type = T;
-	};
+		using type = T <V...>;
+	} ;
 
-
-
-
-	template <typename...>
-	struct front_type_t;
-
-	template <typename T, typename... U>
-	struct front_type_t <T, U...>
-	{
-		using type = T;
-	};
-
-
+	static_assert (Same_as <typename pop_front_t <typelist_t <int, char>>::type, typelist_t <char>>);
 
 
 	export 
@@ -42,15 +60,11 @@ namespace ph
 		template <typename T>
 		concept Typelist = requires ()
 		{
-			typename front_type_t <T>::type;
-			typename back_type_t <T>::type;
+			typename front_t <T>::type;
+			// typename back_type_t <T>::type;
 		};
 
-		template <typename...>
-		struct typelist_t
-		{
-
-		};
+		
 
 	}
 }
@@ -60,6 +74,7 @@ using namespace ph;
 consteval bool Typelist_test ()
 {
 	static_assert (Typelist <typelist_t <int, char>>);
+	// static_assert (Same_as <typename front_t <typelist_t <int, char>>::type, int>);
 	// static_assert (Typelist <Typelist_t <int>>);
 	// static_assert (Typelist <Typelist_t <>>);
 
