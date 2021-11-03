@@ -5,8 +5,7 @@ import Ph.Concepts.Same_as;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 import std;
-import Ph.Color;
-import Ph.Concepts.String;
+
 namespace ph 
 {
 
@@ -190,25 +189,25 @@ export
 			return __error;
 		}
 
-		constexpr friend error_t& operator << (error_t& e, String auto const& s)
-		{
-			ph::string::append (e._file, s);
-			return e;
-		}
+		// constexpr friend error_t& operator << (error_t& e, String auto const& s)
+		// {
+		// 	ph::string::append (e._file, s);
+		// 	return e;
+		// }
 
-		friend std::ostream& operator<< (std::ostream& os, error_t const& e)
-		{
-			os << yellow << "error " << white << "(" << blue << e.__error << white << ") ";
+		// friend std::ostream& operator<< (std::ostream& os, error_t const& e)
+		// {
+		// 	os << yellow << "error " << white << "(" << blue << e.__error << white << ") ";
 
-			if (e._file != nullptr) 
-			{
-				os << red << (char const*) e._file << ":" << e._line << white;
-			}
+		// 	if (e._file != nullptr) 
+		// 	{
+		// 		os << red << (char const*) e._file << ":" << e._line << white;
+		// 	}
 
 			
 
-			return os;
-		}
+		// 	return os;
+		// }
 
 		friend constexpr auto error (error_t const&, char const*, int) noexcept -> Error auto;
 
@@ -218,12 +217,12 @@ export
 		int _line;
 	};
 
-	template <typename... T>
-	constexpr auto error (error_t <T...> const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
-	{
-		ph::string::append (e._file, _file, ph::string::to_string (_line));
-		return e;
-	}
+	// template <typename... T>
+	// constexpr auto error (error_t <T...> const& e, char const* _file = __builtin_FILE (), int _line = __builtin_LINE ()) noexcept -> Error auto
+	// {
+	// 	ph::string::append (e._file, _file, ph::string::to_string (_line));
+	// 	return e;
+	// }
 
 	template <typename... T>
 	constexpr auto exit_if_error (error_t <T...> const& e) noexcept -> void 

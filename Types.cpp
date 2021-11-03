@@ -7,9 +7,14 @@ import Ph.Concepts.Bool;
 
 import std;
 
-namespace ph
+namespace ph::type
 {
 	
+	export 
+	{
+		template <typename... T>
+		using common = std::common_type_t <T...>;
+	}
 }
 
 

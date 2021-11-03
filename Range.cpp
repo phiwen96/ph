@@ -3,7 +3,7 @@ export module Ph.Concepts.Range;
 import Ph.Concepts.Reference;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Constant;
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Element;
 import Ph.Concepts.Pointer;
 import Ph.Concepts.Iterator;

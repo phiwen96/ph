@@ -42,6 +42,9 @@ digraph G
 	graph [bgcolor=black fontcolor=white color=white];
 	node [fillcolor=black style=filled color=white fontcolor=white];
 	edge [color=white fontcolor=white];
+			nodesep=.05;
+			rankdir=LR;
+			node [shape=record,width=.1,height=.1];
 
 	subgraph cluster0
 	{
@@ -71,6 +74,7 @@ digraph G
 			"String";
 			"Strings" -> "Vector" [label="  exports"];
 			"Strings" -> "String" [label="  exports"];
+			"Strings" -> "Range" [label="  imports"];
 
 			"File";
 			"Error";
@@ -140,11 +144,18 @@ digraph G
 			}
 		}
 
+
 		subgraph cluster01
 		{
+		
 			label = "Build"
+			Arguments [shape=record, label = "<f0> Arguments 
+				|{<f1> + parse_args (Strings) - Arguments }
+			"];
 
-			"Arguments" -> "Strings" [label = "exports"];
+			Arguments -> "Strings"
+
+			
 			
 		}
 

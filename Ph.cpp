@@ -13,6 +13,7 @@ export module Ph;
     X (Process)
 	X (Get)
 	X (Build)
+	X (Debug)
 	
 
 

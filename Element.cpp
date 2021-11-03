@@ -1,6 +1,6 @@
 export module Ph.Concepts.Element; 
 
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 
 
 namespace ph 

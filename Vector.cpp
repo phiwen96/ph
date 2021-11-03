@@ -2,7 +2,7 @@ export module Ph.Concepts.Vector;
 
 import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Reference;
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Common;
 import Ph.Concepts.Error;
 import Ph.Concepts.Bool;
@@ -10,6 +10,8 @@ import Ph.Concepts.Array;
 import Ph.Concepts.Pointer;
 // import Ph.Concepts.Iterator;
 import Ph.Concepts.Range;
+import Ph.Concepts.Memory.Allocator;
+import Ph.Concepts.Memory.Arena;
 
 import std;
 
@@ -38,31 +40,16 @@ namespace ph
 			
 		};
 
-		template <typename T, Size auto S, Size auto M>
+		template <typename T, Allocator A = allocator <T>>
 		struct vector : range_t <T>
 		{
 			using self = vector;
 			using element = T;
 
-			constexpr vector () noexcept : _data {}, range_t <element> {_data, _data + S, _data + M}
-			{
-				return range_t <T> {};
-			}
-
-			template <typename... U>
-			requires requires () {requires Convertible_to <common <U...>, element>;}
-			constexpr vector (U&&... u) noexcept : _data {(element&&) u...}, range_t <element> {_data, _data + S, _data + M}
-			{
-
-			}
-
-			constexpr friend auto operator + (self lhs, self const& rhs)
-			{
 			
-			}
 			
 		private:
-			element _data [M];
+		
 		};
 	}
 	

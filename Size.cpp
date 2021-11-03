@@ -1,4 +1,4 @@
-export module Ph.Concepts.Size;
+export module Ph.Concepts.Memory.Size;
 
 import Ph.Concepts.Convertible_to;
 import std;

@@ -1,7 +1,7 @@
 export module Ph.Concepts.Array;
 
 
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Pointer;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Types;

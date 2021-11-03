@@ -19,12 +19,12 @@ import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Number.Integer;
 import Ph.Concepts.Number.Float;
 import Ph.Concepts.Char;
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Array;
 import Ph.Concepts.Number;
 import Ph.Concepts.Types;
 import Ph.Concepts.Tuple;
-
+import Ph.Concepts.Vector;
 export import std;
 
 #define COMMON_STRING_TYPES \
@@ -175,6 +175,11 @@ namespace ph
 				}
 			}
 
+			template <Char C = char>
+			struct str : vector <C>
+			{
+
+			};
 		}
 	}
 }

@@ -2,6 +2,7 @@ export module Ph.Concepts.Memory;
 
 export import Ph.Concepts.Memory.Allocator;
 export import Ph.Concepts.Memory.Arena;
+export import Ph.Concepts.Memory.Size;
 
 import Ph.Concepts.Bool;
 import Ph.Concepts.Error;

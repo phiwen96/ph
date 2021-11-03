@@ -5,6 +5,15 @@ import Darwin;
 
 using namespace ph;
 
+auto operator new[](size_t size) -> void* {
+ void* p = std::malloc(size);
+ std::cout << "allocated " << size << " byte(s) with new[]\n";
+ return p;
+}
+auto operator delete[](void* p) noexcept -> void {
+ std::cout << "deleted memory with delete[]\n";
+ return std::free(p);
+}
 
 auto main (int i, char** s) -> int
 { 

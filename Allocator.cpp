@@ -3,6 +3,10 @@ export module Ph.Concepts.Memory.Allocator;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Memory.Arena;
 
+// auto* memory = std::malloc(sizeof(User));
+// auto* user = ::new (memory) User("john");
+// user->~User();
+// std::free(memory);
 
 namespace ph 
 {
@@ -14,9 +18,10 @@ namespace ph
 			true;
 		};
 
-		struct allocator_t 
+		template <typename T>
+		struct allocator
 		{
-
+			
 		};
 	}
 }

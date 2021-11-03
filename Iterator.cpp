@@ -2,7 +2,7 @@ export module Ph.Concepts.Iterator;
 
 import Ph.Concepts.Constant;
 import Ph.Concepts.Reference;
-import Ph.Concepts.Size;
+import Ph.Concepts.Memory.Size;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Element;
 import Ph.Concepts.Pointer;

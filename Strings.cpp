@@ -17,8 +17,11 @@ namespace ph
 			{s [0]} -> Reference;
 		};
 
-		template <String T = string;
-		struct 
+		template <String T = str <>>
+		struct strings_t 
+		{
+
+		};
 	}
 }
 
