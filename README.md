@@ -37,30 +37,38 @@ auto main (int i, char** s) -> int
 digraph G 
 {
 	compound=true;
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
+	graph [bgcolor=black fontcolor=white color=white];
+	node [fillcolor=black style=filled color=white fontcolor=white];
+	edge [color=white fontcolor=white];
 
-	main [ label = "  main"];
-
-	PhBuild [ label = "  Ph.Build"];
-
-	<!-- PhConcepts [ label = " Ph.Concepts"]; -->
-
-	PhConceptsInteger [ label = "  Ph.Concepts.Integer"];
-
-	main -> "Ph.Build"
-
-	main -> "Ph.Concepts.Integer"
-
-		subgraph kmkm 
-	{ 
-
-		"Ph.Concepts.Integer"; 
-		"Ph.Concepts.Number";
+	subgraph cluster0
+	{
+		label = "Ph"
+		
+		subgraph cluster1 
+		{
+			label = "Concepts"
+			"String";
+			a -> b;
+			a -> c;
+			b -> d;
+			c -> d;
+		}
 	}
-}
 
+	
+	subgraph cluster2
+	{
+		e -> g;
+		e -> f;
+	}
+	b -> f [lhead=cluster2];
+	d -> e;
+	c -> g [ltail=cluster1,
+	lhead=cluster2];
+	c -> e [ltail=cluster1];
+	d -> h;
+}
 ```
 
 "Ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
@@ -116,12 +124,10 @@ digraph G
 	node [fillcolor=black style=filled color=white fontcolor=white];
 	edge [color=white fontcolor=white];
 
-	subgraph cluster0 
-	{
-		label = "main.o"
-		"main.cpp"
-		"Ph.pcm"
-	}
+	
+	"main.o" -> "main.cpp"
+	"main.o" -> "Ph.pcm"
+	
 }
 ```
 
@@ -141,15 +147,6 @@ digraph G {
 }
 ```
 
-```plantuml
-@startuml
-Class01 <|-- Class02
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 -- Class10
-@enduml
-```
 
 
 Project dependencies
