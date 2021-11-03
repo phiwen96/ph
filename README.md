@@ -45,14 +45,21 @@ digraph G
 	{
 		label = "Ph"
 
-		struct1 [shape=record,label="<f0> left|{<f1> mid\ dle|<f2> right}"];
-
 		subgraph cluster00 
 		{
 			label = "Concepts"
 
 			"String";
 			"Error";
+			"Number";
+			"Debug";
+
+			subgraph cluster000
+			{
+				label = "Memory"
+				"Allocator"
+				"Arena"
+			}
 		}
 
 		subgraph cluster01
@@ -70,17 +77,7 @@ digraph G
 
 	
 	
-	subgraph cluster2
-	{
-		e -> g;
-		e -> f;
-	}
-	b -> f [lhead=cluster2];
-	d -> e;
-	c -> g [ltail=cluster1,
-	lhead=cluster2];
-	c -> e [ltail=cluster1];
-	d -> h;
+	
 }
 ```
 
