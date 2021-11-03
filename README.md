@@ -14,8 +14,7 @@ It aims to cut loose from other languages in the build process, instead integrat
 
 
 ```{#kuk .cpp .numberLines}
-import Ph.Build;
-import Ph.Concepts.Integer;
+import Ph;
 
 auto main (int i, char** s) -> int 
 {

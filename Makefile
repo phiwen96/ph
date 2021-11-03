@@ -36,8 +36,14 @@ main.o: main.cpp Ph.pcm
 # 1
 # $(CURDIR)
 
-Ph.pcm: Ph.cpp Get.pcm Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
-	$(CC) $(FLAGS) -fmodule-file=Get.pcm -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
+Ph.pcm: Ph.cpp Build.pcm Get.pcm Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
+	$(CC) $(FLAGS) -fmodule-file=Build.pcm -fmodule-file=Get.pcm -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Build.pcm: Build.cpp Arguments.pcm 
+	$(CC) $(FLAGS) -fmodule-file=Arguments.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Arguments.pcm: Arguments.cpp String.pcm
+	$(CC) $(FLAGS) -fmodule-file=String.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Get.pcm: Get.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
