@@ -26,6 +26,12 @@ import Ph.Concepts.Types;
 
 export import std;
 
+#define COMMON_STRING_TYPES \
+	X (char const (&) [10]) \
+	X (char const*) \
+	X (std::string)
+
+
 namespace ph
 {
 	inline namespace string 
@@ -33,8 +39,8 @@ namespace ph
 		export 
 		{
 
-			template <template <typename...> typename T = types_t>
-			using common_string_types = T <char const (&)[17], char const*, std::string>;
+			template <template <typename...> typename T>
+			using common_string_types = int;//T <char const (&)[17], char const*, std::string>;
 
 
 			

@@ -27,6 +27,9 @@ consteval auto Strings_test () -> bool
 	static_assert (Strings <std::vector <std::string>>);
 	static_assert (Strings <std::array <std::string, 10>>);
 	static_assert (Strings <std::vector <char const*>>);
+
+	// Strings auto s1 = {"hej", "då"};
+
 	return true;
 }
 
