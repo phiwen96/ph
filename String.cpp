@@ -190,7 +190,7 @@ consteval auto Strings_test () -> bool
 
 	String auto s1 = "hej";
 
-	auto i = common_string_types <types_t> {};
+	auto i = common_string_types <type_list_t> {};
 	
 	return true;
 }

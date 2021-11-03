@@ -108,6 +108,14 @@ digraph G
 				"IPv4"
 				"IPv6"
 			}
+
+			subgraph cluster004
+			{
+				label = "Types"
+
+				"Transform"
+				"Type list"
+			}
 		}
 
 		subgraph cluster01

@@ -98,7 +98,7 @@ struct array <T const (&) [N]>
 
 export 
 {
-	template <template <typename...> typename T = types_t>
+	template <template <typename...> typename T>
 	using common_array_types = T <std::array <int, 10>, int const (&) [10]>;
 
 	inline constexpr auto len (auto&& s) noexcept -> Size auto 

@@ -100,8 +100,8 @@ Signal.pcm: Signal.cpp ProcessCore.pcm Concepts.pcm PhCore.pcm
 PhCore.pcm: PhCore.cpp Concepts.pcm
 	$(CC) $(FLAGS) -fmodule-file=Concepts.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Concepts.pcm: Concepts.cpp ConceptsCore.pcm Transform.pcm Strings.pcm Tuple.pcm Number.pcm Memory.pcm Types.pcm Element.pcm Range.pcm Constant.pcm Reference.pcm Vector.pcm File.pcm Any_of.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Number.pcm Function.pcm Iterator.pcm
-	$(CC) $(FLAGS) -fmodule-file=Transform.pcm -fmodule-file=Strings.pcm -fmodule-file=Tuple.pcm -fmodule-file=Number.pcm -fmodule-file=Memory.pcm -fmodule-file=Types.pcm -fmodule-file=Element.pcm -fmodule-file=Range.pcm -fmodule-file=Constant.pcm -fmodule-file=ConceptsCore.pcm -fmodule-file=Reference.pcm -fmodule-file=Vector.pcm -fmodule-file=File.pcm -fmodule-file=Any_of.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Number.pcm  -fmodule-file=Function.pcm -fmodule-file=Iterator.pcm -c $< -Xclang -emit-module-interface -o $@
+Concepts.pcm: Concepts.cpp ConceptsCore.pcm Strings.pcm Tuple.pcm Number.pcm Memory.pcm Types.pcm Element.pcm Range.pcm Constant.pcm Reference.pcm Vector.pcm File.pcm Any_of.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Number.pcm Function.pcm Iterator.pcm
+	$(CC) $(FLAGS) -fmodule-file=Strings.pcm -fmodule-file=Tuple.pcm -fmodule-file=Number.pcm -fmodule-file=Memory.pcm -fmodule-file=Types.pcm -fmodule-file=Element.pcm -fmodule-file=Range.pcm -fmodule-file=Constant.pcm -fmodule-file=ConceptsCore.pcm -fmodule-file=Reference.pcm -fmodule-file=Vector.pcm -fmodule-file=File.pcm -fmodule-file=Any_of.pcm -fmodule-file=Class.pcm -fmodule-file=Enum.pcm -fmodule-file=Byte.pcm -fmodule-file=Array.pcm -fmodule-file=String.pcm -fmodule-file=Pointer.pcm -fmodule-file=Char.pcm -fmodule-file=Size.pcm -fmodule-file=Number.pcm  -fmodule-file=Function.pcm -fmodule-file=Iterator.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Strings.pcm: Strings.cpp String.pcm Range.pcm Char.pcm Reference.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Range.pcm -fmodule-file=Char.pcm -fmodule-file=Reference.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -154,10 +154,13 @@ Iterator.pcm: Iterator.cpp Pointer.pcm Element.pcm Bool.pcm Size.pcm Constant.pc
 Tuple.pcm: Tuple.cpp Types.pcm
 	$(CC) $(FLAGS) -fmodule-file=Types.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Types.pcm: Types.cpp Transform.pcm Bool.pcm Pointer.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Transform.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
+Types.pcm: Types.cpp Type_list.pcm Transform.pcm Bool.pcm Pointer.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Type_list.pcm -fmodule-file=Transform.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Transform.pcm: Transform.cpp
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+Type_list.pcm: Type_list.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 Float.pcm: Float.cpp Convertible_to.pcm
