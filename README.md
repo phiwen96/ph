@@ -428,12 +428,12 @@ digraph finite_state_machine {
 ```
 
 
-# ✨Phan✨
+# ✨Ph.Language✨
 ## _"A simple, yet a powerful programming language aimed against code repetition"_
 
 
 
-Phan is a new programming language developed by Philip Wenkel. It is a simple, yet efficient, programming language written in the high performance language C++. It makes a great antidote for text repetition, whether it is for coding or really anything else. It also makes it much easier to create template files or folder structures for your projects, which drastically improves your production time and prevents you from making simple errors. I bet that, if you are like most people, creating a new project can really take time and effort. Probably you have some prepared base project structure which you pretty much copy-paste to the new one and just rename everything to fit your current project name. Enough of words, lets look at an example of how to use phan to simplify code repetition in c++. Then, we will look at how to use phan as a tool when writing a simple document. Last but not least, we will see how it can also be used with files and folders.
+Ph.Language is a new programming language developed by Philip Wenkel. It is a simple, yet efficient, programming language written in the high performance language C++. It makes a great antidote for text repetition, whether it is for coding or really anything else. It also makes it much easier to create template files or folder structures for your projects, which drastically improves your production time and prevents you from making simple errors. I bet that, if you are like most people, creating a new project can really take time and effort. Probably you have some prepared base project structure which you pretty much copy-paste to the new one and just rename everything to fit your current project name. Enough of words, lets look at an example of how to use Ph.Language to simplify code repetition in c++. Then, we will look at how to use Ph.Language as a tool when writing a simple document. Last but not least, we will see how it can also be used with files and folders.
 
 ```c++
 export module Ph.Concepts;
@@ -471,13 +471,28 @@ export import Ph.Concepts.Types;
 
 ```c++
 export module Ph.Concepts;
-@ add library -> {export import Ph.Concepts.{0}}
-@ library =
+
+@ (library) =
 	Tuple
 	Bool
+	Types
 
-library : add library
+$ (library : add library)
+{
+	export import Ph.Concepts.${library}
+}
 
+```
+
+or 
+
+```c++
+export module Ph.Concepts;
+@ (add library) -> {export import Ph.Concepts.${0}}
+@ (library) =
+	Tuple
+	Bool
+	Types
 ```
 
 ```c++
@@ -503,7 +518,7 @@ struct Foo <2>
 };
 ```
 
-As you can see, every template specialization of Foo is pretty much the same, except for two places, where only a number changes. Lets use phan to help us out with this boring and cumbersome code repetition.
+As you can see, every template specialization of Foo is pretty much the same, except for two places, where only a number changes. Lets use Ph.Language to help us out with this boring and cumbersome code repetition.
 
 ```c++
 template <int>
@@ -511,7 +526,8 @@ struct Foo;
 
 @(type){inline static constexpr int}
 
-$(0 i 3){
+$(0 i 3)
+{
     template <>
     struct Foo <${i}>
     {
@@ -550,14 +566,14 @@ Yours sincerely, Philip Wenkel
 
 <!-- ## Installation
 
-Phan requires [CMake](https://cmake.org) 3.19.4 to run. -->
+Ph.Language requires [CMake](https://cmake.org) 3.19.4 to run. -->
 
 
 
 
 ## Usage
 ```sh
-phan input_file.txt output_file.txt
+Ph.Language input_file.txt output_file.txt
 ```
 
 
