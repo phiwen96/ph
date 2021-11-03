@@ -154,13 +154,13 @@ Iterator.pcm: Iterator.cpp Pointer.pcm Element.pcm Bool.pcm Size.pcm Constant.pc
 Tuple.pcm: Tuple.cpp Types.pcm
 	$(CC) $(FLAGS) -fmodule-file=Types.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Types.pcm: Types.cpp Type_list.pcm Transform.pcm Bool.pcm Pointer.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Type_list.pcm -fmodule-file=Transform.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
+Types.pcm: Types.cpp Typelist.pcm Transform.pcm Bool.pcm Pointer.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Typelist.pcm -fmodule-file=Transform.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Transform.pcm: Transform.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
-Type_list.pcm: Type_list.cpp
+Typelist.pcm: Typelist.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 Float.pcm: Float.cpp Convertible_to.pcm
