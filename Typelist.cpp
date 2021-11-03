@@ -38,6 +38,8 @@ namespace ph
 		using type = U;
 	};
 
+	static_assert (Same_as <typename front_t <typelist_t <int, char>>::type, int>);
+
 
 
 	template <typename>
