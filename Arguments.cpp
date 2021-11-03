@@ -1,6 +1,7 @@
 export module Ph.Build.Arguments;
 
 import Ph.Concepts.String;
+import Ph.Concepts.Strings;
 
 namespace ph 
 {

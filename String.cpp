@@ -180,6 +180,8 @@ consteval auto Strings_test () -> bool
 	static_assert (ph::String <char const (&)[17]>);
 	static_assert (ph::String <char const*>);
 	static_assert (ph::String <std::string>);
+
+	String auto s1 = "hej";
 	
 	return true;
 }
