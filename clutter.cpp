@@ -7,7 +7,7 @@ requires requires (tuple_t <int, char> t)
 }
 
 
-only check if syntax valid
+only check if  syntax valid
 requires requires ()
 {
 	requires ()

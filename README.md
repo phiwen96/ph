@@ -426,3 +426,144 @@ digraph finite_state_machine {
       	struct1:f2 -> struct3:here;
 }
 ```
+
+
+# ✨Phan✨
+## _"A simple, yet a powerful programming language aimed against code repetition"_
+
+
+
+Phan is a new programming language developed by Philip Wenkel. It is a simple, yet efficient, programming language written in the high performance language C++. It makes a great antidote for text repetition, whether it is for coding or really anything else. It also makes it much easier to create template files or folder structures for your projects, which drastically improves your production time and prevents you from making simple errors. I bet that, if you are like most people, creating a new project can really take time and effort. Probably you have some prepared base project structure which you pretty much copy-paste to the new one and just rename everything to fit your current project name. Enough of words, lets look at an example of how to use phan to simplify code repetition in c++. Then, we will look at how to use phan as a tool when writing a simple document. Last but not least, we will see how it can also be used with files and folders.
+
+```c++
+export module Ph.Concepts;
+
+export import Ph.Concepts.Tuple;
+export import Ph.Concepts.Bool;
+export import Ph.Concepts.Done;
+export import Ph.Concepts.Size;
+export import Ph.Concepts.Bit;
+export import Ph.Concepts.Byte;
+export import Ph.Concepts.Core;
+export import Ph.Concepts.Char;
+export import Ph.Concepts.String;
+export import Ph.Concepts.Strings;
+export import Ph.Concepts.Pointer;
+export import Ph.Concepts.Number;
+export import Ph.Concepts.Error;
+export import Ph.Concepts.Void;
+
+export import Ph.Concepts.Iterator;
+export import Ph.Concepts.Array;
+
+export import Ph.Concepts.Class;
+export import Ph.Concepts.Enum;
+export import Ph.Concepts.Function;
+export import Ph.Concepts.Any_of;
+export import Ph.Concepts.File;
+export import Ph.Concepts.Vector;
+export import Ph.Concepts.Common;
+export import Ph.Concepts.Constant;
+export import Ph.Concepts.Range;
+export import Ph.Concepts.Element;a
+export import Ph.Concepts.Types;
+```
+
+```c++
+export module Ph.Concepts;
+@ add library -> {export import Ph.Concepts.{0}}
+@ library =
+	Tuple
+	Bool
+
+library : add library
+
+```
+
+```c++
+template <int>
+struct Foo;
+
+template <>
+struct Foo <0>
+{
+    inline static constexpr int i = 0;  
+};
+
+template <>
+struct Foo <1>
+{
+    inline static constexpr int i = 1;  
+};
+
+template <>
+struct Foo <2>
+{
+    inline static constexpr int i = 2;  
+};
+```
+
+As you can see, every template specialization of Foo is pretty much the same, except for two places, where only a number changes. Lets use phan to help us out with this boring and cumbersome code repetition.
+
+```c++
+template <int>
+struct Foo;
+
+@(type){inline static constexpr int}
+
+$(0 i 3){
+    template <>
+    struct Foo <${i}>
+    {
+        ${type} i = ${i};  
+    };
+}
+```
+
+That's it!
+
+Lets write a cv for our new job application!
+
+```c++
+@(first name){Philip}
+@(last name){Wenkel}
+@(name){${first name} ${last name}}
+@(company name){Google}
+
+My name is ${name} and I am interested in $(job){coding} at your company ${company name}.
+On my spare time, i love ${job}! #{elaborate on this one...}
+
+Yours sincerely, ${name}
+```
+
+This will result in the following output:
+
+```c++
+My name is Philip Wenkel and I am interested in coding at your company Google.
+On my spare time, i love coding!
+
+Yours sincerely, Philip Wenkel
+```
+
+
+
+
+<!-- ## Installation
+
+Phan requires [CMake](https://cmake.org) 3.19.4 to run. -->
+
+
+
+
+## Usage
+```sh
+phan input_file.txt output_file.txt
+```
+
+
+
+
+
+
+
+
