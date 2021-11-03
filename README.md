@@ -44,18 +44,31 @@ digraph G
 	subgraph cluster0
 	{
 		label = "Ph"
-		
-		subgraph cluster1 
+
+		struct1 [shape=record,label="<f0> left|{<f1> mid\ dle|<f2> right}"];
+
+		subgraph cluster00 
 		{
 			label = "Concepts"
+
 			"String";
-			a -> b;
-			a -> c;
-			b -> d;
-			c -> d;
+			"Error";
+		}
+
+		subgraph cluster01
+		{
+			label = "Build"
+
+			"Arguments";
+			
 		}
 	}
 
+	"main.cpp" -> "Arguments"
+	"main.cpp" -> "Error"
+
+
+	
 	
 	subgraph cluster2
 	{
