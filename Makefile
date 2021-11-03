@@ -160,8 +160,8 @@ Types.pcm: Types.cpp Typelist.pcm Transform.pcm Bool.pcm Pointer.pcm Size.pcm
 Transform.pcm: Transform.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
-Typelist.pcm: Typelist.cpp
-	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+Typelist.pcm: Typelist.cpp Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Float.pcm: Float.cpp Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Convertible_to.pcm -c $< -Xclang -emit-module-interface -o $@
