@@ -98,16 +98,41 @@ digraph structs
 	node [fillcolor=black style=filled color=white fontcolor=white];
 	edge [color=white fontcolor=white];
 
-	"Ph"
+	Ph [shape = record, label = "{Ph| {ph::}}"]
+	Types [shape = record, label = "{Types| {type::}}"]
+	Memory [shape = record, label = "{Memory}"]
+	Allocator [shape = record, label = "{Allocator}"]
+	Arena [shape = record, label = "{Arena}"]
 
-	"Ph" -> "Range" [label = "  exports"]
-	"Strings" -> "String" [label = "  imports"]
-	"String" -> "Char" [label = "  exports"]
+	String [shape = record, label = "{String}"]
+
+	Strings [shape = record, label = "{Strings}"]
+
+	Vector [shape = record, label = "{Vector}"]
+
+	Range [shape = record, label = "{Range}"]
+
+	Char [shape = record, label = "{Char}"]
+
+	Iterator [shape = record, label = "{Iterator}"]
+	Pointer [shape = record, label = "{Pointer}"]
+
+
+
+	"Memory" -> "Arena" [shape = record, label = "  exports"]
+	"Arena" -> "Types" [shape = record, label = "  imports"]
+	"Memory" -> "Allocator" [shape = record, label = "  exports"]
+	"Arena" -> "Pointer" [shape = record, label = "  exports"]
+	"Iterator" -> "Pointer" [shape = record, label = "  exports"]
+	"Allocator" -> "Pointer" [shape = record, label = "  exports"]
+	"Range" -> "Iterator" [shape = record, label = "  imports"]
+	"Strings" -> "String" [shape = record, label = "  exports"]
+	"Vector" -> "Range" [shape = record, label = "  exports"]
+	"Vector" -> "Memory" [shape = record, label = "  imports"]
+	"String" -> Char [label = "  exports"]
 	"String" -> "Vector" [label = "  imports"]
-	"Strings" -> "Vector" [label = "  imports"]
-	"Ph" -> "Vector" [label = "  exports"]
+	"Strings" -> "Vector" [label = "  exports"]
 	"Ph" -> "Strings" [label = "  exports"]
-	"Ph" -> "String" [label = "  exports"]
 	"Ph" -> "Types" [label = "  exports"]
 }
 ```
