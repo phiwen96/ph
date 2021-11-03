@@ -62,6 +62,7 @@ digraph G
 
 
 			"String";
+			"File";
 			"Error";
 			
 			"Debug";
