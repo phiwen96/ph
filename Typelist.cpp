@@ -33,30 +33,6 @@ namespace ph
 
 
 
-	template <typename>
-	struct front_t;
-
-	template <template <typename...> typename T, typename U, typename... V>
-	struct front_t <T <U, V...>>
-	{
-		using type = U;
-	};
-
-	static_assert (Same_as <typename front_t <typelist_t <int, char>>::type, int>);
-
-
-
-	template <typename>
-	struct pop_front_t;
-
-		template <template <typename...> typename T, typename U, typename... V>
-	struct pop_front_t <T <U, V...>>
-	{
-		using type = T <V...>;
-	} ;
-
-	static_assert (Same_as <typename pop_front_t <typelist_t <int, char>>::type, typelist_t <char>>);
-
 
 	export 
 	{
@@ -66,7 +42,7 @@ namespace ph
 		template <typename T>
 		concept Typelist = requires ()
 		{
-			typename front_t <T>::type;
+			true;
 			// typename back_type_t <T>::type;
 		};
 
