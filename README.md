@@ -109,21 +109,24 @@ Details
 
 file dependency
 ```graphviz
-digraph file_dependencies 
+digraph G 
 {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
+	compound=true;
+	graph [bgcolor=black fontcolor=white color=white];
+	node [fillcolor=black style=filled color=white fontcolor=white];
+	edge [color=white fontcolor=white];
 
-	"main" -> "main.o"
-
-	"main.o" -> "main.cpp"
-	"main.o" -> "Ph.pcm"
-	
-	
-	
+	subgraph cluster0 
+	{
+		label = "main.o"
+		"main.cpp"
+		"Ph.pcm"
+	}
 }
 ```
+
+
+
 
 ```graphviz
 digraph G {
@@ -338,13 +341,13 @@ digraph finite_state_machine {
 		edge [color=white fontcolor=white]
   		node [shape=record];
 
-      	struct1 [shape=record,label="<f0> left|<f1> middle|<f2> right"];
+      	struct1 [shape=record,label="<f0> left|<main> main|<f2> right"];
 
-    	struct2 [shape=record,label="<f0> one|<f1> two"];
+    	struct2 [shape=record,label="<f0> Ph.Build|<main> two"];
 		
       	struct3 [shape=record,label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
 
-      	struct1:f1 -> struct2:f0;
+      	struct1:main -> struct2:f0;
 
       	struct1:f2 -> struct3:here;
 }
