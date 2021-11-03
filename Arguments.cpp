@@ -1,5 +1,7 @@
 export module Ph.Build.Arguments;
 
+import Ph.Concepts.String;
+
 namespace ph 
 {
 	export 
@@ -9,6 +11,11 @@ namespace ph
 		{
 			true;
 		};
+
+		auto parse_args ()
+		{
+			
+		}
 	}
 }
 

@@ -67,6 +67,7 @@ digraph G
 			"String";
 			"File";
 			"Error";
+			"Tuple";
 			
 			"Debug";
 
@@ -116,6 +117,8 @@ digraph G
 			"Arguments";
 			
 		}
+
+		"Color"
 	}
 
 	"main.cpp" -> "Arguments"
