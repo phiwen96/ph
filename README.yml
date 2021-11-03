@@ -4,7 +4,7 @@
   subtitle:
     -------------------
   author: 
-    - A c++ library
+    - A c++ library, build tool, interpreter, and IDE
   year: 
     2021
   pandoc-latex-color:
