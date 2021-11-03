@@ -1,4 +1,4 @@
-export module Ph.Concepts.Numbers.Signed;
+export module Ph.Concepts.Number.Signed;
 
 import Ph.Concepts.Convertible_to;
 

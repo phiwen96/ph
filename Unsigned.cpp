@@ -1,4 +1,4 @@
-export module Ph.Concepts.Numbers.Unsigned;
+export module Ph.Concepts.Number.Unsigned;
 
 import Ph.Concepts.Convertible_to;
 

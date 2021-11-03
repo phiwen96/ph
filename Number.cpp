@@ -1,7 +1,7 @@
-export module Ph.Concepts.Numbers.Number;
+export module Ph.Concepts.Number;
 
-export import Ph.Concepts.Numbers.Signed;
-export import Ph.Concepts.Numbers.Unsigned;
+export import Ph.Concepts.Number.Signed;
+export import Ph.Concepts.Number.Unsigned;
 
 namespace ph 
 {

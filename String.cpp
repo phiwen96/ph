@@ -21,7 +21,7 @@ import Ph.Concepts.Floating;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
 import Ph.Concepts.Array;
-import Ph.Concepts.Numbers;
+import Ph.Concepts.Number;
 import Ph.Concepts.Types;
 
 export import std;
