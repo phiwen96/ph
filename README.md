@@ -49,16 +49,58 @@ digraph G
 		{
 			label = "Concepts"
 
+			"Bool"
+			"Void"
+			"Size"
+			
+			"Server"
+			
+			"Same as"
+			"Convertible to"
+			"Range"
+			
+
+
 			"String";
 			"Error";
-			"Number";
+			
 			"Debug";
+
+			
 
 			subgraph cluster000
 			{
 				label = "Memory"
 				"Allocator"
 				"Arena"
+			}
+
+			subgraph cluster001 
+			{
+				label = "Number"
+				"Signed"
+				"Unsigned"
+			}
+
+			subgraph cluster002
+			{
+				label = "Process"
+
+				"Semaphore"
+				"Signal"
+				"Shared memory"
+				"Message queue"
+			}
+
+			subgraph cluster003
+			{
+				label = "Network"
+
+				"Server"
+				"Client"
+				"Port"
+				"IPv4"
+				"IPv6"
 			}
 		}
 
