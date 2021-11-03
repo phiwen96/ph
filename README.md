@@ -33,7 +33,7 @@ auto main (int i, char** s) -> int
 ```
 
 ```graphviz
-digraph G 
+digraph G
 {
 	compound=true;
 	graph [bgcolor=black fontcolor=white color=white];
@@ -43,19 +43,22 @@ digraph G
 	subgraph cluster0
 	{
 		label = "Ph"
+		URL = "https://github.com/phiwen96/ph/blob/0.0.0/Ph.cpp"
 
 		subgraph cluster00 
 		{
+			URL = "google.com"
 			label = "Concepts"
 
-			"Bool"
+			"Convertible to" [URL = "https://github.com/phiwen96/ph/blob/0.0.0/Convertible_to.cpp"]
+			"Bool" -> "Convertible to" [URL = "https://github.com/phiwen96/ph/blob/0.0.0/Bool.cpp"]
 			"Void"
 			"Size"
 			
-			"Server"
+			"Server" 
 			
 			"Same as"
-			"Convertible to"
+			
 			"Range"
 			
 
