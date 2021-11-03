@@ -8,20 +8,6 @@ export import Ph.Concepts.Types.List.Transform;
 
 namespace ph::type
 {
-	// template <typename...>
-	// struct back_type_t;
-
-	// template <template <typename...> typename T, typename U, typename... V>
-	// struct back_type_t <T <U, V...>>
-	// {
-	// 	using type = typename back_type_t <U...>::type;
-	// };
-
-	// template <typename T>
-	// struct back_type_t <T>
-	// {
-	// 	using type = T;
-	// };
 	export 
 	{
 		template <typename...>
@@ -29,15 +15,6 @@ namespace ph::type
 		{
 
 		};
-	}
-
-
-
-
-	export 
-	{
-
-		
 
 		template <typename T>
 		concept Typelist = requires ()
@@ -45,10 +22,8 @@ namespace ph::type
 			true;
 			// typename back_type_t <T>::type;
 		};
-
-		
-
 	}
+
 }
 
 using namespace ph::type;
@@ -56,9 +31,6 @@ using namespace ph::type;
 consteval bool Typelist_test ()
 {
 	static_assert (Typelist <list_t <int, char>>);
-	// static_assert (Same_as <typename front_t <typelist_t <int, char>>::type, int>);
-	// static_assert (Typelist <Typelist_t <int>>);
-	// static_assert (Typelist <Typelist_t <>>);
 
 	return true;
 }

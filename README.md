@@ -42,7 +42,7 @@ digraph G
 
 	subgraph cluster0
 	{
-		label = "Ph"
+		label = "Ph   (ph::)"
 		URL = "https://github.com/phiwen96/ph/blob/0.0.0/Ph.cpp"
 
 		subgraph cluster00 
@@ -111,7 +111,7 @@ digraph G
 
 			subgraph cluster004
 			{
-				label = "Types"
+				label = "Types   (types::)"
 
 				"Transform"
 
