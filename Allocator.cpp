@@ -1,6 +1,7 @@
 export module Ph.Concepts.Memory.Allocator;
 
 import Ph.Concepts.Bool;
+import Ph.Concepts.Memory.Arena;
 
 
 namespace ph 

@@ -134,17 +134,17 @@ namespace ph
 
 			constexpr auto to_integer (String auto&& s) noexcept -> Integer auto 
 			{
-				return atoi (c_string (s));;
+				return atoi (c_string (s));
 			}
 
 			constexpr auto to_double (String auto&& s) noexcept -> Floating auto 
 			{
-				return atof (c_string (s));;
+				return atof (c_string (s));
 			}
 
 			constexpr auto to_long_integer (String auto&& s) noexcept -> Integer auto 
 			{
-				return atol (c_string (s));;
+				return atol (c_string (s));
 			}
 
 

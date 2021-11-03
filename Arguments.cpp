@@ -1,6 +1,5 @@
 export module Ph.Build.Arguments;
 
-import Ph.Concepts.String;
 import Ph.Concepts.Strings;
 
 namespace ph 
@@ -8,12 +7,9 @@ namespace ph
 	export 
 	{
 		template <typename A>
-		concept Arguments = requires (A a)
-		{
-			true;
-		};
+		concept Arguments = Strings <A>;
 
-		auto parse_args ()
+		constexpr auto parse_args (Strings auto&& args) noexcept -> Arguments auto
 		{
 			
 		}

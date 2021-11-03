@@ -4,12 +4,16 @@ export module Ph.Concepts.Types.List.Transform;
 
 namespace ph
 {
+	template <typename...>
+	struct tup {};
+
+
 	export 
 	{
 		template <typename T>
 		concept Transform = requires (T t)
 		{
-			true;
+			typename T::template transform <tup>;
 		};
 	}
 }

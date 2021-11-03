@@ -37,6 +37,7 @@ auto main (int i, char** s) -> int
 ```graphviz
 digraph G
 {
+	center=true;
 	compound=true;
 	graph [bgcolor=black fontcolor=white color=white];
 	node [fillcolor=black style=filled color=white fontcolor=white];
@@ -44,6 +45,7 @@ digraph G
 
 	subgraph cluster0
 	{
+
 		label = "Ph   (ph::)"
 		URL = "https://github.com/phiwen96/ph/blob/0.0.0/Ph.cpp"
 
@@ -67,6 +69,9 @@ digraph G
 
 
 			"String";
+			"Strings" -> "Vector" [label="  exports"];
+			"Strings" -> "String" [label="  exports"];
+
 			"File";
 			"Error";
 			"Tuple";
@@ -78,9 +83,15 @@ digraph G
 			subgraph cluster000
 			{
 				label = "Memory"
-				"Allocator"
 				"Arena"
+				"Allocator" -> "Arena" [label = "exports"]
+				
 			}
+
+			"Vector" -> "Allocator" [label = "  imports"]
+			"Vector" -> "Arena" [label = "  imports"]
+
+			"String" -> "Vector" [label = "  imports"]
 
 			subgraph cluster001 
 			{
@@ -133,15 +144,15 @@ digraph G
 		{
 			label = "Build"
 
-			"Arguments";
+			"Arguments" -> "Strings" [label = "exports"];
 			
 		}
 
 		"Color"
 	}
 
-	"main.cpp" -> "Arguments"
-	"main.cpp" -> "Error"
+	"main.cpp" -> "Arguments" [label = "imports"]
+	"main.cpp" -> "Error" [label = "imports"]
 
 
 	
@@ -430,7 +441,7 @@ digraph finite_state_machine {
 ```
 
 
-# ✨Ph.Language✨
+# Ph.Language
 ## _"A simple, yet a powerful programming language aimed against code repetition"_
 
 

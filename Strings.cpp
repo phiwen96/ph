@@ -1,6 +1,6 @@
 export module Ph.Concepts.Strings;
 
-import Ph.Concepts.String;
+export import Ph.Concepts.String;
 import Ph.Concepts.Range;
 import Ph.Concepts.Char;
 import Ph.Concepts.Reference;
@@ -16,6 +16,9 @@ namespace ph
 			{s [0]} -> String;
 			{s [0]} -> Reference;
 		};
+
+		template <String T = string;
+		struct 
 	}
 }
 
