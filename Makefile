@@ -158,14 +158,11 @@ Iterator.pcm: Iterator.cpp Pointer.pcm Element.pcm Bool.pcm Size.pcm Constant.pc
 Tuple.pcm: Tuple.cpp Types.pcm
 	$(CC) $(FLAGS) -fmodule-file=Types.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Types.pcm: Types.cpp Typelist.pcm Transform.pcm Bool.pcm Pointer.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Typelist.pcm -fmodule-file=Transform.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
+Types.pcm: Types.cpp Typelist.pcm Bool.pcm Pointer.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Typelist.pcm -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Typelist.pcm: Typelist.cpp Front.pcm Back.pcm Transform.pcm Same_as.pcm
-	$(CC) $(FLAGS) -fmodule-file=Front.pcm -fmodule-file=Back.pcm -fmodule-file=Transform.pcm -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
-
-Transform.pcm: Transform.cpp
-	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+Typelist.pcm: Typelist.cpp Front.pcm Back.pcm Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Front.pcm -fmodule-file=Back.pcm -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Front.pcm: Front.cpp
 	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@

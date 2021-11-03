@@ -10,11 +10,7 @@ import std;
 namespace ph::type
 {
 	
-	export 
-	{
-		template <typename... T>
-		using common = std::common_type_t <T...>;
-	}
+
 }
 
 

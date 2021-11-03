@@ -4,13 +4,17 @@ import Ph.Concepts.Same_as;
 
 export import Ph.Concepts.Types.List.Front;
 export import Ph.Concepts.Types.List.Back;
-export import Ph.Concepts.Types.List.Transform;
  
+
+import std;
 
 namespace ph::type
 {
 	export 
 	{
+		template <typename... T>
+		using common = std::common_type_t <T...>;
+
 		template <typename...>
 		struct list_t
 		{
@@ -20,6 +24,7 @@ namespace ph::type
 		template <typename T>
 		concept Typelist = requires ()
 		{
+
 			true;
 			// typename back_type_t <T>::type;
 		};

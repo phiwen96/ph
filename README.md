@@ -116,8 +116,7 @@ digraph structs
 
 	Iterator [shape = record, label = "{Iterator}"]
 	Pointer [shape = record, label = "{Pointer}"]
-	Transform [shape = record, label = "{Transform}"]
-	Typelist [shape = record, label = "{Typelist}"]
+	Typelist [shape = record, label = "{Typelist | {+ common [Typelist] - T}}"]
 
 
 
@@ -135,7 +134,7 @@ digraph structs
 	"String" -> "Vector" [label = "  imports"]
 	"Strings" -> "Vector" [label = "  exports"]
 	"Ph" -> "Strings" [label = "  exports"]
-	"Typelist" -> "Transform" [label = "  exports"]
+
 	"Types" -> "Typelist" [label = "  exports"]
 	"Ph" -> "Types" [label = "  exports"]
 }
