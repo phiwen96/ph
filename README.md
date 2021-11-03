@@ -114,7 +114,16 @@ digraph G
 				label = "Types"
 
 				"Transform"
-				"Type list"
+
+				subgraph cluster0040
+				{
+					label = "List"
+
+					"Front"
+					"Back"
+					"Transform"
+				}
+				
 			}
 		}
 
