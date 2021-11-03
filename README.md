@@ -16,6 +16,8 @@ It aims to cut loose from other languages in the build process, instead integrat
 ```{#kuk .cpp .numberLines}
 import Ph;
 
+using namespace ph;
+
 auto main (int i, char** s) -> int 
 {
 
