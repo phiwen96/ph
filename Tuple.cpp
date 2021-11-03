@@ -10,7 +10,8 @@ namespace ph
 			true;
 		};
 
-		
+		template <typename... T>
+		requires (sizeof... (T) > 0)
 		struct tuple_t 
 		{
 

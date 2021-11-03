@@ -23,6 +23,7 @@ import Ph.Concepts.Size;
 import Ph.Concepts.Array;
 import Ph.Concepts.Number;
 import Ph.Concepts.Types;
+import Ph.Concepts.Tuple;
 
 export import std;
 
@@ -40,6 +41,7 @@ namespace ph
 		{
 
 			template <template <typename...> typename T>
+			requires true
 			using common_string_types = int;//T <char const (&)[17], char const*, std::string>;
 
 
@@ -188,6 +190,8 @@ consteval auto Strings_test () -> bool
 	static_assert (ph::String <std::string>);
 
 	String auto s1 = "hej";
+
+	auto i = common_string_types <tuple_t> {};
 	
 	return true;
 }

@@ -106,9 +106,6 @@ Concepts.pcm: Concepts.cpp ConceptsCore.pcm Strings.pcm Tuple.pcm Number.pcm Mem
 Strings.pcm: Strings.cpp String.pcm Range.pcm Char.pcm Reference.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Range.pcm -fmodule-file=Char.pcm -fmodule-file=Reference.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Tuple.pcm: Tuple.cpp
-	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
-
 Memory.pcm: Memory.cpp Arena.pcm Allocator.pcm Types.pcm Element.pcm Range.pcm Constant.pcm Reference.pcm Vector.pcm File.pcm Any_of.pcm Class.pcm Enum.pcm Byte.pcm Array.pcm String.pcm Pointer.pcm Char.pcm Size.pcm Number.pcm Function.pcm Iterator.pcm
 	$(CC) $(FLAGS) -fmodule-file=Arena.pcm -fmodule-file=Allocator.pcm -fmodule-file=Range.pcm -fmodule-file=Bool.pcm -fmodule-file=Error.pcm -fmodule-file=Common.pcm -fmodule-file=Reference.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=String.pcm -fmodule-file=Error.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
 
@@ -130,8 +127,8 @@ ConceptsCore.pcm: ConceptsCore.cpp Float.pcm Array.pcm Integer.pcm Done.pcm Erro
 Error.pcm: Error.cpp String.pcm Color.pcm Void.pcm Bool.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Color.pcm  -fmodule-file=Void.pcm -fmodule-file=Bool.pcm -c $< -Xclang -emit-module-interface -o $@
 
-String.pcm: String.cpp Types.pcm Void.pcm Convertible_to.pcm Integer.pcm Float.pcm Number.pcm Array.pcm Char.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Types.pcm -fmodule-file=Void.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Number.pcm -fmodule-file=Array.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+String.pcm: String.cpp Tuple.pcm Types.pcm Void.pcm Convertible_to.pcm Integer.pcm Float.pcm Number.pcm Array.pcm Char.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Tuple.pcm -fmodule-file=Types.pcm -fmodule-file=Void.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Number.pcm -fmodule-file=Array.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Number.pcm: Number.cpp Integer.pcm Float.pcm Signed.pcm Unsigned.pcm Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Signed.pcm -fmodule-file=Unsigned.pcm -fmodule-file=Convertible_to.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -153,6 +150,9 @@ Range.pcm: Range.cpp Iterator.pcm Pointer.pcm Reference.pcm Element.pcm Constant
 
 Iterator.pcm: Iterator.cpp Pointer.pcm Element.pcm Bool.pcm Size.pcm Constant.pcm Reference.pcm
 	$(CC) $(FLAGS) -fmodule-file=Pointer.pcm -fmodule-file=Element.pcm -fmodule-file=Bool.pcm -fmodule-file=Size.pcm -fmodule-file=Constant.pcm -fmodule-file=Reference.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Tuple.pcm: Tuple.cpp Types.pcm
+	$(CC) $(FLAGS) -fmodule-file=Types.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Types.pcm: Types.cpp Bool.pcm Pointer.pcm Size.pcm
 	$(CC) $(FLAGS) -fmodule-file=Bool.pcm -fmodule-file=Pointer.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@
