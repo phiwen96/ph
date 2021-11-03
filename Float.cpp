@@ -1,4 +1,4 @@
-export module Ph.Concepts.Floating;
+export module Ph.Concepts.Number.Float;
 
 import Ph.Concepts.Convertible_to;
 

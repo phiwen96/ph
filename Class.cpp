@@ -9,10 +9,10 @@ namespace ph
 {
 
 template <typename T, typename = std::void_t <>>
-struct is_class : no {};
+struct is_class : std::false_type {};
 
 template <typename T>
-struct is_class <T, std::void_t <int T::*>> : yes {};
+struct is_class <T, std::void_t <int T::*>> : std::true_type {};
 
 export template <typename T>
 concept Class = is_class <T>::value;

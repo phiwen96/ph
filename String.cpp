@@ -16,8 +16,8 @@ export module Ph.Concepts.String;
 
 import Ph.Concepts.Void;
 import Ph.Concepts.Convertible_to;
-import Ph.Concepts.Integer;
-import Ph.Concepts.Floating;
+import Ph.Concepts.Number.Integer;
+import Ph.Concepts.Number.Float;
 import Ph.Concepts.Char;
 import Ph.Concepts.Size;
 import Ph.Concepts.Array;

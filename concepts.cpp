@@ -1,5 +1,7 @@
 export module Ph.Concepts;
 
+export import Ph.Concepts.Bool;
+export import Ph.Concepts.Done;
 export import Ph.Concepts.Size;
 export import Ph.Concepts.Bit;
 export import Ph.Concepts.Byte;
@@ -8,8 +10,9 @@ export import Ph.Concepts.Char;
 export import Ph.Concepts.String;
 export import Ph.Concepts.Pointer;
 export import Ph.Concepts.Number;
+export import Ph.Concepts.Error;
+export import Ph.Concepts.Void;
 
-export import Ph.Concepts.Sequence;
 export import Ph.Concepts.Iterator;
 export import Ph.Concepts.Array;
 

@@ -90,6 +90,7 @@ digraph G
 				"Signal"
 				"Shared memory"
 				"Message queue"
+				"Mapped file"
 			}
 
 			subgraph cluster003

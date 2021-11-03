@@ -1,4 +1,4 @@
-export module Ph.Concepts.Integer;
+export module Ph.Concepts.Number.Integer;
 
 import Ph.Concepts.Convertible_to;
 
