@@ -133,6 +133,7 @@ digraph structs
 	"Vector" -> "Memory" [shape = record, label = "  imports"]
 	"String" -> Char [label = "  exports"]
 	"String" -> "Vector" [label = "  imports"]
+	"String" -> "Assert" [label = "  imports"]
 	"Strings" -> "Vector" [label = "  exports"]
 	"Ph" -> "Strings" [label = "  exports"]
 	"Ph" -> "Assert" [label = "  exports"]

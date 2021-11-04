@@ -25,6 +25,8 @@ import Ph.Concepts.Number;
 import Ph.Concepts.Types;
 import Ph.Concepts.Tuple;
 import Ph.Concepts.Vector;
+import Ph.Concepts.Bool;
+import Ph.Assert;
 export import std;
 
 #define COMMON_STRING_TYPES \
@@ -187,6 +189,12 @@ namespace ph
 			{
 
 			};
+
+			template <typename T>
+			consteval auto assert_string () noexcept -> Bool auto 
+			{
+				return String <T>;
+			}
 		}
 	}
 }
@@ -214,6 +222,19 @@ consteval auto Strings_test () -> bool
 	static_assert (ph::String <char const (&)[17]>);
 	static_assert (ph::String <char const*>);
 	static_assert (ph::String <std::string>);
+
+	constexpr auto assert_string = [] <typename T> () constexpr noexcept  -> Bool auto
+	{
+		return String <T>;
+	};
+
+	// char const (&)[17], char const*, std::string
+	// assert_all (
+	// 	[] <typename T> () constexpr noexcept  -> Bool auto
+	// 	{
+	// 		return String <T>;
+	// 	}
+	// );
 
 	String auto s1 = "hej";
 
