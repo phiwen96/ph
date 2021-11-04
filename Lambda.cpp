@@ -1,29 +1,23 @@
 export module Ph.Concepts.Lambda;
 
-import Ph.Concepts.Same_as;
+import Ph.Concepts.Convertible_to;
 import Ph.Concepts.Types.List;
  
 
-import std;
+// import std;
 
 namespace ph
 {
-	template <typename>
-	struct lambda_t;
-
-	template <typename T, typename... U>
-	struct lambda_t <T (U...)>
-	{
-
-	};
-
 	export 
 	{
-		template <typename L, typename... Args>
-		concept Lambda = requires (L lambda, Args... args)
+		template <typename Lam, typename... T>
+		concept Lambda = requires (Lam lambda, T... t)
 		{
-			lambda (args...);
+			{lambda (t...)};
 		};
+
+
+
 	}
 
 }
@@ -33,9 +27,10 @@ using namespace ph;
 consteval bool Lambda_test ()
 {
 
-	Lambda auto l1 = [] () {return 4;};
+	// Lambda auto l1 = [] () {return 4;};
 
-	Lambda <int> auto l2 = [] (int u) {return u;};
+	// Lambda <int> auto l2 = [] (int u) {return u;};
+	// Lambda <int, char*> auto l3 = [] (int u, char*) {return u;};
 
 
 	
