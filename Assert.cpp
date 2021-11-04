@@ -25,10 +25,15 @@ namespace ph
 	export 
 	{
 		
-		consteval auto assert_true (Bool auto&&...)
+		consteval auto assert_true (Bool auto&&... b)
+		requires requires ()
+		{
+			requires ((b == true) and ...);
+		}
 		{
 
 		}
+		
 		
 		template <auto boolfunction, typename T>
 		consteval inline auto assert_all () noexcept -> Void auto 
@@ -49,6 +54,8 @@ using namespace ph;
 
 consteval auto Assert_test () -> Bool auto
 {
+	assert_true (true, true, true);
+	
 	constexpr auto string_check = [] <typename T> () constexpr noexcept {return Same_as <char, T>;};
 	// assert_all <int> (string_check); 
 	auto i = assert_all_t <string_check, int>::value;
