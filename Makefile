@@ -173,11 +173,11 @@ Types.pcm: Types.cpp Typelist.pcm Bool.pcm Pointer.pcm Size.pcm
 Typelist.pcm: Typelist.cpp Front.pcm Back.pcm Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Front.pcm -fmodule-file=Back.pcm -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Front.pcm: Front.cpp
-	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+Front.pcm: Front.cpp Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Back.pcm: Back.cpp
-	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
+Back.pcm: Back.cpp Same_as.pcm
+	$(CC) $(FLAGS) -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Float.pcm: Float.cpp Convertible_to.pcm
 	$(CC) $(FLAGS) -fmodule-file=Convertible_to.pcm -c $< -Xclang -emit-module-interface -o $@

@@ -63,9 +63,12 @@ template<class Ret, class... Args>
 struct is_function<Ret(Args...) const volatile && noexcept> : std::true_type {};
 
 
+export 
+{
+	template <typename T>
+	concept Function = is_function <T>::value;
+}
 
-export template <typename T>
-concept Function = is_function <T>::value;
         
 
 

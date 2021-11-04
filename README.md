@@ -553,9 +553,8 @@ Ph.Language input_file.txt output_file.txt
 ```
 
 
-
-
-
-
-
+TODO
+===============
+- [ ] [implement type function params <Ret(Args...)> -> Typelist](Function.cpp)
+- [ ] [implement type function ret <Ret(Args...)> -> Typelist](Function.cpp)
 
