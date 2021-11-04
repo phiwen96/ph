@@ -116,8 +116,8 @@ Strings.pcm: Strings.cpp String.pcm Range.pcm Char.pcm Reference.pcm
 String.pcm: String.cpp Assert.pcm Vector.pcm Tuple.pcm Types.pcm Void.pcm Convertible_to.pcm Integer.pcm Float.pcm Number.pcm Array.pcm Char.pcm Size.pcm
 	$(CC) $(FLAGS) -fmodule-file=Assert.pcm -fmodule-file=Vector.pcm -fmodule-file=Tuple.pcm -fmodule-file=Types.pcm -fmodule-file=Void.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Number.pcm -fmodule-file=Array.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
 
-Assert.pcm: Assert.cpp True.pcm Bool.pcm Void.pcm Same_as.pcm
-	$(CC) $(FLAGS) -fmodule-file=True.pcm -fmodule-file=Bool.pcm -fmodule-file=Void.pcm -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@
+Assert.pcm: Assert.cpp True.pcm Bool.pcm Void.pcm Same_as.pcm Convertible_to.pcm
+	$(CC) $(FLAGS) -fmodule-file=True.pcm -fmodule-file=Bool.pcm -fmodule-file=Void.pcm -fmodule-file=Same_as.pcm -fmodule-file=Convertible_to.pcm -c $< -Xclang -emit-module-interface -o $@
 
 True.pcm: True.cpp Bool.pcm Void.pcm Same_as.pcm
 	$(CC) $(FLAGS) -fmodule-file=Bool.pcm -fmodule-file=Void.pcm -fmodule-file=Same_as.pcm -c $< -Xclang -emit-module-interface -o $@ 

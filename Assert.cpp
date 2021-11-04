@@ -3,6 +3,7 @@ export module Ph.Assert;
 import Ph.Concepts.Bool;
 import Ph.Concepts.Void;
 import Ph.Concepts.Same_as;
+import Ph.Concepts.Convertible_to;
 import Ph.Concepts.True;
 
 namespace ph 
@@ -38,16 +39,27 @@ namespace ph
 		{
 
 		}
-		
-		
-		template <typename T>
-		consteval inline auto assert_all (auto&& lambda) noexcept -> Void auto 
+
+		template <typename... T>
+		consteval inline auto assert_all (auto&& lambda) noexcept -> Void auto
 		requires requires ()
 		{
-			lambda.template operator () <T> ();
+			((lambda.template operator () <T> ()), ...);
 		}
 		{
-			// static_assert (assert_all_t <boolfunction, T>::value);
+
+		}
+		
+		
+		template <typename... T>
+		consteval inline auto assert_all (auto&& lambda, auto&&... lambdas) noexcept -> Void auto 
+		requires requires ()
+		{
+			((lambda.template operator () <T> ()), ...);
+			assert_all <T...> (lambdas...);
+		}
+		{
+
 		}
 
 
@@ -61,9 +73,16 @@ consteval auto Assert_test () -> Bool auto
 {
 	// assert_true (true, true, true);
 
-	constexpr auto is_bool = [] <Bool> () constexpr noexcept {};
-	// assert_all <int> (string_check); 
-	assert_all <bool> (is_bool);
+	constexpr auto assert_bool = [] <Bool> () constexpr noexcept {};
+	static_assert (Convertible_to <char*, bool>);
+	assert_all <int, bool, char*> (assert_bool); 
+	
+
+	// struct _A {};      assert_all <bool, int, _A> (assert_bool); // should generate error
+
+
+
+
 	// assert_all <string_check, int> ();
 	// assert_all <int> ([] <typename T> {return Same_as <char, T>;});
 	return true;
