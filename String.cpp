@@ -94,6 +94,13 @@ namespace ph
 				len (t);
 			};
 
+			
+
+
+
+			// template <typename... T>
+			// constexpr bool assert_string
+
 			constexpr auto to_string (Integer auto&& i) noexcept -> String auto
 			{
 				Size auto sz = (int)((ceil(log10(i))+1)*sizeof(char));
@@ -187,6 +194,21 @@ namespace ph
 
 using namespace ph;
 
+
+
+
+// template <typename T, typename... U>
+// struct assert_string <T, U...>
+// {	
+// 	constexpr static bool value = String 
+// };
+
+// template <>
+// struct assert_strings <>
+// {
+// 	constexpr static bool value = true;
+// };
+
 consteval auto Strings_test () -> bool 
 {
 	static_assert (ph::String <char const (&)[17]>);
@@ -195,7 +217,7 @@ consteval auto Strings_test () -> bool
 
 	String auto s1 = "hej";
 
-	auto i = common_string_types <type::list_t> {};
+	auto i = common_string_types <type::typelist> {};
 	
 	return true;
 }

@@ -36,8 +36,8 @@ main.o: main.cpp Ph.pcm
 # 1
 # $(CURDIR)
 
-Ph.pcm: Ph.cpp Debug.pcm Build.pcm Get.pcm Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
-	$(CC) $(FLAGS) -fmodule-file=Debug.pcm -fmodule-file=Build.pcm -fmodule-file=Get.pcm -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
+Ph.pcm: Ph.cpp Assert.pcm Debug.pcm Build.pcm Get.pcm Process.pcm Fork.pcm Color.pcm Byte.pcm PhCore.pcm Concepts.pcm Network.pcm Dependencies.pcm
+	$(CC) $(FLAGS) -fmodule-file=Assert.pcm -fmodule-file=Debug.pcm -fmodule-file=Build.pcm -fmodule-file=Get.pcm -fmodule-file=Process.pcm -fmodule-file=Fork.pcm -fmodule-file=Color.pcm -fmodule-file=Byte.pcm -fmodule-file=PhCore.pcm -fmodule-file=Concepts.pcm -fmodule-file=Network.pcm -fmodule-file=Dependencies.pcm -c $< -Xclang -emit-module-interface -o $@
 
 Debug.pcm: Debug.cpp String.pcm Error.pcm Color.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Error.pcm -fmodule-file=Color.pcm -c $< -Xclang -emit-module-interface -o $@
@@ -111,8 +111,11 @@ File.pcm: File.cpp Convertible_to.pcm Same_as.pcm Bool.pcm Array.pcm Pointer.pcm
 Strings.pcm: Strings.cpp String.pcm Range.pcm Char.pcm Reference.pcm
 	$(CC) $(FLAGS) -fmodule-file=String.pcm -fmodule-file=Range.pcm -fmodule-file=Char.pcm -fmodule-file=Reference.pcm -c $< -Xclang -emit-module-interface -o $@
 
-String.pcm: String.cpp Vector.pcm Tuple.pcm Types.pcm Void.pcm Convertible_to.pcm Integer.pcm Float.pcm Number.pcm Array.pcm Char.pcm Size.pcm
-	$(CC) $(FLAGS) -fmodule-file=Vector.pcm -fmodule-file=Tuple.pcm -fmodule-file=Types.pcm -fmodule-file=Void.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Number.pcm -fmodule-file=Array.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+String.pcm: String.cpp Assert.pcm Vector.pcm Tuple.pcm Types.pcm Void.pcm Convertible_to.pcm Integer.pcm Float.pcm Number.pcm Array.pcm Char.pcm Size.pcm
+	$(CC) $(FLAGS) -fmodule-file=Assert.pcm -fmodule-file=Vector.pcm -fmodule-file=Tuple.pcm -fmodule-file=Types.pcm -fmodule-file=Void.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Integer.pcm -fmodule-file=Float.pcm -fmodule-file=Number.pcm -fmodule-file=Array.pcm -fmodule-file=Size.pcm -fmodule-file=Char.pcm -c $< -Xclang -emit-module-interface -o $@
+
+Assert.pcm: Assert.cpp
+	$(CC) $(FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 Vector.pcm: Vector.cpp Range.pcm Allocator.pcm Arena.pcm Bool.pcm Error.pcm Common.pcm Reference.pcm Convertible_to.pcm Same_as.pcm Bool.pcm Array.pcm Pointer.pcm Error.pcm Size.pcm
 	$(CC) $(FLAGS) -fmodule-file=Allocator.pcm -fmodule-file=Arena.pcm -fmodule-file=Range.pcm -fmodule-file=Bool.pcm -fmodule-file=Error.pcm -fmodule-file=Common.pcm -fmodule-file=Reference.pcm -fmodule-file=Convertible_to.pcm -fmodule-file=Same_as.pcm -fmodule-file=Bool.pcm -fmodule-file=Array.pcm -fmodule-file=Pointer.pcm -fmodule-file=Error.pcm -fmodule-file=Size.pcm -c $< -Xclang -emit-module-interface -o $@

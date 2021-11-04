@@ -16,18 +16,18 @@ namespace ph::type
 		using common = std::common_type_t <T...>;
 
 		template <typename...>
-		struct list_t
+		struct typelist
 		{
 
 		};
 
-		template <typename T>
-		concept Typelist = requires ()
-		{
+		// template <typename T>
+		// concept Typelist = requires ()
+		// {
 
-			true;
-			// typename back_type_t <T>::type;
-		};
+		// 	true;
+		// 	// typename back_type_t <T>::type;
+		// };
 	}
 
 }
@@ -36,7 +36,7 @@ using namespace ph::type;
 
 consteval bool Typelist_test ()
 {
-	static_assert (Typelist <list_t <int, char>>);
+	// static_assert (Typelist <list_t <int, char>>);
 
 	return true;
 }

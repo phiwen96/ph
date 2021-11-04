@@ -14,6 +14,7 @@ export module Ph;
 	X (Get)
 	X (Build)
 	X (Debug)
+	X (Assert)
 	
 
 
