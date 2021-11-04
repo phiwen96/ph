@@ -1,0 +1,62 @@
+digraph structs 
+{
+	// ratio=fill;
+	// center=true;
+	// fontsize=16;
+
+	bgcolor=red;
+	compound=true;
+	// size="7,17";
+	// page="11,17";
+	// size="11,17";
+	ratio=fill;
+	fill=true;
+	graph [dpi = 1000 bgcolor=black fontcolor=white color=white];
+	node [dpi = 1000 bgcolor=black fillcolor=black style=filled color=white fontcolor=white];
+	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
+
+	Ph [shape = record, label = "{Ph| {ph::}}"]
+	Types [shape = record, label = "{Types| {type::}}"]
+	Memory [shape = record, label = "{Memory}"]
+	Allocator [shape = record, label = "{Allocator}"]
+	Arena [shape = record, label = "{Arena}"]
+
+	String [shape = record, label = "{String}"]
+
+	Strings [shape = record, label = "{Strings}"]
+
+	Vector [shape = record, label = "{Vector}"]
+
+	Range [shape = record, label = "{Range}"]
+
+	Char [shape = record, label = "{Char}"]
+
+	Iterator [shape = record, label = "{Iterator}"]
+	Pointer [shape = record, label = "{Pointer}"]
+	Assert [shape = record, label = "{Assert}"]
+	Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
+
+
+
+	"Memory" -> "Arena" [shape = record, label = "  exports"]
+	"Arena" -> "Types" [shape = record, label = "  imports"]
+	"Memory" -> "Allocator" [shape = record, label = "  exports"]
+	"Arena" -> "Pointer" [shape = record, label = "  exports"]
+	"Iterator" -> "Pointer" [shape = record, label = "  exports"]
+	"Allocator" -> "Pointer" [shape = record, label = "  exports"]
+	"Range" -> "Iterator" [shape = record, label = "  imports"]
+	"Strings" -> "String" [shape = record, label = "  exports"]
+	"Vector" -> "Range" [shape = record, label = "  exports"]
+	"Vector" -> "Memory" [shape = record, label = "  imports"]
+	"String" -> Char [label = "  exports"]
+	"String" -> "Vector" [label = "  imports"]
+	"String" -> "Assert" [label = "  imports"]
+	"Strings" -> "Vector" [label = "  exports"]
+	"Ph" -> "Strings" [label = "  exports"]
+	"Ph" -> "Assert" [label = "  exports"]
+
+	"Types" -> "Typelist" [label = "  exports"]
+	"Ph" -> "Types" [label = "  exports"]
+}
+
+

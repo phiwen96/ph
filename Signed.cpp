@@ -1,6 +1,6 @@
-export module Ph.Concepts.Number.Signed;
+export module Ph.Number.Signed;
 
-import Ph.Concepts.Convertible_to;
+import Ph.Convertible_to;
 
 namespace ph 
 {

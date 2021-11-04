@@ -1,6 +1,6 @@
-export module Ph.Concepts.Number.Integer;
+export module Ph.Number.Integer;
 
-import Ph.Concepts.Convertible_to;
+import Ph.Convertible_to;
 
 namespace ph 
 {

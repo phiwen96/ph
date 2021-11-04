@@ -1,6 +1,6 @@
-export module Ph.Concepts.Number.Float;
+export module Ph.Number.Float;
 
-import Ph.Concepts.Convertible_to;
+import Ph.Convertible_to;
 
 namespace ph 
 {

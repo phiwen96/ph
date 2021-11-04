@@ -1,6 +1,7 @@
 export module Ph.Concepts.Types.List.Front;
 
 import Ph.Concepts.Same_as;
+import Ph.Assert;
 
 namespace ph::type
 {
@@ -32,14 +33,21 @@ namespace ph::type
 using namespace ph;
 
 template <typename...>
-struct _tp {};
+struct tp {}; // typelist
 
 consteval auto Front_test () noexcept -> bool
 {
-	static_assert (type::Front <_tp <int, char>>);
-	static_assert (type::Front <_tp <char>>);
-	static_assert (not type::Front <_tp <>>);
-	static_assert (Same_as <type::front <_tp <int, char>>, int>);
+	using namespace type;
+
+	constexpr auto assert_front = [] <Front> {};
+
+	assert_all <tp <int, char>, tp <char>> (assert_front);
+
+
+	static_assert (type::Front <tp <int, char>>);
+	static_assert (type::Front <tp <char>>);
+	static_assert (not type::Front <tp <>>);
+	static_assert (Same_as <type::front <tp <int, char>>, int>);
 	return true;
 }
 

@@ -205,41 +205,12 @@ using namespace ph;
 
 
 
-// template <typename T, typename... U>
-// struct assert_string <T, U...>
-// {	
-// 	constexpr static bool value = String 
-// };
-
-// template <>
-// struct assert_strings <>
-// {
-// 	constexpr static bool value = true;
-// };
-
 consteval auto Strings_test () -> bool 
 {
-	static_assert (ph::String <char const (&)[17]>);
-	static_assert (ph::String <char const*>);
-	static_assert (ph::String <std::string>);
+	constexpr auto assert_string = [] <String> () {}; 
 
-	constexpr auto assert_string = [] <typename T> () constexpr noexcept  -> Bool auto
-	{
-		return String <T>;
-	};
+	assert_all <char const (&)[17], char const*, std::string> (assert_string);
 
-	// char const (&)[17], char const*, std::string
-	// assert_all (
-	// 	[] <typename T> () constexpr noexcept  -> Bool auto
-	// 	{
-	// 		return String <T>;
-	// 	}
-	// );
-
-	String auto s1 = "hej";
-
-	auto i = common_string_types <type::typelist> {};
-	
 	return true;
 }
 

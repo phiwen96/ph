@@ -50,7 +50,6 @@ namespace ph
 
 		}
 		
-		
 		template <typename... T>
 		consteval inline auto assert_all (auto&& lambda, auto&&... lambdas) noexcept -> Void auto 
 		requires requires ()
@@ -63,11 +62,52 @@ namespace ph
 		}
 
 
+
+
+
+		template <typename... T>
+		consteval inline auto assert_not_all (auto&& lambda) noexcept -> Void auto
+		requires requires ()
+		{
+			
+			requires not requires ()
+			{
+				((lambda.template operator () <T> ()), ...);
+			};
+		}
+		{
+
+		}
+		
+		template <typename... T>
+		consteval inline auto assert_not_all (auto&& lambda, auto&&... lambdas) noexcept -> Void auto 
+		requires requires ()
+		{
+			requires not requires ()
+			{
+				((lambda.template operator () <T> ()), ...);
+			};
+
+			assert_not_all <T...> (lambdas...);
+		}
+		{
+
+		}
+
+
 	}
 }
 
 
 using namespace ph;
+
+struct assert_test 
+{
+	auto open () 
+	{
+
+	}
+};
 
 consteval auto Assert_test () -> Bool auto
 {
@@ -76,9 +116,20 @@ consteval auto Assert_test () -> Bool auto
 	constexpr auto assert_bool = [] <Bool> () constexpr noexcept {};
 	static_assert (Convertible_to <char*, bool>);
 	assert_all <int, bool, char*> (assert_bool); 
+	constexpr auto assert_no_open = [] <typename T> () constexpr noexcept 
+	requires requires (T t)
+	{
+		requires not requires ()
+		{
+			t.open ();
+		};
+	}
+	{};
+
+	assert_no_open.template operator () <int> ();
 	
 
-	// struct _A {};      assert_all <bool, int, _A> (assert_bool); // should generate error
+	struct _A {};      assert_not_all <_A, int> (assert_bool); // should generate error
 
 
 

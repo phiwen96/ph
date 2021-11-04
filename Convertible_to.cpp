@@ -1,4 +1,4 @@
-export module Ph.Concepts.Convertible_to;
+export module Ph.Convertible_to;
 
 
 namespace ph 
