@@ -40,11 +40,11 @@ namespace ph
 		}
 		
 		
-		template <auto boolfunction, typename T>
-		consteval inline auto assert_all () noexcept -> Void auto 
+		template <typename T>
+		consteval inline auto assert_all (auto&& lambda) noexcept -> Void auto 
 		requires requires ()
 		{
-			requires assert_all_t <boolfunction, T>::value == true;
+			lambda.template operator () <T> ();
 		}
 		{
 			// static_assert (assert_all_t <boolfunction, T>::value);
@@ -61,9 +61,9 @@ consteval auto Assert_test () -> Bool auto
 {
 	// assert_true (true, true, true);
 
-	constexpr auto string_check = [] <typename T> () constexpr noexcept {return Same_as <char, T>;};
+	constexpr auto is_bool = [] <Bool> () constexpr noexcept {};
 	// assert_all <int> (string_check); 
-	auto i = assert_all_t <string_check, int>::value;
+	assert_all <bool> (is_bool);
 	// assert_all <string_check, int> ();
 	// assert_all <int> ([] <typename T> {return Same_as <char, T>;});
 	return true;
