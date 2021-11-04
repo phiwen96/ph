@@ -22,6 +22,11 @@ namespace ph
 		constexpr static bool value = boolfunction.template operator () <T> ();
 	};
 
+	constexpr auto _assert_true = [] (Bool auto&& b) constexpr noexcept -> Bool auto
+	{
+		return b == true;
+	};
+
 	export 
 	{
 		
@@ -54,8 +59,8 @@ using namespace ph;
 
 consteval auto Assert_test () -> Bool auto
 {
-	assert_true (true, true, true);
-	
+	// assert_true (true, true, true);
+
 	constexpr auto string_check = [] <typename T> () constexpr noexcept {return Same_as <char, T>;};
 	// assert_all <int> (string_check); 
 	auto i = assert_all_t <string_check, int>::value;

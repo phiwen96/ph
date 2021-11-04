@@ -13,6 +13,8 @@ It aims to cut loose from other languages in the build process, instead integrat
 
 
 
+
+
 ```{#kuk .cpp .numberLines}
 import Ph;
 
@@ -41,12 +43,17 @@ struct1 [shape=record,label="<f0> left|<main> main|<f2> right"];
 
 
 	
+
+
+
 	
 	
 }
 ```
 
 "Ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
+
+
 
 
 It introduces c++ concepts and modules, by which the former it is built around, thus, making it lucrative for industrial applications where the need for precision is critical, and where most of the bugs can be catched before the c++ files are even compiled, thus simply just generating syntax errors for developers. 
@@ -67,6 +74,12 @@ concept String = requires (S s)
 
 
 
+
+
+
+
+
+
  Goals with this project
  ===============
 
@@ -81,6 +94,8 @@ concept String = requires (S s)
 - [ ] C++ interpreter
   
 	Similar to python interpreter.
+
+
 
 
 
@@ -142,6 +157,11 @@ digraph structs
 	"Ph" -> "Types" [label = "  exports"]
 }
 ```
+
+
+
+
+
 
 file dependency
 ```graphviz
@@ -213,6 +233,11 @@ digraph finite_state_machine {
 	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
 }
 ```
+
+
+
+
+
 
 ---------------
 
