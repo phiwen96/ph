@@ -20,7 +20,7 @@ It aims to cut loose from other languages in the [software development](https://
 
 
 
-"Ph" is a lightning fast C++ library and also a build tool (such as [CMake] or [Make]) for turning C++ source code into something useful.
+<!-- "Ph" is a lightning fast C++ library and also a build tool (such as [CMake] or [Make]) for turning C++ source code into something useful. -->
 
 
 
