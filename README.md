@@ -78,12 +78,6 @@ concept String = requires (S s)
 
 
 
-<!-- Project dependencies
----------------
-
-The following graph describes that basically "ph" is a set of files which will either be transformed into a documentation file or into the executable software.  -->
-
-
 
 
 

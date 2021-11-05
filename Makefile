@@ -65,6 +65,7 @@ $(PDF): $(DOCS_DIR)/README.yml $(PROJ_DIR)/README.md
 	(cd $(BUILD_DIR)/docs && pandoc --filter pandoc-plot --filter pandoc-plantuml -o $@ $^)
 
 
+
 $(EXE): $(OBJ_DIR)/$(APP).o $(SUBMODULES) $(LIB_DIR)/$(PROJ).cpp
 	$(CXX) $(CXX_FLAGS) $(OBJ_DIR)/$(APP).o -o $@
 
