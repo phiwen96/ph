@@ -17,8 +17,7 @@ Introduction
 [Ph] aims to be the facto software for both [building](https://en.wikipedia.org/wiki/Software_build) and testing [C++] software.
 It aims to cut loose from other languages in the [software development](https://en.wikipedia.org/wiki/Software_development), instead integrating them directly in the source code.
 
-All source code in [C++].
-Built with [Make].
+All source code in [C++], built with [Make].
 
 
 Documentation
