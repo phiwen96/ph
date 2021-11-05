@@ -102,7 +102,7 @@ About
 
 Documentation
 ===============
-The documentation for [Ph] is dependent on the the following languages:
+For building the documentation, we use the following languages:
 
 [Markdown]: https://www.markdownguide.org/basic-syntax/
 [dot]: https://graphviz.org/doc/info/lang.html
@@ -114,7 +114,7 @@ The documentation for [Ph] is dependent on the the following languages:
 * [UML]
 * [English]
 
-and built with
+and with help of the following tools
 ---------------
 [pandoc]: https://pandoc.org
 [pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
