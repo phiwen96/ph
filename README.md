@@ -71,8 +71,8 @@ concept String = requires (S s)
 
 
 
-Details
-===============
+<!-- Da
+ -->
 
 
 
