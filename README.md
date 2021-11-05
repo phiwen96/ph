@@ -112,7 +112,7 @@ For building the documentation, we use the following languages:
 * [Markdown]
 * [dot]
 * [UML]
-* [English]¯
+* [English]
 and the following tools
 ---------------
 [pandoc]: https://pandoc.org
