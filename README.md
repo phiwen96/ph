@@ -20,17 +20,6 @@ It aims to cut loose from other languages in the [software development](https://
 All source code is written in [C++], built with [Make].
 
 
----------------
-
-### Source code written in
-
-* [C++]
-
-#### and built with 
-
-* [Make]
-
-
 Documentation
 ===============
 
