@@ -11,46 +11,6 @@ It aims to cut loose from other languages in the build process, instead integrat
 
 
 
-
-
-
-
-```{#kuk .cpp .numberLines}
-import Ph;
-
-using namespace ph;
-
-auto main (int i, char** s) -> int 
-{
-
-	Arguments auto args = parse_args (i, s);
-
-	Error auto err = len (args) > 0 ? true : false; 
-
-	if (err)
-	{
-
-	}
-
-	return err;
-}
-```
-```graphviz
-digraph F
-{
-struct1 [shape=record,label="<f0> left|<main> main|<f2> right"];
-
-
-
-	
-
-
-
-	
-	
-}
-```
-
 "Ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
 
 
@@ -105,135 +65,14 @@ concept String = requires (S s)
 Details
 ===============
 
-```graphviz
-digraph structs 
-{
-	compound=true;
-	graph [bgcolor=black fontcolor=white color=white];
-	node [fillcolor=black style=filled color=white fontcolor=white];
-	edge [color=white fontcolor=white];
-
-	Ph [shape = record, label = "{Ph| {ph::}}"]
-	Types [shape = record, label = "{Types| {type::}}"]
-	Memory [shape = record, label = "{Memory}"]
-	Allocator [shape = record, label = "{Allocator}"]
-	Arena [shape = record, label = "{Arena}"]
-
-	String [shape = record, label = "{String}"]
-
-	Strings [shape = record, label = "{Strings}"]
-
-	Vector [shape = record, label = "{Vector}"]
-
-	Range [shape = record, label = "{Range}"]
-
-	Char [shape = record, label = "{Char}"]
-
-	Iterator [shape = record, label = "{Iterator}"]
-	Pointer [shape = record, label = "{Pointer}"]
-	Assert [shape = record, label = "{Assert}"]
-	Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
-
-
-
-	"Memory" -> "Arena" [shape = record, label = "  exports"]
-	"Arena" -> "Types" [shape = record, label = "  imports"]
-	"Memory" -> "Allocator" [shape = record, label = "  exports"]
-	"Arena" -> "Pointer" [shape = record, label = "  exports"]
-	"Iterator" -> "Pointer" [shape = record, label = "  exports"]
-	"Allocator" -> "Pointer" [shape = record, label = "  exports"]
-	"Range" -> "Iterator" [shape = record, label = "  imports"]
-	"Strings" -> "String" [shape = record, label = "  exports"]
-	"Vector" -> "Range" [shape = record, label = "  exports"]
-	"Vector" -> "Memory" [shape = record, label = "  imports"]
-	"String" -> Char [label = "  exports"]
-	"String" -> "Vector" [label = "  imports"]
-	"String" -> "Assert" [label = "  imports"]
-	"Strings" -> "Vector" [label = "  exports"]
-	"Ph" -> "Strings" [label = "  exports"]
-	"Ph" -> "Assert" [label = "  exports"]
-
-	"Types" -> "Typelist" [label = "  exports"]
-	"Ph" -> "Types" [label = "  exports"]
-}
-```
 
 
 
 
-
-
-file dependency
-```graphviz
-digraph G 
-{
-	compound=true;
-	graph [bgcolor=black fontcolor=white color=white];
-	node [fillcolor=black style=filled color=white fontcolor=white];
-	edge [color=white fontcolor=white];
-
-	
-	"main.o" -> "main.cpp"
-	"main.o" -> "Ph.pcm"
-	
-}
-```
-
-
-
-
-```graphviz
-digraph G {
-  graph [class="cats"];
-
-  subgraph cluster_big {
-    graph [class="big_cats"];
-
-    "Lion" [class="yellow social"];
-    "Snow Leopard" [class="white solitary"];
-  }
-}
-```
-
-
-
-Project dependencies
+<!-- Project dependencies
 ---------------
 
-The following graph describes that basically "ph" is a set of files which will either be transformed into a documentation file or into the executable software. 
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-
-	"ph" -> "source code" [ label = "  contains"];
-
-	"ph" -> "documentation" [ label = "  and contains"];
-	
-	"source code" -> "C++" [ label = "  written in"];
-
-	"C++" -> "Software" [ label = "  compiled to"];
-	
-	"documentation" -> "Markdown" [ label = "  written in"];
-
-	"Markdown" -> "plantuml" [ label = "  mixed with"];
-
-	"plantuml" -> "uml" [ label = "  mixed with"];
-
-	"Markdown" -> "graphviz" [ label = "  mixed with"];
-	
-	"documentation" -> "dot" [ label = "  and written in"];
-
-	"dot" -> "graphs like this" [ label = "  for generating"];
-
-	"dot" -> "pandoc" [ label = "  built with"];
-
-	"pandoc" -> "pandoc-plot" [ label = "  with the help of"];
-}
-```
-
+The following graph describes that basically "ph" is a set of files which will either be transformed into a documentation file or into the executable software.  -->
 
 
 
@@ -303,105 +142,10 @@ Licensing
 
 [MIT](LICENSE) © 2021 Ph
 
-Can be either open or proprietary.
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-	ph -> Cplusplus [ label = " open"]
-	ph -> Markdown [ label = " open"]
-	ph -> pandoc [ label = " open"]
-	ph -> dot [ label = " open"]
-}
-```
-
- <!-- proprietary -->
+<!-- Can be either open or proprietary. -->
 
 
 
-
-
-
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-    rankdir=LR;
-    size="8,5"
-
-    node [shape = doublecircle]; 
-    node [shape = point ]; 
-
-    node [shape = circle];
-    Ph  -> Network [ label = "" ];
-	Ph -> Graphics [ label = ""];
-	Ph -> Game [ label = ""];
-    Ph  -> Concepts  [ label = "" ];
-	Game -> Concepts
-	Network -> Concepts
-	Graphics -> Concepts
-   
-}
-```
-
-## Concepts architecture
-
-```graphviz
-digraph finite_state_machine {
-	graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-
-	Memory -> Allocator [ label = " exports"];
-	Memory -> Arena [ label = " exports"];
-	Allocator -> Arena [ label = " uses"];
-	Allocator -> Vector [ label = " uses"];
-	Bidirectional -> Forward [ label = " is"];
-    Forward  -> Input  [ label = " is and" ];
-	Forward  -> Output  [ label = " is" ];
-}
-```
-
-## Iterator-relations
-
-```graphviz
-digraph finite_state_machine {
-    graph [bgcolor=black]
-	node [fillcolor=black style=filled color=white fontcolor=white]
-	edge [color=white fontcolor=white]
-
-    Contiguous  -> Random_access [ label = " is" ];
-	Random_access -> Bidirectional [ label = " is"];
-	Bidirectional -> Forward [ label = " is"];
-    Forward  -> Input  [ label = " is and" ];
-	Forward  -> Output  [ label = " is" ];
-
-   
-}
-```
-
-```graphviz
-  digraph structs {
-	  	graph [bgcolor=black]
-		node [fillcolor=black style=filled color=white fontcolor=white]
-		edge [color=white fontcolor=white]
-  		node [shape=record];
-
-      	struct1 [shape=record,label="<f0> left|<main> main|<f2> right"];
-
-    	struct2 [shape=record,label="<f0> Ph.Build|<main> two"];
-		
-      	struct3 [shape=record,label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
-
-      	struct1:main -> struct2:f0;
-
-      	struct1:f2 -> struct3:here;
-}
-```
 
 
 # Ph.Language
