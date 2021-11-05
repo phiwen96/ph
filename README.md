@@ -141,10 +141,10 @@ Licensing
 [MIT](LICENSE) © 2021 ph
 
 
-TODO
+<!-- TODO
 ===============
 - [ ] [implement type function params <Ret(Args...)> -> Typelist](Function.cpp)
-- [ ] [implement type function ret <Ret(Args...)> -> Typelist](Function.cpp)
+- [ ] [implement type function ret <Ret(Args...)> -> Typelist](Function.cpp) -->
 
 
 
