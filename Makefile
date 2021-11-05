@@ -29,11 +29,14 @@ __OBJ := $(subst .cpp,.pcm,$(SUBMODULES))
 _OBJ := $(foreach F,$(__OBJ),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
 OBJ := $(foreach name, $(_OBJ), $(addprefix $(OBJ_DIR)/, $(name)))
 
-PDF := $(BUILD_DIR)/docs/$(PROJ).pdf
+DOCS_PDF := $(BUILD_DIR)/docs/$(PROJ).pdf
 
-GRAPH := $(DOCS_DIR)/*.dot
+DOCS_ARCHITECTURE_PDF := $(BUILD_DIR)/docs/Architecture.pdf
 
-DOCS := $(PDF) $(GRAPH)
+DOCS_ARCHITECTURE_PNG := $(BUILD_DIR)/docs/Architecture.png
+
+DOCS_ARCHITECTURE := $(DOCS_ARCHITECTURE_PDF) $(DOCS_ARCHITECTURE_PNG)
+DOCS := $(DOCS_PDF) $(DOCS_ARCHITECTURE)
 # LIB := $(OBJ_DIR)/$(APP).o 
 
 
@@ -61,18 +64,24 @@ all: $(EXE) $(DOCS)
 
 
 
-$(PDF): $(DOCS_DIR)/README.yml $(PROJ_DIR)/README.md 
+$(DOCS_PDF): $(DOCS_DIR)/Ph.yml $(PROJ_DIR)/README.md
 	(cd $(BUILD_DIR)/docs && pandoc --filter pandoc-plot --filter pandoc-plantuml -o $@ $^)
+
+$(DOCS_ARCHITECTURE_PDF): $(DOCS_DIR)/Architecture.dot
+	dot -Tpdf $< -o $@
+
+$(DOCS_ARCHITECTURE_PNG): $(DOCS_DIR)/Architecture.dot
+	dot -Tpng $< -o $@
 
 
 
 $(EXE): $(OBJ_DIR)/$(APP).o $(SUBMODULES) $(LIB_DIR)/$(PROJ).cpp
 	$(CXX) $(CXX_FLAGS) $(OBJ_DIR)/$(APP).o -o $@
 
-$(OBJ_DIR)/$(APP).o: $(LIB)
+$(OBJ_DIR)/$(APP).o: $(PROJ_DIR)/src/$(APP).cpp $(LIB)
 	$(CXX) $(CXX_FLAGS) -fmodule-file=$(LIB) -c $(PROJ_DIR)/src/$(APP).cpp -o $@
 
-$(LIB): $(OBJ) $(SUBMODULES)
+$(LIB): $(OBJ)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(OBJ)) -c $(LIB_DIR)/$(PROJ).cpp -Xclang -emit-module-interface -o $@
  
 
@@ -102,6 +111,9 @@ $(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp
+	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Assert.pcm: $(SUBMODULES_DIR)/Assert.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 
