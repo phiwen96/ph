@@ -5,7 +5,7 @@
 [Markdown]: https://www.markdownguide.org/basic-syntax/
 [DOT]: https://graphviz.org/doc/info/lang.html
 [UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
-[English]: https://en.wikipedia.org/wiki/English_language
+[English language]: https://en.wikipedia.org/wiki/English_language
 [pandoc]: https://pandoc.org
 [pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
 [pandoc-plantuml-filter]: https://github.com/timofurrer/pandoc-plantuml-filter
@@ -28,7 +28,7 @@ The following languages are used for documentation:
 * [Markdown]
 * [DOT]
 * [UML]
-* [English]
+* [English language]
 
 The following tools are used for building the documentation:
 
