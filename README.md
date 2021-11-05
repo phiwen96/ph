@@ -25,7 +25,7 @@ It aims to cut loose from other languages in the [software development](https://
 
 
 
-It introduces c++ concepts and modules, by which the former it is built around, thus, making it lucrative for industrial applications where the need for precision is critical, and where most of the bugs can be catched before the c++ files are even compiled, thus simply just generating syntax errors for developers. 
+<!-- It introduced c++ concepts and modules, by which the former it is built around, thus, making it lucrative for industrial applications where the need for precision is critical, and where most of the bugs can be catched before the c++ files are even compiled, thus simply just generating syntax errors for developers. 
 Introducing this core language feature has huge pros for industrial-strength generic components, AKA good software.
 This is what we want! We dont want python's "throw in whatever type u desire", and not java's somewhat pragmatic "please specify the type". 
 We want to be able to say "hey, other coders out there using this function im about to type, just throw in a String". 
@@ -38,7 +38,7 @@ concept String = requires (S s)
 	s.size ();
 	{s [0]} -> char;
 }
-```
+``` -->
 
 
 
