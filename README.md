@@ -16,8 +16,7 @@ Introduction
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
 [Ph] aims to be the facto software for both building and testing the best [C++] software.
-It aims to cut loose from other languages in the [build process]a
-(https://en.wikipedia.org/wiki/Software_build), instead integrating them directly in the source code such as this:
+It aims to cut loose from other languages in the [build process](https://en.wikipedia.org/wiki/Software_build), instead integrating them directly in the source code such as this:
 
 
 
