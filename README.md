@@ -112,9 +112,8 @@ For building the documentation, we use the following languages:
 * [Markdown]
 * [dot]
 * [UML]
-* [English]
-
-and with help of the following tools
+* [English]¯
+and the following tools
 ---------------
 [pandoc]: https://pandoc.org
 [pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
