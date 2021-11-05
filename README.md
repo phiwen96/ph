@@ -3,7 +3,7 @@
 [Make]: https://www.gnu.org/software/make/
 [CMake]: https://cmake.org
 [Markdown]: https://www.markdownguide.org/basic-syntax/
-[dot]: https://graphviz.org/doc/info/lang.html
+[DOT]: https://graphviz.org/doc/info/lang.html
 [UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
 [English]: https://en.wikipedia.org/wiki/English_language
 [pandoc]: https://pandoc.org
@@ -26,7 +26,7 @@ Documentation
 The following languages are used for documentation:
 
 * [Markdown]
-* [dot]
+* [DOT]
 * [UML]
 * [English]
 
