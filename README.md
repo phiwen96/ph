@@ -15,7 +15,7 @@ Introduction
 
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
-[Ph] is a software project that aims to be the facto software for both building and testing the best [C++] software.
+[Ph] aims to be the facto software for both building and testing the best [C++] software.
 It aims to cut loose from other languages in the build process, instead integrating them directly in the source code such as this:
 
 
