@@ -42,14 +42,14 @@ It aims to cut loose from other languages in the [software development](https://
 Documentation
 ===============
 
-For building the documentation, we use the following languages:
+The following languages are used for documentation:
 
 * [Markdown]
 * [dot]
 * [UML]
 * [English]
 
-#### and the following tools
+The following tools are used for building the documentation:
 
 * [pandoc]
 * [pandoc-plot]
