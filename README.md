@@ -1,5 +1,11 @@
 [Ph]: https://github.com/phiwen96/ph
-
+[Markdown]: https://www.markdownguide.org/basic-syntax/
+[dot]: https://graphviz.org/doc/info/lang.html
+[UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
+[English]: https://en.wikipedia.org/wiki/English_language
+[pandoc]: https://pandoc.org
+[pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
+[pandoc-plantuml-filter]: https://github.com/timofurrer/pandoc-plantuml-filter
 
 Introduction
 ===============
