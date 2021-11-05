@@ -18,7 +18,7 @@ Introduction
 It aims to cut loose from other languages in the [software development](https://en.wikipedia.org/wiki/Software_development), instead integrating them directly in the source code.
 
 All source code is written in [C++], built with [Make].
-a
+
 
 Documentation
 ===============
