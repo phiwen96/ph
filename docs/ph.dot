@@ -1,0 +1,31 @@
+digraph structs 
+{
+	bgcolor=red;
+	compound=true;
+	ratio=fill;
+	fill=true;
+	graph [dpi = 1000 bgcolor=black fontcolor=white color=white];
+	node [dpi = 1000 bgcolor=black fillcolor=black style=filled color=white fontcolor=white];
+	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
+
+	Ph [shape = record, label = "{Ph| {ph::}}"]
+	Number [shape = record, label = "{Number}"]
+	Signed [shape = record, label = "{Signed}"]
+	Unsigned [shape = record, label = "{Unsigned}"]
+	Integer [shape = record, label = "{Integer}"]
+	Float [shape = record, label = "{Float}"]
+
+	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
+
+
+
+	"Number" -> "Signed" [shape = record, label = "  exports"]
+	"Number" -> "Unsigned" [shape = record, label = "  exports"]
+	"Number" -> "Integer" [shape = record, label = "  exports"]
+	"Number" -> "Float" [shape = record, label = "  exports"]
+
+	"Ph" -> "Number" [label = "  exports"]
+]
+}
+
+
