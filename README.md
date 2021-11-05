@@ -134,14 +134,23 @@ It's still very young.
 Please help me develop this project! At the moment there are just one developer.
 
 
+
 Licensing
 ===============
 
-[MIT](LICENSE) © 2021 Ph
+[MIT](LICENSE) © 2021 ph
+
+
+TODO
+===============
+- [ ] [implement type function params <Ret(Args...)> -> Typelist](Function.cpp)
+- [ ] [implement type function ret <Ret(Args...)> -> Typelist](Function.cpp)
+
+
 
 <!-- Can be either open or proprietary. -->
 
-
+<!-- 
 
 
 
@@ -288,16 +297,8 @@ Ph.Language requires [CMake](https://cmake.org) 3.19.4 to run. -->
 
 
 
-## Usage
-```sh
-Ph.Language input_file.txt output_file.txt
-```
+-->
 
-
-TODO
-===============
-- [ ] [implement type function params <Ret(Args...)> -> Typelist](Function.cpp)
-- [ ] [implement type function ret <Ret(Args...)> -> Typelist](Function.cpp)
 
 
 
