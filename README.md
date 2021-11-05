@@ -1,4 +1,7 @@
 [Ph]: https://github.com/phiwen96/ph
+[C++]: https://www.cplusplus.com
+[Make]: https://www.gnu.org/software/make/
+[CMake]: https://cmake.org
 [Markdown]: https://www.markdownguide.org/basic-syntax/
 [dot]: https://graphviz.org/doc/info/lang.html
 [UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
@@ -12,12 +15,12 @@ Introduction
 
 <!-- An inline ![image](project_dependencies.ps){#id .class width=30 height=20px} -->
 
-[Ph] is a software project that aims to be the facto software for both building and testing the best C++ software.
+[Ph] is a software project that aims to be the facto software for both building and testing the best [C++] software.
 It aims to cut loose from other languages in the build process, instead integrating them directly in the source code such as this:
 
 
 
-"Ph" is a lightning fast C++ library and also a build tool (such as Cmake or Make) for turning C++ source code into something useful.
+"Ph" is a lightning fast C++ library and also a build tool (such as [CMake] or [Make]) for turning C++ source code into something useful.
 
 
 
@@ -89,13 +92,9 @@ The following graph describes that basically "ph" is a set of files which will e
 
 ### Source code written in
 
-[C++]: https://www.cplusplus.com
-
 * [C++]
 
 #### and built with 
-
-[Make]: https://www.gnu.org/software/make/
 
 * [Make]
 
@@ -110,11 +109,6 @@ Documentation
 ===============
 For building the documentation, we use the following languages:
 
-[Markdown]: https://www.markdownguide.org/basic-syntax/
-[dot]: https://graphviz.org/doc/info/lang.html
-[UML]: https://en.wikipedia.org/wiki/Unified_Modeling_Language
-[English]: https://en.wikipedia.org/wiki/English_language
-
 * [Markdown]
 * [dot]
 * [UML]
@@ -122,9 +116,6 @@ For building the documentation, we use the following languages:
 
 #### and the following tools
 ---------------
-[pandoc]: https://pandoc.org
-[pandoc-plot]: https://github.com/LaurentRDC/pandoc-plot
-[pandoc-plantuml-filter]: https://github.com/timofurrer/pandoc-plantuml-filter
 
 * [pandoc]
 * [pandoc-plot]
