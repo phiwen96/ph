@@ -39,8 +39,14 @@ export
 
 consteval bool Integer_test () 
 {
-	static_assert (ph::Integer <int>);
-	static_assert (ph::Integer <int&>);
+	using namespace ph;
+
+	constexpr auto assert_integer = [] <Integer> {};
+	constexpr auto assert_not_integer = [] <typename T> requires (not Integer <T>) {};
+
+	assert_all <int, int&, int&&, bool, char, float, double, long double> (assert_integer);
+	assert_all <char const*, int const (&) [10]> (assert_not_integer);
+
 	return true;
 }
 

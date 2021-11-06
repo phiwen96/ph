@@ -18,7 +18,31 @@ namespace ph
 	};
 
 	template <typename T>
+	struct pointer <T*&> 
+	{
+		static constexpr bool value = true;
+	};
+
+	template <typename T>
+	struct pointer <T*&&> 
+	{
+		static constexpr bool value = true;
+	};
+
+	template <typename T>
 	struct pointer <T**> 
+	{
+		static constexpr bool value = true;
+	};
+
+	template <typename T>
+	struct pointer <T**&> 
+	{
+		static constexpr bool value = true;
+	};
+
+	template <typename T>
+	struct pointer <T**&&> 
 	{
 		static constexpr bool value = true;
 	};
@@ -48,9 +72,9 @@ consteval bool Pointer_test ()
 
 	constexpr auto assert_pointer = [] <Pointer> {};
 	constexpr auto assert_not_pointer = [] <typename T> () requires (not Pointer <T>) {};
-	
-	assert_all <int*, int**> (assert_pointer);
-	assert_all <int, int> (assert_not_pointer);
+
+	assert_all <int*, int*&, int*&&, int const*, int**, int**&, int**&&> (assert_pointer);
+	assert_all <int, int&, int&&> (assert_not_pointer);
 
 	return true;
 }
