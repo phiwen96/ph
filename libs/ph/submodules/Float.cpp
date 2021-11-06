@@ -12,3 +12,17 @@ namespace ph
 
 
 
+consteval auto Float_test () -> bool
+{
+	using namespace ph;
+
+	constexpr auto assert_floating = [] <Floating> {};
+	constexpr auto assert_not_floating = [] <typename T> requires (not Floating <T>) {};
+
+	assert_all <int, bool, char, float, double, long double> (assert_floating);
+	assert_all <char const*, int const (&) [10]> (assert_not_floating);
+
+	return true;
+}
+
+static_assert (Float_test ());
