@@ -14,6 +14,7 @@ SUBMODULES_DIR := $(LIB_DIR)/submodules
 # SRC_DIR := $(PROJ_DIR)/src
 BUILD_DIR := $(PROJ_DIR)/build
 OBJ_DIR := $(BUILD_DIR)/obj
+TESTS_DIR := $(BUILD_DIR)/tests
 
 
 
@@ -28,6 +29,11 @@ SUBMODULES := $(wildcard $(SUBMODULES_DIR)/*.cpp)
 __OBJ := $(subst .cpp,.pcm,$(SUBMODULES))
 _OBJ := $(foreach F,$(__OBJ),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
 OBJ := $(foreach name, $(_OBJ), $(addprefix $(OBJ_DIR)/, $(name)))
+
+# __TESTS := $(subst .cpp,.pcm,$(SUBMODULES))
+# _TESTS := $(foreach F,$(__TESTS),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
+# TESTS := $(foreach name, $(_TESTS), $(addprefix $(TESTS_DIR)/, $(name)))
+
 
 DOCS_PDF := $(BUILD_DIR)/docs/$(PROJ).pdf
 
@@ -60,7 +66,7 @@ BUILD_DIRS := $(foreach dir, $(_BUILD_DIRS), $(addprefix $(BUILD_DIR)/, $(dir)))
 
 	
 
-all: $(EXE) $(DOCS)
+all: $(EXE) $(LIB) $(DOCS)
 
 
 
@@ -72,6 +78,9 @@ $(DOCS_ARCHITECTURE_PDF): $(DOCS_DIR)/Architecture.dot
 
 $(DOCS_ARCHITECTURE_PNG): $(DOCS_DIR)/Architecture.dot
 	dot -Tpng $< -o $@
+
+
+
 
 
 

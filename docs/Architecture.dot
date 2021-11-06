@@ -8,13 +8,15 @@ digraph structs
 	node [dpi = 1000 bgcolor=black fillcolor=black style=filled color=white fontcolor=white];
 	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
 
-	Ph [shape = record, label = "{Ph| {ph::}}"]
+	// Ph [shape = record, label = "{Ph| {ph::}}"]
 	Number [shape = record, label = "{Number}"]
 	Signed [shape = record, label = "{Signed}"]
 	Unsigned [shape = record, label = "{Unsigned}"]
 	Integer [shape = record, label = "{Integer}"]
 	Float [shape = record, label = "{Float}"]
 	Convertible_to [shape = record, label = "{Convertible to}"]
+	Assert [shape = record, label = "{Assert}"]
+
 
 	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
 
@@ -31,7 +33,9 @@ digraph structs
 
 
 
-	"Ph" -> "Number" [label = "  exports"]
+	// "Ph" -> "Number" [label = "  exports"]
+	// "Ph" -> "Assert" [label = "  exports"]
+
 }
 
 
