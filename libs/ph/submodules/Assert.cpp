@@ -75,9 +75,10 @@ namespace ph
 			requires not requires ()
 			{
 				((lambda.template operator () <T> ()), ...);
+				assert_not_all <T...> (lambdas...);
 			};
 
-			assert_not_all <T...> (lambdas...);
+			
 		}
 		{
 
