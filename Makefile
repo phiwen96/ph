@@ -104,23 +104,24 @@ $(LIB): $(OBJ)
 
 
 
-$(OBJ_DIR)/Number.pcm: $(SUBMODULES_DIR)/Number.cpp $(OBJ_DIR)/Signed.pcm $(OBJ_DIR)/Unsigned.pcm $(OBJ_DIR)/Integer.pcm $(OBJ_DIR)/Float.pcm
+$(OBJ_DIR)/Number.pcm: $(SUBMODULES_DIR)/Number.cpp $(OBJ_DIR)/Signed.pcm $(OBJ_DIR)/Unsigned.pcm $(OBJ_DIR)/Integer.pcm $(OBJ_DIR)/Float.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Signed.pcm: $(SUBMODULES_DIR)/Signed.cpp $(OBJ_DIR)/Convertible_to.pcm 
+$(OBJ_DIR)/Signed.pcm: $(SUBMODULES_DIR)/Signed.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Unsigned.pcm: $(SUBMODULES_DIR)/Unsigned.cpp $(OBJ_DIR)/Convertible_to.pcm 
+$(OBJ_DIR)/Unsigned.pcm: $(SUBMODULES_DIR)/Unsigned.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Float.pcm: $(SUBMODULES_DIR)/Float.cpp $(OBJ_DIR)/Convertible_to.pcm 
+$(OBJ_DIR)/Float.pcm: $(SUBMODULES_DIR)/Float.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.pcm 
+$(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp
-	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
+$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(OBJ_DIR)/Assert.pcm 
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
 
 $(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@

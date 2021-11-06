@@ -1,6 +1,8 @@
 export module Ph.Number.Integer;
 
 import Ph.Convertible_to;
+import Ph.Assert;
+
 
 namespace ph 
 {

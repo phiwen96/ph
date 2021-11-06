@@ -45,10 +45,12 @@ namespace ph
 consteval bool Pointer_test ()
 {
 	using namespace ph;
+
 	constexpr auto assert_pointer = [] <Pointer> {};
 	constexpr auto assert_not_pointer = [] <typename T> () requires (not Pointer <T>) {};
+	
 	assert_all <int*, int**> (assert_pointer);
-	assert_all <int, int&> (assert_not_pointer);
+	assert_all <int, int> (assert_not_pointer);
 
 	return true;
 }

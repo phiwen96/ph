@@ -1,5 +1,6 @@
 export module Ph.Concepts.Reference;
 
+import Ph.Assert;
 
 namespace ph 
 {
@@ -50,4 +51,20 @@ namespace ph
 	}
 }
 
-// static_assert (ph::Same_as <ph::remove_reference <int&>, int>);
+
+
+
+
+consteval auto Reference_test () -> bool
+{
+	using namespace ph;
+
+	constexpr auto assert_reference = [] <Reference> {};
+	constexpr auto assert_not_reference = [] <typename T> requires (not Reference <T>) {};
+
+
+
+	return true;
+}
+
+static_assert (Reference_test ());

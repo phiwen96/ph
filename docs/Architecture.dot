@@ -23,15 +23,20 @@ digraph structs
 	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
 
 
-
+	"Number" -> Assert [shape = record, label = "  imports"]
 	"Number" -> "Signed" [shape = record, label = "  exports"]
 	"Number" -> "Unsigned" [shape = record, label = "  exports"]
 	"Number" -> "Integer" [shape = record, label = "  exports"]
 	"Number" -> "Float" [shape = record, label = "  exports"]
 	"Signed" -> Convertible_to [shape = record, label = "  imports"]
+	"Signed" -> Assert [shape = record, label = "  imports"]
 	"Unsigned" -> Convertible_to [shape = record, label = "  imports"]
+	"Unsigned" -> Assert [shape = record, label = "  imports"]
 	"Integer" -> Convertible_to [shape = record, label = "  imports"]
+	"Integer" -> Assert [shape = record, label = "  imports"]
 	"Float" -> Convertible_to [shape = record, label = "  imports"]
+	"Float" -> Assert [shape = record, label = "  imports"]
+
 
 
 
