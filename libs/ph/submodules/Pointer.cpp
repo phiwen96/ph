@@ -1,4 +1,4 @@
-export module Ph.Concepts.Memory.Pointer;
+export module Ph.Pointer;
 
 import Ph.Assert;
 

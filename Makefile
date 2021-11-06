@@ -102,9 +102,16 @@ $(LIB): $(OBJ)
 
 
 
+$(OBJ_DIR)/Range.pcm: $(SUBMODULES_DIR)/Range.cpp $(OBJ_DIR)/Iterator.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(OBJ_DIR)/Assert.pcm
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Iterator.pcm: $(SUBMODULES_DIR)/Iterator.cpp $(OBJ_DIR)/Const.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Assert.pcm
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Number.pcm: $(SUBMODULES_DIR)/Number.cpp $(OBJ_DIR)/Signed.pcm $(OBJ_DIR)/Unsigned.pcm $(OBJ_DIR)/Integer.pcm $(OBJ_DIR)/Float.pcm $(OBJ_DIR)/Assert.pcm 
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Size.pcm: $(SUBMODULES_DIR)/Size.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Signed.pcm: $(SUBMODULES_DIR)/Signed.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
@@ -119,9 +126,11 @@ $(OBJ_DIR)/Float.pcm: $(SUBMODULES_DIR)/Float.cpp $(OBJ_DIR)/Convertible_to.pcm 
 $(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.pcm $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(OBJ_DIR)/Assert.pcm 
+$(OBJ_DIR)/Bool.pcm: $(SUBMODULES_DIR)/Bool.cpp $(OBJ_DIR)/Assert.pcm $(OBJ_DIR)/Convertible_to.pcm
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(OBJ_DIR)/Assert.pcm 
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
@@ -129,6 +138,8 @@ $(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp $(OBJ_DIR)/Assert.pcm
 $(OBJ_DIR)/Reference.pcm: $(SUBMODULES_DIR)/Reference.cpp $(OBJ_DIR)/Assert.pcm 
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Const.pcm: $(SUBMODULES_DIR)/Const.cpp
+	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Assert.pcm: $(SUBMODULES_DIR)/Assert.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@

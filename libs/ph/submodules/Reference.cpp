@@ -1,4 +1,4 @@
-export module Ph.Concepts.Reference;
+export module Ph.Reference;
 
 import Ph.Assert;
 
