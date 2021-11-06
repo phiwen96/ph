@@ -16,6 +16,8 @@ digraph structs
 	Float [shape = record, label = "{Float}"]
 	Convertible_to [shape = record, label = "{Convertible to}"]
 	Assert [shape = record, label = "{Assert}"]
+	Pointer [shape = record, label = "{Pointer}"]
+	Reference [shape = record, label = "{Reference}"]
 
 
 	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]

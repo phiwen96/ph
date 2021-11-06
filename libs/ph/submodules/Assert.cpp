@@ -29,16 +29,6 @@ namespace ph
 
 	export 
 	{
-		
-		consteval auto assert_true (auto&&... b)
-		requires requires ()
-		{
-			requires ((b == true) and ...);
-		}
-		{
-
-		}
-
 		template <typename... T>
 		consteval inline auto assert_all (auto&& lambda) noexcept -> void
 		requires requires ()
@@ -98,45 +88,46 @@ namespace ph
 }
 
 
-using namespace ph;
 
-struct assert_test 
-{
-	auto open () 
-	{
 
-	}
-};
+// struct assert_test 
+// {
+// 	auto open () 
+// 	{
 
-consteval auto Assert_test () -> bool
-{
-	// assert_true (true, true, true);
+// 	}
+// };
 
-	constexpr auto assert_bool = [] <bool> () constexpr noexcept {};
-	// static_assert (Convertible_to <char*, bool>);
-	// assert_all <int, bool, char*> (assert_bool); 
-	constexpr auto assert_no_open = [] <typename T> () constexpr noexcept 
-	requires requires (T t)
-	{
-		requires not requires ()
-		{
-			t.open ();
-		};
-	}
-	{};
+// consteval auto Assert_test () -> bool
+// {
+// 	using namespace ph;
+// 	// assert_true (true, true, true);
 
-	assert_no_open.template operator () <int> ();
+// 	constexpr auto assert_bool = [] <bool> () constexpr noexcept {};
+// 	// static_assert (Convertible_to <char*, bool>);
+// 	// assert_all <int, bool, char*> (assert_bool); 
+// 	constexpr auto assert_no_open = [] <typename T> () constexpr noexcept 
+// 	requires requires (T t)
+// 	{
+// 		requires not requires ()
+// 		{
+// 			t.open ();
+// 		};
+// 	}
+// 	{};
+
+// 	assert_no_open.template operator () <int> ();
 	
 
-	struct _A {};      assert_not_all <_A, int> (assert_bool); // should generate error
+// 	struct _A {};      assert_not_all <_A, int> (assert_bool); // should generate error
 
 
 
 
-	// assert_all <string_check, int> ();
-	// assert_all <int> ([] <typename T> {return Same_as <char, T>;});
-	return true;
-}
+// 	// assert_all <string_check, int> ();
+// 	// assert_all <int> ([] <typename T> {return Same_as <char, T>;});
+// 	return true;
+// }
 
 
-static_assert (Assert_test ());
+// static_assert (Assert_test ());

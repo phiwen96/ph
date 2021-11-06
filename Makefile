@@ -122,6 +122,13 @@ $(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.
 $(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp
+	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Reference.pcm: $(SUBMODULES_DIR)/Reference.cpp $(OBJ_DIR)/Assert.pcm 
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+
 $(OBJ_DIR)/Assert.pcm: $(SUBMODULES_DIR)/Assert.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
