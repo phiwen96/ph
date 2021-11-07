@@ -1,9 +1,10 @@
-export module Ph.Concepts.Range;
+export module Ph.Range;
 
 import Ph.Bool;
 import Ph.Size;
 import Ph.Pointer;
 import Ph.Iterator;
+import Ph.Assert;
 
 import std;
 
@@ -72,7 +73,7 @@ export namespace ph
 
 
 
-		template <typename E>
+		template <typename T, typename E>
 		constexpr auto operator | (Range auto const& r, contains_proxy <E> const& proxy) noexcept -> Bool auto
 		{
 			auto const& v = proxy._value;

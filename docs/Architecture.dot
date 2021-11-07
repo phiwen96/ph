@@ -22,7 +22,7 @@ digraph structs
 	Pointer [shape = record, label = "{Pointer}"]
 	Reference [shape = record, label = "{Reference}"]
 	Iterator [shape = record, label = "{Iterator}"]
-	Range [shape = record, label = "{Range}"]
+	Range [shape = record, label = "{Range |{contains (Range) - Bool}}"]
 
 
 	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
