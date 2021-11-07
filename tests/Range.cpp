@@ -7,34 +7,32 @@ import Ph.Iterator;
 
 import std;
 
-template <typename T>
-struct contains_proxy { T const& _value; };
 
-// constexpr auto rangeable (auto&& r) -> bool 
-// {
-// 	return true;
-// }
 
-export namespace ph 
+namespace ph 
 {
-	
+	template <typename T>
+	struct contains_proxy { T const& _value; };
+
+	consteval auto rangeable (auto&& r) -> Bool auto 
+	{
+		return true;
+	}
 
 	// template <typename T>
 	// concept Rangeable = rangeable (std::declval <T> ());
 
-	 
-	
+	export 
+	{
 
 
 
 		template <typename R>
 		concept Range = requires (R r)
-		{ 
-			true;
-			// requires rangeable (std::declval <R> ());
+		{
 			// requires (rangeable (r));
 			// if (true) {};
-			// true; 
+			true;
 			// requires (rangeable (r) == true);
 
 			// {ph::begin (r)} noexcept -> Iterator;
@@ -170,7 +168,7 @@ export namespace ph
 
 
 
-	
+	}
 }
 
 

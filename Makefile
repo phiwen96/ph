@@ -17,7 +17,7 @@ OBJ_DIR := $(BUILD_DIR)/obj
 TESTS_DIR := $(BUILD_DIR)/tests
 
 
-
+TESTS_SOURCE_DIR := $(PROJ_DIR)/tests
 
 
 
@@ -30,7 +30,12 @@ __OBJ := $(subst .cpp,.pcm,$(SUBMODULES))
 _OBJ := $(foreach F,$(__OBJ),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
 OBJ := $(foreach name, $(_OBJ), $(addprefix $(OBJ_DIR)/, $(name)))
 
-# __TESTS := $(subst .cpp,.pcm,$(SUBMODULES))
+__TESTS := $(subst .cpp,.pcm,$(SUBMODULES))
+_TESTS := $(foreach F,$(__TESTS),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
+TESTS := $(foreach name, $(_TESTS), $(addprefix $(TESTS_DIR)/, $(name)))
+# TESTS := $(PROJ_DIR)/tests/*.cpp
+
+# __TESTS := $(subst .cpp,,$(SUBMODULES))
 # _TESTS := $(foreach F,$(__TESTS),$(word $(words $(subst /, ,$F)),$(subst /, ,$F)))
 # TESTS := $(foreach name, $(_TESTS), $(addprefix $(TESTS_DIR)/, $(name)))
 
@@ -52,7 +57,7 @@ DOCS := $(DOCS_PDF) $(DOCS_ARCHITECTURE)
 
 # DIRS = docs libs
 # SRC_DIRS := $(foreach dir, $(DIRS), $(addprefix $(SRC_DIR)/, $(dir)))
-_BUILD_DIRS := libs obj docs
+_BUILD_DIRS := libs obj docs tests
 BUILD_DIRS := $(foreach dir, $(_BUILD_DIRS), $(addprefix $(BUILD_DIR)/, $(dir)))
 
 # $(info $$DIRS is [${DIRS}])
@@ -62,6 +67,7 @@ BUILD_DIRS := $(foreach dir, $(_BUILD_DIRS), $(addprefix $(BUILD_DIR)/, $(dir)))
 # $(info $$OBJ is [${OBJ}])
 # $(info $$LIB is [${LIB}])
 # $(info $$SUBMODULES is [${SUBMODULES}])
+# $(info $$TESTS is [${TESTS}])
 
 
 	
@@ -90,14 +96,14 @@ $(EXE): $(OBJ_DIR)/$(APP).o $(SUBMODULES) $(LIB_DIR)/$(PROJ).cpp
 $(OBJ_DIR)/$(APP).o: $(PROJ_DIR)/src/$(APP).cpp $(LIB)
 	$(CXX) $(CXX_FLAGS) -fmodule-file=$(LIB) -c $(PROJ_DIR)/src/$(APP).cpp -o $@
 
-$(LIB): $(OBJ)
+$(LIB): $(LIB_DIR)/$(PROJ).cpp $(OBJ)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(OBJ)) -c $(LIB_DIR)/$(PROJ).cpp -Xclang -emit-module-interface -o $@
  
 
 
 
-
-
+# $(TESTS): $(PROJ_DIR)/tests/%.cpp
+# 	$(CXX) $(CXX_FLAGS) $< -o $@
 
 
 

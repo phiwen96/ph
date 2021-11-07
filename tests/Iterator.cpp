@@ -3,7 +3,7 @@ export module Ph.Iterator;
 import Ph.Const;
 import Ph.Reference;
 import Ph.Size;
-// import Ph.Bool;
+import Ph.Bool;
 import Ph.Pointer;
 import std;
 
@@ -13,8 +13,10 @@ At its core, an iterator is an object that represents a position in a sequence.
 
 
 
-export namespace ph 
+namespace ph 
 {
+	export 
+	{
 		template <typename T>
 		concept Input_iterator = requires (T& t)
 		{
@@ -143,7 +145,7 @@ export namespace ph
 
 		template <Iterator I>
 		using iterator = iterator_t <I>; 
-	
+	}
 
 	
 

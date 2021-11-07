@@ -9,6 +9,9 @@ digraph structs
 	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
 
 	// Ph [shape = record, label = "{Ph| {ph::}}"]
+	Const [shape = record, label = "{Const}"]
+	Size [shape = record, label = "{Size}"]
+	Bool [shape = record, label = "{Bool}"]
 	Number [shape = record, label = "{Number}"]
 	Signed [shape = record, label = "{Signed}"]
 	Unsigned [shape = record, label = "{Unsigned}"]
@@ -18,11 +21,19 @@ digraph structs
 	Assert [shape = record, label = "{Assert}"]
 	Pointer [shape = record, label = "{Pointer}"]
 	Reference [shape = record, label = "{Reference}"]
+	Iterator [shape = record, label = "{Iterator}"]
+	Range [shape = record, label = "{Range}"]
 
 
 	// Typelist [shape = record, label = "{Typelist | {+ common [...] - T} | {+ transform [...]}}"]
-
-
+	"Iterator" -> Const [shape = record, label = "  imports"]
+	"Iterator" -> Pointer [shape = record, label = "  exports"]
+	"Iterator" -> Size [shape = record, label = "  exports"]
+	"Iterator" -> Reference [shape = record, label = "  imports"]
+	"Range" -> Bool [shape = record, label = "  exports"]
+	"Range" -> Iterator [shape = record, label = "  exports"]
+	"Range" -> Pointer [shape = record, label = "  imports"]
+	"Range" -> Size [shape = record, label = "  exports"]
 	"Number" -> Assert [shape = record, label = "  imports"]
 	"Number" -> "Signed" [shape = record, label = "  exports"]
 	"Number" -> "Unsigned" [shape = record, label = "  exports"]
