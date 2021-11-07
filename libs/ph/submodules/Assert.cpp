@@ -27,12 +27,19 @@ export namespace ph
 
 
 
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
+#endif
 
 
 
 
 
-consteval auto Assert_test () -> bool
+
+inline consteval auto Assert_test () -> bool
 {
 	using namespace ph;
 	

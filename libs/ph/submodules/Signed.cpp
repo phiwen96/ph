@@ -27,6 +27,14 @@ namespace ph
 	}
 }
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval auto Signed_test () -> bool
 {
 	using namespace ph;
@@ -38,3 +46,5 @@ consteval auto Signed_test () -> bool
 }
 
 static_assert (Signed_test ());
+
+#endif

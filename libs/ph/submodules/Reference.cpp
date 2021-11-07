@@ -55,6 +55,14 @@ namespace ph
 
 
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval auto Reference_test () -> bool
 {
 	using namespace ph;
@@ -69,3 +77,5 @@ consteval auto Reference_test () -> bool
 }
 
 static_assert (Reference_test ());
+
+#endif

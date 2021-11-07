@@ -1,7 +1,20 @@
+
+
 CXX := clang++
-CXX_FLAGS := -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
+CXX_FLAGS = -std=c++2a -stdlib=libc++ -fmodules-ts -fmodules -fbuiltin-module-map -fimplicit-modules -fimplicit-module-maps -fprebuilt-module-path=.
 AR := ar
 AR_FLAGS := rv
+
+ifeq ($(Testing), true)
+CXX_FLAGS += -DTesting
+endif
+
+ifeq ($(Testing), false)
+CXX_FLAGS += -DTesting
+endif
+
+$(info $$Testing is [${Testing}])
+$(info $$CXX_FLAGS is [${CXX_FLAGS}])
 
 DATE := $(shell date +%F)
 

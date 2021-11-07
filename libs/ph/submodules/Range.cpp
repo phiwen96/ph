@@ -188,6 +188,14 @@ export namespace ph
 
 
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 using namespace ph;
 
 static_assert (Range <std::vector <int>>);
@@ -203,3 +211,5 @@ static_assert (Range <std::vector <int>>);
 	}
 
 	static_assert (Range_test ());
+
+#endif

@@ -66,6 +66,15 @@ namespace ph
 
 
 
+
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval bool Pointer_test ()
 {
 	using namespace ph;
@@ -80,3 +89,5 @@ consteval bool Pointer_test ()
 }
 
 static_assert (Pointer_test ());
+
+#endif

@@ -8,16 +8,24 @@ export import Ph.Number.Float;
 import Ph.Assert;
 
 
-namespace ph 
+export namespace ph 
 {
-	export 
-	{
-		template <typename T>
-		concept Number = Signed <T> or Unsigned <T>;
-	}
+	 
+	
+	template <typename T>
+	concept Number = Signed <T> or Unsigned <T>;
+	
 }
 
 
+
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
 
 consteval auto Number_test () -> bool
 {
@@ -33,3 +41,5 @@ consteval auto Number_test () -> bool
 }
 
 static_assert (Number_test ());
+
+#endif

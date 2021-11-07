@@ -12,6 +12,14 @@ namespace ph
 
 
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval auto Float_test () -> bool
 {
 	using namespace ph;
@@ -26,3 +34,5 @@ consteval auto Float_test () -> bool
 }
 
 static_assert (Float_test ());
+
+#endif

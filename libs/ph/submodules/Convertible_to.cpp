@@ -24,14 +24,26 @@ static_assert (Convertible_to <short, short>);
 }
 
 
+
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval auto Convertible_to_test () -> bool
 {
 	using namespace ph;
 
 	constexpr auto assert_convertible_to = [] <Convertible_to <int>> {};
 	constexpr auto assert_not_convertible_to = [] <typename T> requires (not Convertible_to <T, int>) {};
+	
 
 	return true;
 }
 
 static_assert (Convertible_to_test ());
+
+#endif

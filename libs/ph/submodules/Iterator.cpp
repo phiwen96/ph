@@ -152,6 +152,14 @@ export namespace ph
 
 
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval auto Iterator_test () noexcept -> bool
 {
 	using namespace ph;
@@ -160,3 +168,5 @@ consteval auto Iterator_test () noexcept -> bool
 }
 
 static_assert (Iterator_test ());
+
+#endif

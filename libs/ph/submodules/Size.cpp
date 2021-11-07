@@ -4,11 +4,16 @@ import Ph.Convertible_to;
 import Ph.Assert;
 import std;
 
-namespace ph 
+export namespace ph 
 {
-	export 
-	{
-		template <typename T>
-		concept Size = Convertible_to <T, std::size_t>;
-	}
+	template <typename T>
+	concept Size = Convertible_to <T, std::size_t>;
 }
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
+#endif

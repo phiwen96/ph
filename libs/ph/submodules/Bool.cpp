@@ -3,14 +3,21 @@ export module Ph.Bool;
 import Ph.Convertible_to;
 import Ph.Assert;
 
-namespace ph 
+export namespace ph 
 {
-	export template <typename T>
+	template <typename T>
 	concept Bool = Convertible_to <T, bool>;
 }
 
 
 
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
 
 consteval bool Bool_test ()
 {
@@ -29,3 +36,5 @@ consteval bool Bool_test ()
 }
 
 static_assert (Bool_test ());
+
+#endif

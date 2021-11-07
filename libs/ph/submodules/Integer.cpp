@@ -37,6 +37,15 @@ export
 }
 
 
+
+
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
 consteval bool Integer_test () 
 {
 	using namespace ph;
@@ -51,3 +60,5 @@ consteval bool Integer_test ()
 }
 
 static_assert (Integer_test ());
+
+#endif

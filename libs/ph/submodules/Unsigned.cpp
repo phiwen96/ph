@@ -30,3 +30,11 @@ consteval auto Unsigned_test () -> bool
 
 static_assert (Unsigned_test ());
 
+
+
+/*==================================
+ TESTING
+====================================*/
+#ifdef Testing
+
+#endif

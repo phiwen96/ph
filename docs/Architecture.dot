@@ -17,6 +17,9 @@ digraph structs
 
 	Bool [shape = record, label = "{Bool}"]
 
+	"Bool" -> Convertible_to [shape = record, label = "  imports"]
+	"Bool" -> Assert [shape = record, label = "  imports"]
+
 	Const [shape = record, label = "{Const}"]	
 
 	Convertible_to [shape = record, label = "{Convertible to}"]
