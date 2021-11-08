@@ -160,6 +160,9 @@ $(OBJ_DIR)/Reference.pcm: $(SUBMODULES_DIR)/Reference.cpp $(OBJ_DIR)/Assert.pcm
 $(OBJ_DIR)/Const.pcm: $(SUBMODULES_DIR)/Const.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Test.pcm: $(SUBMODULES_DIR)/Test.cpp $(OBJ_DIR)/Assert.pcm 
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
 $(OBJ_DIR)/Assert.pcm: $(SUBMODULES_DIR)/Assert.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -Xclang -emit-module-interface -o $@
 
