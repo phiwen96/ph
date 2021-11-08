@@ -1,12 +1,10 @@
 export module Ph.Number.Unsigned;
 
 import Ph.Convertible_to;
-import Ph.Assert;
 
-
-namespace ph 
+export namespace ph 
 {
-	export template <typename T>
+	template <typename T>
 	concept Unsigned = Convertible_to <T, unsigned short>
 		or Convertible_to <T, unsigned short int>
 		or Convertible_to <T, unsigned>
@@ -17,6 +15,9 @@ namespace ph
 		or Convertible_to <T, unsigned long long int>;
 }
 
+#ifdef Testing
+
+import Ph.Test;
 
 consteval auto Unsigned_test () -> bool
 {
@@ -30,11 +31,15 @@ consteval auto Unsigned_test () -> bool
 
 static_assert (Unsigned_test ());
 
+#endif
+
 
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 #endif

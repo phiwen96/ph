@@ -1,5 +1,6 @@
 export module Ph;
 
+export import Ph.Test;
 export import Ph.Assert;
 export import Ph.Bool;
 export import Ph.Const;
@@ -15,11 +16,20 @@ export import Ph.Number.Signed;
 export import Ph.Size;
 export import Ph.Number.Unsigned;
 
-
-
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
+
+consteval auto Ph_test () -> bool
+{
+	using namespace ph;
+	
+	return true;
+}
+
+static_assert (Ph_test ());
 
 #endif

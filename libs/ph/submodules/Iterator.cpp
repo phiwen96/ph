@@ -4,15 +4,11 @@ import Ph.Const;
 import Ph.Reference;
 import Ph.Size;
 import Ph.Pointer;
-import Ph.Assert;
-
 import std;
 
 /*
 At its core, an iterator is an object that represents a position in a sequence.
 */
-
-
 
 export namespace ph 
 {
@@ -112,11 +108,6 @@ export namespace ph
 			pointer _current;
 		};
 
-
-
-
-
-
 		// inline constexpr auto begin (Raw_iterator auto&& r1, Raw_iterator auto&& r2) noexcept -> Iterator auto 
 		// {
 		// 	return iterator_t {r1, r2};
@@ -140,25 +131,16 @@ export namespace ph
 			return a.end ();
 		}
 
-
-
 		template <Iterator I>
 		using iterator = iterator_t <I>; 
-	
-
-	
-
 }
-
-
-
-
-
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval auto Iterator_test () noexcept -> bool
 {

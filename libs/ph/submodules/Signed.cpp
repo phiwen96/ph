@@ -1,13 +1,9 @@
 export module Ph.Number.Signed;
 
 import Ph.Convertible_to;
-import Ph.Assert;
 
-
-namespace ph 
+export namespace ph 
 {
-	export 
-	{
 		template <typename T>
 		concept Signed = Convertible_to <T, short>
 			or Convertible_to <T, short int>
@@ -24,16 +20,14 @@ namespace ph
 			or Convertible_to <T, long long int>
 			or Convertible_to <T, signed long long>
 			or Convertible_to <T, signed long long int>;
-	}
 }
-
-
-
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval auto Signed_test () -> bool
 {

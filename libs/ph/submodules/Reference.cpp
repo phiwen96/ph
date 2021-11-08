@@ -1,9 +1,5 @@
 export module Ph.Reference;
 
-import Ph.Assert;
-
-namespace ph 
-{
 	template <typename T>
 	struct reference 
 	{
@@ -37,8 +33,8 @@ namespace ph
 		using remove = T;
 	};
 
-	export 
-	{
+export namespace ph 
+{
 		template <typename T>
 		concept Reference = reference <T>::value;
 
@@ -48,20 +44,14 @@ namespace ph
 		
 		template <typename T>
 		using remove_creference = typename creference <T>::remove;
-	}
 }
-
-
-
-
-
-
-
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval auto Reference_test () -> bool
 {
@@ -70,8 +60,8 @@ consteval auto Reference_test () -> bool
 	constexpr auto assert_reference = [] <Reference> {};
 	constexpr auto assert_not_reference = [] <typename T> requires (not Reference <T>) {};
 
-	assert_all <int&, int&&, int*&, int*&&, int**&, int**&&> (assert_reference);
-	assert_all <int, int const, int*, int const*, int**> (assert_not_reference);
+	test::assert_all <int&, int&&, int*&, int*&&, int**&, int**&&> (assert_reference);
+	test::assert_all <int, int const, int*, int const*, int**> (assert_not_reference);
 
 	return true;
 }

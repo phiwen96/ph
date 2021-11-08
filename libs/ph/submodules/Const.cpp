@@ -16,5 +16,7 @@ export namespace ph
 ====================================*/
 #ifdef Testing
 
+import Ph.Test;
+
 #endif
 

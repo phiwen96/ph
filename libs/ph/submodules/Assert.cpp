@@ -1,7 +1,7 @@
-export module Ph.Assert;
+export module Ph.Test.Assert;
 
 
-export namespace ph 
+export namespace ph::testing
 {
 	template <typename... T>
 	consteval inline auto assert_all (auto&& lambda) noexcept -> void

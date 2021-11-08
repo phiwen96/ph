@@ -1,10 +1,5 @@
 export module Ph.Pointer;
 
-import Ph.Assert;
-
-namespace ph 
-{
-
 	template <typename T>
 	struct pointer
 	{
@@ -47,33 +42,19 @@ namespace ph
 		static constexpr bool value = true;
 	};
 
-
-
-	export 
-	{
-		template <typename T>
-		concept Pointer = pointer <T>::value;
-	}
-
-
+export namespace ph 
+{
+	template <typename T>
+	concept Pointer = pointer <T>::value;
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval bool Pointer_test ()
 {
@@ -82,8 +63,8 @@ consteval bool Pointer_test ()
 	constexpr auto assert_pointer = [] <Pointer> {};
 	constexpr auto assert_not_pointer = [] <typename T> () requires (not Pointer <T>) {};
 
-	assert_all <int*, int*&, int*&&, int const*, int**, int**&, int**&&> (assert_pointer);
-	assert_all <int, int&, int&&> (assert_not_pointer);
+	test::assert_all <int*, int*&, int*&&, int const*, int**, int**&, int**&&> (assert_pointer);
+	test::assert_all <int, int&, int&&> (assert_not_pointer);
 
 	return true;
 }

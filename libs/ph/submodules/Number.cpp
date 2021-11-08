@@ -5,9 +5,6 @@ export import Ph.Number.Unsigned;
 export import Ph.Number.Integer;
 export import Ph.Number.Float;
 
-import Ph.Assert;
-
-
 export namespace ph 
 {
 	 
@@ -17,15 +14,12 @@ export namespace ph
 	
 }
 
-
-
-
-
-
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval auto Number_test () -> bool
 {
@@ -34,8 +28,8 @@ consteval auto Number_test () -> bool
 	constexpr auto assert_number = [] <Number> {};
 	constexpr auto assert_not_number = [] <typename T> requires (not Number <T>) {};
 
-	assert_all <int, bool, char, float, double, long double> (assert_number);
-	assert_all <char const*, int const (&) [10]> (assert_not_number);
+	test::assert_all <int, bool, char, float, double, long double> (assert_number);
+	test::assert_all <char const*, int const (&) [10]> (assert_not_number);
 
 	return true;
 }

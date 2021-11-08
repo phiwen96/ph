@@ -1,13 +1,8 @@
 export module Ph.Number.Integer;
 
 import Ph.Convertible_to;
-import Ph.Assert;
 
-
-namespace ph 
-{
-
-export 
+export namespace ph 
 {
 	template <typename T>
     concept Integer = Convertible_to <T, short>
@@ -34,17 +29,13 @@ export
         or Convertible_to <T, unsigned long long>
         or Convertible_to <T, unsigned long long int>;
 }
-}
-
-
-
-
-
 
 /*==================================
  TESTING
 ====================================*/
 #ifdef Testing
+
+import Ph.Test;
 
 consteval bool Integer_test () 
 {
@@ -53,8 +44,8 @@ consteval bool Integer_test ()
 	constexpr auto assert_integer = [] <Integer> {};
 	constexpr auto assert_not_integer = [] <typename T> requires (not Integer <T>) {};
 
-	assert_all <int, int&, int&&, bool, char, float, double, long double> (assert_integer);
-	assert_all <char const*, int const (&) [10]> (assert_not_integer);
+	test::assert_all <int, int&, int&&, bool, char, float, double, long double> (assert_integer);
+	test::assert_all <char const*, int const (&) [10]> (assert_not_integer);
 
 	return true;
 }

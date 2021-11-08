@@ -4,29 +4,13 @@ import Ph.Bool;
 import Ph.Size;
 import Ph.Pointer;
 import Ph.Iterator;
-import Ph.Assert;
-
 import std;
 
 template <typename T>
 struct contains_proxy { T const& _value; };
 
-// constexpr auto rangeable (auto&& r) -> bool 
-// {
-// 	return true;
-// }
-
 export namespace ph 
 {
-	
-
-	// template <typename T>
-	// concept Rangeable = rangeable (std::declval <T> ());
-
-	 
-	
-
-
 
 		template <typename R>
 		concept Range = requires (R r)
@@ -56,22 +40,11 @@ export namespace ph
 			return r;
 		}
 
-		
-
-		// constexpr len (Range auto const& r) -> Size auto 
-		// {
-		// 	return range (r)
-		// }
-
 		template <typename E>
 		constexpr auto contains (E const& e) noexcept -> auto
 		{
 			return contains_proxy <E> {e};
 		}
-
-
-
-
 
 		template <typename T, typename E>
 		constexpr auto operator | (Range auto const& r, contains_proxy <E> const& proxy) noexcept -> Bool auto
@@ -84,12 +57,6 @@ export namespace ph
 
 			return false;
 		}
-
-
-
-
-
-
 
 		template <typename T>
 		struct range_t
@@ -156,40 +123,8 @@ export namespace ph
 			pointer _begin;
 			pointer _end;
 			pointer _max;
-		};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
+		};	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*==================================
  TESTING
@@ -198,13 +133,15 @@ export namespace ph
 
 using namespace ph;
 
-static_assert (Range <std::vector <int>>);
-	static_assert (Range <std::array <int, 10>>);
-
+import Ph.Test;
 
 	consteval auto Range_test () noexcept -> Bool auto 
 	{
 		Bool auto b = true;
+
+		static_assert (Range <std::vector <int>>);
+
+		static_assert (Range <std::array <int, 10>>);
 		 
 
 		return b;
