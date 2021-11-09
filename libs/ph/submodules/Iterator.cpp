@@ -1,19 +1,18 @@
 export module Ph.Iterator;
 
+/*
+At its core, an iterator is an object that represents a position in a sequence.
+*/
+
 import Ph.Const;
 import Ph.Reference;
-import Ph.Size;
-import Ph.Pointer;
 import std;
+
 export import Ph.Iterator.Input;
 export import Ph.Iterator.Output;
 export import Ph.Iterator.Forward;
 export import Ph.Iterator.Bidirectional;
 export import Ph.Iterator.Random_access;
-
-/*
-At its core, an iterator is an object that represents a position in a sequence.
-*/
 
 export namespace ph 
 {
@@ -24,8 +23,6 @@ export namespace ph
 		Forward_iterator <T> or 
 		Bidirectional_iterator <T> or
 		Random_access_iterator <T>;
-
-	// constexpr auto begin (auto&& a) noexcept -> Iterator auto;
 
 	template <typename T>
 	struct iterator_t
@@ -93,7 +90,12 @@ import Ph.Test;
 consteval auto Iterator_test () noexcept -> bool
 {
 	using namespace ph;
+
+	constexpr auto assert_iterator = [] <Iterator> {};
+	constexpr auto assert_not_iterator = [] <typename T> requires Iterator <T> {};
 	
+	// testing::assert_all <>
+
 	return true;
 }
 
