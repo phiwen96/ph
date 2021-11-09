@@ -12,6 +12,11 @@ export namespace ph
 		t++;
 		++t;
 	};
+
+	/*==================================
+ 	 FUNCTION DEFINITIONS
+	====================================*/
+	constexpr auto begin (auto&& a) noexcept -> Input_iterator auto;
 }
 
 /*==================================
@@ -31,3 +36,18 @@ consteval auto Input_iterator_test () noexcept -> bool
 static_assert (Input_iterator_test ());
 
 #endif
+
+/*==================================
+ FUNCTION IMPLEMENTATIONS
+====================================*/
+namespace ph 
+{
+	constexpr auto begin (auto&& a) noexcept -> Input_iterator auto
+	requires requires 
+	{
+		{a.begin ()} noexcept -> Input_iterator;
+	}
+	{
+		return a.begin ();
+	}
+}

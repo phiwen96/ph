@@ -8,6 +8,11 @@ export namespace ph
 	{
 		a + 3;
 	};
+
+	/*==================================
+ 	 FUNCTION DEFINITIONS
+	====================================*/
+	constexpr auto begin (auto&& a) noexcept -> Random_access_iterator auto;
 }
 
 /*==================================
@@ -25,3 +30,18 @@ consteval auto Random_access_iterator_test () noexcept -> bool
 
 static_assert (Random_access_iterator_test ());
 #endif
+
+/*==================================
+ FUNCTION IMPLEMENTATIONS
+====================================*/
+namespace ph 
+{
+	constexpr auto begin (auto&& a) noexcept -> Random_access_iterator auto
+	requires requires 
+	{
+		{a.begin ()} noexcept -> Random_access_iterator;
+	}
+	{
+		return a.begin ();
+	}
+}

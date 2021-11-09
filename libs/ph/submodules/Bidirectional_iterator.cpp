@@ -9,6 +9,11 @@ export namespace ph
 		--a;
 		a--;
 	};
+
+	/*==================================
+ 	 FUNCTION DEFINITIONS
+	====================================*/
+	constexpr auto begin (auto&& a) noexcept -> Bidirectional_iterator auto;
 }
 
 /*==================================
@@ -28,3 +33,18 @@ consteval auto Bidirectional_iterator_test () noexcept -> bool
 static_assert (Bidirectional_iterator_test ());
 
 #endif
+
+/*==================================
+ FUNCTION IMPLEMENTATIONS
+====================================*/
+namespace ph 
+{
+	constexpr auto begin (auto&& a) noexcept -> Bidirectional_iterator auto
+	requires requires 
+	{
+		{a.begin ()} noexcept -> Bidirectional_iterator;
+	}
+	{
+		return a.begin ();
+	}
+}
