@@ -60,8 +60,8 @@ consteval auto Reference_test () -> bool
 	constexpr auto assert_reference = [] <Reference> {};
 	constexpr auto assert_not_reference = [] <typename T> requires (not Reference <T>) {};
 
-	test::assert_all <int&, int&&, int*&, int*&&, int**&, int**&&> (assert_reference);
-	test::assert_all <int, int const, int*, int const*, int**> (assert_not_reference);
+	testing::assert_all <int&, int&&, int*&, int*&&, int**&, int**&&> (assert_reference);
+	testing::assert_all <int, int const, int*, int const*, int**> (assert_not_reference);
 
 	return true;
 }

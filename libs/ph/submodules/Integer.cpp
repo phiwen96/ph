@@ -44,8 +44,8 @@ consteval bool Integer_test ()
 	constexpr auto assert_integer = [] <Integer> {};
 	constexpr auto assert_not_integer = [] <typename T> requires (not Integer <T>) {};
 
-	test::assert_all <int, int&, int&&, bool, char, float, double, long double> (assert_integer);
-	test::assert_all <char const*, int const (&) [10]> (assert_not_integer);
+	testing::assert_all <int, int&, int&&, bool, char, float, double, long double> (assert_integer);
+	testing::assert_all <char const*, int const (&) [10]> (assert_not_integer);
 
 	return true;
 }

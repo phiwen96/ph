@@ -1,7 +1,7 @@
 export module Ph;
 
 export import Ph.Test;
-export import Ph.Assert;
+export import Ph.Test.Assert;
 export import Ph.Bool;
 export import Ph.Const;
 export import Ph.Convertible_to;

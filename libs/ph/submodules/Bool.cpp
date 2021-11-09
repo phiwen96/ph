@@ -30,8 +30,8 @@ consteval bool Bool_test ()
 	struct A {};
 	struct B {operator bool (){return true;}};
 
-	test::assert_all <bool, B> (assert_bool);
-	test::assert_all <A> (assert_not_bool);
+	testing::assert_all <bool, B> (assert_bool);
+	testing::assert_all <A> (assert_not_bool);
 
 	return true;
 }

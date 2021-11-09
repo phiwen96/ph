@@ -46,7 +46,6 @@ export namespace ph
 {
 	template <typename T>
 	concept Pointer = pointer <T>::value;
-	
 }
 
 /*==================================
@@ -54,17 +53,21 @@ export namespace ph
 ====================================*/
 #ifdef Testing
 
+// using namespace ph;
+
 import Ph.Test;
+
+
 
 consteval bool Pointer_test ()
 {
-	using namespace ph;
+	
 
-	constexpr auto assert_pointer = [] <Pointer> {};
-	constexpr auto assert_not_pointer = [] <typename T> () requires (not Pointer <T>) {};
+	constexpr auto assert_pointer = [] <ph::Pointer> {};
+	constexpr auto assert_not_pointer = [] <typename T> () requires (not ph::Pointer <T>) {};
 
-	test::assert_all <int*, int*&, int*&&, int const*, int**, int**&, int**&&> (assert_pointer);
-	test::assert_all <int, int&, int&&> (assert_not_pointer);
+	testing::assert_all <int*, int*&, int*&&, int const*, int**, int**&, int**&&> (assert_pointer);
+	testing::assert_all <int, int&, int&&> (assert_not_pointer);
 
 	return true;
 }

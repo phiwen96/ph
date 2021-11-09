@@ -1,7 +1,7 @@
 export module Ph.Test.Assert;
 
 
-export namespace ph::testing
+export namespace testing
 {
 	template <typename... T>
 	consteval inline auto assert_all (auto&& lambda) noexcept -> void
@@ -41,7 +41,6 @@ export namespace ph::testing
 
 inline consteval auto Assert_test () -> bool
 {
-	using namespace ph;
 	
 	return true;
 }

@@ -22,8 +22,8 @@ consteval auto Float_test () -> bool
 	constexpr auto assert_floating = [] <Floating> {};
 	constexpr auto assert_not_floating = [] <typename T> requires (not Floating <T>) {};
 
-	test::assert_all <int, bool, char, float, double, long double> (assert_floating);
-	test::assert_all <char const*, int const (&) [10]> (assert_not_floating);
+	testing::assert_all <int, bool, char, float, double, long double> (assert_floating);
+	testing::assert_all <char const*, int const (&) [10]> (assert_not_floating);
 
 	return true;
 }
