@@ -49,9 +49,6 @@ export namespace ph
 		template <typename T>
 		concept Iterator = Input_iterator <T> or Output_iterator <T> or Forward_iterator <T> or Bidirectional_iterator <T> or Random_access_iterator <T>;
 
-		template <typename T>
-		concept Raw_iterator = Pointer <T>;
-
 
 		template <typename T>
 		struct iterator_t
@@ -65,12 +62,12 @@ export namespace ph
 
 			}
 
-			constexpr iterator_t (iterator_t&& o) : _current {(pointer&&) o.current}
+			constexpr iterator_t (iterator_t&& o) noexcept : _current {(pointer&&) o.current}
 			{
 
 			}
 
-			constexpr iterator_t (iterator_t const& o) : _current {o._current}
+			constexpr iterator_t (iterator_t const& o) noexcept : _current {o._current}
 			{
 				
 			}
@@ -108,11 +105,6 @@ export namespace ph
 			pointer _current;
 		};
 
-		// inline constexpr auto begin (Raw_iterator auto&& r1, Raw_iterator auto&& r2) noexcept -> Iterator auto 
-		// {
-		// 	return iterator_t {r1, r2};
-		// }
-
 		inline constexpr auto begin (auto&& a) noexcept -> Iterator auto
 		requires requires ()
 		{
@@ -145,7 +137,7 @@ import Ph.Test;
 consteval auto Iterator_test () noexcept -> bool
 {
 	using namespace ph;
-
+	
 	return true;
 }
 
