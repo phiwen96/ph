@@ -31,7 +31,7 @@ export namespace ph
 		--a;
 		a--;
 	};
-
+	
 	template <typename T>
 	concept Random_access_iterator = Bidirectional_iterator <T> and requires (T a)
 	{
