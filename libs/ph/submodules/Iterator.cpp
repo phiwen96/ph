@@ -14,31 +14,6 @@ At its core, an iterator is an object that represents a position in a sequence.
 export namespace ph 
 {
 	template <typename T>
-	concept Output_iterator = requires (T& t)
-	{
-		// write only
-		{*t} -> Reference;
-		t++;
-		++t;
-	};
-
-	template <typename T>
-	concept Forward_iterator = Input_iterator <T> and Output_iterator <T>;
-
-	template <typename T>
-	concept Bidirectional_iterator = Forward_iterator <T> and requires (T a)
-	{
-		--a;
-		a--;
-	};
-	
-	template <typename T>
-	concept Random_access_iterator = Bidirectional_iterator <T> and requires (T a)
-	{
-		a + 3;
-	};
-		
-	template <typename T>
 	concept Iterator = 
 		Input_iterator <T> or 
 		Output_iterator <T> or 
