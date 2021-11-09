@@ -109,22 +109,22 @@ $(LIB): $(LIB_DIR)/$(PROJ).cpp $(OBJ)
 $(OBJ_DIR)/Range.pcm: $(SUBMODULES_DIR)/Range.cpp $(OBJ_DIR)/Iterator.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.pcm: $(SUBMODULES_DIR)/Iterator.cpp $(OBJ_DIR)/Iterator.Input.pcm $(OBJ_DIR)/Iterator.Input.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Iterator.pcm: $(SUBMODULES_DIR)/Iterator.cpp $(OBJ_DIR)/Input_iterator.pcm  $(OBJ_DIR)/Output_iterator.pcm  $(OBJ_DIR)/Forward_iterator.pcm  $(OBJ_DIR)/Bidirectional_iterator.pcm  $(OBJ_DIR)/Random_access_iterator.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.Random_access.pcm: $(SUBMODULES_DIR)/Iterator.Random_access.cpp $(OBJ_DIR)/Iterator.Bidirectional.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Random_access_iterator.pcm: $(SUBMODULES_DIR)/Random_access_iterator.cpp $(OBJ_DIR)/Bidirectional_iterator.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.Bidirectional.pcm: $(SUBMODULES_DIR)/Iterator.Bidirectional.cpp $(OBJ_DIR)/Iterator.Forward.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Bidirectional_iterator.pcm: $(SUBMODULES_DIR)/Bidirectional_iterator.cpp $(OBJ_DIR)/Forward_iterator.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.Forward.pcm: $(SUBMODULES_DIR)/Iterator.Forward.cpp $(OBJ_DIR)/Iterator.Output.pcm $(OBJ_DIR)/Iterator.Input.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Forward_iterator.pcm: $(SUBMODULES_DIR)/Forward_iterator.cpp $(OBJ_DIR)/Output_iterator.pcm $(OBJ_DIR)/Input_iterator.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.Output.pcm: $(SUBMODULES_DIR)/Iterator.Output.cpp $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Iterator.Input.pcm: $(SUBMODULES_DIR)/Iterator.Input.cpp $(OBJ_DIR)/Const.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Const.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Number.pcm: $(SUBMODULES_DIR)/Number.cpp $(OBJ_DIR)/Signed.pcm $(OBJ_DIR)/Unsigned.pcm $(OBJ_DIR)/Integer.pcm $(OBJ_DIR)/Float.pcm $(MAYBE_TESTS)

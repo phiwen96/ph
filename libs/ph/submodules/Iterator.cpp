@@ -6,6 +6,10 @@ import Ph.Size;
 import Ph.Pointer;
 import std;
 export import Ph.Iterator.Input;
+export import Ph.Iterator.Output;
+export import Ph.Iterator.Forward;
+export import Ph.Iterator.Bidirectional;
+export import Ph.Iterator.Random_access;
 
 /*
 At its core, an iterator is an object that represents a position in a sequence.
@@ -18,7 +22,7 @@ export namespace ph
 		Input_iterator <T> or 
 		Output_iterator <T> or 
 		Forward_iterator <T> or 
-		Bidirectional_iterator <T> or 
+		Bidirectional_iterator <T> or
 		Random_access_iterator <T>;
 
 	constexpr auto begin (auto&& a) noexcept -> Iterator auto;
@@ -99,9 +103,6 @@ export namespace ph
 	{
 		return a.end ();
 	}
-
-	template <Iterator I>
-	using iterator = iterator_t <I>; 
 }
 
 
