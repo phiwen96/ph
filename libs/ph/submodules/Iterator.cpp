@@ -25,7 +25,7 @@ export namespace ph
 		Bidirectional_iterator <T> or
 		Random_access_iterator <T>;
 
-	constexpr auto begin (auto&& a) noexcept -> Iterator auto;
+	// constexpr auto begin (auto&& a) noexcept -> Iterator auto;
 
 	template <typename T>
 	struct iterator_t
@@ -81,35 +81,7 @@ export namespace ph
 	private:
 		pointer _current;
 	};
-
-/*==================================
- IMPLEMENTATION
-====================================*/
-
-	constexpr auto begin (auto&& a) noexcept -> Iterator auto
-	requires requires ()
-	{
-		{a.begin ()} noexcept -> Iterator;
-	}
-	{
-		return a.begin ();
-	}
-
-	inline constexpr auto end (auto&& a) noexcept -> Iterator auto
-	requires requires ()
-	{
-		{a.end ()} noexcept -> Iterator;
-	}
-	{
-		return a.end ();
-	}
 }
-
-
-
-/*==================================
- IMPLEMENTATION
-====================================*/
 
 /*==================================
  TESTING
@@ -129,5 +101,9 @@ static_assert (Iterator_test ());
 
 #endif
 
+
+/*==================================
+ IMPLEMENTATION
+====================================*/
 
 
