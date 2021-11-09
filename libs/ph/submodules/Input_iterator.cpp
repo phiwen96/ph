@@ -6,9 +6,8 @@ import Ph.Reference;
 export namespace ph 
 {
 	template <typename T>
-	concept Input_iterator = requires (T& t)
+	concept Input_iterator = requires (T& t) 
 	{
-		// read only
 		{*t} -> Const;
 		t++;
 		++t;
