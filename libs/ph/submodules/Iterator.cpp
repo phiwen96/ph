@@ -6,6 +6,7 @@ At its core, an iterator is an object that represents a position in a sequence.
 
 import Ph.Const;
 import Ph.Reference;
+import Ph.Size;
 import std;
 
 export import Ph.Iterator.Input;
@@ -23,6 +24,10 @@ export namespace ph
 		Forward_iterator <T> or 
 		Bidirectional_iterator <T> or
 		Random_access_iterator <T>;
+
+	constexpr auto next (Iterator auto) noexcept -> Iterator auto;
+	constexpr auto prev (Iterator auto) noexcept -> Iterator auto;
+	constexpr auto advance (Iterator auto, Size auto) noexcept -> Iterator auto;
 
 	template <typename T>
 	struct iterator_t
@@ -107,5 +112,21 @@ static_assert (Iterator_test ());
 /*==================================
  IMPLEMENTATION
 ====================================*/
+namespace ph 
+{
+	constexpr auto next (Iterator auto i) noexcept -> Iterator auto
+	{
+		return ++i;
+	}
 
+	constexpr auto prev (Iterator auto i) noexcept -> Iterator auto
+	{
+		return --i;
+	}
+
+	constexpr auto advance (Iterator auto i, Size auto s) noexcept -> Iterator auto
+	{
+
+	}
+}
 

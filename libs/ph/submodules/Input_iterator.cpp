@@ -1,6 +1,7 @@
 export module Ph.Iterator.Input;
 
 import Ph.Const;
+import Ph.Reference;
 
 export namespace ph 
 {
@@ -16,7 +17,8 @@ export namespace ph
 	/*==================================
  	 FUNCTION DEFINITIONS
 	====================================*/
-	constexpr auto begin (auto&& a) noexcept -> Input_iterator auto;
+	constexpr auto read (Input_iterator auto) noexcept -> Reference auto;
+	constexpr auto next (Input_iterator auto) noexcept -> Input_iterator auto;
 }
 
 /*==================================
@@ -42,12 +44,13 @@ static_assert (Input_iterator_test ());
 ====================================*/
 namespace ph 
 {
-	constexpr auto begin (auto&& a) noexcept -> Input_iterator auto
-	requires requires 
+	constexpr auto read (Input_iterator auto i) noexcept -> Reference auto
 	{
-		{a.begin ()} noexcept -> Input_iterator;
+		return *i;
 	}
+
+	constexpr auto next (Input_iterator auto i) noexcept -> Input_iterator auto
 	{
-		return a.begin ();
+		return ++i;
 	}
 }

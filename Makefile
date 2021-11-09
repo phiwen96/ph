@@ -124,7 +124,7 @@ $(OBJ_DIR)/Forward_iterator.pcm: $(SUBMODULES_DIR)/Forward_iterator.cpp $(OBJ_DI
 $(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Const.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Number.pcm: $(SUBMODULES_DIR)/Number.cpp $(OBJ_DIR)/Signed.pcm $(OBJ_DIR)/Unsigned.pcm $(OBJ_DIR)/Integer.pcm $(OBJ_DIR)/Float.pcm $(MAYBE_TESTS)
