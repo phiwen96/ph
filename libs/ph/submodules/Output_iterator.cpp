@@ -1,23 +1,31 @@
 export module Ph.Iterator.Output;
-import Ph.Reference;
-import Ph.Iterator.Traits;
 
+import Ph.Incrementable;
+import Ph.Dereferenceable;
+import Ph.Nothing;
 
 export namespace ph 
 {
 	template <typename T>
-	concept Output_iterator = requires (T t1, T t2)
-	{
-		{*t1} -> Reference;
-		t1++;
-		++t1;
-	};
+	concept Output_iterator = Incrementable <T> and Dereferenceable <T>;
 
 	/*==================================
  	 FUNCTION DEFINITIONS
 	====================================*/
-	constexpr auto write (Output_iterator auto) noexcept -> Reference auto;
-	constexpr auto next (Output_iterator auto) noexcept -> Output_iterator auto;
+	template <Output_iterator O, typename Element>
+	constexpr auto write (O && o, Element && e) noexcept -> Nothing auto
+	requires requires () 
+	{
+		true;
+	}
+	{
+		
+	}
+
+	constexpr auto next (Output_iterator auto&& o) noexcept -> Output_iterator auto
+	{
+		return ++o;
+	}
 }
 
 /*==================================
@@ -51,16 +59,7 @@ static_assert (Output_iterator_test ());
 /*==================================
  FUNCTION IMPLEMENTATIONS
 ====================================*/
-namespace ph 
-{
-
-	constexpr auto write (Output_iterator auto) noexcept -> Reference auto
-	{
-		
-	}
-
-	constexpr auto next (Output_iterator auto) noexcept -> Output_iterator auto
-	{
-
-	}
-}
+// namespace ph 
+// {
+	
+// }

@@ -3,16 +3,13 @@ export module Ph.Iterator.Input;
 import Ph.Const;
 import Ph.Reference;
 import Ph.Incrementable;
-import Ph.Decrementable;
+import Ph.Dereferenceable;
 
 export namespace ph 
 {
 
 	template <typename T>
-	concept Input_iterator = Incrementable <T> and requires (T t) 
-	{
-		{*t}; 
-	};
+	concept Input_iterator = Incrementable <T> and Dereferenceable <T>;
 
 	/*==================================
  	 FUNCTION DEFINITIONS

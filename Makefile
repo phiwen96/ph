@@ -121,7 +121,7 @@ $(OBJ_DIR)/Bidirectional_iterator.pcm: $(SUBMODULES_DIR)/Bidirectional_iterator.
 $(OBJ_DIR)/Forward_iterator.pcm: $(SUBMODULES_DIR)/Forward_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Output_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Input_iterator.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Nothing.pcm $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)

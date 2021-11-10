@@ -10,6 +10,10 @@ export namespace ph
 		{&t} -> Something;
 	};
 
+	constexpr auto refer (Referenceable auto && d) noexcept -> decltype (auto)
+	{
+		return &d;
+	}
 }
 
 /*==================================

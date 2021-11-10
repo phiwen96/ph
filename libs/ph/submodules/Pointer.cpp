@@ -1,6 +1,6 @@
 export module Ph.Pointer;
 
-template <typename T>
+	template <typename T>
 	struct pointer_traits
 	{
 		static constexpr bool value = false;
