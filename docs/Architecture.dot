@@ -65,7 +65,7 @@ digraph structs
 	Incrementable -> "Postfix decrementable" [shape = record, label = "  exports"]
 
 
-	"Input iterator" [shape = record, label = "{{Input iterator}|{next (Input iterator) - Input_iterator}|{read (Input iterator) - Reference}}"]
+	"Input iterator" [shape = record, label = "{{Input iterator}|{next (Input iterator) - Input iterator}|{read (Input iterator) - Reference}}"]
 
 	"Input iterator" -> Incrementable [shape = record, label = "  imports"]
 	"Input iterator" -> Dereferenceable [shape = record, label = "  imports"]
