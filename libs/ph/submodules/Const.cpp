@@ -26,7 +26,7 @@ consteval auto Const_test () -> bool
 	constexpr auto assert_not_const = [] <typename T> requires (not Const <T>) {};
 
 	testing::assert_all <int const, int const&> (assert_const);
-	// testing::assert_all <int, int const, int*, int const*, int**> (assert_not_const);
+	testing::assert_all <int&, int&&> (assert_not_const);
 
 	return true;
 }
