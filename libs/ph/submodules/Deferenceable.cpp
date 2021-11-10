@@ -1,6 +1,8 @@
 export module Ph.Dereferenceable;
 
 import Ph.Something;
+import Ph.Mimic;
+
 
 export namespace ph 
 {
@@ -13,6 +15,12 @@ export namespace ph
 	constexpr auto derefer (Dereferenceable auto && d) noexcept -> decltype (auto)
 	{
 		return *d;
+	}
+
+	namespace type 
+	{
+		template <Dereferenceable D> 
+		using derefer = decltype (ph::derefer (mimic <D> ()));
 	}
 }
 

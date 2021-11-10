@@ -24,6 +24,8 @@ digraph structs
 
 	Convertible_to [shape = record, label = "{Convertible to}"]
 
+	Decrementable [shape = record, label = "{Decrementable}"]
+
 	Float [shape = record, label = "{Float}"]
 
 	Integer [shape = record, label = "{Integer}"]
@@ -38,6 +40,10 @@ digraph structs
 	"Iterator" -> Size [shape = record, label = "  exports"]
 	"Iterator" -> Reference [shape = record, label = "  imports"]
 
+	Incrementable [shape = record, label = "{Incrementable}"]
+
+	Nothing [shape = record, label = "{Nothing}"]
+
 	Number [shape = record, label = "{Number}"]
 
 	"Number" -> Assert [shape = record, label = "  imports"]
@@ -45,6 +51,8 @@ digraph structs
 	"Number" -> "Unsigned" [shape = record, label = "  exports"]
 	"Number" -> "Integer" [shape = record, label = "  exports"]
 	"Number" -> "Float" [shape = record, label = "  exports"]
+
+	"Output iterator" [shape = record, label = "{Output iterator |{}|{next (Output iterator) - Output iterator}|{write (Output iterator i, element of \<i\> ) - Nothing}|{element_of \<Output iterator\> - Something}}"]
 
 	Pointer [shape = record, label = "{Pointer}"]
 

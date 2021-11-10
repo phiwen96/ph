@@ -17,13 +17,14 @@ export module Ph.Reference;
 	struct reference <T&&>
 	{
 		constexpr static bool value = true;
-		using remove = T&;
+		using remove = T;
 	};
 
 	template <typename T>
 	struct reference <const T&>
 	{
 		constexpr static bool value = true;
+		using remove = const T;
 	};
 
 	template <typename T>

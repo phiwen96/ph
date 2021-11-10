@@ -4,22 +4,45 @@ import Ph.Incrementable;
 import Ph.Dereferenceable;
 import Ph.Nothing;
 
-export namespace ph 
+
+namespace ph 
 {
-	template <typename T>
+	export template <typename T>
 	concept Output_iterator = Incrementable <T> and Dereferenceable <T>;
+
+	namespace type 
+	{
+		template <typename T>
+		struct element_of_t
+		{
+			constexpr static bool value = false;
+		};
+
+		template <Output_iterator O>
+		struct element_of_t <O>
+		{
+			constexpr static bool value = true;
+
+			using type = type::derefer <O>;
+		};
+
+		export template <Output_iterator O>
+		using element_of = typename element_of_t <O>::type;
+	}
+
+
 
 	/*==================================
  	 FUNCTION DEFINITIONS
 	====================================*/
-	template <Output_iterator O, typename Element>
-	constexpr auto write (O && o, Element && e) noexcept -> Nothing auto
+	template <Output_iterator O, typename E>
+	constexpr auto write (O && o, type::element_of <O> && e) noexcept -> Nothing auto
 	requires requires () 
 	{
-		true;
+		derefer (o) = e;
 	}
 	{
-		
+		derefer (o) = e;
 	}
 
 	constexpr auto next (Output_iterator auto&& o) noexcept -> Output_iterator auto

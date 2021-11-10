@@ -166,7 +166,7 @@ $(OBJ_DIR)/Const.pcm: $(SUBMODULES_DIR)/Const.cpp $(OBJ_DIR)/Test.pcm $(MAYBE_TE
 $(OBJ_DIR)/Referenceable.pcm: $(SUBMODULES_DIR)/Referenceable.cpp $(OBJ_DIR)/Something.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Deferenceable.pcm: $(SUBMODULES_DIR)/Deferenceable.cpp $(OBJ_DIR)/Something.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Deferenceable.pcm: $(SUBMODULES_DIR)/Deferenceable.cpp $(OBJ_DIR)/Mimic.pcm $(OBJ_DIR)/Something.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Something.pcm: $(SUBMODULES_DIR)/Something.cpp $(OBJ_DIR)/Nothing.pcm $(MAYBE_TESTS)
@@ -188,6 +188,9 @@ $(OBJ_DIR)/Same_as.pcm: $(SUBMODULES_DIR)/Same_as.cpp $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Mimic.pcm: $(SUBMODULES_DIR)/Mimic.cpp $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Test.pcm: $(SUBMODULES_DIR)/Test.cpp $(OBJ_DIR)/Assert.pcm 
