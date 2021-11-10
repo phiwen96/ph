@@ -21,6 +21,12 @@ export module Ph.Reference;
 	};
 
 	template <typename T>
+	struct reference <const T&>
+	{
+		constexpr static bool value = true;
+	};
+
+	template <typename T>
 	struct creference 
 	{
 		constexpr static bool value = false;

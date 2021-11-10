@@ -1,51 +1,60 @@
 export module Ph.Pointer;
 
-	template <typename T>
-	struct pointer
+template <typename T>
+	struct pointer_traits
 	{
 		static constexpr bool value = false;
 	};
 
 	template <typename T>
-	struct pointer <T*> 
+	struct pointer_traits <T*> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 	template <typename T>
-	struct pointer <T*&> 
+	struct pointer_traits <T*&> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 	template <typename T>
-	struct pointer <T*&&> 
+	struct pointer_traits <T*&&> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 	template <typename T>
-	struct pointer <T**> 
+	struct pointer_traits <T**> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 	template <typename T>
-	struct pointer <T**&> 
+	struct pointer_traits <T**&> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 	template <typename T>
-	struct pointer <T**&&> 
+	struct pointer_traits <T**&&> 
 	{
 		static constexpr bool value = true;
+		using element = T;
 	};
 
 export namespace ph 
-{
+{	
 	template <typename T>
-	concept Pointer = pointer <T>::value;
+	concept Pointer = pointer_traits <T>::value;
+
+	template <Pointer P>
+	using remove_pointer = typename pointer_traits <P>::element;
 }
 
 /*==================================
