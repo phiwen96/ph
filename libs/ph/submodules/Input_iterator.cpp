@@ -2,16 +2,16 @@ export module Ph.Iterator.Input;
 
 import Ph.Const;
 import Ph.Reference;
+import Ph.Incrementable;
+import Ph.Decrementable;
 
 export namespace ph 
 {
 
 	template <typename T>
-	concept Input_iterator = requires (T t) 
+	concept Input_iterator = Incrementable <T> and requires (T t) 
 	{
 		{*t}; 
-		t++;
-		++t;
 	};
 
 	/*==================================

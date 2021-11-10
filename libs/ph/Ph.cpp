@@ -15,6 +15,15 @@ export import Ph.Reference;
 export import Ph.Number.Signed;
 export import Ph.Size;
 export import Ph.Number.Unsigned;
+export import Ph.Nothing;
+export import Ph.Something;
+export import Ph.Decrementable;
+export import Ph.Incrementable;
+export import Ph.Referenceable;
+export import Ph.Dereferenceable;
+
+
+
 
 /*==================================
  TESTING

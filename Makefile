@@ -112,19 +112,19 @@ $(OBJ_DIR)/Range.pcm: $(SUBMODULES_DIR)/Range.cpp $(OBJ_DIR)/Iterator.pcm $(OBJ_
 $(OBJ_DIR)/Iterator.pcm: $(SUBMODULES_DIR)/Iterator.cpp $(OBJ_DIR)/Input_iterator.pcm  $(OBJ_DIR)/Output_iterator.pcm  $(OBJ_DIR)/Forward_iterator.pcm  $(OBJ_DIR)/Bidirectional_iterator.pcm  $(OBJ_DIR)/Random_access_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(OBJ_DIR)/Reference.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Random_access_iterator.pcm: $(SUBMODULES_DIR)/Random_access_iterator.cpp $(OBJ_DIR)/Bidirectional_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Random_access_iterator.pcm: $(SUBMODULES_DIR)/Random_access_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Bidirectional_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Bidirectional_iterator.pcm: $(SUBMODULES_DIR)/Bidirectional_iterator.cpp $(OBJ_DIR)/Forward_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Bidirectional_iterator.pcm: $(SUBMODULES_DIR)/Bidirectional_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Forward_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Forward_iterator.pcm: $(SUBMODULES_DIR)/Forward_iterator.cpp $(OBJ_DIR)/Output_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Input_iterator.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Forward_iterator.pcm: $(SUBMODULES_DIR)/Forward_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Output_iterator.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Input_iterator.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Output_iterator.pcm: $(SUBMODULES_DIR)/Output_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Input_iterator.pcm: $(SUBMODULES_DIR)/Input_iterator.cpp $(OBJ_DIR)/Deferenceable.pcm $(OBJ_DIR)/Iterator_traits.pcm $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Iterator_traits.pcm: $(SUBMODULES_DIR)/Iterator_traits.cpp $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(OBJ_DIR)/Pointer.pcm $(MAYBE_TESTS)
@@ -151,10 +151,7 @@ $(OBJ_DIR)/Integer.pcm: $(SUBMODULES_DIR)/Integer.cpp $(OBJ_DIR)/Convertible_to.
 $(OBJ_DIR)/Bool.pcm: $(SUBMODULES_DIR)/Bool.cpp $(OBJ_DIR)/Convertible_to.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
-$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(MAYBE_TESTS)
-	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
-
-$(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(MAYBE_TESTS)
+$(OBJ_DIR)/Pointer.pcm: $(SUBMODULES_DIR)/Pointer.cpp $(OBJ_DIR)/Incrementable.pcm $(OBJ_DIR)/Decrementable.pcm $(OBJ_DIR)/Deferenceable.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Const_ref.pcm: $(SUBMODULES_DIR)/Const_ref.cpp $(OBJ_DIR)/Reference.pcm $(OBJ_DIR)/Const.pcm $(MAYBE_TESTS)
@@ -166,6 +163,18 @@ $(OBJ_DIR)/Reference.pcm: $(SUBMODULES_DIR)/Reference.cpp $(MAYBE_TESTS)
 $(OBJ_DIR)/Const.pcm: $(SUBMODULES_DIR)/Const.cpp $(OBJ_DIR)/Test.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
+$(OBJ_DIR)/Referenceable.pcm: $(SUBMODULES_DIR)/Referenceable.cpp $(OBJ_DIR)/Something.pcm $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Deferenceable.pcm: $(SUBMODULES_DIR)/Deferenceable.cpp $(OBJ_DIR)/Something.pcm $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Something.pcm: $(SUBMODULES_DIR)/Something.cpp $(OBJ_DIR)/Nothing.pcm $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Nothing.pcm: $(SUBMODULES_DIR)/Nothing.cpp $(OBJ_DIR)/Same_as.pcm $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
 $(OBJ_DIR)/Forward.pcm: $(SUBMODULES_DIR)/Forward.cpp $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
@@ -173,6 +182,12 @@ $(OBJ_DIR)/Incrementable.pcm: $(SUBMODULES_DIR)/Incrementable.cpp $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Decrementable.pcm: $(SUBMODULES_DIR)/Decrementable.cpp $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Same_as.pcm: $(SUBMODULES_DIR)/Same_as.cpp $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
+
+$(OBJ_DIR)/Convertible_to.pcm: $(SUBMODULES_DIR)/Convertible_to.cpp $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Test.pcm: $(SUBMODULES_DIR)/Test.cpp $(OBJ_DIR)/Assert.pcm 
