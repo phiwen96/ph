@@ -5,10 +5,11 @@ import Ph.Reference;
 
 export namespace ph 
 {
+
 	template <typename T>
 	concept Input_iterator = requires (T t) 
 	{
-		{*t} -> Const;
+		{*t}; 
 		t++;
 		++t;
 	};
@@ -26,11 +27,14 @@ export namespace ph
 #ifdef Testing
 
 import Ph.Test;
+import std;
 
 consteval auto Input_iterator_test () noexcept -> bool
 {
 	using namespace ph;
-	
+	static_assert (Input_iterator <char*>);
+	static_assert (Input_iterator <std::istream_iterator <int>>);
+	static_assert (Input_iterator <std::ostream_iterator <int>>);
 	return true;
 }
 
