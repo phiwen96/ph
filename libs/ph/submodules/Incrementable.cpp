@@ -3,12 +3,24 @@ export module Ph.Incrementable;
 export namespace ph 
 {
 	template <typename T>
-	concept Incrementable = requires (T t) 
+	concept Prefix_incrementable = requires (T t) 
 	{
-		t++;
 		++t;
 	};
 
+	template <typename T>
+	concept Postfix_incrementable = requires (T t) 
+	{
+		t++;
+	};
+
+	template <typename T>
+	concept Incrementable = Prefix_incrementable <T> or Postfix_incrementable <T>;
+
+	constexpr auto increment (Prefix_incrementable auto i) noexcept -> Reference 
+	{
+		return ++i;
+	}
 }
 
 /*==================================
