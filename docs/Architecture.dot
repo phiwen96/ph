@@ -9,36 +9,41 @@ digraph structs
 	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
 
 
-
-
-
-
 	Assert [shape = record, label = "{Assert}"]
 
+
 	"Bidirectional iterator" [shape = record, label = "{Bidirectional iterator}"]
+
 
 	Bool [shape = record, label = "{Bool}"]
 
 	"Bool" -> Convertible_to [shape = record, label = "  imports"]
 	"Bool" -> Assert [shape = record, label = "  imports"]
 
+
 	Const [shape = record, label = "{Const}"]	
+
 
 	Convertible_to [shape = record, label = "{Convertible to}"]
 
+
 	Decrementable [shape = record, label = "{Decrementable}"]
 
+
 	Dereferenceable [shape = record, label = "{Dereferenceable}"]
+
 
 	Float [shape = record, label = "{Float}"]
 
 	"Forward iterator" [shape = record, label = "{Forward iterator}"]
+
 
 	Integer [shape = record, label = "{Integer}"]
 
 	"Integer" -> Convertible_to [shape = record, label = "  imports"]
 	"Integer" -> Assert [shape = record, label = "  imports"]
 	
+
 	Iterator [shape = record, label = "{Iterator}"]
 
 	"Iterator" -> "Input iterator" [shape = record, label = "  exports"]
@@ -51,14 +56,23 @@ digraph structs
 	"Iterator" -> Size [shape = record, label = "  exports"]
 	"Iterator" -> Reference [shape = record, label = "  imports"]
 
+
 	Incrementable [shape = record, label = "{Incrementable}"]
+
+	Incrementable -> "Prefix incrementable" [shape = record, label = "  exports"]
+	Incrementable -> "Prefix decrementable" [shape = record, label = "  exports"]
+	Incrementable -> "Postfix incrementable" [shape = record, label = "  exports"]
+	Incrementable -> "Postfix decrementable" [shape = record, label = "  exports"]
+
 
 	"Input iterator" [shape = record, label = "{{Input iterator}|{next (Input iterator) - Input_iterator}|{read (Input iterator) - Reference}}"]
 
 	"Input iterator" -> Incrementable [shape = record, label = "  imports"]
 	"Input iterator" -> Dereferenceable [shape = record, label = "  imports"]
 
+
 	Nothing [shape = record, label = "{Nothing}"]
+
 
 	Number [shape = record, label = "{Number}"]
 
@@ -68,15 +82,33 @@ digraph structs
 	"Number" -> "Integer" [shape = record, label = "  exports"]
 	"Number" -> "Float" [shape = record, label = "  exports"]
 
+
 	"Output iterator" [shape = record, label = "{Output iterator |{}|{next (Output iterator) - Output iterator}|{write (Output iterator i, element of \<i\> ) - Nothing}|{element_of \<Output iterator\> - Something}}"]
 
 	"Output iterator" -> Incrementable [shape = record, label = "  imports"]
 	"Output iterator" -> Dereferenceable [shape = record, label = "  imports"]
 	"Output iterator" -> Nothing [shape = record, label = "  imports"]
 
+
 	Pointer [shape = record, label = "{Pointer}"]
 
+	"Postfix incrementable" [shape = record, label = "{Postfix incrementable}"]
+
+	"Postfix decrementable" [shape = record, label = "{Postfix decrementable}"]
+
+
+	"Prefix incrementable" [shape = record, label = "{Prefix incrementable}"]
+
+	"Prefix incrementable" -> Reference [shape = record, label = "  imports"]	
+
+
+	"Prefix decrementable" [shape = record, label = "{Prefix decrementable}"]
+
+	"Prefix decrementable" -> Reference [shape = record, label = "  imports"]
+
+
 	"Random access iterator" [shape = record, label = "{Random access iterator}"]
+
 
 	Range [shape = record, label = "{Range |{contains (Range) - Bool}}"]
 
@@ -85,16 +117,21 @@ digraph structs
 	"Range" -> Pointer [shape = record, label = "  imports"]
 	"Range" -> Size [shape = record, label = "  exports"]
 
+
 	Reference [shape = record, label = "{Reference}"]
 
+
 	Referenceable [shape = record, label = "{Referenceable}"]	
+
 
 	Signed [shape = record, label = "{Signed}"]
 
 	"Signed" -> Convertible_to [shape = record, label = "  imports"]
 	"Signed" -> Assert [shape = record, label = "  imports"]
 
+
 	Size [shape = record, label = "{Size}"]
+
 
 	Unsigned [shape = record, label = "{Unsigned}"]
 
