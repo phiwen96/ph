@@ -9,6 +9,12 @@ namespace ph
 	{
 		--t;
 	};
+
+	export template <Prefix_decrementable T>
+	constexpr auto decrement (T && i) noexcept -> T& 
+	{
+		return --i;
+	}
 }
 
 /*==================================

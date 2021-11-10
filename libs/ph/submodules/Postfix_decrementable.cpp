@@ -9,6 +9,12 @@ namespace ph
 	{
 		t--;
 	};
+
+	export template <Postfix_decrementable T>
+	constexpr auto decrement (T && i) noexcept -> T& 
+	{
+		return --i;
+	}
 }
 
 /*==================================

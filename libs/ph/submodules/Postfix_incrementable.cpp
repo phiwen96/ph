@@ -9,6 +9,12 @@ namespace ph
 	{
 		t++;
 	};
+
+	export template <Postfix_incrementable T>
+	constexpr auto increment (T && i) noexcept -> T 
+	{
+		return i++;
+	}
 }
 
 /*==================================
