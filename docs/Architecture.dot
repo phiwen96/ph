@@ -9,6 +9,8 @@ digraph structs
 	edge [dpi = 1000 bgcolor=black color=white fontcolor=white];
 
 
+	AI [shape = record, label = "{AI}"]
+
 	Assert [shape = record, label = "{Assert}"]
 
 
