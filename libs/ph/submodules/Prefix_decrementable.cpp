@@ -11,7 +11,7 @@ namespace ph
 	};
 
 	export template <Prefix_decrementable T>
-	constexpr auto decrement (T && i) noexcept -> T& 
+	constexpr auto decrement (T && i) noexcept -> Reference <T> auto 
 	{
 		return --i;
 	}
@@ -28,7 +28,6 @@ import std;
 consteval auto Prefix_decrementable_test () noexcept -> bool
 {
 	using namespace ph;
-	
 	constexpr auto assert_Prefix_decrementable = [] <Prefix_decrementable> {};
 	constexpr auto assert_not_Prefix_decrementable = [] <typename T> requires (not Prefix_decrementable <T>) {};
 

@@ -104,7 +104,8 @@ $(LIB): $(LIB_DIR)/$(PROJ).cpp $(OBJ)
 # 	$(CXX) $(CXX_FLAGS) $< -o $@
 
 
-
+$(OBJ_DIR)/AI.pcm: $(SUBMODULES_DIR)/AI.cpp $(MAYBE_TESTS)
+	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@
 
 $(OBJ_DIR)/Range.pcm: $(SUBMODULES_DIR)/Range.cpp $(OBJ_DIR)/Iterator.pcm $(OBJ_DIR)/Pointer.pcm $(OBJ_DIR)/Size.pcm $(OBJ_DIR)/Bool.pcm $(MAYBE_TESTS)
 	$(CXX) $(CXX_FLAGS) $(addprefix -fmodule-file=, $(filter-out $<, $^)) -c $< -Xclang -emit-module-interface -o $@

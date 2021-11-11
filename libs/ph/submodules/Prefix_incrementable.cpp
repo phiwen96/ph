@@ -11,7 +11,7 @@ namespace ph
 	};
 
 	export template <Prefix_incrementable T>
-	constexpr auto increment (T && i) noexcept -> T& 
+	constexpr auto increment (T && i) noexcept -> Reference <T> auto
 	{
 		return ++i;
 	}
